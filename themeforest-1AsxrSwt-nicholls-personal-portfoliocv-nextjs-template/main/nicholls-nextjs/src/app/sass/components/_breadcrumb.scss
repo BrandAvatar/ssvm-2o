@@ -1,0 +1,39 @@
+.breadcrumb {
+  &-area {
+  }
+
+  &__sub-title {
+    color: $color-fern-green;
+    border: 1px solid $color-fern-green;
+    @extend %text-semi-bold, %text-capitalize, %d-inline-block;
+    border-radius: 18px;
+    padding: 5px 20px;
+    @include transition($transition);
+    margin-bottom: 25px;
+
+    @include breakpoint(max-md) {
+      margin-bottom: 15px;
+    }
+
+    &:hover {
+      letter-spacing: 1.1px;
+    }
+  }
+
+  &__title {
+    @extend %text-capitalize,%text-bold;
+
+    font-size: $fs-h2;
+    // $fs-h2: 60px;
+
+    @include breakpoint(max-lg) {
+      font-size: calc($fs-h2 - 10px);
+    }
+    @include breakpoint(max-md) {
+      font-size: calc($fs-h2 - 15px);
+    }
+    @include breakpoint(max-sm) {
+      font-size: calc($fs-h2 - 25px);
+    }
+  }
+}

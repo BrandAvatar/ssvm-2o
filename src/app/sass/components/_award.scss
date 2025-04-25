@@ -1,0 +1,188 @@
+.award {
+  &-area {
+    counter-reset: award-number;
+    z-index: 1;
+    @extend %p-relative;
+  }
+  &__items {
+    .row {
+      [class*="col-"]:first-of-type {
+        .award__item {
+          padding-top: 0;
+        }
+      }
+    }
+  }
+  &__item {
+    @extend %p-relative, %d-flex, %justify-between, %item-center;
+    border-bottom: 1px solid $color-eerie-black;
+    padding: 35px 0;
+    overflow: hidden;
+    gap: 15px;
+
+    @include breakpoint(max-xl) {
+      padding: 18px 0;
+    }
+    @include breakpoint(max-md) {
+      padding: 15px 0;
+    }
+
+    &:hover {
+      .award-img {
+        opacity: 1;
+        visibility: visible;
+        transform: translate(0, 0);
+      }
+    }
+
+    .award-img {
+      @extend %p-fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      object-fit: cover;
+      opacity: 0;
+      visibility: hidden;
+      z-index: 1;
+      @include add-prefix(
+        transition,
+        opacity 0.2s,
+        transform 0.5s cubic-bezier(0.23, 1, 0.32, 1),
+        -webkit-transform 0.5s cubic-bezier(0.23, 1, 0.32, 1)
+      );
+
+      @include breakpoint(max-md) {
+        display: none;
+      }
+    }
+    .award-title {
+      padding-left: 60px;
+      @extend %p-relative, %text-semi-bold;
+
+      @include breakpoint(max-xl) {
+        padding-left: 50px;
+      }
+      @include breakpoint(max-md) {
+        padding-left: 40px;
+      }
+      @include breakpoint(max-sm) {
+        font-size: 16px;
+      }
+
+      &::before {
+        @extend %p-absolute, %text-medium;
+        left: 0;
+        top: 50%;
+        @include transform(translateY(-50%));
+        font-size: 18px;
+        counter-increment: award-number;
+        content: counter(award-number, upper-roman);
+        color: $color-eerie-black;
+
+        @include breakpoint(max-sm) {
+          font-size: 16px;
+        }
+      }
+
+      a {
+        color: inherit;
+        &:hover {
+          color: $color-fern-green;
+        }
+      }
+    }
+    .award-date {
+      @extend %d-inline-block, %text-medium, %text-right;
+      font-size: 18px;
+
+      @include breakpoint(max-sm) {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+.award-2 {
+  &-area {
+  }
+  &__item {
+    padding: 40px 0;
+    @extend %p-relative;
+    border-bottom: 1px solid rgba($color-white,0.1);
+
+    @include breakpoint(max-md){
+      padding: 20px 0;
+    }
+
+    &::before {
+      @extend %p-absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      background-color: $color-white;
+      z-index: -1;
+      @include transition($transition-4-ease-in-out);
+      @include add-prefix(transition-property, transform);
+      @include transform(scaleY(0));
+      @include add-prefix(transform-origin, top);
+    }
+    &-inner {
+      @extend %d-flex, %justify-between, %item-center;
+      gap: 10px;
+
+      @include breakpoint(max-md){
+       flex-direction: column;
+      }
+    }
+
+    .award-year {
+      @include breakpoint(xl) {
+        font-size: 36px;
+      }
+      @extend %text-semi-bold;
+      @include transition($transition-4-ease-in-out);
+      max-width: 400px;
+      width: 100%;
+      
+      @include breakpoint(max-xl){
+        max-width: 100px;
+      }
+      @include breakpoint(max-md){
+        text-align: center;
+      }
+    }
+    .award-info {
+      @include breakpoint(xl) {
+        font-size: $fs-18;
+      }
+      @include transition($transition-4-ease-in-out);
+      max-width: 510px;
+      width: 100%;
+      @extend %text-center;
+    }
+    .award-title {
+      @include breakpoint(xl) {
+        font-size: 36px;
+      }
+      @extend %text-semi-bold,%text-right;
+      @include transition($transition-4-ease-in-out);
+      max-width: 510px;
+      width: 100%;
+
+      @include breakpoint(max-md){
+        text-align: center;
+      }
+    }
+
+    &:hover {
+      &::before {
+        @include add-prefix(transform-origin, bottom);
+        @include transform(scaleY(1));
+      }
+      .award-year,.award-info,.award-title {
+        color: $color-black;
+      }
+    }
+  }
+}

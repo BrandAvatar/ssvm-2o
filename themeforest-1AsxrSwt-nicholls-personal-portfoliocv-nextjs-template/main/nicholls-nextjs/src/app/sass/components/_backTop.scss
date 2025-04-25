@@ -1,0 +1,55 @@
+/*-----------------------------------------------------
+  BackToTop CSS
+-----------------------------------------------------*/
+.progress-wrap {
+  @extend %p-fixed;
+  right: 20px;
+  bottom: 20px;
+  height: 46px;
+  width: 46px;
+  cursor: pointer;
+  display: block;
+  border-radius: 50px;
+  z-index: 99;
+  opacity: 0;
+  visibility: hidden;
+  @include transform(translateY(15px));
+  @include transition(all 200ms linear);
+}
+
+.progress-wrap.active-progress {
+  opacity: 1;
+  visibility: visible;
+  @include transform(translateY(0px));
+}
+
+.progress-wrap::after {
+  position: absolute;
+  content: "\f062";
+  font: var(--fa-font-solid);
+  text-align: center;
+  line-height: 46px;
+  font-size: 20px;
+  color: $color-white;
+  left: 0;
+  top: 0;
+  height: 46px;
+  width: 46px;
+  cursor: pointer;
+  display: block;
+  z-index: 1;
+  @include transition(all 200ms linear);
+  border-radius: 50px;
+}
+
+.progress-wrap svg path {
+  fill: $color-eerie-black;
+}
+
+.progress-wrap svg.progress-circle path {
+  fill: $color-eerie-black;
+  stroke: $color-white;
+  stroke-width: 5;
+  box-sizing: border-box;
+  @include transition(all 200ms linear);
+}

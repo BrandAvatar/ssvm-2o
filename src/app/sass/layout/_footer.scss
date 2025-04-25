@@ -1,0 +1,475 @@
+.footer {
+  &-area {
+    &.before-shape {
+      &::before {
+        background-color: $color-eggshell;
+      }
+    }
+    &.before-shape,
+    &.after-shape {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+  &__top {
+    &-social {
+      ul {
+        @extend %d-flex, %justify-end, %item-center;
+        gap: 60px;
+
+        @include breakpoint(max-lg) {
+          justify-content: center;
+          gap: 20px;
+        }
+        @include breakpoint(max-sm) {
+          flex-wrap: wrap;
+        }
+
+        li {
+          @extend %d-inline-flex,
+            %justify-center,
+            %item-center,
+            %text-capitalize;
+          gap: 12px;
+
+          a {
+            color: $color-white;
+            @extend %d-inline-flex,
+            %justify-center,
+            %item-center;
+            gap: 3px;
+
+            &:hover {
+              color: $color-lime;
+            }
+          }
+        }
+      }
+    }
+    &-header {
+      .footer-title {
+        font-size: 340px;
+        line-height: 1;
+        @extend %text-uppercase, %text-regular;
+
+        
+        @include breakpoint(max-xxl) {
+          font-size: calc(340px - 120px);
+        }
+        @include breakpoint(max-lg) {
+          font-size: calc(340px - 160px);
+        }
+        @include breakpoint(max-md) {
+          font-size: calc(340px - 220px);
+        }
+        @include breakpoint(max-sm) {
+          font-size: calc(340px - 270px);
+        }
+        @include breakpoint(max-xsm) {
+          font-size: calc(340px - 280px);
+        }
+      }
+      .footer-mail {
+        border-bottom: 2px solid $color-white;
+        line-height: 1;
+        color: $color-white;
+        @extend %text-semi-bold,%d-inline-block;
+        margin-top: 30px;
+        font-size: $fs-h4;
+        // $fs-h4: 30px;
+
+        @include breakpoint(max-lg) {
+          font-size: calc($fs-h4 - 3px);
+        }
+        @include breakpoint(max-md) {
+          font-size: calc($fs-h4 - 5px);
+          margin-top: 20px;
+        }
+        @include breakpoint(max-sm) {
+          font-size: calc($fs-h4 - 10px);
+        }
+
+        i,svg {
+          font-size: 28px;
+          margin-left: 5px;
+
+          @include breakpoint(max-md) {
+            margin-left: 1px;
+          }
+        }
+      }
+    }
+  }
+  &__center {
+    overflow: hidden;
+    &-content {
+      ul {
+        li {
+          &:not(:first-child) {
+            a {
+              padding-top: 35px;
+
+              @include breakpoint(max-lg) {
+                padding-top: 20px;
+              }
+            }
+          }
+          a {
+            @extend %d-flex,
+              %justify-between,
+              %item-center,
+              %text-uppercase,
+              %text-medium;
+            color: $color-gray;
+            font-size: 24px;
+            padding-bottom: 8px;
+
+            @include breakpoint(max-xl) {
+              font-size: 20px;
+              padding-bottom: 6px;
+            }
+            @include breakpoint(max-md) {
+              font-size: 18px;
+            }
+
+            &::after {
+              font: var(--fa-font-solid);
+              content: "\f061";
+              @include transform(rotate(-45deg));
+            }
+
+            &:hover {
+              color: $color-white;
+            }
+          }
+        }
+      }
+
+      .hore-me {
+        @extend %text-uppercase, %d-block, %text-center;
+        border: 1px solid $color-border;
+        border-radius: 50px;
+        color: $color-gray;
+        margin-top: 120px;
+        padding: 20px 0;
+        font-size: $fs-h2;
+        // $fs-h2: 60px;
+        line-height: 0.95;
+
+        @include breakpoint(max-xxl) {
+          font-size: calc($fs-h2 - 25px);
+          margin-top: 40px;
+        }
+        @include breakpoint(max-lg) {
+          font-size: calc($fs-h2 - 30px);
+        }
+        @include breakpoint(max-md) {
+          font-size: calc($fs-h2 - 35px);
+          margin-top: 30px;
+          padding: 10px 0;
+        }
+
+        &:hover {
+          color: $color-white;
+          @include add-prefix(animation, scaleLoop 1s ease-in-out infinite);
+        }
+      }
+
+      .title {
+        text-indent: 230px;
+        text-indent: 230px;
+        margin-bottom: 50px;
+        max-width: 720px;
+
+        @include breakpoint(max-xl) {
+          text-indent: 100px;
+          margin-bottom: 30px;
+        }
+        @include breakpoint(max-md) {
+          text-indent: 0px;
+          text-align: center;
+        }
+      }
+    }
+    &-contact {
+      ul {
+        li {
+          border-bottom: 1px solid rgba($color-white, 0.1);
+          color: $color-dark-gray;
+          font-size: 15px;
+          @extend %d-flex, %justify-between, %item-center, %text-capitalize;
+          padding: 26px 0;
+
+          @include breakpoint(max-xl) {
+            padding: 15px 0;
+          }
+          @include breakpoint(max-md) {
+            padding: 10px 0;
+          }
+          @include breakpoint(max-sm) {
+            flex-direction: column;
+          }
+
+          &:first-child {
+            border-top: 1px solid rgba($color-white, 0.1);
+          }
+
+          a {
+            font-size: $fs-h4;
+            // $fs-h4: 30px;
+            @extend %text-medium;
+            color: $color-white;
+            text-transform: initial;
+
+            @include breakpoint(max-lg) {
+              font-size: calc($fs-h4 - 3px);
+            }
+            @include breakpoint(max-md) {
+              font-size: calc($fs-h4 - 5px);
+            }
+            @include breakpoint(max-sm) {
+              font-size: calc($fs-h4 - 10px);
+            }
+          }
+        }
+      }
+    }
+
+    &-wrapper {
+      // background: url(../images/footer-area/footer-3-bg.png);
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: top center;
+      border-radius: 20px;
+      border: 1px solid rgba($color-white, 0.1);
+      overflow: hidden;
+      @extend %text-center;
+
+      @include breakpoint(max-lg) {
+        background-position: top left;
+      }
+
+      .sub-heading {
+        @extend %text-regular;
+      }
+      .heading {
+        color: $color-white;
+        margin-top: 20px;
+
+        @include breakpoint(xl) {
+          font-size: 72px;
+        }
+
+        @include breakpoint(max-md) {
+          margin-top: 10px;
+        }
+        @include breakpoint(max-xsm) {
+          font-size: 27px;
+        }
+
+        &:hover {
+          @include add-prefix(
+            animation,
+            scaleLoop 2s cubic-bezier(0.42, 0, 0.58, 1) infinite
+          );
+        }
+
+        a {
+          color: inherit;
+          font-size: inherit;
+          line-height: inherit;
+        }
+      }
+      .footer-social {
+        margin-top: 40px;
+
+        @include breakpoint(max-md) {
+          margin-top: 20px;
+        }
+        ul {
+          @extend %justify-center;
+        }
+      }
+    }
+  }
+  &__avatar-thumb {
+    @extend %d-flex, %justify-center, %item-center;
+    padding: 80px;
+    border-radius: 15px;
+    // @include background-image(
+    //   footer-area,
+    //   footer-avatar-bg-shap,
+    //   png,
+    //   $color-isabelline
+    // );
+
+    @include breakpoint(max-lg) {
+      padding: 50px;
+    }
+  }
+
+  &__bottom {
+    padding: 30px 0;
+
+    @include breakpoint(max-lg) {
+      padding: 20px 0;
+    }
+    &-social {
+      ul {
+        @extend %d-flex, %justify-center, %item-center;
+        gap: 15px;
+
+        @include breakpoint(max-lg) {
+          gap: 10px;
+        }
+        @include breakpoint(max-sm) {
+          flex-wrap: wrap;
+        }
+
+        li {
+          @extend %d-inline-flex,
+            %justify-center,
+            %item-center,
+            %text-capitalize;
+          gap: 12px;
+
+          a {
+            color: $color-white;
+            padding: 9px 30px;
+            border: 1px solid rgba($color-white, 0.1);
+            line-height: 1;
+            background-color: transparent;
+            border-radius: 18px;
+
+            &:hover {
+              color: $color-lime;
+            }
+          }
+
+          &:hover {
+            a {
+              background-color: $color-lime;
+              color: $color-black;
+            }
+          }
+        }
+      }
+    }
+  }
+  &__copyright {
+    color: $color-white;
+    @extend %text-semi-bold;
+
+    @include breakpoint(max-lg) {
+      text-align: center;
+    }
+  }
+  &__back-to-top {
+    @extend %d-flex, %justify-center, %item-center;
+
+    a {
+      @extend %d-inline-flex, %justify-center, %item-center;
+      gap: 30px;
+      color: $color-white;
+      @extend %text-semi-bold;
+    }
+  }
+
+  &__nav {
+    ul {
+      @extend %d-flex, %justify-end, %item-center;
+      gap: 30px;
+
+      @include breakpoint(max-lg) {
+        justify-content: center;
+      }
+
+      li {
+        a {
+          color: $color-white;
+          @extend %text-semi-bold;
+          position: relative;
+          white-space: nowrap;
+
+          &::after {
+            @extend %p-absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: $color-white;
+            @include transition($transition);
+          }
+
+          &:hover {
+            &::after {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+  &__common {
+    // @include background-image(footer-area, footer-info-bg, png, transparent);
+    &.before-shape {
+      &::before {
+        background-color: $color-laurel-green;
+      }
+    }
+  }
+  &__info {
+    @extend %text-center;
+
+    .short-info {
+      color: $color-white;
+      @extend %text-semi-bold, %d-inline-block;
+      border: 1px solid $color-border;
+      border-radius: 21px;
+      padding: 8px 25px;
+      @include transition($transition);
+
+      @include breakpoint(lg) {
+        font-size: 18px;
+      }
+
+      &:hover {
+        letter-spacing: 1.2px;
+      }
+    }
+    .info-title {
+      color: $color-white;
+      @extend %text-uppercase;
+      font-size: $fs-h1;
+      // $fs-h1: 190px;
+
+      @include breakpoint(max-xxl) {
+        font-size: calc($fs-h1 - 40px);
+      }
+      @include breakpoint(max-xl) {
+        font-size: calc($fs-h1 - 60px);
+      }
+      @include breakpoint(max-lg) {
+        font-size: calc($fs-h1 - 80px);
+      }
+      @include breakpoint(max-md) {
+        font-size: calc($fs-h1 - 100px);
+      }
+      @include breakpoint(max-sm) {
+        font-size: calc($fs-h1 - 130px);
+      }
+
+      span {
+        @extend %d-inline-block;
+        @include transition($transition);
+
+        &:hover {
+          @include add-prefix(
+            animation,
+            scaleLoop 2s cubic-bezier(0.42, 0, 0.58, 1) infinite
+          );
+        }
+      }
+    }
+  }
+}

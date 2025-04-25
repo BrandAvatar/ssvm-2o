@@ -1,0 +1,140 @@
+.experience {
+  &-area {
+  }
+  &__accordion {
+    border-radius: 0;
+
+    .accordion-item {
+      background-color: transparent;
+      &:first-of-type,
+      &:last-of-type {
+        border-radius: 0;
+        > .accordion-header {
+          .accordion-button {
+            border-radius: 0;
+          }
+        }
+      }
+    }
+    .accordion-item {
+      border: none;
+      border-top: 1px solid $color-eerie-black;
+
+      &:last-of-type {
+        border-bottom: 1px solid $color-eerie-black;
+      }
+    }
+    .accordion-header {
+      @extend %text-semi-bold;
+
+      @include breakpoint(lg) {
+        font-size: 36px;
+      }
+    }
+    .accordion-button {
+      background-color: transparent;
+      padding: 30px 0;
+      font-size: inherit;
+      font-weight: inherit;
+      @include transition($transition);
+
+      @include breakpoint(max-lg){
+        padding: 20px 0;
+      }
+
+      &:not(.collapsed) {
+        background-color: transparent;
+        color: $color-eerie-black;
+        box-shadow: none;
+        padding-bottom: 0;
+
+        &::after {
+          content: "\2b";
+        }
+      }
+      &:focus {
+        outline: 0;
+        box-shadow: none;
+      }
+
+      &::after {
+        background-image: none;
+        font: var(--fa-font-solid);
+        content: "\f068";
+        font-size: 20px;
+        @extend %d-grid, %place-center;
+      }
+    }
+    .accordion-collapse {
+      .accordion-body {
+      }
+    }
+    .accordion-body {
+      padding: 60px 0;
+
+      @include breakpoint(max-lg){
+        padding: 30px 0;
+      }
+    }
+  }
+  &__item-cart {
+    @extend %d-flex, %justify-start, %item-center;
+    background-color: $color-eggshell;
+    border-radius: 10px;
+    padding: 30px 35px;
+    gap: 80px;
+    height: 100%;
+    
+    
+    @include breakpoint(max-xxl) {
+      padding: 20px;
+      gap: 40px;
+    }
+    @include breakpoint(max-xl) {
+      padding: 15px;
+      gap: 30px;
+    }
+    @include breakpoint(max-lg) {
+      flex-direction: column;
+      text-align: center;
+    }
+    @include breakpoint(max-md) {
+      text-align: right;
+      flex-direction: row;
+      text-align: left;
+    }
+    @include breakpoint(max-sm) {
+      text-align: right;
+      flex-direction: column;
+      text-align: center;
+      gap: 20px;
+    }
+
+    .year-info {
+      background-color: $color-pastel-gray;
+      border-radius: 20px;
+      @extend %text-medium, %text-capitalize, %text-center;
+      padding: 10px 20px;
+      white-space: nowrap;
+      max-width: 150px;
+      width: 100%;
+
+      @include breakpoint(max-xl) {
+        max-width: 130px;
+        padding: 5px 10px;
+      }
+
+    }
+    .info-title {
+      @extend %text-semi-bold;
+    }
+    .info {
+      @extend %d-inline-block, %text-regular;
+      margin-top: 12px;
+
+      @include breakpoint(max-md) {
+        margin-top: 6px;
+      }
+    }
+  }
+}

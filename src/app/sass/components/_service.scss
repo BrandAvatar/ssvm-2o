@@ -1,0 +1,492 @@
+.service {
+  &-area {
+    counter-reset: serviceitem;
+  }
+
+  &__items {
+    @extend %d-flex, %flex-col;
+    gap: 30px;
+
+    @include breakpoint(max-lg) {
+      gap: 20px;
+    }
+
+    &-up,
+    &-down {
+      @extend %d-flex, %flex-wrap;
+      gap: 30px;
+
+      @include breakpoint(max-lg) {
+        gap: 20px;
+      }
+      @include breakpoint(max-sm) {
+        flex-direction: column;
+      }
+    }
+    &-down {
+      @extend %justify-end;
+    }
+  }
+
+  &__item {
+    background-color: $color-eggshell;
+    border-radius: 10px;
+    padding: 50px 40px;
+    max-width: 460px;
+    width: calc(calc(100% - 60px) / 3);
+
+    @include breakpoint(max-xl) {
+      padding: 30px 25px;
+    }
+    @include breakpoint(max-lg) {
+      width: calc(calc(100% - 40px) / 3);
+    }
+    @include breakpoint(max-md) {
+      max-width: 100%;
+      width: 100%;
+    }
+
+    .item {
+      &__number {
+        @extend %d-inline-block, %text-medium;
+        font-size: 24px;
+        margin-bottom: 45px;
+
+        @include breakpoint(max-xxl) {
+          margin-bottom: 30px;
+        }
+
+        &::before {
+          counter-increment: serviceitem;
+          content: counter(serviceitem, decimal-leading-zero);
+        }
+      }
+      &__title {
+        @extend %text-uppercase;
+
+        @include breakpoint(max-xxl) {
+          font-size: calc($fs-h3 - 12px);
+        }
+        @include breakpoint(max-xl) {
+          font-size: calc($fs-h3 - 21px);
+        }
+        @include breakpoint(max-md) {
+          font-size: calc($fs-h3 - 17px);
+        }
+
+        a {
+          &:hover {
+            color: $color-fern-green;
+          }
+        }
+      }
+    }
+    p {
+      margin-top: 22px;
+      @extend %text-5;
+
+      @include breakpoint(max-md) {
+        margin-top: 15px;
+      }
+    }
+    .common-btn__circle {
+      margin-top: 30px;
+      @include breakpoint(max-md) {
+        margin-top: 20px;
+      }
+    }
+
+    &:hover {
+      .common-btn__circle {
+        background-color: $color-fern-green;
+      }
+    }
+  }
+}
+
+.services-2 {
+  &-area {
+    .section {
+      &__title {
+        &.text-indent {
+          margin-top: 25px;
+
+          @include breakpoint(lg) {
+            text-indent: 200px;
+          }
+          @include breakpoint(xl) {
+            text-indent: 260px;
+          }
+          @include breakpoint(max-md) {
+            margin-top: 10px;
+          }
+        }
+      }
+    }
+  }
+  &__thumbs {
+    position: relative;
+
+    img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: -1;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      @include transform(scale(0.8));
+      @include transition(all 0.5s ease-in-out);
+      object-fit: cover;
+
+      &.active {
+        position: relative;
+        opacity: 1;
+        @include transform(scale(1));
+        z-index: 1;
+      }
+    }
+  }
+  &__lists {
+    ul {
+      li {
+        &:first-of-type {
+          border-top: 1px solid rgba($color-white, 0.1);
+        }
+        .service-title {
+          border-bottom: 1px solid rgba($color-white, 0.1);
+
+          a {
+            padding: 45px 0;
+            @extend %d-inline-block;
+            -webkit-text-stroke: 0.5px $color-white;
+            color: transparent;
+            @include transition($transition);
+
+            @include breakpoint(max-xxl) {
+              padding: 20px 0;
+            }
+            @include breakpoint(max-md) {
+              padding: 10px 0;
+            }
+          }
+
+          &:not(.active) {
+            a {
+              color: white;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.services-3 {
+  &-area {
+  }
+  &__thumb-content {
+    @extend %d-flex;
+    border: 1px solid $color-black;
+    border-left: none;
+    border-right: none;
+
+    @include breakpoint(max-lg) {
+      flex-direction: column;
+    }
+  }
+  &__thumb {
+    flex: 1;
+    @extend %p-relative;
+    overflow: hidden;
+    z-index: 0;
+
+    img {
+      left: 0;
+      top: 0;
+      z-index: -1;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      @include transform(scale(0.8));
+      @include transition(all 0.5s ease-in-out);
+      @extend %p-absolute;
+      object-fit: cover;
+
+      padding: 45px 45px 45px 0;
+      @include breakpoint(max-xl) {
+        padding: 20px 20px 20px 0;
+      }
+
+      @include breakpoint(max-lg) {
+        padding-right: 0;
+      }
+
+      &.active {
+        @extend %p-relative;
+        opacity: 1;
+        @include transform(scale(1));
+        z-index: 1;
+      }
+    }
+  }
+  &__content {
+    flex: 1;
+    border-left: 1px solid $color-black;
+
+    @include breakpoint(max-lg) {
+      border-left: none;
+      border-top: 1px solid $color-black;
+    }
+
+    .common-btn__circle {
+      color: $color-black;
+      background-color: transparent;
+      border: 1px solid $color-black;
+      font-size: $fs-22;
+
+      @include breakpoint(max-sm) {
+        width: 40px;
+        height: 40px;
+      }
+
+      &:hover {
+        background-color: $color-black;
+        color: $color-lime;
+      }
+    }
+  }
+}
+
+.featcher {
+  padding: 45px 0px 45px 45px;
+
+  @include breakpoint(max-xl) {
+    padding: 20px 0px 20px 20px;
+  }
+  @include breakpoint(max-lg) {
+    padding-left: 0;
+  }
+
+  &:not(:first-child) {
+    border-top: 1px solid $color-black;
+  }
+
+  &__title {
+    @extend %d-flex, %justify-between, %item-center;
+    margin-bottom: 20px;
+
+    @include breakpoint(max-lg) {
+      margin-bottom: 10px;
+    }
+  }
+
+  &:hover,
+  &.active {
+    .common-btn__circle {
+      background-color: $color-black;
+      color: $color-lime;
+    }
+  }
+}
+
+.services-4 {
+  &-area {
+    .section {
+      &__header {
+        .headr-icon {
+          margin-left: 98px;
+          @extend %d-inline-block, %p-relative;
+          color: $color-black;
+          margin-top: 2px;
+
+          &::before {
+            @extend %p-absolute;
+            width: 98px;
+            height: 1px;
+            top: 5px;
+            left: -98px;
+            background-color: $color-black;
+          }
+          
+          i,
+          svg {
+            color: $color-black;
+            font-size: $fs-18;
+            margin-left: -9px;
+          }
+        }
+
+        .common-btn.btn-lime {
+          @include transition(all 0.3s ease);
+          &:hover {
+            border-color: $color-black;
+            color: $color-black;
+            background-color: $color-lime;
+            animation: none;
+          }
+        }
+      }
+      &__title {
+        line-height: 1;
+        @extend %text-semi-bold;
+        color: $color-black;
+      }
+    }
+  }
+  &__header-row {
+    padding-bottom: 35px;
+
+    @include breakpoint(lg) {
+      padding-bottom: 25px;
+    }
+  }
+
+  &__item {
+    &-wrapper {
+      counter-reset: service-counter;
+    }
+
+    @extend %d-flex, %justify-between, %item-center, %p-relative;
+    padding: 30px 0px;
+    @include transition($transition);
+    border-top: 1px solid rgba($color-black, 0.1);
+    z-index: 0;
+
+    @include breakpoint(max-xl) {
+      padding: 20px 0px;
+    }
+    @include breakpoint(max-md) {
+      padding: 10px 0px;
+    }
+    @include breakpoint(max-sm) {
+      padding: 10px 5px;
+    }
+
+    &::before {
+      @extend %p-absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      background-color: $color-lime;
+      z-index: -1;
+      @include transition($transition-4-ease-in-out);
+      @include add-prefix(transition-property, transform);
+      @include transform(scaleY(0));
+      @include add-prefix(transform-origin, top);
+    }
+
+    &:last-child {
+      border-bottom: 1px solid rgba($color-black, 0.1);
+    }
+
+    .service-title {
+      color: $color-black;
+
+      @include breakpoint(max-xl) {
+        font-size: $fs-h3;
+      }
+      @include breakpoint(max-lg) {
+        font-size: calc($fs-h3 - 7px);
+      }
+      @include breakpoint(max-md) {
+        font-size: calc($fs-h3 - 12px);
+      }
+      @include breakpoint(max-sm) {
+        font-size: calc($fs-h3 - 25px);
+      }
+
+      &::before {
+        counter-increment: service-counter;
+        content: counter(service-counter, decimal-leading-zero) "/";
+        @extend %text-regular, %d-inline-block;
+        margin-right: 32px;
+        color: $color-black;
+        font-size: 24px;
+        vertical-align: middle;
+        @include transition($transition);
+
+        @include breakpoint(max-sm) {
+          font-size: $fs-18;
+          margin-right: 15px;
+        }
+      }
+    }
+    .service-thumb {
+      @extend %p-absolute;
+      top: 0px;
+      right: 200px;
+      opacity: 0;
+      @include transition($transition);
+      z-index: 1;
+
+      img {
+        border-radius: 8px;
+      }
+
+      @include breakpoint(max-xxl) {
+        text-align: right;
+        right: 0px;
+        img {
+          max-width: 50%;
+        }
+      }
+      @include breakpoint(max-xl) {
+        display: none;
+      }
+    }
+
+    .common-btn__circle {
+      @include transition($transition);
+      background-color: $color-black;
+      flex-shrink: 0;
+
+      @include breakpoint(max-sm) {
+        width: 40px;
+        height: 40px;
+      }
+    }
+
+    &:hover {
+      padding: 30px 35px;
+
+      @include breakpoint(max-xl) {
+        padding: 20px 25px;
+      }
+      @include breakpoint(max-md) {
+        padding: 10px 15px;
+      }
+      @include breakpoint(max-sm) {
+        padding: 10px 5px;
+      }
+
+      &::before {
+        @include add-prefix(transform-origin, bottom);
+        @include transform(scaleY(1));
+      }
+
+      .service-thumb {
+        top: -95px;
+        opacity: 1;
+        right: 300px;
+
+        @include breakpoint(max-xxl) {
+          right: 120px;
+        }
+      }
+
+      &:first-child {
+        .service-thumb {
+          top: -50px;
+        }
+      }
+      &:last-child {
+        .service-thumb {
+          top: unset;
+          bottom: -50px;
+        }
+      }
+    }
+  }
+}

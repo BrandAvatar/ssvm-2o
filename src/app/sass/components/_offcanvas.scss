@@ -1,0 +1,99 @@
+.offcanvas {
+  background-color: $color-pastel-gray;
+  overflow-x: hidden;
+  .btn-close {
+    background-image: unset;
+    @extend %d-flex, %justify-center, %item-center;
+    @include transition($transition);
+    font-size: 40px;
+    -webkit-text-stroke: 0.1px white;
+    transform-origin: center;
+    box-shadow: none;
+
+    i,
+    svg {
+      @include transition($transition);
+      border: 1px solid $color-eerie-black;
+      @include add-prefix(border-radius, 50%);
+      padding: 5px;
+    }
+    &:hover {
+      transform-origin: center;
+
+      i,
+      svg {
+        @include transform(rotate(90deg));
+      }
+    }
+  }
+
+  .copyright {
+    margin-top: 25px;
+    @extend %text-semi-bold;
+  }
+}
+.offcanvas-title {
+  font-size: 42px;
+  // $fs-h3: 42px;
+
+  @include breakpoint(max-lg) {
+    font-size: calc(42px - 7px);
+  }
+  @include breakpoint(max-md) {
+    font-size: calc(42px - 12px);
+  }
+  @include breakpoint(max-sm) {
+    font-size: calc(42px - 17px);
+  }
+}
+.offcanvas-body {
+  padding-top: 0;
+  .btn-wrapper {
+    padding-top: 20px;
+
+    @include breakpoint(lg) {
+      display: none;
+    }
+  }
+}
+
+.offcanvas-info {
+  @include breakpoint(max-lg) {
+    padding-top: 15px;
+    border-top: 1px solid rgba($color-border, 0.3);
+  }
+
+  .about-info {
+    p {
+      @extend %text-medium;
+      margin-top: 10px;
+    }
+  }
+
+  .social-share {
+    margin-top: 15px;
+
+    h5 {
+      font-size: 24px;
+    }
+    ul {
+      margin-top: 15px;
+      @extend %d-flex;
+      gap: 10px;
+      li {
+        a {
+          @extend %d-inline-flex, %justify-center, %item-center;
+          width: 46px;
+          height: 46px;
+          border-radius: 100%;
+          background-color: $color-fern-green;
+          color: $color-white;
+
+          &:hover {
+            @include transform(scale(1.1));
+          }
+        }
+      }
+    }
+  }
+}

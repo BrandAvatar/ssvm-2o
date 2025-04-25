@@ -1,0 +1,220 @@
+.portfolio-details {
+  &__info {
+    border: 1px solid #b3b3ad;
+    border-radius: 10px;
+
+    @extend %d-grid, %p-relative;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+
+    @include breakpoint(max-xl) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    @include breakpoint(max-md) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @include breakpoint(max-sm) {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+
+    @include breakpoint(max-md) {
+      text-align: center;
+    }
+
+    .info-item {
+      padding: 30px 60px;
+      height: 100%;
+
+      @include breakpoint(max-xxl) {
+        padding: 20px 30px;
+      }
+
+      &:first-child {
+        @include breakpoint(max-xl) {
+          padding-bottom: 0;
+        }
+      }
+      &:not(:last-child) {
+        @include breakpoint(max-xl) {
+          padding-bottom: 0;
+        }
+      }
+      &:nth-last-child(2) {
+        @include breakpoint(max-xxl) {
+          padding-bottom: 20px;
+        }
+        @include breakpoint(max-md) {
+          padding-bottom: 0px;
+        }
+      }
+
+      .info-title {
+        font-size: 20px;
+        @extend %text-bold;
+
+        @include breakpoint(max-md) {
+          font-size: 18px;
+        }
+      }
+      .info-social {
+        ul {
+          @extend %d-flex;
+          gap: 22px;
+          margin-top: 5px;
+
+          @include breakpoint(max-md) {
+            justify-content: center;
+          }
+
+          li {
+            a {
+              &:hover {
+                color: $color-fern-green;
+              }
+            }
+          }
+        }
+      }
+      .info {
+        font-size: 18px;
+
+        @include breakpoint(max-md) {
+          font-size: $fs-base;
+        }
+      }
+    }
+  }
+  &__thumb {
+    img {
+      width: 100%;
+    }
+  }
+  &__content {
+    counter-reset: sub-discription-titles;
+    .sub-discription {
+      &:not(:first-child) {
+        margin-top: 50px;
+
+        @include breakpoint(max-lg) {
+          margin-top: 25px;
+        }
+      }
+      .sub-discription-titles {
+        @extend %text-capitalize, %text-bold;
+        margin-bottom: 25px;
+
+        &::before {
+          counter-increment: sub-discription-titles;
+          content: counter(sub-discription-titles) ". ";
+        }
+        @include breakpoint(lg) {
+          font-size: 36px;
+          margin-bottom: 12px;
+        }
+      }
+
+      p {
+        &:not(:first-child) {
+          margin-top: 17.5px;
+        }
+        @include breakpoint(lg) {
+          font-size: 18px;
+
+          &:not(:first-child) {
+            margin-top: 35px;
+          }
+        }
+      }
+
+      ul {
+        margin-top: 17.5px;
+
+        @include breakpoint(lg) {
+          font-size: 18px;
+          margin-top: 35px;
+        }
+
+        li {
+          @extend %p-relative;
+
+          &::before {
+            font: var(--fa-font-solid);
+            content: "\f111";
+            vertical-align: middle;
+            font-size: 7px;
+            margin-right: 8px;
+
+            @include breakpoint(lg) {
+              font-size: 10px;
+              margin-right: 11px;
+            }
+          }
+          &:not(:last-child) {
+            margin-bottom: 15px;
+
+            @include breakpoint(max-lg) {
+              margin-bottom: 5px;
+            }
+          }
+        }
+      }
+
+      .figures {
+        margin-top: 60px;
+        @extend %d-block;
+
+        @include breakpoint(max-lg) {
+          margin-top: 30px;
+        }
+        img {
+          width: 100%;
+          border-radius: 10px;
+
+          &:not(:first-child) {
+            margin-top: 30px;
+
+            @include breakpoint(max-lg) {
+              margin-top: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+  &__navigations {
+    @extend %d-flex, %justify-center, %item-center;
+    gap: 30px;
+
+    @include breakpoint(max-lg) {
+      gap: 20px;
+    }
+
+    .common-btn__circle-move {
+      color: $color-eerie-black;
+      @extend %flex-col, %text-capitalize;
+
+      @include breakpoint(max-sm){
+        width: 130px;
+        height: 130px;
+      }
+
+      &:hover {
+        color: $color-white;
+        z-index: 99;
+
+        span {
+          background-color: $color-fern-green;
+        }
+      }
+
+      .rotate-45 {
+        @include transform(rotate(45deg));
+      }
+      
+      .rotate-negative-45 {
+        @include transform(rotate(-45deg));
+      }
+      
+    }
+  }
+}

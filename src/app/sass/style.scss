@@ -1,0 +1,52 @@
+/*!
+Template Name: Nicholls
+Template Url: https://nicholls-next.vercel.app/
+Developer: Sakebul islam.
+Description: Nicholls - Personal Portfolio/CV NextJS Template
+Version: 1.0.0
+Text Domain: Nicholls
+Tags: Personal Portfolio, CV, Resume, NextJS Template, HTML5 Template, Freelancer, Web Developer, Designer, Digital Portfolio, Nicholls, Sakebul islam
+*/
+
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Fonts
+# Configuration
+# Normalize
+# Typography
+# Global CSS
+# Layout CSS
+# Components CSS
+# Pages CSS
+--------------------------------------------------------------*/
+
+@charset "UTF-8";
+
+// 1.Fonts
+@import "base/fonts";
+
+// 2.configuration and helpers
+@import "abstracts/variables", "abstracts/mixins", "abstracts/extend";
+
+//3.vendors
+@import "vendors/normalize";
+
+//4.Base stuff
+@import "base/typography", "base/common", "base/helpers", "base/animation";
+
+// 5.layout-related section
+@import "layout/header", "layout/hero", "layout/footer";
+
+// 6.components
+@import "components/button", "components/offcanvas", "components/backTop",
+  "components/comment", "components/widget", "components/about",
+  "components/pricing", "components/achievement", "components/experience",
+  "components/award", "components/skills", "components/service",
+  "components/portfolio", "components/brands", "components/image",
+  "components/testimonial", "components/blog", "components/contact",
+  "components/funfact", "components/video", "components/round",
+  "components/breadcrumb", "components/faq", "components/instagram";
+
+// 7. Page-specific styles
+@import "pages/portfolio-details", "pages/blog-details", "pages/service-details";

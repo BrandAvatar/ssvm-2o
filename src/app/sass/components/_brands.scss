@@ -1,0 +1,108 @@
+.brands {
+  &-area {
+    .brand-row {
+      .col {
+        &:nth-child(even) {
+          .brands__item--extend {
+            &.rotate {
+              &:nth-child(odd) {
+                @include transform(rotate(-2deg));
+              }
+            }
+          }
+        }
+        &:nth-child(odd) {
+          .brands__item--extend {
+            &.rotate {
+              &:nth-child(odd) {
+                @include transform(rotate(2deg));
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  &__title {
+    @extend %text-center, %text-semi-bold;
+    font-size: 24px;
+    line-height: 34px;
+  }
+  &__item {
+    @extend %d-grid, %place-center;
+    aspect-ratio: 3/2;
+    padding: 0 20px;
+    background-color: $color-eggshell;
+    border-radius: 10px;
+    @include transition($transition);
+    border: 1px solid $color-eggshell;
+
+    @include breakpoint(max-md) {
+      border-radius: 5px;
+    }
+
+    &:hover {
+      background-color: $color-pastel-gray;
+    }
+
+    &--extend {
+      background-color: $color-chinese-black;
+      border-color: rgba($color-white, 0.1);
+
+      &:hover {
+        background-color: rgba($color-lime, 0.2);
+        border-color: rgba($color-lime, 0.3);
+
+        &.rotate {
+          -webkit-transform: rotate(0deg) !important;
+          -ms-transform: rotate(0deg) !important;
+          transform: rotate(0deg) !important;
+        }
+      }
+    }
+  }
+}
+
+.brands-2 {
+  &-area {
+    @include breakpoint(xl) {
+      padding-bottom: 0px;
+    }
+    @include breakpoint(xxl) {
+      padding-bottom: 60px;
+    }
+  }
+  &__item-row {
+    @extend %d-flex, %flex-wrap;
+  }
+  &__item {
+    width: 100%;
+    @extend %d-grid, %place-center;
+    padding: 20px;
+
+    &:has(img) {
+      border: 1px solid rgba($color-black, 0.1);
+    }
+
+    @include breakpoint(xl) {
+      aspect-ratio: 1/1;
+      width: calc(100% / 3);
+    }
+    @include breakpoint(max-xl) {
+      aspect-ratio: 1/1;
+      width: calc(100% / 3);
+
+      &:not(:has(img)) {
+        display: none;
+      }
+    }
+    @include breakpoint(max-md) {
+      padding: 0;
+      width: calc(100% / 2);
+    }
+    @include breakpoint(max-sm) {
+      aspect-ratio: 2/1;
+      width: 100%;
+    }
+  }
+}

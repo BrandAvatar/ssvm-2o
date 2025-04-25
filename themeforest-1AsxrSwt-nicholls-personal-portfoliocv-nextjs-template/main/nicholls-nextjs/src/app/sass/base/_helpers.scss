@@ -1,0 +1,423 @@
+// -----------------------------------------------------------------------------
+// This file contains CSS helper classes.
+// -----------------------------------------------------------------------------
+
+/**
+ * Clear inner floats
+ */
+.clearfix::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+/**
+ * Hide text while making it readable for screen readers
+ * 1. Needed in WebKit-based browsers because of an implementation bug;
+ *    See: https://code.google.com/p/chromium/issues/detail?id=457146
+ */
+.hide-text {
+  overflow: hidden;
+  padding: 0;
+  /* 1 */
+  text-indent: 101%;
+  white-space: nowrap;
+}
+
+/**
+ * Hide element while making it readable for screen readers
+ * Shamelessly borrowed from HTML5Boilerplate:
+ * https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css#L119-L133
+ */
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+@media (min-width: 1400px) {
+  .container {
+    &--extend {
+      max-width: 1770px;
+    }
+  }
+}
+
+.text-initial {
+  text-transform: initial;
+}
+
+/*=======> utility classes start here <=======*/
+
+//  section padding gap start here
+.section-padding-top-bottom {
+  padding-top: 120px;
+  padding-bottom: 120px;
+
+  @include breakpoint(max-md) {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}
+.section-padding-top {
+  padding-top: 120px;
+
+  @include breakpoint(max-md) {
+    padding-top: 60px;
+  }
+}
+.section-padding-bottom {
+  padding-bottom: 120px;
+
+  @include breakpoint(max-md) {
+    padding-bottom: 60px;
+  }
+}
+
+//  section padding gap end here
+
+//  section margin gap start here
+.section-margin-top-bottom {
+  margin-top: 120px;
+  margin-bottom: 120px;
+
+  @include breakpoint(max-md) {
+    margin-top: 60px;
+    margin-bottom: 60px;
+  }
+}
+.section-margin-top {
+  margin-top: 120px;
+
+  @include breakpoint(max-md) {
+    margin-top: 60px;
+  }
+}
+.section-margin-bottom {
+  margin-bottom: 120px;
+
+  @include breakpoint(max-md) {
+    margin-bottom: 60px;
+  }
+}
+
+//  section margin gap end here
+
+//  section mini-gap start here
+.section-mini-padding-top-bottom {
+  padding-top: 60px;
+  padding-bottom: 60px;
+
+  @include breakpoint(max-lg) {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+}
+.section-mini-padding-top {
+  padding-top: 60px;
+
+  @include breakpoint(max-lg) {
+    padding-top: 30px;
+  }
+}
+.section-mini-padding-bottom {
+  padding-bottom: 60px;
+
+  @include breakpoint(max-lg) {
+    padding-bottom: 30px;
+  }
+}
+
+.section-mini-margin-top-bottom {
+  margin-top: 60px;
+  margin-bottom: 60px;
+
+  @include breakpoint(max-lg) {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+}
+.section-mini-margin-top {
+  margin-top: 60px;
+
+  @include breakpoint(max-lg) {
+    margin-top: 30px;
+  }
+}
+.section-mini-margin-bottom {
+  margin-bottom: 60px;
+
+  @include breakpoint(max-lg) {
+    margin-bottom: 30px;
+  }
+}
+//  section mini-gap end here
+
+.color-white {
+  color: $color-white;
+}
+.color-ecedde {
+  color: $color-eggshell;
+}
+.bg-ecedde {
+  background-color: $color-eggshell;
+}
+.color-eerie-black {
+  color: $color-eerie-black !important;
+}
+.bg-eerie-black {
+  background-color: $color-eerie-black !important;
+}
+.color-vampire-black {
+  color: $color-vampire-black !important;
+}
+.bg-vampire-black {
+  background-color: $color-vampire-black !important;
+}
+.color-chinese-black {
+  color: $color-chinese-black !important;
+}
+.bg-chinese-black {
+  background-color: $color-chinese-black !important;
+}
+.color-isabelline {
+  color: $color-isabelline !important;
+}
+.bg-isabelline {
+  background-color: $color-isabelline !important;
+}
+.color-dark-gray {
+  color: $color-dark-gray !important;
+}
+.bg-dark-gray {
+  background-color: $color-dark-gray !important;
+}
+.color-lime {
+  color: $color-lime !important;
+}
+.bg-lime {
+  background-color: $color-lime !important;
+}
+.color-smoky-black {
+  color: $color-smoky-black !important;
+}
+.bg-smoky-black {
+  background-color: $color-smoky-black !important;
+}
+.color-smok-black {
+  color: $color-smok-black !important;
+}
+.bg-smok-black {
+  background-color: $color-smok-black !important;
+}
+.color-giants-orange {
+  color: $color-giants-orange !important;
+}
+.bg-giants-orange {
+  background-color: $color-giants-orange !important;
+}
+.color-ferrari-red {
+  color: $color-ferrari-red !important;
+}
+.bg-ferrari-red {
+  background-color: $color-ferrari-red !important;
+}
+
+.bg-transparent {
+  background-color: transparent !important;
+}
+
+.border-top {
+  border-top: 1px solid $color-border !important;
+}
+.border-bottom {
+  border-bottom: 1px solid $color-border !important;
+}
+
+// font-family start
+.ff-six-caps {
+  font-family: $ff-six-caps !important;
+}
+.ff-montserrat {
+  font-family: $ff-montserrat !important;
+}
+// font-family end
+
+// font-size start
+.fs-200 {
+  font-size: 200px !important;
+  // $fs-h1: 200px;
+  line-height: 120% !important;
+
+  @include breakpoint(max-xxl) {
+    font-size: calc($fs-h1 - 30px) !important;
+  }
+  @include breakpoint(max-xl) {
+    font-size: calc($fs-h1 - 50px) !important;
+  }
+  @include breakpoint(max-lg) {
+    font-size: calc($fs-h1 - 70px) !important;
+  }
+  @include breakpoint(max-md) {
+    font-size: calc($fs-h1 - 90px) !important;
+  }
+  @include breakpoint(max-sm) {
+    font-size: calc($fs-h1 - 120px) !important;
+  }
+}
+.fs-110 {
+  font-size: 110px !important;
+  // $fs-h1: 110px;
+  line-height: 120% !important;
+
+  @include breakpoint(max-xxl) {
+    font-size: calc(110px - 60px) !important;
+  }
+  @include breakpoint(max-xl) {
+    font-size: calc(110px - 80px) !important;
+  }
+  @include breakpoint(max-g) {
+    font-size: calc(110px - 85px) !important;
+  }
+}
+// font-size end
+/*=======> utility classes end here <=======*/
+
+.border-0 {
+  border: 0 !important;
+}
+.border-left-0 {
+  border: 0 !important;
+}
+.border-right-0 {
+  border: 0 !important;
+}
+.border-left {
+  border-left: 1px solid #b3b3ad !important;
+}
+.border-right {
+  border-right: 1px solid #b3b3ad !important;
+}
+
+@include breakpoint(sm) {
+  .border-sm-0 {
+    border: 0 !important;
+  }
+  .border-sm-left-0 {
+    border: 0 !important;
+  }
+  .border-sm-right-0 {
+    border: 0 !important;
+  }
+  .border-sm-left {
+    border-left: 1px solid #b3b3ad !important;
+  }
+  .border-sm-right {
+    border-right: 1px solid #b3b3ad !important;
+  }
+}
+@include breakpoint(md) {
+  .border-md-0 {
+    border: 0 !important;
+  }
+  .border-md-left-0 {
+    border: 0 !important;
+  }
+  .border-md-right-0 {
+    border: 0 !important;
+  }
+  .border-md-left {
+    border-left: 1px solid #b3b3ad !important;
+  }
+  .border-md-right {
+    border-right: 1px solid #b3b3ad !important;
+  }
+}
+@include breakpoint(lg) {
+  .border-lg-0 {
+    border: 0 !important;
+  }
+  .border-lg-left-0 {
+    border: 0 !important;
+  }
+  .border-lg-right-0 {
+    border: 0 !important;
+  }
+  .border-lg-left {
+    border-left: 1px solid #b3b3ad !important;
+  }
+  .border-lg-right {
+    border-right: 1px solid #b3b3ad !important;
+  }
+}
+@include breakpoint(xl) {
+  .border-xl-0 {
+    border: 0 !important;
+  }
+  .border-xl-left-0 {
+    border: 0 !important;
+  }
+  .border-xl-right-0 {
+    border: 0 !important;
+  }
+  .border-xl-left {
+    border-left: 1px solid #b3b3ad !important;
+  }
+  .border-xl-right {
+    border-right: 1px solid #b3b3ad !important;
+  }
+}
+@include breakpoint(xxl) {
+  .border-xxl-0 {
+    border: 0 !important;
+  }
+  .border-xxl-left-0 {
+    border: 0 !important;
+  }
+  .border-xxl-right-0 {
+    border: 0 !important;
+  }
+  .border-xxl-left {
+    border-left: 1px solid #b3b3ad !important;
+  }
+  .border-xxl-right {
+    border-right: 1px solid #b3b3ad !important;
+  }
+}
+
+.btn-up-down {
+  animation: btn-up-down 1s linear infinite alternate;
+}
+
+.cursor-pointer {
+  cursor: pointer !important;
+}
+
+.pointer-none {
+  pointer-events: none !important;
+}
+
+.title-stretch {
+  .letter {
+    @extend %d-inline-block;
+    @include transition(transform 0.3s ease-out);
+    @include add-prefix(transform-origin, center center);
+  }
+
+  &[data-stretch="stretch-up"] {
+    .letter {
+      transform-origin: bottom center;
+    }
+  }
+
+  &[data-stretch="stretch-down"] {
+    .letter {
+      transform-origin: top center;
+    }
+  }
+}

@@ -1,0 +1,144 @@
+/**
+ * Basic typography style for copy text
+ */
+html {
+  overflow-x: clip;
+}
+body {
+  color: $color-white;
+  font-size: 16px;
+  line-height: 1.56;
+  font-family: $ff-exo;
+  background-color: $color-black;
+}
+.light-theme {
+  color: $color-eerie-black;
+  background: $color-pastel-gray !important;
+  z-index: 0;
+  @extend %p-relative;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @extend %text-bold;
+  @include transition($transition);
+  margin: 0;
+  font-family: $ff-exo;
+}
+
+h1 {
+  font-size: $fs-h1;
+  // $fs-h1: 190px;
+
+  @include breakpoint(max-xxl) {
+    font-size: calc($fs-h1 - 40px);
+  }
+  @include breakpoint(max-xl) {
+    font-size: calc($fs-h1 - 60px);
+  }
+  @include breakpoint(max-lg) {
+    font-size: calc($fs-h1 - 80px);
+  }
+  @include breakpoint(max-md) {
+    font-size: calc($fs-h1 - 100px);
+  }
+  @include breakpoint(max-sm) {
+    font-size: calc($fs-h1 - 130px);
+  }
+}
+
+h2 {
+  font-size: $fs-h2;
+  // $fs-h2: 60px;
+
+  @include breakpoint(max-lg) {
+    font-size: calc($fs-h2 - 10px);
+  }
+  @include breakpoint(max-md) {
+    font-size: calc($fs-h2 - 15px);
+  }
+  @include breakpoint(max-sm) {
+    font-size: calc($fs-h2 - 25px);
+  }
+}
+
+h3 {
+  font-size: $fs-h3;
+  // $fs-h3: 42px;
+
+  @include breakpoint(max-lg) {
+    font-size: calc($fs-h3 - 7px);
+  }
+  @include breakpoint(max-md) {
+    font-size: calc($fs-h3 - 12px);
+  }
+  @include breakpoint(max-sm) {
+    font-size: calc($fs-h3 - 17px);
+  }
+}
+
+h4 {
+  font-size: $fs-h4;
+  // $fs-h4: 30px;
+  @include breakpoint(max-lg) {
+    font-size: calc($fs-h4 - 3px);
+  }
+  @include breakpoint(max-md) {
+    font-size: calc($fs-h4 - 5px);
+  }
+  @include breakpoint(max-sm) {
+    font-size: calc($fs-h4 - 10px);
+  }
+}
+
+h5 {
+  font-size: $fs-h5;
+  // $fs-h5: 24px;
+  @include breakpoint(max-lg) {
+    font-size: calc($fs-h5 - 2px);
+  }
+  @include breakpoint(max-md) {
+    font-size: calc($fs-h5 - 4px);
+  }
+  @include breakpoint(max-sm) {
+    font-size: calc($fs-h5 - 6px);
+  }
+}
+
+h6 {
+  font-size: $fs-h6;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: $color-eerie-black;
+  text-decoration: none;
+  transition: $transition-3;
+}
+p {
+  line-height: 1.56;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+}
+ul {
+  @extend %p-0;
+  @extend %m-0;
+}
+li {
+  @extend %list-none;
+}
+
+input,
+textarea,
+select {
+  @extend %w-100;
+}

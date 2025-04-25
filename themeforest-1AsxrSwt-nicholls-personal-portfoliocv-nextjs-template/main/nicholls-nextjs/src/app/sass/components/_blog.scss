@@ -1,0 +1,511 @@
+.blog {
+  &-area {
+    background-color: $color-pastel-gray;
+  }
+  &__header {
+    max-width: 1000px;
+    margin: 0 auto;
+    @extend %text-center;
+  }
+
+  &__items {
+    overflow: hidden;
+
+    [class*="col-"]:last-of-type {
+      .blog__item {
+        border-bottom: 1px solid $color-eerie-black;
+      }
+    }
+  }
+  &__item {
+    @extend %d-flex, %justify-between, %item-center;
+    padding: 35px 0;
+    gap: 30px;
+    border-top: 1px solid $color-eerie-black;
+
+    @include breakpoint(max-md) {
+      padding: 20px 0;
+      flex-direction: column;
+    }
+    @include breakpoint(max-sm) {
+      text-align: center;
+    }
+
+    .blog-thumb {
+      border-radius: 10px;
+      overflow: hidden;
+      flex: 1;
+
+      @include breakpoint(max-md) {
+        border-radius: 5px;
+        order: 1;
+      }
+
+      a {
+        @extend %d-block;
+      }
+
+      img {
+        width: 100%;
+      }
+    }
+    .blog-content {
+      flex: 1;
+      @include breakpoint(max-md) {
+        order: 2;
+      }
+
+      .blog-meta {
+        margin-bottom: 22px;
+
+        @include breakpoint(max-lg) {
+          margin-bottom: 15px;
+        }
+
+        ul {
+          @extend %d-inline-flex, %justify-between, %item-center;
+          gap: 18.5px;
+
+          @include breakpoint(max-md) {
+            gap: 10px;
+          }
+          @include breakpoint(max-sm) {
+            flex-direction: column;
+            width: 100%;
+          }
+
+          li {
+            @extend %text-medium, %text-uppercase;
+            &:not(:first-child) {
+              &::before {
+                content: "\f111";
+                color: $color-eerie-black;
+                font: var(--fa-font-solid);
+                font-size: 7px;
+                vertical-align: middle;
+                padding-right: 18.5px;
+
+                @include breakpoint(max-md) {
+                  padding-right: 10px;
+                }
+              }
+            }
+
+            a {
+              &:hover {
+                color: $color-fern-green;
+              }
+            }
+          }
+        }
+      }
+      .blog-title {
+        @include breakpoint(lg) {
+          font-size: 36px;
+        }
+
+        a {
+          &:hover {
+            color: $color-fern-green;
+          }
+        }
+      }
+      .common-btn {
+        margin-top: 48px;
+
+        @include breakpoint(max-lg) {
+          margin-top: 30px;
+        }
+      }
+    }
+  }
+  &-filter {
+    &-area {
+      background-color: $color-eggshell;
+      border-bottom-left-radius: 0 !important;
+      border-bottom-right-radius: 0 !important;
+
+      &.after-shape {
+        &::after {
+          width: 100%;
+          left: 0;
+          @include transform(translateY(100px));
+          background-color: $color-eggshell;
+        }
+      }
+    }
+    &__links {
+      ul {
+        @extend %d-flex, %flex-wrap, %justify-center;
+        gap: 35px;
+        row-gap: 10px;
+
+        @include breakpoint(max-xl) {
+          gap: 15px;
+          row-gap: 8px;
+        }
+        @include breakpoint(max-lg) {
+          gap: 12px;
+          row-gap: 5px;
+        }
+
+        li {
+          @extend %text-capitalize, %text-semi-bold;
+          font-size: 20px;
+
+          @include breakpoint(max-lg) {
+            font-size: 16px;
+          }
+
+          &.filter {
+            cursor: pointer;
+          }
+          &.active {
+            color: $color-fern-green;
+          }
+        }
+      }
+    }
+    &__mixItUp {
+      .mix {
+        @extend %d-none;
+      }
+    }
+  }
+}
+
+.blog-2 {
+  &-area {
+  }
+  &__item-wrapper {
+  }
+  &__item {
+    display: grid;
+    grid-template-columns: repeat(24, minmax(0, 1fr));
+    gap: 55px;
+    @extend %item-center;
+    padding: 35px 0;
+    border-bottom: 1px solid rgba($color-white, 0.1);
+
+    &:first-of-type {
+      border-top: 1px solid rgba($color-white, 0.1);
+    }
+
+    @include breakpoint(max-xxl) {
+      gap: 30px;
+    }
+    @include breakpoint(max-md) {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 20px;
+      padding: 15px 0;
+    }
+
+    .blog-content {
+      grid-column: span 9 / span 9;
+
+      @include breakpoint(max-xxl) {
+        grid-column: span 11 / span 11;
+      }
+      @include breakpoint(max-xl) {
+        grid-column: span 14 / span 14;
+      }
+      @include breakpoint(max-md) {
+        grid-column: span 12 / span 12;
+      }
+    }
+    .blog-thumb {
+      grid-column: span 6 / span 6;
+      @extend %p-relative, %of-hidden;
+
+      @include breakpoint(max-xxl) {
+        grid-column: span 6 / span 6;
+      }
+
+      @include breakpoint(max-xl) {
+        grid-column: span 10 / span 10;
+      }
+      @include breakpoint(max-md) {
+        grid-column: span 12 / span 12;
+      }
+
+      .hover-arrow {
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        width: 60px;
+        height: 60px;
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+        z-index: 10;
+      }
+    }
+    .blog-info {
+      grid-column: span 9 / span 9;
+
+      @include breakpoint(max-xxl) {
+        grid-column: span 7 / span 7;
+      }
+      @include breakpoint(max-xl) {
+        grid-column: span 24 / span 24;
+      }
+      @include breakpoint(max-md) {
+        grid-column: span 12 / span 12;
+      }
+
+      p {
+        color: $color-dark-gray;
+        font-size: $fs-18;
+
+        @include breakpoint(max-md) {
+          font-size: $fs-base;
+        }
+      }
+    }
+
+    .blog-header {
+      @extend %d-inline-flex, %item-center;
+      gap: 27px;
+
+      @include breakpoint(max-md) {
+        gap: 10px;
+      }
+
+      span {
+        @extend %d-inline-block;
+      }
+
+      .catagory {
+        @extend %text-uppercase, %text-semi-bold;
+        font-size: 15px;
+        line-height: 34px;
+        border: 1px solid rgba($color-white, 0.1);
+        border-radius: 6px;
+        padding: 0 22px;
+
+        @include breakpoint(max-md) {
+          line-height: 25px;
+          font-size: 12px;
+          padding: 0 15px;
+        }
+      }
+      .reading-time {
+        @include breakpoint(max-md) {
+          line-height: 25px;
+          font-size: 12px;
+          padding: 0 15px;
+        }
+      }
+    }
+    .blog-title {
+      margin-top: 28px;
+      @include breakpoint(max-xl) {
+        margin-top: 15px;
+      }
+
+      a {
+        color: $color-white;
+      }
+    }
+    .blog-meta {
+      margin-top: 30px;
+
+      @include breakpoint(max-xl) {
+        margin-top: 20px;
+      }
+      @include breakpoint(max-lg) {
+        margin-top: 10px;
+      }
+
+      ul {
+        @extend %d-flex, %item-center;
+        gap: 15px;
+
+        li {
+          &:not(:first-child) {
+            @extend %p-relative;
+
+            &::before {
+              font: var(--fa-font-solid);
+              content: "\f111";
+              vertical-align: middle;
+              margin-right: 15px;
+              font-size: 6px;
+            }
+          }
+          a {
+            color: $color-white;
+            font-size: 15px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.blog-3 {
+  &-area {
+  }
+
+  &__item {
+    color: $color-black;
+    padding: 33px;
+    border-radius: 26px;
+    border: 1px solid $color-black;
+    box-shadow: inset 0 0 0 2px $color-white, inset 0 0 0 3px $color-black;
+    @include transition($transition);
+
+    @include breakpoint(max-lg){
+      padding: 25px;
+    }
+
+    &:hover,
+    &.active {
+      .blog-3__footer {
+        .common-btn {
+          animation: none;
+          background-color: $color-black;
+          color: $color-white;
+        }
+      }
+    }
+
+    &.style-2 {
+      box-shadow: none;
+      padding: 30px;
+      border-radius: 10px;
+
+      @include breakpoint(max-lg){
+        padding: 20px;
+      }
+
+
+      &:hover,
+      &.active {
+        .blog-3__footer.style-2 {
+          .common-btn {
+            animation: none;
+            background-color: $color-lime;
+            color: $color-black;
+          }
+        }
+      }
+    }
+  }
+  &__header {
+    .blog-meta {
+      ul {
+        @extend %d-flex, %item-center, %flex-wrap;
+
+        li {
+          &:not(:first-child) {
+            @extend %p-relative;
+            padding-left: 4px;
+
+            &::before {
+              font: var(--fa-font-regular);
+              content: "\2f";
+              margin-right: 4px;
+              vertical-align: middle;
+            }
+          }
+        }
+      }
+    }
+    .blog-title {
+      margin-top: 20px;
+      @extend %text-clamp-2;
+
+      @include breakpoint(max-lg) {
+        margin-top: 10px;
+      }
+
+      a {
+        color: inherit;
+      }
+    }
+    p {
+      font-size: $fs-18;
+      margin-top: 20px;
+
+      @include breakpoint(max-lg) {
+        font-size: 16px;
+        margin-top: 10px;
+      }
+    }
+
+    &.style-as-body {
+      padding-top: 25px;
+
+      @include breakpoint(max-lg) {
+        padding-top: 15px;
+      }
+      
+    }
+  }
+  &__body {
+    .blog-thumb {
+      border-radius: 15px;
+      margin-top: 15px;
+      overflow: hidden;
+
+      @include breakpoint(max-lg) {
+        margin-top: 8px;
+      }
+    }
+    &.style-2 {
+      .blog-thumb {
+        margin-top: 0;
+        border-radius: 10px;
+        @extend %p-relative;
+
+        .blog-publish-date {
+          @extend %p-absolute,%d-inline-block,%text-medium;
+          top: 25px;
+          left: 25px;
+          background-color: $color-white;
+          line-height: 1;
+          padding: 9px 15px;
+          border-radius: 4px;
+          
+          @include breakpoint(max-lg){
+            padding: 5px 10px;
+            top: 10px;
+            left: 10px;
+          }
+        }
+      }
+    }
+  }
+  &__footer {
+    margin-top: 30px;
+
+    @include breakpoint(max-lg) {
+      margin-top: 20px;
+    }
+
+    .common-btn {
+      border-color: $color-black;
+      background-color: transparent;
+      color: $color-black;
+
+      &:hover {
+        animation: none;
+        background-color: $color-lime;
+      }
+    }
+    &.style-2{
+      .common-btn {
+        border-radius: 10px;
+        
+        @include breakpoint(lg) {
+          padding: 15px 20px;
+        }
+      }
+    }
+  }
+}

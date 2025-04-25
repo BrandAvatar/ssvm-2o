@@ -1,0 +1,314 @@
+.portfolio {
+  &-area {
+  }
+  &__counter {
+    counter-reset: project-counter;
+  }
+  &__item {
+    @extend %p-relative;
+    overflow: hidden;
+
+    &:hover {
+      &.cursor-pointer {
+        .item__thumb {
+          img {
+            @include transform(scale(1.1));
+          }
+        }
+      }
+      .item__thumb {
+        .common-btn__circle {
+          // opacity: 1;
+          visibility: visible;
+          transform: translate(0, 0);
+          background-color: $color-white;
+          color: $color-black;
+        }
+      }
+    }
+
+    .item {
+      &__content {
+        @extend %p-absolute, %d-flex, %flex-col, %justify-between;
+        padding: 35px;
+        inset: 0;
+
+        @include breakpoint(max-lg) {
+          padding: 20px;
+        }
+        @include breakpoint(max-md) {
+          padding: 35px;
+        }
+
+        @include breakpoint(max-sm) {
+          padding: 20px;
+        }
+      }
+      &__tags {
+        color: $color-white;
+        ul {
+          @extend %d-flex;
+
+          li {
+            @extend %p-relative;
+            &:not(:first-child) {
+              padding-left: 20px;
+
+              @include breakpoint(max-lg) {
+                padding-left: 15px;
+              }
+              @include breakpoint(max-md) {
+                padding-left: 20px;
+              }
+              @include breakpoint(max-sm) {
+                padding-left: 15px;
+              }
+
+              &::before {
+                @extend %p-absolute;
+                content: "/";
+                left: 8px;
+                color: inherit;
+                @include breakpoint(max-lg) {
+                  left: 5px;
+                }
+                @include breakpoint(max-md) {
+                  left: 8px;
+                }
+                @include breakpoint(max-sm) {
+                  left: 5px;
+                }
+              }
+            }
+
+            a {
+              color: inherit;
+
+              @include breakpoint(max-lg) {
+                font-size: 10px;
+              }
+              @include breakpoint(max-md) {
+                font-size: $fs-base;
+              }
+
+              @include breakpoint(max-sm) {
+                font-size: 10px;
+              }
+            }
+          }
+        }
+      }
+      &__thumb {
+        @extend %p-relative;
+        &.reveal {
+          // visibility: hidden;
+          position: relative;
+          width: 100%;
+          height: 100%;
+          overflow: hidden !important;
+        }
+
+        img {
+          @include transition($transition);
+        }
+
+        .common-btn__circle {
+          @extend %p-fixed;
+          top: 0;
+          left: 0;
+          pointer-events: none;
+          object-fit: cover;
+          opacity: 0;
+          visibility: hidden;
+          z-index: 1;
+          @include add-prefix(
+            transition,
+            opacity 0.2s,
+            transform 0.5s cubic-bezier(0.23, 1, 0.32, 1),
+            -webkit-transform 0.5s cubic-bezier(0.23, 1, 0.32, 1)
+          );
+
+          @include breakpoint(max-md) {
+            display: none;
+          }
+        }
+      }
+
+      &__footer {
+        @extend %d-flex, %justify-between, %item-center;
+      }
+      &__title {
+        color: $color-white;
+
+        a {
+          color: inherit;
+          @include transition($transition);
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+
+        &.ff-six-caps {
+          a {
+            &:hover {
+              text-decoration: unset;
+            }
+          }
+        }
+      }
+      &__year {
+        padding: 5px 20px;
+        background-color: $color-white;
+        border-radius: 18px;
+        font-size: 18px;
+        white-space: nowrap;
+        @extend %text-semi-bold;
+
+        @include breakpoint(max-lg) {
+          font-size: 14px;
+          padding: 2px 10px;
+          font-weight: 500;
+        }
+
+        &--extend {
+          padding: 8px 15px;
+          line-height: 1;
+
+          @include breakpoint(max-sm) {
+            padding: 5px 10px;
+          }
+        }
+      }
+    }
+
+    &--extend {
+      border-radius: 10px;
+      border: 1px solid rgba($color-white, 0.1);
+
+      .item {
+        &__content {
+          position: unset;
+          padding: 30px;
+          // background: rgba(red, 0.3);
+          gap: 15px;
+        }
+        &__number {
+          font-size: $fs-15;
+          line-height: 1;
+          @extend %p-relative;
+
+          @include breakpoint(max-md) {
+            text-align: center;
+          }
+
+          &::before {
+            content: "Project /" counter(project-counter, decimal-leading-zero);
+            counter-increment: project-counter;
+          }
+        }
+
+        &__footer {
+          @include breakpoint(md) {
+            -webkit-box-align: start !important;
+            -ms-flex-align: start !important;
+            align-items: start !important;
+          }
+
+          @include breakpoint(max-xxxl) {
+            flex-direction: column;
+          }
+        }
+        &__tags {
+          @include breakpoint(max-xxxl) {
+            margin-top: 10px;
+          }
+
+          ul {
+            flex-wrap: wrap;
+            gap: 10px;
+
+            @include breakpoint(max-sm) {
+              gap: 8px;
+            }
+
+            li {
+              &::before {
+                content: unset !important;
+              }
+              &:not(:first-child) {
+                padding-left: 0px;
+              }
+
+              a {
+                text-transform: uppercase;
+                padding: 8.5px 18px;
+                border: 1px solid rgba($color-white, 0.1);
+                border-radius: 17px;
+                font-size: $fs-15;
+                line-height: 1;
+                display: inline-block;
+
+                @include breakpoint(max-sm) {
+                  padding: 7.5px 15px;
+                  font-size: $fs-12;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.portfolio-3 {
+  &-area {
+    overflow: hidden;
+    .row {
+      &.g-xxl-6 {
+        @include breakpoint(xxxl) {
+          --bs-gutter-y: 3.75rem;
+          --bs-gutter-x: 3.75rem;
+        }
+      }
+    }
+  }
+  &__item {
+    @extend %p-relative;
+    overflow: hidden;
+    padding: 15px;
+    border: 1px solid rgba($color-white, 0.1);
+    border-radius: 15px;
+
+    @include breakpoint(max-lg) {
+      padding: 10px;
+    }
+
+    @include breakpoint(max-sm) {
+      padding: 5px;
+    }
+
+    .item-thumb {
+      border-radius: 15px;
+      overflow: hidden;
+    }
+    .item-content {
+      @extend %p-absolute, %d-flex, %flex-col, %justify-end;
+      inset: 0;
+      bottom: -100%;
+      padding: 45px;
+      @include transition($transition);
+
+      @include breakpoint(max-xl) {
+        padding: 20px;
+      }
+    }
+
+    &:hover {
+      .item-content {
+        bottom: 0%;
+      }
+    }
+  }
+}

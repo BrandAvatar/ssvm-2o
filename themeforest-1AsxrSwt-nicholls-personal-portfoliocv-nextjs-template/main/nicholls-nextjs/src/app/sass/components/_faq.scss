@@ -1,0 +1,152 @@
+.faq {
+  &-area {
+    &.after-shape {
+      &::after {
+        width: 100%;
+        left: 0;
+        @include transform(translateY(100px));
+        background-color: $color-eggshell;
+      }
+    }
+  }
+  &__accordion {
+    border-radius: 0;
+
+    .accordion-item {
+      background-color: transparent;
+      &:first-of-type,
+      &:last-of-type {
+        border-radius: 0;
+        > .accordion-header {
+          .accordion-button {
+            border-radius: 0;
+          }
+        }
+      }
+    }
+    .accordion-item {
+      border: none;
+      border-top: 1px solid $color-eerie-black;
+
+      &:last-of-type {
+        border-bottom: 1px solid $color-eerie-black;
+      }
+    }
+    .accordion-header {
+      @extend %text-semi-bold;
+    }
+    .accordion-button {
+      background-color: transparent;
+      padding: 32px 0;
+      font-size: inherit;
+      font-weight: inherit;
+      @include transition($transition);
+
+      @include breakpoint(max-lg){
+        padding: 20px 0;
+      }
+
+      &:not(.collapsed) {
+        background-color: transparent;
+        color: $color-eerie-black;
+        box-shadow: none;
+        padding-bottom: 0;
+        color: $color-fern-green;
+
+        &::after {
+          @include transform(rotate(45deg));
+          color: $color-fern-green;
+        }
+      }
+      &:focus {
+        outline: 0;
+        box-shadow: none;
+      }
+
+      &::after {
+        background-image: none;
+        font: var(--fa-font-solid);
+        content: "\f178";
+        font-size: 20px;
+        @extend %d-grid, %place-center;
+        @include transform(rotate(-45deg));
+      }
+    }
+    .accordion-body {
+      padding: 30px 0;
+
+      @include breakpoint(max-lg){
+        padding: 20px 0;
+      }
+    }
+  }
+}
+
+.faq-2 {
+  &-area {
+
+  }
+
+  &__item {
+    border-radius: 10px !important;
+    background-color: $color-black;
+    border: none;
+
+    .accordion-header {
+      color: $color-white;
+    }
+
+    .accordion-button,
+    .accordion-button:not(.collapsed) {
+      background-color: transparent;
+      border-radius: 0 !important;
+      box-shadow: none;
+      transform-origin: center;
+      
+      &::after {
+        background-image: none;
+        content: '\f107';
+        font-weight: 600;
+        font-family: 'Font Awesome 6 Free';
+        @include add-prefix(transform-origin, center center);
+      }
+    }
+    .accordion-button{
+      color: inherit;
+      font-size: inherit;
+      padding: 28px;
+      @extend %text-semi-bold;
+      
+      @include breakpoint(max-sm){
+        padding: 15px;
+      }
+    }
+    .accordion-button:not(.collapsed){
+      color: inherit;
+      font-size: inherit;
+      padding: 28px;
+      
+      @include breakpoint(max-sm){
+        padding: 15px;
+      }
+    }
+    .accordion-body {
+      color: $color-white;
+      padding: 0 28px 28px;
+      @extend %text-regular;
+
+      @include breakpoint(max-sm){ 
+        padding: 15px;
+      }
+    }
+
+    &:not(:last-of-type){
+      margin-bottom: 25px;
+      
+      @include breakpoint(max-sm){
+        margin-bottom: 15px;
+      }
+    }
+
+  }
+}

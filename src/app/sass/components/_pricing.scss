@@ -1,0 +1,203 @@
+.pricing {
+  &-area {
+  }
+  &__package {
+    background-color: $color-eggshell;
+    padding: 55px 35px;
+    border-radius: 10px;
+    overflow: hidden;
+
+    &.active,
+    &:hover {
+      .buy-btn {
+        background-color: $color-fern-green;
+      }
+    }
+
+    @include breakpoint(max-xl) {
+      padding: 40px 30px;
+    }
+    @include breakpoint(max-md) {
+      padding: 30px 20px;
+    }
+
+    .package-head {
+      .title {
+        @extend %text-medium, %text-capitalize;
+      }
+      .price {
+        @extend %text-bold;
+        margin-top: 15px;
+        @include breakpoint(max-xl) {
+          margin-top: 10px;
+        }
+      }
+      .type {
+        margin-top: 10px;
+        @include breakpoint(max-xl) {
+          margin-top: 5px;
+        }
+      }
+    }
+    .package-btn {
+      padding: 30px 0;
+      border-top: 1px solid;
+      border-bottom: 1px solid;
+      border-color: $color-eerie-black;
+      margin-top: 12px;
+
+      @include breakpoint(max-xl) {
+        padding: 20px 0;
+        margin-top: 6px;
+      }
+    }
+    .package-featchers {
+      margin-top: 23px;
+
+      @include breakpoint(max-xl) {
+        margin-top: 18px;
+      }
+
+      ul {
+        li {
+          font-size: 18px;
+          @extend %p-relative;
+
+          &:not(:last-child) {
+            margin-bottom: 10px;
+
+            @include breakpoint(max-md) {
+              margin-bottom: 5px;
+            }
+          }
+
+          &::before {
+            font: var(--fa-font-solid);
+            content: "\f111";
+            font-size: 8px;
+            vertical-align: middle;
+            padding-right: 10px;
+
+            @include breakpoint(max-md) {
+              font-size: 6px;
+              padding-right: 8px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.pricing-2{
+  &-area {}
+  &__item {
+    padding: 45px;
+    border-radius: 10px;
+    background-color: $color-smoky-black;
+    border: 1px solid rgba($color-white,0.1);
+    @include transition($transition);
+    
+    @include breakpoint(max-lg){
+      padding: 30px 20px;
+    }
+
+    &:hover,
+    &.active {
+      border-color: $color-lime;
+
+      .package-purches {
+        animation: none;
+        background-color: $color-lime !important;
+      }
+    }
+
+    .package {
+      &__head {
+        .package-title {
+          @extend %text-semi-bold;
+        }
+        .package-info {
+          margin-top: 18px;
+          font-size: $fs-18;
+          
+          @include breakpoint(max-lg){
+            font-size: 16px;
+            margin-top: 8px;
+          }
+        }
+        .package-price {
+          @extend %d-flex,%item-baseline;
+
+          margin-top: 18px;
+          
+          @include breakpoint(max-lg){
+            margin-top: 12px;
+          }
+
+          span {
+            font-size: $fs-20;
+            @extend %d-inline-block,%text-regular;
+
+            @include breakpoint(max-lg){
+              font-size: $fs-base;
+            }
+          }
+        }
+        .package-purches{
+          @extend %d-block,%text-center;
+          background-color: $color-white;
+          color: $color-black;
+
+          margin-top: 25px;
+          
+          @include breakpoint(max-lg){
+            margin-top: 15px;
+          }
+        }
+      }
+      &__body {
+        .package-list {
+          margin-top: 30px;
+          margin-top: 30px;
+          
+          @include breakpoint(max-lg){
+            margin-top: 15px;
+          }
+
+          ul {
+            li {
+              font-size: $fs-18;
+
+              @include breakpoint(max-lg){
+                font-size: 16px;
+              }
+
+              &:not(:last-child){
+                margin-bottom: 22px;
+                
+                @include breakpoint(max-lg){
+                  margin-bottom: 15px;
+                }
+              }
+              
+              &::before {
+                font: var(--fa-font-solid);
+                content: '\f058';
+                margin-right: 15px;
+                vertical-align: middle;
+                color: $color-lime;
+                font-size: 28px;
+                
+                @include breakpoint(max-lg){
+                  margin-right: 10px;
+                  font-size: 22px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

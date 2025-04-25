@@ -1,0 +1,131 @@
+.funfact {
+  &-area {
+  }
+  &__marque {
+    &-wrapper {
+      padding: 28px 0px;
+      width: 110%;
+
+      @include breakpoint(max-xxl) {
+        padding: 10px 0px;
+      }
+
+      &.left {
+        background-color: $color-white;
+        color: $color-black;
+        @include transform(rotate(3deg) skewX(3deg));
+
+        @include breakpoint(max-xxl) {
+          @include transform(rotate(2.5deg) skewX(2.5deg));
+        }
+        @include breakpoint(max-lg) {
+          @include transform(rotate(3deg) skewX(3deg));
+        }
+        @include breakpoint(max-md) {
+          @include transform(rotate(0deg) skewX(0deg));
+        }
+      }
+      &.right {
+        background-color: $color-lime;
+        color: $color-black;
+        margin-top: -116px;
+        @extend %p-relative;
+        @include transform(rotate(-3deg) skewX(-3deg));
+
+        @include breakpoint(max-xxl) {
+          margin-top: -80px;
+          @include transform(rotate(-2.5deg) skewX(-2.5deg));
+        }
+        @include breakpoint(max-lg) {
+          margin-top: -77px;
+          @include transform(rotate(-3deg) skewX(-3deg));
+        }
+        @include breakpoint(max-md) {
+          margin-top: 0px;
+          @include transform(rotate(0deg) skewX(0deg));
+        }
+      }
+
+      .marquee-text {
+        font-size: $fs-h2;
+        // $fs-h1: 60px;
+        @extend %text-bold;
+        line-height: 1;
+
+        @include breakpoint(max-lg) {
+          font-size: calc($fs-h2 - 10px);
+        }
+        @include breakpoint(max-md) {
+          font-size: calc($fs-h2 - 15px);
+        }
+        @include breakpoint(max-sm) {
+          font-size: calc($fs-h2 - 25px);
+        }
+      }
+    }
+  }
+}
+
+.funfact-2 {
+  &-area {
+  }
+  &__item {
+    @extend %d-flex, %flex-col;
+    background-color: $color-smoky-black;
+    border: 1px solid rgba($color-white, 0.1);
+    border-radius: 10px;
+    padding: 35px;
+    gap: 30px;
+    
+    @include breakpoint(max-md) {
+      padding: 20px;
+      gap: 20px;
+    }
+    @include breakpoint(max-sm) {
+      gap: 10px;
+    }
+
+    &:hover {
+      .item-counter {
+        color: $color-white;
+        text-stroke-color: $color-black;
+        -webkit-text-stroke-color: $color-black;
+        -webkit-filter: drop-shadow(0 0 75px $color-lime);
+        filter: drop-shadow(0 0 75px $color-lime);
+      }
+    }
+
+    .item-counter {
+      @extend %d-flex, %item-center;
+      text-stroke: 1px $color-white;
+      -webkit-text-stroke: 1px $color-white;
+      color: transparent;
+      @include transition($transition);
+
+      @include breakpoint(xxxl) {
+        font-size: 90px;
+      }
+
+      @include breakpoint(max-xxxl) {
+        font-size: calc($fs-h1 - 100px);
+      }
+      @include breakpoint(max-lg) {
+        font-size: calc($fs-h1 - 110px);
+      }
+      @include breakpoint(max-md) {
+        font-size: calc($fs-h1 - 120px);
+      }
+      @include breakpoint(max-sm) {
+        font-size: calc($fs-h1 - 130px);
+      }
+
+      em {
+        font-style: normal;
+      }
+    }
+    .item-info {
+      @extend %d-flex, %flex-col, %item-end, %text-uppercase;
+      color: $color-dark-gray;
+    }
+  }
+}

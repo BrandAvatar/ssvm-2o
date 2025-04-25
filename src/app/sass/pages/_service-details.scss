@@ -1,0 +1,102 @@
+.service-details {
+  &-area{
+    
+  }
+  &__content {
+    padding: 35px;
+    border: 1px solid rgba($color-eerie-black,0.30);
+    border-radius: 10px;
+    
+    @include breakpoint(max-xxl){
+      padding: 25px;
+    }
+    @include breakpoint(max-lg){
+      padding: 20px;
+    }
+
+    .mt-20 {
+      margin-top: 20px;
+    }
+    .mt-30 {
+      margin-top: 15px;
+
+      @include breakpoint(xl) {
+        margin-top: 30px;
+      }
+    }
+    .mt-50 {
+      margin-top: 25px;
+
+      @include breakpoint(xl) {
+        margin-top: 50px;
+      }
+    }
+    .mt-60 {
+      margin-top: 30px;
+
+      @include breakpoint(xl) {
+        margin-top: 60px;
+      }
+    }
+
+    .discription-lists {
+      margin-top: 12px;
+
+      @include breakpoint(xl) {
+        font-size: 18px;
+        margin-top: 25px;
+      }
+      ul {
+
+        li {
+          @extend %p-relative;
+
+          &::before {
+            font: var(--fa-font-solid);
+            content: "\f111";
+            vertical-align: middle;
+            font-size: 7px;
+            margin-right: 8px;
+
+            @include breakpoint(xl) {
+              font-size: 10px;
+              margin-right: 11px;
+            }
+          }
+          &:not(:last-child) {
+            margin-bottom: 15px;
+
+            @include breakpoint(max-xl) {
+              margin-bottom: 5px;
+            }
+          }
+        }
+      }
+    }
+
+    .figure {
+      @extend %d-block;
+
+      img {
+        width: 100%;
+        border-radius: 10px;
+
+        &:not(:first-child) {
+          margin-top: 30px;
+
+          @include breakpoint(max-lg) {
+            margin-top: 20px;
+          }
+        }
+      }
+    }
+    .discription-title {
+      @extend %text-bold;
+
+      @include breakpoint(lg) {
+        font-size: 36px;
+      }
+    }
+
+  }
+}

@@ -1,0 +1,23 @@
+.more-about {
+  &-area {
+
+  }
+  &__content {
+    p {
+      &:not(:first-child) {
+        margin-top: 28px;
+
+        @include breakpoint(max-lg) {
+          margin-top: 20px;
+        }
+      }
+    }
+    .common-btn {
+      margin-top: 35px;
+
+      @include breakpoint(max-lg) {
+        margin-top: 25px;
+      }
+    }
+  }
+}

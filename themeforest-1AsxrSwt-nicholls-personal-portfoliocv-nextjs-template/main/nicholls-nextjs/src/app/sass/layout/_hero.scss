@@ -1,0 +1,646 @@
+.hero {
+  &-area {
+    @extend %p-relative;
+    overflow: hidden;
+  }
+  &__main {
+    &-content {
+      @extend %p-relative;
+      padding: 200px 0;
+
+      @include breakpoint(max-xxl) {
+        padding: 160px 0;
+      }
+      @include breakpoint(max-xl) {
+        padding: 140px 0;
+      }
+      @include breakpoint(max-lg) {
+        padding: 80px 0;
+      }
+      @include breakpoint(max-sm) {
+        padding: 50px 0;
+      }
+      @include breakpoint(max-xsm) {
+        padding: 30px 0;
+      }
+
+      .hero-thumb {
+        @extend %p-absolute;
+        bottom: -100px;
+        left: 50%;
+        @include transform(translateX(-50%));
+        z-index: 1;
+
+        @include breakpoint(max-xl) {
+          bottom: -80px;
+        }
+        @include breakpoint(max-md) {
+          bottom: -10px;
+          max-width: 300px;
+        }
+        @include breakpoint(max-sm) {
+          max-width: 180px;
+        }
+        @include breakpoint(max-xsm) {
+          max-width: 150px;
+        }
+      }
+      .hero-title {
+        @extend %p-relative;
+        line-height: 1;
+        @extend %text-uppercase;
+
+        > span {
+          @extend %d-inline-block;
+          &:nth-child(2),
+          &:nth-child(4) {
+            @extend %p-absolute;
+            @include add-prefix(background-clip, text);
+            -webkit-text-fill-color: transparent;
+            -webkit-text-stroke: 1.5px $color-eerie-black;
+            z-index: 1;
+
+            @include breakpoint(max-xxl) {
+              -webkit-text-stroke: 1px $color-eerie-black;
+            }
+            @include breakpoint(max-md) {
+              -webkit-text-stroke: 0.5px $color-eerie-black;
+            }
+          }
+          &:nth-child(2) {
+            left: 0;
+            top: 0;
+          }
+          &:nth-child(4) {
+            right: 0;
+            bottom: 0;
+          }
+        }
+      }
+
+      .dot-content-wrapper {
+        @extend %p-absolute;
+        z-index: 999;
+
+        @include breakpoint(max-lg) {
+          display: none;
+        }
+
+        &.current {
+          .dot-content {
+            opacity: 1;
+            visibility: visible;
+            top: 40px;
+          }
+          .dot {
+            background-color: $color-fern-green;
+          }
+        }
+
+        &-1 {
+          left: 0;
+          bottom: 200px;
+          @include breakpoint(max-xxxl) {
+            left: 100px;
+          }
+          @include breakpoint(max-xl) {
+            bottom: 100px;
+          }
+        }
+        &-2 {
+          right: 0;
+          top: 200px;
+
+          @include breakpoint(max-xxxl) {
+            right: 100px;
+          }
+          @include breakpoint(max-xl) {
+            top: 100px;
+          }
+        }
+        .dot {
+          @extend %d-block;
+          width: 10px;
+          height: 10px;
+          border-radius: 100%;
+          background-color: $color-white;
+          @include add-prefix(
+            box-shadow,
+            0 0 0 5px $color-white,
+            0 0 0 10px $color-pastel-gray,
+            0 0 0 12px $color-white
+          );
+          @include transition($transition);
+        }
+
+        .dot-content {
+          padding: 10px;
+          background-color: $color-white;
+          @extend %d-flex, %item-center, %p-absolute, %text-semi-bold;
+          gap: 24px;
+          font-size: 18px;
+          width: max-content;
+          top: 100px;
+          left: 50%;
+          @include transform(translateX(-50%));
+          border-radius: 6px;
+          @include transition($transition);
+          opacity: 0;
+          visibility: hidden;
+
+          @include breakpoint(max-xxl) {
+            gap: 15px;
+          }
+
+          &::before {
+            @extend %p-absolute;
+            bottom: 100%;
+            left: 50%;
+            @include transform(translateX(-50%));
+            width: 25px;
+            height: 25px;
+            background-color: transparent;
+            border: 12.5px solid transparent;
+            border-bottom-color: $color-white;
+          }
+
+          span {
+            @extend %d-inline-block, %text-medium;
+            line-height: 1;
+            padding: 5px 14px;
+            border-radius: 13.5px;
+            background-color: $color-fern-green;
+            color: $color-white;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+  &__info {
+    background-color: $color-eggshell;
+    overflow: hidden;
+    @extend %p-relative;
+    z-index: 0;
+
+    &::before {
+      @extend %p-absolute;
+      width: 2000px;
+      height: 2000px;
+      background-color: $color-white;
+      left: 50%;
+      bottom: 0%;
+      @include transform(translateX(-50%));
+      border-radius: 50%;
+      z-index: -1;
+
+      @include breakpoint(max-lg) {
+        width: 1500px;
+        height: 1500px;
+      }
+      @include breakpoint(max-md) {
+        display: none;
+      }
+    }
+
+    &_info-wrapper {
+      @extend %p-relative;
+      z-index: 1;
+    }
+
+    .info-heading {
+      font-size: 72px;
+      @extend %text-semi-bold, %text-center;
+
+      @include breakpoint(max-lg) {
+        font-size: calc($fs-h2 - 10px);
+      }
+      @include breakpoint(max-md) {
+        font-size: calc($fs-h2 - 15px);
+      }
+      @include breakpoint(max-sm) {
+        font-size: calc($fs-h2 - 25px);
+      }
+
+      span {
+        text-decoration: underline;
+        @extend %text-extra-bold;
+
+        div > div {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  &-about {
+    &-area {
+      @extend %p-relative;
+      overflow: hidden;
+    }
+    &__thumb {
+      padding-top: 10px;
+    }
+    &__content {
+      .hero-title {
+        @extend %text-uppercase, %text-center;
+        @include breakpoint(xxxl) {
+          font-size: 160px;
+        }
+        @include breakpoint(5xl) {
+          font-size: 190px;
+        }
+        span {
+          @extend %p-absolute, %d-inline-block;
+          top: 50%;
+          left: 50%;
+          @include transform(translate(-50%, -50%));
+          white-space: nowrap;
+          @extend %p-relative;
+          z-index: -1;
+
+          @include breakpoint(max-xxxl) {
+            white-space: wrap;
+          }
+
+          &:nth-child(2) {
+            @include add-prefix(background-clip, text);
+            -webkit-text-fill-color: transparent;
+            -webkit-text-stroke: (1px $color-eggshell);
+            z-index: 1;
+          }
+        }
+      }
+    }
+  }
+}
+
+.hero-developer {
+  &-area {
+    @extend %p-relative;
+    overflow: hidden;
+
+    .born-location {
+      background-color: $color-lime;
+      color: $color-black;
+      max-width: 290px;
+      border-top-right-radius: 55px;
+      border-bottom-right-radius: 55px;
+      top: 330px;
+      left: 0px;
+      padding: 10px;
+      padding-left: 30px;
+      gap: 28px;
+      font-size: $fs-18;
+      line-height: 28px;
+      @extend %p-absolute, %d-flex, %item-center, %text-semi-bold;
+      z-index: 1;
+
+      @include breakpoint(max-lg) {
+        max-width: 200px;
+        gap: 15px;
+        padding: 8px;
+        padding-left: 20px;
+        font-size: $fs-12;
+        line-height: 1.7;
+      }
+
+      @include breakpoint(max-sm) {
+        display: none;
+      }
+    }
+    .icon-wrapper {
+      width: 90px;
+      height: 90px;
+      background-color: $color-smoky-black;
+      border-radius: 100%;
+      color: $color-white;
+      font-size: 65px;
+      flex-shrink: 0;
+      @extend %d-grid, %place-center;
+
+      @include breakpoint(max-lg) {
+        width: 60px;
+        height: 60px;
+        font-size: 35px;
+      }
+
+      i,
+      svg {
+        font-size: 80px;
+        animation: spin 8s linear infinite;
+        -webkit-animation: spin 8s linear infinite;
+
+        @include breakpoint(max-xl) {
+          font-size: 70px;
+        }
+        @include breakpoint(max-lg) {
+          font-size: 60px;
+        }
+        @include breakpoint(max-md) {
+          font-size: 55px;
+        }
+      }
+    }
+    .scroll-down {
+      top: 315px;
+      right: 75px;
+      @extend %p-absolute;
+      color: $color-lime;
+
+      @include breakpoint(max-lg) {
+        max-width: 100px;
+        max-height: 100px;
+        right: 50px;
+      }
+      @include breakpoint(max-sm) {
+        display: none;
+      }
+
+      .circular-text {
+        animation: spin 8s linear infinite;
+        -webkit-animation: spin 8s linear infinite;
+      }
+
+      .scroll-down-link {
+        color: inherit;
+        font-size: 50px;
+        @extend %p-center, %d-inline-block;
+        animation: mini-up-down 1s linear infinite alternate;
+
+        @include breakpoint(max-md) {
+          font-size: 30px;
+        }
+      }
+    }
+  }
+  &__title {
+    @extend %d-flex, %justify-center, %item-end;
+    font-family: $ff-six-caps;
+    font-size: 340px;
+    color: $color-white;
+    @extend %text-regular, %text-uppercase, %text-center;
+
+    @include breakpoint(max-5xl) {
+      font-size: 300px;
+    }
+    @include breakpoint(max-xxxxl) {
+      font-size: 270px;
+    }
+
+    @include breakpoint(max-xxxl) {
+      font-size: 240px;
+    }
+    @include breakpoint(max-xxl) {
+      font-size: 210px;
+    }
+    @include breakpoint(max-xl) {
+      font-size: 200px;
+    }
+    @include breakpoint(max-mlg) {
+      font-size: 150px;
+    }
+
+    @include breakpoint(max-xsm) {
+      font-size: 80px;
+    }
+
+    span {
+      @extend %d-inline-block;
+      @extend %p-absolute;
+      bottom: 70px;
+      z-index: -1;
+
+      &:last-child {
+        -webkit-background-clip: text;
+        -moz-background-clip: text;
+        -ms-background-clip: text;
+        -o-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        -webkit-text-stroke: 1.5px $color-eggshell;
+        z-index: 1;
+
+        @include breakpoint(max-lg) {
+          -webkit-text-stroke: 0.5px $color-eggshell;
+        }
+      }
+    }
+  }
+}
+
+.hero-ai {
+  &-area {
+    padding: 320px 0 240px;
+    // background: url(../images/hero-area/hero-3-bg.png);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    @include breakpoint(max-lg) {
+      padding: 240px 0 180px;
+    }
+    @include breakpoint(max-md) {
+      padding: 200px 0 120px;
+      background-size: 100% 100%;
+    }
+    @include breakpoint(max-sm) {
+      background-size: cover;
+    }
+  }
+
+  &__robot {
+    @extend %p-absolute;
+    inset: 0;
+
+    @include breakpoint(max-sm) {
+      display: none;
+    }
+  }
+  &__content {
+    p {
+      max-width: 310px;
+      margin-left: 180px;
+      @extend %p-relative;
+
+      @include breakpoint(max-xxl) {
+        margin-left: 0;
+      }
+
+      @include breakpoint(max-lg) {
+        margin: 0 auto;
+        margin-bottom: 15px;
+        text-align: center;
+      }
+    }
+    .hero-ai-title {
+      @extend %text-uppercase, %p-relative, %text-center;
+      line-height: 1.5;
+
+      @include breakpoint(max-sm) {
+        font-size: 55px;
+      }
+      @include breakpoint(max-xsm) {
+        font-size: 45px;
+      }
+
+      span {
+        @extend %d-block, %p-relative;
+        z-index: -1;
+
+        &:nth-child(2) {
+          @extend %p-absolute;
+          left: 50%;
+          top: 50%;
+          width: 100%;
+          height: 100%;
+          @include transform(translate(-50%, -50%));
+          z-index: 1;
+
+          @include add-prefix(background-clip, text);
+          -webkit-text-fill-color: transparent;
+          -webkit-text-stroke: (1px $color-eggshell);
+        }
+      }
+    }
+    .common-btn-two {
+      margin-left: auto;
+      margin-right: 190px;
+      @extend %p-relative;
+
+      @include breakpoint(max-xxl) {
+        margin-left: auto;
+        margin-right: 0;
+      }
+      @include breakpoint(max-lg) {
+        margin: 0 auto;
+        margin-top: 15px;
+      }
+    }
+  }
+}
+
+.hero-photostudio {
+  &-area {
+    @include breakpoint(max-xl) {
+      padding-top: 60px;
+    }
+    @include breakpoint(max-sm) {
+      padding-top: 30px;
+    }
+  }
+  &__content {
+    @extend %text-center;
+
+    .hero-title {
+      font-family: $ff-six-caps;
+      @extend %text-regular;
+
+      font-size: 340px;
+      line-height: 1;
+      @extend %text-uppercase, %text-regular;
+
+      @include breakpoint(max-xxxl) {
+        font-size: calc(340px - 50px);
+      }
+      @include breakpoint(max-xxl) {
+        font-size: calc(340px - 80px);
+      }
+      @include breakpoint(max-lg) {
+        font-size: calc(340px - 120px);
+      }
+      @include breakpoint(max-md) {
+        font-size: calc(340px - 150px);
+      }
+      @include breakpoint(max-sm) {
+        font-size: calc(340px - 250px);
+      }
+      @include breakpoint(max-xsm) {
+        font-size: calc(340px - 280px);
+      }
+    }
+
+    p {
+      max-width: 515px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 50px;
+
+      @include breakpoint(max-xl) {
+        margin-top: 40px;
+      }
+      @include breakpoint(max-md) {
+        margin-top: 30px;
+      }
+    }
+  }
+  &__info {
+    @extend %d-flex, %justify-between, %item-center;
+
+    @include breakpoint(max-md) {
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    span {
+      border: 1px solid rgba($color-white, 0.1);
+      border-radius: 18px;
+      padding: 4.5px 20px;
+
+      &:first-of-type {
+        i,
+        svg {
+          color: $color-lime;
+        }
+      }
+
+      i,
+      svg {
+        margin-right: 5px;
+      }
+    }
+
+    a {
+      @extend %p-relative;
+      z-index: 5;
+    }
+  }
+  &__slider {
+    overflow: hidden;
+    max-height: 580px;
+
+    @include breakpoint(max-lg) {
+      max-height: 500px;
+    }
+    @include breakpoint(max-sm) {
+      max-height: 400px;
+    }
+
+    .slider-shape {
+      img {
+        &:first-child,
+        &:last-child {
+          @extend %p-absolute;
+          width: 100%;
+          height: auto;
+          z-index: 2;
+        }
+        &:first-child {
+          top: -1px;
+          left: 0;
+        }
+        &:last-child {
+          bottom: 0;
+          left: 0;
+        }
+      }
+    }
+
+    .swiper-slide {
+      img {
+        object-fit: cover;
+        object-position: center center;
+      }
+    }
+  }
+}

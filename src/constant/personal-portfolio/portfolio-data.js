@@ -1,0 +1,65 @@
+const portfolioData = {
+  marquee: {
+    text: "works",
+    repeatCount: 4,
+    link: "/contact",
+  },
+  portfolios: [
+    {
+      id: 1,
+      image: "/assets/images/portfolio-area/portfolio-1.png",
+      title: "Penrose Triangle 3d",
+      year: "2024",
+      tags: ["Art Direction", "Branding", "Strategy", "website design"],
+      revealAnimation: "left",
+      link: "/portfolio-details",
+    },
+    {
+      id: 2,
+      image: "/assets/images/portfolio-area/portfolio-2.png",
+      title: "Laptop Mockup",
+      year: "2024",
+      tags: ["Art Direction", "Branding", "Strategy", "website design"],
+      revealAnimation: "right",
+      link: "/portfolio-details",
+    },
+    {
+      id: 3,
+      image: "/assets/images/portfolio-area/portfolio-3.png",
+      title: "PSD Mug Mockup",
+      year: "2023",
+      tags: ["Art Direction", "Branding", "Strategy", "website design"],
+      revealAnimation: "right",
+      link: "/portfolio-details",
+    },
+    {
+      id: 4,
+      image: "/assets/images/portfolio-area/portfolio-4.png",
+      title: "Beyond Design",
+      year: "2023",
+      tags: ["Art Direction", "Branding", "Strategy", "website design"],
+      revealAnimation: "left",
+      link: "/portfolio-details",
+    },
+    {
+      id: 5,
+      image: "/assets/images/portfolio-area/portfolio-5.png",
+      title: "Product Design",
+      year: "2022",
+      tags: ["Art Direction", "Branding", "Strategy", "website design"],
+      revealAnimation: "left",
+      link: "/portfolio-details",
+    },
+    {
+      id: 6,
+      image: "/assets/images/portfolio-area/portfolio-6.png",
+      title: "3d Abstract Design",
+      year: "2021",
+      tags: ["Art Direction", "Branding", "Strategy", "website design"],
+      revealAnimation: "right",
+      link: "/portfolio-details",
+    },
+  ],
+};
+
+export default portfolioData;

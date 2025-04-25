@@ -1,0 +1,99 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+
+// Variables
+// --------------------------------------------------
+
+// Colors
+$color-pastel-gray: #d2d3c3;
+$color-eerie-black: #1b1c1e;
+$color-smoky-black: #0d0d0d;
+$color-smok-black: #0e0e0e;
+$color-vampire-black: #090909;
+$color-chinese-black: #111111;
+$color-raisin-black: #232323;
+$color-isabelline: #f5f5eb;
+$color-fern-green: #51733f;
+$color-laurel-green: #b1c0a0;
+$color-eggshell: #ecedde;
+$color-border: #323335;
+$color-border-2nd: #9b9c91;
+$color-gray: #acacac;
+$color-dark-gray: #999999;
+$color-white: #ffffff;
+$color-black: #000;
+$color-lime: #e0ff1e;
+$color-lime-rgb: 224, 255, 30;
+$border-color: rgba(255, 255, 255, 0.2);
+$color-ferrari-red: #f52a03;
+$color-giants-orange:  #f95c28;
+
+// social icon color
+$facebook: #3b5998;
+$google-plus: #db4437;
+$dribble: #e94c89;
+$vimeo: #23b6ea;
+$printerest: #cb1f27;
+$twitter: #23b6ea;
+$instagram: #db4437;
+$dribbble: #e94c89;
+$vimeo: #3b5998;
+$behance: #0084ff;
+
+//== Typography
+
+// font-family
+$ff-exo: "Exo", serif;
+$ff-montserrat: "Montserrat", sans-serif;
+$ff-six-caps: "Six Caps", sans-serif;
+$ff-outfit: "Outfit", serif;
+
+// font-size
+$fs-base: 16px !default;
+
+$fs-h1: 190px;
+$fs-h2: 60px;
+$fs-h3: 42px;
+$fs-h4: 30px;
+$fs-h5: 24px;
+$fs-h6: 20px;
+
+$fs-22: 22px;
+$fs-20: 20px;
+$fs-18: 18px;
+$fs-16: 16px;
+$fs-15: 15px;
+$fs-14: 14px;
+$fs-12: 12px;
+
+//  transition
+$transition: all 0.5s ease;
+
+// transition 0.2 seconds
+$transition-2: all 0.2s;
+$transition-2-ease: all 0.2s ease;
+$transition-2-ease-in: all 0.2s ease-in;
+$transition-2-ease-out: all 0.2s ease-out;
+$transition-2-ease-in-out: all 0.2s ease-in-out;
+
+// transition 0.3 seconds
+$transition-3: all 0.3s;
+$transition-3-ease: all 0.3s ease;
+$transition-3-ease-in: all 0.3s ease-in;
+$transition-3-ease-out: all 0.3s ease-out;
+$transition-3-ease-in-out: all 0.3s ease-in-out;
+
+// transition 0.3 seconds
+$transition-4: all 0.4s;
+$transition-4-ease: all 0.4s ease;
+$transition-4-ease-in: all 0.4s ease-in;
+$transition-4-ease-out: all 0.4s ease-out;
+$transition-4-ease-in-out: all 0.4s ease-in-out;
+
+// transition 0.5 seconds
+$transition-5: all 0.5s;
+$transition-5-ease: all 0.5s ease;
+$transition-5-ease-in: all 0.5s ease-in;
+$transition-5-ease-out: all 0.5s ease-out;
+$transition-5-ease-in-out: all 0.5s ease-in-out;

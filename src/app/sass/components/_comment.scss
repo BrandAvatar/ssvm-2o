@@ -1,0 +1,55 @@
+.comment {
+  &-area {
+    .form-title {
+      margin-bottom: 25px;
+
+      @include breakpoint(lg) {
+        font-size: 36px;
+      }
+      @include breakpoint(max-lg) {
+        margin-bottom: 12px;
+      }
+    }
+  }
+  &__form {
+    .form-group {
+      @extend %p-relative;
+
+      input:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0px 1000px $color-pastel-gray inset !important;
+
+        &:hover,
+        &:focus {
+          -webkit-box-shadow: 0 0 0px 1000px $color-pastel-gray inset !important;
+        }
+      }
+
+      input,
+      textarea {
+        padding: 15px;
+        background-color: $color-pastel-gray;
+        border-radius: 10px;
+        border: none;
+        margin: 0;
+
+        font-size: $fs-base;
+        color: $color-eerie-black;
+        
+        &::placeholder {
+          opacity: 1;
+          color: $color-eerie-black;
+        }
+
+        &:focus,
+        &:focus-visible,
+        &:hover {
+          outline: none !important;
+          box-shadow: none !important; /* Added for more consistency */
+        }
+      }
+    }
+    .common-btn {
+      border-radius: 10px;
+    }
+  }
+}

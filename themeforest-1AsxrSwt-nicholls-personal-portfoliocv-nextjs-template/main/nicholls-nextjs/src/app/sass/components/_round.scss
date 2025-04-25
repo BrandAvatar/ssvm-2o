@@ -1,0 +1,29 @@
+.round {
+  &-area {
+    background-color: $color-lime;
+    padding: 35px 0;
+    overflow: hidden;
+
+    @include breakpoint(max-lg) {
+      padding: 20px 0;
+    }
+  }
+
+  &__content {
+    img {
+      margin: 0 30px;
+
+      @include breakpoint(max-md) {
+        margin: 0 20px;
+      }
+    }
+    .tag {
+      color: $color-black;
+      line-height: 1;
+
+      @include breakpoint(xl) {
+        font-size: 36px;
+      }
+    }
+  }
+}

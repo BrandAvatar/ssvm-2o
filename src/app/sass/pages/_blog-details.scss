@@ -1,0 +1,249 @@
+.blog-details {
+  &__info {
+    @extend %d-flex, %flex-wrap, %justify-center, %item-center;
+    row-gap: 20px;
+    column-gap: 60px;
+
+    @include breakpoint(max-sm) {
+      row-gap: 15px;
+      column-gap: 30px;
+    }
+
+    .info-item {
+      &:has(img) {
+        @extend %d-flex, %justify-center, %item-center;
+        gap: 20px;
+
+        @include breakpoint(max-sm) {
+          gap: 10px;
+        }
+
+        img {
+          min-width: 75px;
+          min-height: 75px;
+          max-width: 75px;
+          max-height: 75px;
+          border-radius: 100%;
+
+          @include breakpoint(max-sm) {
+            min-width: 60px;
+            min-height: 60px;
+            max-width: 60px;
+            max-height: 60px;
+          }
+        }
+      }
+
+      .info-title {
+        font-size: $fs-base;
+      }
+
+      .info {
+        font-size: 18px;
+        @extend %text-semi-bold;
+      }
+    }
+  }
+  &__thumb {
+    img {
+      width: 100%;
+    }
+  }
+  &__content {
+    .mt-20 {
+      margin-top: 10px;
+
+      @include breakpoint(lg) {
+        margin-top: 20px;
+      }
+    }
+    .mt-50 {
+      margin-top: 25px;
+
+      @include breakpoint(lg) {
+        margin-top: 50px;
+      }
+    }
+    .mt-60 {
+      margin-top: 30px;
+
+      @include breakpoint(lg) {
+        margin-top: 60px;
+      }
+    }
+
+    .discription-lists {
+      ul {
+        margin-top: 12px;
+
+        @include breakpoint(lg) {
+          font-size: 18px;
+          margin-top: 25px;
+        }
+
+        li {
+          @extend %p-relative;
+
+          &::before {
+            font: var(--fa-font-solid);
+            content: "\f111";
+            vertical-align: middle;
+            font-size: 7px;
+            margin-right: 8px;
+
+            @include breakpoint(lg) {
+              font-size: 10px;
+              margin-right: 11px;
+            }
+          }
+          &:not(:last-child) {
+            margin-bottom: 15px;
+
+            @include breakpoint(max-lg) {
+              margin-bottom: 5px;
+            }
+          }
+        }
+      }
+    }
+
+    .figures {
+      margin-top: 60px;
+      @extend %d-block;
+
+      @include breakpoint(max-lg) {
+        margin-top: 30px;
+      }
+      img {
+        width: 100%;
+        border-radius: 10px;
+
+        &:not(:first-child) {
+          margin-top: 30px;
+
+          @include breakpoint(max-lg) {
+            margin-top: 20px;
+          }
+        }
+      }
+    }
+    .discription-title {
+      @extend %text-bold;
+      margin-bottom: 25px;
+
+      @include breakpoint(lg) {
+        font-size: 36px;
+        margin-bottom: 12px;
+      }
+    }
+    blockquote {
+      // @include background-image(
+      //   blog-details-area,
+      //   blockquote-bg,
+      //   png,
+      //   transparent
+      // );
+      padding: 45px;
+      border-radius: 10px;
+      overflow: hidden;
+
+      @include breakpoint(max-lg) {
+        padding: 20px;
+      }
+
+      svg {
+        color: $color-fern-green;
+      }
+
+      p {
+        @extend %text-semi-bold;
+        font-size: $fs-20;
+      }
+
+      cite {
+        @extend %p-relative, %text-bold;
+        font-size: $fs-18;
+        color: $color-fern-green;
+        font-style: normal;
+
+        &::before {
+          @extend %p-absolute;
+          top: 50%;
+          left: calc(100% + 10px);
+          @include transform(translateY(-50%));
+          width: 40px;
+          height: 2px;
+          background-color: $color-fern-green;
+        }
+      }
+    }
+  }
+
+  &__tagsAndSocial{
+    @extend %d-flex,%justify-between,%item-center;
+    gap: 15px;
+    padding: 35px 0;
+    border: 1px solid rgba($color-eerie-black,0.30);
+    border-left: none;
+    border-right: none;
+
+    @include breakpoint(max-lg){
+      padding: 18px 0;
+      flex-direction: column;
+    }
+
+    .tags,.social-share{
+      @extend %d-flex,%item-center;
+      gap: 25px;
+      
+      @include breakpoint(max-xxl){
+        gap: 15px;
+      }
+      
+      ul {
+        @extend %d-flex,%item-center;
+        gap: 15px;
+
+        @include breakpoint(max-xxl){
+          gap: 8px;
+        }
+
+        li {
+          a {
+            font-size: $fs-18;
+            @extend %text-capitalize;
+          }
+        }
+      }
+    }
+    .tags{
+ul {
+  li {
+    a {
+      &:hover {
+        filter: drop-shadow(0px 0px 1px $color-fern-green);
+      }
+    }
+  }
+}
+    }
+    .social-share{
+      ul {
+        li {
+          a {
+           @extend %d-inline-flex,%justify-center,%item-center;
+           width: 46px;
+           height: 46px;
+           border-radius: 100%;
+           background-color: $color-fern-green;
+           color: $color-white;
+
+           &:hover {
+            @include transform(scale(1.1))
+           }
+          }
+        }
+      }
+    }
+  }
+}

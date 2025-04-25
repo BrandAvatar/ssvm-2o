@@ -1,0 +1,55 @@
+.instagram {
+  &-area {
+  }
+  &__gallery {
+    @extend %d-grid;
+    @include add-prefix(grid-template-columns, repeat(5, minmax(0, 1fr)));
+    gap: 30px;
+
+    @include breakpoint(max-xl) {
+      gap: 10px;
+    }
+    @include breakpoint(max-lg) {
+      @include add-prefix(grid-template-columns, repeat(3, minmax(0, 1fr)));
+    }
+    @include breakpoint(max-sm) {
+      @include add-prefix(grid-template-columns, repeat(2, minmax(0, 1fr)));
+    }
+    @include breakpoint(max-xsm) {
+      @include add-prefix(grid-template-columns, repeat(1, minmax(0, 1fr)));
+    }
+  }
+  &__item {
+    @extend %p-relative;
+
+    .icon-box {
+      @extend %p-absolute, %d-grid, %place-center;
+      width: 42px;
+      height: 42px;
+      top: 15px;
+      right: 15px;
+      background-color: $color-white;
+      color: $color-eerie-black;
+
+      i,
+      svg {
+        font-size: 24px;
+      }
+
+      @include breakpoint(max-md) {
+        width: 30px;
+        height: 30px;
+        top: 10px;
+        right: 10px;
+
+        i,
+        svg {
+          font-size: $fs-20;
+        }
+      }
+    }
+  }
+}
+.yarl__container {
+  background-color: rgba($color-black, 0.95) !important;
+}

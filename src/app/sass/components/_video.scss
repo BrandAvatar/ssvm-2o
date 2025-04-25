@@ -1,0 +1,76 @@
+.video {
+  &-area {
+    @extend %p-relative;
+    // background-image: linear-gradient(
+    //     rgba($color-black, 0.5),
+    //     rgba($color-black, 0.5)
+    //   ),
+    //   url(../images/video-area/video-thumb.png);
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: normal;
+    height: 700px;
+
+    @include breakpoint(max-lg) {
+      height: 500px;
+    }
+
+    @include breakpoint(max-md) {
+      height: 400px;
+    }
+  }
+  &__content {
+    @extend %d-flex, %justify-center, %item-center;
+
+    h2 {
+      margin-top: 30px;
+
+      @include breakpoint(max-md) {
+        margin-top: 20px;
+      }
+    }
+  }
+  &__btn {
+    @extend %d-inline-flex, %justify-center, %item-center, %text-bold,%p-relative;
+    width: 160px;
+    height: 160px;
+    border-radius: 100%;
+    background-color: $color-white;
+    border: none;
+    z-index: 0;
+
+    @include breakpoint(max-md) {
+      width: 120px;
+      height: 120px;
+    }
+
+    &:before, &:after{
+      @extend %p-absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      background-color: transparent;
+      border: 30px solid rgba($color-white, 0.2);
+      z-index: -1;
+      border-radius: 50%;
+      @include transition($transition);
+      animation-duration: 3s;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+      animation-name: ripple;
+    }
+  }
+}
+
+.video-2{
+  &-area {}
+
+  &__video {
+    max-height: 800px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    @extend %d-block;
+  }
+}

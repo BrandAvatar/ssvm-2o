@@ -1,0 +1,341 @@
+.about {
+  &-area {
+    &__shap {
+      background-image: var(--about-shap-bg-image);
+      // mask-image: url(../images/about-area/about-shap-masking.png);
+      background-repeat: no-repeat;
+      mask-repeat: no-repeat;
+      background-size: cover;
+      mask-size: contain;
+      background-position: center center;
+      mask-position: center;
+      // width: 200px;
+      // height: 320px;
+      // mask-size: 320px 200px;
+      width: 500px;
+      height: 500px;
+      mask-size: 200px 320px;
+
+      @extend %p-absolute;
+      top: -250px;
+      right: 0;
+
+      @include breakpoint(max-xl) {
+        width: 200px;
+        height: 400px;
+      }
+      @include breakpoint(max-md) {
+        display: none;
+      }
+    }
+    .container {
+      @extend %p-relative;
+    }
+  }
+  &__shap {
+    img {
+      -webkit-animation-duration: 15s;
+      animation-duration: 15s;
+      -webkit-animation-iteration-count: infinite;
+      animation-iteration-count: infinite;
+      -webkit-animation-name: clockwiseSpin;
+      animation-name: clockwiseSpin;
+      -webkit-animation-timing-function: linear;
+      animation-timing-function: linear;
+    }
+  }
+  &__content {
+    p {
+      &:not(:first-child) {
+        margin-top: 28px;
+
+        @include breakpoint(max-lg) {
+          margin-top: 20px;
+        }
+      }
+    }
+    .common-btn {
+      margin-top: 35px;
+
+      @include breakpoint(max-lg) {
+        margin-top: 25px;
+      }
+    }
+  }
+  &__counter-item {
+    border-radius: 10px;
+    background-color: $color-eggshell;
+    padding: 35px;
+
+    @include breakpoint(max-md) {
+      padding: 20px;
+    }
+    @include breakpoint(max-sm) {
+      text-align: center;
+    }
+
+    .counter-info {
+      padding-bottom: 15px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid $color-pastel-gray;
+
+      @include breakpoint(max-md) {
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+      }
+    }
+
+    .counter-count {
+      @extend %d-flex, %justify-start, %item-end, %text-semi-bold;
+      font-size: 120px;
+
+      @include breakpoint(max-xxl) {
+        font-size: calc(100px);
+      }
+      @include breakpoint(max-xl) {
+        font-size: calc(90px);
+      }
+      @include breakpoint(max-lg) {
+        font-size: calc(80px);
+      }
+      @include breakpoint(max-md) {
+        font-size: calc(70px);
+      }
+      @include breakpoint(max-sm) {
+        font-size: calc(45px);
+        justify-content: center;
+      }
+
+      .odometer-inside {
+        @extend %d-inline-flex;
+      }
+
+      em {
+        font-style: normal;
+      }
+    }
+  }
+}
+
+.about-2 {
+  &-area {
+    .section {
+      &__title {
+        &.text-indent {
+          margin-top: 25px;
+
+          @include breakpoint(lg) {
+            text-indent: 210px;
+          }
+          @include breakpoint(xl) {
+            text-indent: 180px;
+          }
+          @include breakpoint(max-md) {
+            margin-top: 10px;
+          }
+        }
+      }
+      &__info {
+        max-width: 900px;
+        margin-left: auto;
+
+        @include breakpoint(max-xl) {
+          max-width: 800px;
+        }
+
+        .info-title {
+          @extend %text-semi-bold;
+        }
+        p {
+          color: $color-dark-gray;
+          margin-top: 30px;
+          font-size: $fs-18;
+
+          @include breakpoint(max-md) {
+            margin-top: 20px;
+          }
+        }
+      }
+    }
+  }
+  &__content {
+    .content-box {
+      &:not(:first-child) {
+        margin-top: 60px;
+
+        @include breakpoint(max-lg) {
+          margin-top: 30px;
+        }
+      }
+    }
+    .content-title {
+      padding-top: 30px;
+      border-top: 1px solid rgba($color-white, 0.1);
+      @extend %p-relative;
+
+      @include breakpoint(lg) {
+        font-size: 36px;
+      }
+      @include breakpoint(max-md) {
+        padding-top: 20px;
+      }
+
+      &::before {
+        @extend %p-absolute;
+        top: -2.5px;
+        left: 0;
+        width: 211px;
+        height: 3px;
+        background: $color-white;
+
+        @include breakpoint(max-md) {
+          width: 100px;
+        }
+      }
+    }
+    .coltent-list {
+      ul {
+        li {
+          @extend %d-grid;
+          grid-template-columns: repeat(7, minmax(0, 1fr));
+          border-bottom: 1px solid rgba($color-white, 0.1);
+          padding: 30px 0;
+
+          @include breakpoint(max-md) {
+            padding: 20px 0;
+          }
+          @include breakpoint(max-sm) {
+            gap: 5px;
+          }
+
+          &:first-child {
+            border-top: 1px solid rgba($color-white, 0.1);
+          }
+
+          .list-title {
+            grid-column: span 3 / span 3;
+            @extend %text-semi-bold, %d-inline-block;
+            font-size: $fs-18;
+
+            @include breakpoint(max-sm) {
+              grid-column: span 7 / span 7;
+              text-align: center;
+            }
+          }
+          .list-catagory {
+            grid-column: span 2 / span 2;
+            @extend %d-inline-block;
+            color: $color-dark-gray;
+            margin-left: 15px;
+
+            @include breakpoint(max-sm) {
+              grid-column: span 7 / span 7;
+              text-align: center;
+            }
+          }
+          .list-link,
+          .list-year {
+            grid-column: span 2 / span 2;
+            @extend %text-right;
+            color: $color-dark-gray;
+
+            @include breakpoint(max-sm) {
+              grid-column: span 7 / span 7;
+              text-align: center;
+            }
+
+            i,svg {
+              font-size: $fs-20;
+            }
+          }
+          .tag {
+            border: 1px solid rgba($color-white, 0.1);
+            padding: 10px 12px;
+            border-radius: 19px;
+            width: max-content;
+            padding: 5.5px 25px;
+            color: $color-white;
+            @include transition($transition);
+
+            @include breakpoint(max-sm) {
+              margin: 0 auto;
+            }
+            &:hover {
+              border-color: rgba($color-lime, 0.5);
+            }
+          }
+          .list-link {
+            color: $color-white;
+            width: 38px;
+            height: 38px;
+            border-radius: 100%;
+            border: 1px solid rgba($color-white, 0.1);
+            margin-left: auto;
+            @extend %d-grid, %place-center;
+
+            @include breakpoint(max-sm) {
+              margin: 0 auto;
+            }
+
+            &:hover {
+              border-color: rgba($color-lime, 0.5);
+              color: $color-lime;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.about-3 {
+  &-area {
+    .section {
+      &__header {
+        p {
+          max-width: 820px;
+          margin-left: auto;
+          margin-right: auto;
+          margin-top: 40px;
+
+          @include breakpoint(max-lg) {
+            margin-top: 20px;
+          }
+        }
+
+        .btn-next__jump {
+          margin-top: 40px;
+          margin-left: auto;
+          margin-right: auto;
+
+          @include breakpoint(max-lg) {
+            margin-top: 20px;
+          }
+        }
+      }
+    }
+  }
+
+  &__shape {
+    // @include background-image(about-area,about-3-bg,png,transparent);
+    @extend %p-absolute;
+    left: 50%;
+    bottom: 0;
+    @include transform(translateX(-50%));
+    z-index: -1;
+  }
+}
+.about-4 {
+  &-area {
+    .section__title {
+      text-indent: 200px;
+
+      @include breakpoint(max-lg) {
+        text-indent: 100px;
+      }
+      @include breakpoint(max-sm) {
+        text-indent: 50px;
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+.image {
+  &-area {
+  }
+  &__thumb {
+    border-radius: 35px;
+    overflow: hidden;
+    background: linear-gradient(rgba(27, 28, 30, 0.8), rgba(27, 28, 30, 0)),
+      var(--image-thumb-background);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 250px 0;
+
+    @include breakpoint(max-xl) {
+      padding: 130px 30px;
+      border-radius: 20px;
+    }
+    @include breakpoint(max-md) {
+        padding: 100px 30px;
+        border-radius: 10px;
+    }
+  }
+  &__content {
+    max-width: 890px;
+    width: 100%;
+    margin: 0 auto;
+    @extend %text-center;
+    color: $color-white;
+  }
+}

@@ -1,0 +1,183 @@
+.contact {
+  &-area {
+  }
+  &__wrapper {
+    background-color: $color-eggshell;
+    border-radius: 15px;
+    padding: 60px;
+
+    @include breakpoint(max-xxl) {
+      padding: 50px;
+      border-radius: 20px;
+    }
+    @include breakpoint(max-xl) {
+      padding: 40px;
+    }
+    @include breakpoint(max-lg) {
+      padding: 30px;
+      border-radius: 30px;
+    }
+  }
+  &__info {
+    background-color: $color-pastel-gray;
+    padding: 45px 35px;
+    border-radius: 16px;
+
+    @include breakpoint(max-xl) {
+      padding: 25px;
+    }
+
+    .title {
+      @extend %text-bold;
+      margin-bottom: 20px;
+
+      @include breakpoint(lg) {
+        font-size: 36px;
+      }
+      @include breakpoint(max-lg) {
+        margin-bottom: 10px;
+      }
+
+      br {
+        @include breakpoint(max-lg) {
+          display: none;
+        }
+      }
+    }
+    .sub-title {
+      @extend %text-uppercase, %text-semi-bold;
+      text-decoration: underline;
+      color: $color-fern-green;
+    }
+    .digital-contacts,
+    .address {
+      p,
+      a {
+        font-size: 20px;
+        @extend %text-semi-bold;
+        line-height: 1;
+
+        @include breakpoint(max-sm) {
+          font-size: 16px;
+        }
+      }
+    }
+
+    .digital-contacts {
+      margin-top: 30px;
+      margin-bottom: 27px;
+
+      @include breakpoint(max-md) {
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+    }
+    .address {
+      margin-top: 30px;
+
+      @include breakpoint(max-md) {
+        margin-top: 20px;
+      }
+    }
+    .social-links {
+      margin-top: 32px;
+
+      @include breakpoint(max-md) {
+        margin-top: 20px;
+      }
+      ul {
+        @extend %d-flex, %flex-wrap;
+        gap: 10px;
+
+        li {
+          width: calc(100% / 3 - 10px);
+
+          @include breakpoint(max-xxl) {
+            width: calc(100% / 2 - 10px);
+          }
+          @include breakpoint(max-lg) {
+            width: calc(100% / 3 - 10px);
+          }
+          @include breakpoint(max-sm) {
+            width: calc(100% / 2 - 10px);
+          }
+          @include breakpoint(max-xsm) {
+            width: calc(100%);
+          }
+          a {
+            @extend %text-medium, %text-uppercase, %text-center, %d-block;
+            color: $color-eerie-black;
+            background-color: $color-white;
+            font-size: 14px;
+            border-radius: 16px;
+            padding: 6px 22px;
+
+            &:hover {
+              color: $color-white;
+              background-color: $color-fern-green;
+            }
+          }
+        }
+      }
+    }
+  }
+  &__form {
+    &-wrapper {
+    }
+
+    .input-group {
+      @extend %p-relative;
+
+      input:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0px 1000px $color-pastel-gray inset !important;
+
+        &:hover,
+        &:focus {
+          -webkit-box-shadow: 0 0 0px 1000px $color-pastel-gray inset !important;
+        }
+      }
+
+      label {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        @extend %p-absolute, %text-capitalize;
+        left: 30px;
+        top: 30px;
+        @include transform(translateY(-50%));
+        @include transition($transition-3);
+        background-color: $color-pastel-gray;
+        padding: 0px;
+        border-radius: 4px !important;
+      }
+
+      input,
+      textarea {
+        outline: none;
+        border: none;
+        background-color: $color-pastel-gray;
+        color: $color-eerie-black;
+        padding: 22px 30px;
+        margin-left: 0 !important;
+        border-radius: 10px !important;
+
+        &::placeholder {
+          color: transparent;
+          opacity: 0;
+          @extend %text-capitalize;
+        }
+
+        &:focus + label,
+        &:not(:placeholder-shown) + label {
+          top: 0;
+          padding: 0px 10px;
+        }
+      }
+    }
+    .common-btn {
+      &:hover {
+        -webkit-animation: none;
+        animation: none;
+      }
+    }
+  }
+}
