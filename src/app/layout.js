@@ -36,6 +36,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="stylesheet" href="https://use.typekit.net/eiq0gee.css" />
+      </head>
       <body>
         <AnimationProvider>{children}</AnimationProvider>
         <BackTopTop smooth top={100} />

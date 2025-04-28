@@ -29,21 +29,24 @@ const Header = () => {
           <div className="container container--extend">
             <div className="row">
               <div className="col-12">
-                <div className="header__main">
-                  <div className="row justify-content-between align-items-center">
-                    <div className="col-6 col-lg-1 col-xl-2 col-xxl-2">
-                      <div className="header__main-menuBtns d-block text-start">
-                        <Link className="header__topbar-logo" href="/">
+                <div className="header__main ">
+                  <div className="row justify-content-between align-items-center bg-transparent">
+                    <div className="col-6 col-lg-2 col-xl-2 col-xxl-2">
+                      <div className="header__main-menuBtns text-start d-flex justify-content-between align-items-center ">
+                        <Link className="header__topbar-logo position-relative" href="/">
                           <Image
                             src="/assets/images/ssvmlogo.png"
+                            className="position-relative header-conclave-logo"
                             alt="logo"
                             fill
                           />
                         </Link>
+                        
+                      
                       </div>
                     </div>
-                    <div className="d-none d-lg-block col-lg-8 col-xl-8 col-xxl-8">
-                      <nav className="header__main-menu dark bg-transparent">
+                    <div className="d-none d-lg-block col-lg-9 col-xl-9 col-xxl-9">
+                      <nav className="header__main-menu dark bg-transparent border-0">
                         <ul>
                           {menus.map((menu) => (
                             <li
@@ -85,18 +88,15 @@ const Header = () => {
                         </ul>
                       </nav>
                     </div>
-                    <div className="col-6 col-lg-2 col-xl-2 col-xxl-2">
+                    <div className="col-6 col-lg-1 col-xl-1 col-xxl-1">
                       <div className="header__main-menuBar justify-content-end">
-                        <Link
-                          href="/contact"
-                          className="common-btn-two bg-lime d-none d-lg-flex"
-                        >
-                          Contact Us
-                          <div className="button-icon-wrap">
+                        
+                          {/* Contact Us */}
+                          {/* <div className="button-icon-wrap">
                             <PiArrowUpRightBold className="button-icon icon button-icon-one" />
                             <PiArrowUpRightBold className="button-icon icon button-icon-two" />
-                          </div>
-                        </Link>
+                          </div> */}
+                        
                         <div
                           className="menuBar-toggle d-lg-none"
                           data-bs-toggle="offcanvas"

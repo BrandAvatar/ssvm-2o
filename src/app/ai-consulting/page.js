@@ -11,9 +11,10 @@ import Pricing from "@/components/ai-consulting/Pricing";
 import Video from "@/components/ai-consulting/Video";
 import BlogSection from "@/components/ai-consulting/BlogSection";
 import Footer from "@/components/ai-consulting/Footer";
-
+import Mam from "@/components/ai-consulting/Mam";
+import Leftright from "@/components/ai-consulting/Leftright";
 export const metadata = {
-  title: "Ai Consulting - Personal Portfolio/CV HTML Template",
+  title: "SSVM Institutions | Transforming India Conclave 2025 – Humanity and AI co creating Our World Today",
 };
 
 export default function Home() {
@@ -22,7 +23,9 @@ export default function Home() {
       <Header />
       <main>
         <HeroSection />
+        <Leftright />
         <RoundSection />
+        <Mam />
         <AboutSection />
         <FunFact />
         <Services />

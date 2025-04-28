@@ -602,3 +602,25 @@
 .text-black {
   color: $color-black;
 }
+
+
+.header-ssvm-logo{
+  width: 146px;
+  height: 73px;
+}
+.header-conclave-logo{
+  width: 117px !important;
+  height: 78px !important;
+}
+.header__main{
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(5px);
+  padding: 10px 40px;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.header__main-menu.dark > ul{
+  border: none !important;
+  backdrop-filter: none !important;
+  background: none !important;
+}

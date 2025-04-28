@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PiArrowUpRightBold } from "react-icons/pi";
 import Spline from "@splinetool/react-spline/next";
 import heroData from "@/constant/ai-consulting/hero-data";
+import Image from "next/image";
 const HeroSection = () => {
   const { heroInfo, heroTitle, btnText, btnLink, bgImage, SplineLink } =
     heroData;
@@ -20,18 +21,20 @@ const HeroSection = () => {
               <Spline scene={SplineLink} />
             </div>
             <div className="hero-ai__content">
-              <p>{heroInfo}</p>
+              {/* <p>{heroInfo}</p> */}
               <h1 className="hero-ai-title">
-                <span>{heroTitle}</span>
-                <span>{heroTitle}</span>
+                {/* <span>{heroTitle}</span>
+                <span>{heroTitle}</span> */}
+                <span><Image src="/assets/images/ssvm/aihumanity1.svg" alt="logo" width={1000} height={200} /></span>
+                <span><Image src="/assets/images/ssvm/aihumanity2.svg" alt="logo" width={1000} height={200} /></span>
               </h1>
-              <Link href={btnLink} className="common-btn-two">
+              {/* <Link href={btnLink} className="common-btn-two">
                 {btnText}
                 <div className="button-icon-wrap">
                   <PiArrowUpRightBold className="icon button-icon button-icon-one" />
                   <PiArrowUpRightBold className="icon button-icon button-icon-two" />
                 </div>
-              </Link>
+              </Link> */}
             </div>
           </div>
         </div>

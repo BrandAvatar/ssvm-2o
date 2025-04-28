@@ -4,6 +4,7 @@ import MobileMenu from "@/components/mobile-menus/MobileMenu";
 import Accordion from "react-bootstrap/Accordion";
 import { IoIosArrowDown } from "react-icons/io";
 import OffcanvasSocial from "./OffcanvasSocial";
+import Image from "next/image";
 
 const Offcanvas = ({ menus, handleClose, show, className = "", theme }) => {
   return (
@@ -15,7 +16,14 @@ const Offcanvas = ({ menus, handleClose, show, className = "", theme }) => {
         className={`${theme === "dark" ? "bg-eerie-black text-white" : ""}`}
       >
         <ReactOffcanvas.Header>
-          <ReactOffcanvas.Title as="h4">Nicholls</ReactOffcanvas.Title>
+          <ReactOffcanvas.Title as="h4">
+            <Image
+              src="/assets/images/ssvmlogo.png"
+              alt="logo"
+              width={117}
+              height={78}
+            />
+          </ReactOffcanvas.Title>
           <button
             onClick={handleClose}
             type="button"
@@ -82,14 +90,8 @@ const Offcanvas = ({ menus, handleClose, show, className = "", theme }) => {
             </div>
           </div>
           <div className="offcanvas-info">
-            <div className="about-info">
-              <p>
-                Nicholls is a sleek portfolio template that helps professionals
-                showcase their work and CV with style. Perfect for anyone
-                looking to make a strong online presence.
-              </p>
-            </div>
-            <div className="btn-wrapper">
+            
+            {/* <div className="btn-wrapper">
               <Link
                 className={`common-btn ${
                   theme === "dark" ? "bg-lime text-black" : ""
@@ -99,9 +101,9 @@ const Offcanvas = ({ menus, handleClose, show, className = "", theme }) => {
                 Let's Connect!
                 <i className="fa-solid fa-arrow-right"></i>
               </Link>
-            </div>
+            </div> */}
             <div className="social-share">
-              <h5>Contact Me</h5>
+              <h5>Follow Us</h5>
               <ul>
                 <OffcanvasSocial
                   link="#"
