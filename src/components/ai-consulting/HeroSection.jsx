@@ -20,13 +20,13 @@ const HeroSection = () => {
             <div className="hero-ai__robot">
               <Spline scene={SplineLink} />
             </div>
-            <div className="hero-ai__content">
+            <div className="hero-ai__content ">
               {/* <p>{heroInfo}</p> */}
               <h1 className="hero-ai-title">
                 {/* <span>{heroTitle}</span>
                 <span>{heroTitle}</span> */}
-                <span><Image src="/assets/images/ssvm/aihumanity1.svg" alt="logo" width={1000} height={200} /></span>
-                <span><Image src="/assets/images/ssvm/aihumanity2.svg" alt="logo" width={1000} height={200} /></span>
+                <span><Image src="/assets/images/ssvm/aihumanity1.svg" alt="logo" className="w-100" width={1000} height={200} /></span>
+                <span><Image src="/assets/images/ssvm/aihumanity2.svg" alt="logo" className="w-100" width={1000} height={200} /></span>
               </h1>
               {/* <Link href={btnLink} className="common-btn-two">
                 {btnText}

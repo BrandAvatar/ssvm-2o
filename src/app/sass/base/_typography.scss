@@ -8,7 +8,7 @@ body {
   color: $color-white;
   font-size: 16px;
   line-height: 1.56;
-  font-family: $ff-exo;
+  font-family: all-round-gothic;
   background-color: $color-black;
 }
 .light-theme {
@@ -27,7 +27,7 @@ h6 {
   @extend %text-bold;
   @include transition($transition);
   margin: 0;
-  font-family: $ff-exo;
+  font-family: all-round-gothic;
 }
 
 h1 {
