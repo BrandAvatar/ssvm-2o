@@ -1,6 +1,5 @@
 import Header from "@/components/ai-consulting/Header";
 import HeroSection from "@/components/ai-consulting/HeroSection";
-import RoundSection from "@/components/ai-consulting/RoundSection";
 import RoundSection2 from "@/components/ai-consulting/RoundSection2";
 import AboutSection from "@/components/ai-consulting/AboutSection";
 import Awards from "@/components/ai-consulting/Awards";
@@ -30,7 +29,6 @@ export default function Home() {
       <main>
         <HeroSection />
         <LightWrap />
-        <RoundSection />
         <Mam />
         <BoxGridSection />
         <AboutSection />
@@ -38,16 +36,10 @@ export default function Home() {
         <RoundSection2 />
         <Awards />
         <Services2 />
-        <Services />
+      
 
-        <Brands />
-        <Portfolio />
-        <Testimonial />
-        <Pricing />
-        <Video />
-        <BlogSection />
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

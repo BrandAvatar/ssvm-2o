@@ -51,8 +51,8 @@ export default function Countdown() {
   return (
     <>
             {!isEventStarted ? (
-              <div className="countdown md:-mt-70 md:mb-30">
-                <ul className="d-flex flex-row md:gap-10 gap-5 justify-between">
+              <div className="countdown">
+                <ul className="d-flex flex-row gap-md-5 gap-1 justify-between">
                   <li><span>{days}</span>days</li>
                   <li><span>{hours}</span>Hours</li>
                   <li><span>{minutes}</span>Minutes</li>

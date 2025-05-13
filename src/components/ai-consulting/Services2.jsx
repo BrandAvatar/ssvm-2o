@@ -11,20 +11,20 @@ const Services2 = () => {
       <div className="container container--extend">
         <div className="row align-items-center services-4__header-row g-4">
           <div className="col-md-6">
-            <div className="section__header d-flex justify-content-center justify-content-md-start gap-2">
+            {/* <div className="section__header d-flex justify-content-center justify-content-md-start gap-2">
               <span className="headr-icon">
                 <BsArrowDown />
               </span>
               <h4 className="section__title">Our Services</h4>
-            </div>
+            </div> */}
           </div>
           <div className="col-md-6">
-            <div className="section__header text-center text-md-end">
+            {/* <div className="section__header text-center text-md-end">
               <Link href="/service" className="common-btn btn-lime">
                 See All Project
                 <HiArrowRight />
               </Link>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="row">

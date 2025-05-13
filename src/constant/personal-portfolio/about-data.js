@@ -10,19 +10,19 @@ const aboutData = {
     counters: [
       {
         id: 1,
-        title: "Years of Experience",
+        title: "lorem ipsum",
         count: 15,
         prefix: "+",
       },
       {
         id: 2,
-        title: "Total Projects Done",
+        title: "lorem ipsum",
         count: 1000,
         prefix: "+",
       },
       {
         id: 3,
-        title: "Award Recognitions",
+        title: "lorem ipsum",
         count: 16,
         prefix: "+",
       },

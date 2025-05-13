@@ -14,7 +14,8 @@ const HeroSection = () => {
         backgroundImage: `url(${bgImage})`,
       }}
     >
-      <div className="container container--extend">
+      <div className="container ">
+        <div className="toplight"></div>
         <div className="row">
           <div className="col-12">
             <div className="hero-ai__robot">
