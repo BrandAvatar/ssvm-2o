@@ -1,17 +1,26 @@
-import Header from "@/components/photo-studio/Header";
-import HeroSection from "@/components/photo-studio/Hero";
-import AboutSection from "@/components/photo-studio/About";
-import FunfactSection from "@/components/photo-studio/Funfact";
-import VideoSection from "@/components/photo-studio/Video";
-import Award from "@/components/photo-studio/Award";
-import Portfolio from "@/components/photo-studio/Portfolio";
-import Brands from "@/components/photo-studio/Brands";
-import Services from "@/components/photo-studio/Services";
-import Testimonial from "@/components/photo-studio/Testimonial";
-import Faq from "@/components/photo-studio/Faq";
-import Blog from "@/components/photo-studio/Blog";
-import Instagram from "@/components/photo-studio/Instagram";
-import Footer from "@/components/photo-studio/Footer";
+import Header from "@/components/ai-consulting/Header";
+import HeroSection from "@/components/ai-consulting/HeroSection";
+import RoundSection2 from "@/components/ai-consulting/RoundSection2";
+import AboutSection from "@/components/ai-consulting/AboutSection";
+import Awards from "@/components/ai-consulting/Awards";
+import FunFact from "@/components/ai-consulting/FunFact";
+import Services from "@/components/ai-consulting/Services";
+import Brands from "@/components/ai-consulting/Brands";
+import Portfolio from "@/components/ai-consulting/Portfolio";
+import Testimonial from "@/components/ai-consulting/Testimonial";
+import Pricing from "@/components/ai-consulting/Pricing";
+import Video from "@/components/ai-consulting/Video";
+import BlogSection from "@/components/ai-consulting/BlogSection";
+import Footer from "@/components/ai-consulting/Footer";
+import Mam from "@/components/ai-consulting/Mam";
+import Leftright from "@/components/ai-consulting/Leftright";
+import Services2 from "@/components/ai-consulting/Services2";
+import Countdown from "@/components/ai-consulting/countdown";
+import LightWrap from "@/components/ai-consulting/light_wrap";
+import BoxGridSection from "@/components/ai-consulting/box-grid-section"; 
+export const metadata = {
+  title: "SSVM Institutions | Transforming India Conclave 2025 – Humanity and AI co creating Our World Today",
+};
 
 export default function Home() {
   return (
@@ -19,19 +28,18 @@ export default function Home() {
       <Header />
       <main>
         <HeroSection />
+        <LightWrap />
+        <Mam />
+        <BoxGridSection />
         <AboutSection />
-        <FunfactSection />
-        <VideoSection />
-        <Award />
-        <Portfolio />
-        <Brands />
-        <Services />
-        <Testimonial />
-        <Faq />
-        <Blog />
-        <Instagram />
+        <FunFact />
+        <RoundSection2 />
+        <Awards />
+        <Services2 />
+      
+
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
