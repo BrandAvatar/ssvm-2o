@@ -19,17 +19,34 @@ const Awards = () => {
         <div className="col-xl-10">
           <div className="section__header text-center">
             <h2 className="section__title split-text left text-initial gothic-bold">
-             <img src="/assets/images/ele.png" alt="" width={70} /> {aboutData?.title}
+             <img src="/assets/images/ele.png" alt="" width={70} /> AWARD
             </h2>
             <div className="d-flex gap-2">
-              <img src="/assets/images/guruaward-c.gif" alt="" className='flex-shrink-0 w-50'/>
+              <img src="/assets/images/guruaward-c.gif" alt="" className='flex-shrink-0 w-25'/>
               <div>
                 <h3 className=''>Studentpreneur Awards</h3>
-               <p>The Inspirational Guru Award honors educators who go the extra mile to make a lasting impact. These teachers foster a nurturing classroom environment, inspire students to pursue their dreams, and help shape them into well-rounded individuals.</p>
-               <p>Do you know a teacher who deserves recognition for their dedication and influence? Nominate them for the Inspirational Guru Award today!</p>
+               <p className='text-start'>The Inspirational Guru Award honors educators who go the extra mile to make a lasting impact. These teachers foster a nurturing classroom environment, inspire students to pursue their dreams, and help shape them into well-rounded individuals.</p>
+               <p className='text-start'>Do you know a teacher who deserves recognition for their dedication and influence? Nominate them for the Inspirational Guru Award today!</p>
 
               </div>
-              <h2 className='uppercase'>Reg <span className='stroke'>i</span>stration</h2>
+            </div>
+            <h2 className='uppercase'>Reg<span className='stroke'>i</span>stration</h2>
+            <div className="d-flex justify-content-between">
+              <div className="registerbox">
+                  <h3>SSVM Students</h3>
+                  <div className="d-flex gap-2">
+                    <a href="#">Self nomination </a>
+                    <a href="#">Self nomination </a>
+                  </div>
+
+              </div>
+              <div className="registerbox">
+                  <h3>SSVM Students</h3>
+                  <div className="d-flex gap-2">
+                    <a href="#">Self nomination </a>
+                    <a href="#">Self nomination </a>
+                  </div>
+              </div>
             </div>
           </div>
         </div>

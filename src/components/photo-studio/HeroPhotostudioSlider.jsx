@@ -8,6 +8,13 @@ import SLIDEDATA from "@/constant/photo-studio/slide-data";
 
 const HeroPhotostudioSlider = () => {
   return (
+    <>
+    <div className="text-center py-5">
+      <h2 className="section__title split-text text-center text-initial gothic-bold text-uppercase pb-5">
+          <img src="/assets/images/ele.png" alt="" width={70} /> Speakers
+      </h2>
+      <p className="w-50 mx-auto">The SSVM Transforming India Conclave 2025 is a premier gathering of visionary leaders, industry trailblazers, and social entrepreneurs.</p>
+    </div>
     <div className="relative">
       <Swiper
         modules={[Autoplay]}
@@ -56,6 +63,7 @@ const HeroPhotostudioSlider = () => {
         ))}
       </Swiper>
     </div>
+    </>
   );
 };
 

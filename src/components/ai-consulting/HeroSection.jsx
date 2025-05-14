@@ -9,19 +9,20 @@ const HeroSection = () => {
     heroData;
   return (
     <section
-      className="hero-ai-area position-relative"
+      className="hero-ai-area position-relative "
       style={{
         backgroundImage: `url(${bgImage})`,
       }}
     >
+    
       <div className="container ">
-        <div className="toplight"></div>
-        <div className="row">
-          <div className="col-12">
+        <div className="row ">
+          <div className="clip-top h-100 w-100 "></div>
+          <div className="col-12 ">
             <div className="hero-ai__robot">
               <Spline scene={SplineLink} />
             </div>
-            <div className="hero-ai__content ">
+            <div className="hero-ai__content">
               {/* <p>{heroInfo}</p> */}
               <h1 className="hero-ai-title">
                 {/* <span>{heroTitle}</span>
