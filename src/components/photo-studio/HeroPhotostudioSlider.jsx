@@ -63,6 +63,8 @@ const HeroPhotostudioSlider = () => {
         ))}
       </Swiper>
     </div>
+
+    <a href="#" className="yellow-btn mx-auto d-block " style={{width: "fit-content"}}>View All Speakers</a>
     </>
   );
 };

@@ -15,36 +15,34 @@ const Awards = () => {
       <img src={aboutData?.image} alt="shape" />
     </figure>
     <div className="container container--extend moving-border">
-      <div className="row justify-content-center">
-        <div className="col-xl-10">
-          <div className="section__header text-center">
-            <h2 className="section__title split-text left text-initial gothic-bold">
+      <div className="row justify-content-center overlay">
+        <div className="p-5">
+          <div className="section__header">
+            <h2 className="section__title split-text text-center  gothic-bold pb-5">
              <img src="/assets/images/ele.png" alt="" width={70} /> AWARD
             </h2>
             <div className="d-flex gap-2">
-              <img src="/assets/images/guruaward-c.gif" alt="" className='flex-shrink-0 w-25'/>
+              <img src="/assets/images/guruaward-c.gif" alt="" className='flex-shrink-0 w-50'/>
               <div>
-                <h3 className=''>Studentpreneur Awards</h3>
-               <p className='text-start'>The Inspirational Guru Award honors educators who go the extra mile to make a lasting impact. These teachers foster a nurturing classroom environment, inspire students to pursue their dreams, and help shape them into well-rounded individuals.</p>
+                <h3 className=''>INSPIR<span className='stroke'>A</span>T<span className='stroke'>I</span>ONAL GURU </h3>
+               <p className='text-start mb-1'>The Inspirational Guru Award honors educators who go the extra mile to make a lasting impact. These teachers foster a nurturing classroom environment, inspire students to pursue their dreams, and help shape them into well-rounded individuals.</p>
                <p className='text-start'>Do you know a teacher who deserves recognition for their dedication and influence? Nominate them for the Inspirational Guru Award today!</p>
-
               </div>
             </div>
-            <h2 className='uppercase'>Reg<span className='stroke'>i</span>stration</h2>
-            <div className="d-flex justify-content-between">
-              <div className="registerbox">
-                  <h3>SSVM Students</h3>
+            <h2 className='text-uppercase py-5 text-center'>Regstr<span className='stroke'>A</span>t<span className='stroke'>i</span>on</h2>
+            <div className="d-flex justify-content-between gap-5 text-uppercase">
+              <div className="registerbox text-center">
+                  <h3 className='py-3'>SSVM Students</h3>
                   <div className="d-flex gap-2">
-                    <a href="#">Self nomination </a>
-                    <a href="#">Self nomination </a>
+                    <a href="#" className='yellow-btn'>Self nomination </a>
+                    <a href="#" className='yellow-btn'>Self nomination </a>
                   </div>
-
               </div>
-              <div className="registerbox">
-                  <h3>SSVM Students</h3>
+              <div className="registerbox text-center">
+                  <h3 className='py-3'>SSVM Students</h3>
                   <div className="d-flex gap-2">
-                    <a href="#">Self nomination </a>
-                    <a href="#">Self nomination </a>
+                    <a href="#" className='yellow-btn'>Self nomination </a>
+                    <a href="#" className='yellow-btn'>Self nomination </a>
                   </div>
               </div>
             </div>

@@ -2,7 +2,9 @@
 //   scroll-behavior: smooth;
 // }
 
-
+*{
+  box-sizing: border-box;
+}
 .body {
   font-family: "all-round-gothic", sans-serif;
 }
@@ -46,14 +48,13 @@ backdrop-filter: blur(28.892988204956055px) !important;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  padding: 20px;
   border-radius: 20px;
 }
 .moving-border::before,
 .moving-border::after {
   content: "";
   position: absolute;
-  inset: 0rem;
+  inset: -1rem;
   z-index: -1;
   border-radius: 20px;
   background: linear-gradient(var(--angle), 
@@ -64,7 +65,7 @@ backdrop-filter: blur(28.892988204956055px) !important;
 }
 
 .moving-border::after {
-  filter: blur(10px);
+  filter: blur(50px);
 }
 @keyframes rotate {
   0%     { --angle: 0deg; }
@@ -126,27 +127,26 @@ backdrop-filter: blur(28.892988204956055px) !important;
 
 
 
-.backdrop{
-  background: radial-gradient(circle,rgba(248, 190, 14, 0.53) 0%, rgba(255, 255, 255, 0) 100%);
-  background-size: contain;
-}
+// .backdrop{
+//   background: radial-gradient(circle,rgba(248, 190, 14, 0.53) 0%, rgba(255, 255, 255, 0) 100%);
+//   background-size: contain;
+// }
 .clip-bg{
-  background-image: url("../../../public/assets/images/Group.svg");
-  background-size: contain;
-  background-position: top center;
+  background-image: url("../../../public/assets/images/light.png");
+  background-size: 150%;
+  background-position: top center ;
   background-repeat: no-repeat;
   width: 100%;
   height: 100%;
   position: relative;
-  backdrop-filter: blur(10px);
 }
 .clip-top{
-  background: radial-gradient(circle,rgba(248, 190, 14, 0.53) 0%, rgba(255, 255, 255, 0) 100%);
-  background-size: contain;
-  background-position: top center;
+  background-image: url("../../../public/assets/images/upshade.png");
+  background-size: 150%;
+  background-position: center bottom;
   background-repeat: no-repeat;
   width: 100%;
-  height: 200px;
+  height: 100%;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -154,8 +154,9 @@ backdrop-filter: blur(28.892988204956055px) !important;
   bottom: 0;
 }
 .blur{
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(20px);
 }
+
 .stroke{
   -webkit-text-stroke: 1px #fff;
   color: transparent;
@@ -208,23 +209,32 @@ backdrop-filter: blur(28.892988204956055px) !important;
   display: none;
 }
 
+.overlay{
+  background-color: #000000c9;
+  padding: 20px;
+  border-radius: 20px;
+  backdrop-filter: blur(3px);
+}
 .registerbox{
   background: #FFFFFF;
   border-radius: 10px;
   padding: 30px;
+  border: 3px solid #FAD208;
   h3{
     font-size: 24px;
     font-weight: 700;
     color: #000;
   }
-  a{
-    background: linear-gradient(87.86deg, #FF6200 1.8%, #FF8800 39.7%, #FD9100 77.59%, #FBEB8E 116.64%);
+  
+}
+
+.yellow-btn{
+  background: linear-gradient(87.86deg, #FF6200 1.8%, #FF8800 39.7%, #FD9100 77.59%, #FBEB8E 116.64%);
     padding: 10px 20px;
     border-radius: 30px;
-    color: #fff;
+    color: #000000;
     text-decoration: none;
     font-weight: 700;
     font-size: 16px;
     text-transform: uppercase;
-  }
 }

@@ -18,6 +18,8 @@ import Services2 from "@/components/ai-consulting/Services2";
 import Countdown from "@/components/ai-consulting/countdown";
 import LightWrap from "@/components/ai-consulting/light_wrap";
 import BoxGridSection from "@/components/ai-consulting/box-grid-section"; 
+import Nokia from "@/components/ai-consulting/nokia";
+
 export const metadata = {
   title: "SSVM Institutions | Transforming India Conclave 2025 – Humanity and AI co creating Our World Today",
 };
@@ -36,7 +38,7 @@ export default function Home() {
         <RoundSection2 />
         <Awards />
         <Services2 />
-      
+        <Nokia />
 
       </main>
       <Footer />

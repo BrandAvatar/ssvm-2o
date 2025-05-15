@@ -7,8 +7,8 @@ const marquee = {
 };
 const RoundSection2 = () => {
   return (
-    <section className="round-area round2">
-      <div className="container-fluid">
+    <section className="round-area round2 my-5">
+
         <Marquee
           pauseOnHover
           speed={150}
@@ -22,7 +22,7 @@ const RoundSection2 = () => {
             </div>
           ))}
         </Marquee>
-      </div>
+
     </section>
   );
 };
