@@ -19,7 +19,7 @@ text-transform: uppercase;
   font-size: 1.5rem;
 }
 .round-area{
-  // transform:rotateZ(357deg);
+  transform:rotateZ(357deg);
   background: linear-gradient(90deg, #EA3931 0%, #EF6326 25.97%, #F17721 38.95%, #F2821E 46.64%, #F38C1B 58.18%, #F8BE0E 74.05%, #F9C60B 80.65%, #F9C80B 87.5%, #FAD208 100%);
   box-shadow: 0px 3.9px 3.9px 0px #55555540;
 &.round2{

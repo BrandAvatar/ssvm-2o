@@ -609,21 +609,23 @@
   height: 73px;
 }
 .header-conclave-logo{
-  width: 100% !important;
-  object-fit: contain !important;
-  height: 88px !important;
+  width: 300px !important;
+  height: 100% !important;
   @media only screen and (max-width: 675.98px) {
-    width: 100% !important;
+    width: 200px !important;
     object-fit: contain !important;
-    height: 38px !important;
+    height: 100% !important;
   }
 }
 .header__main{
   background: rgba(255, 255, 255, 0.493);
   backdrop-filter: blur(35px);
-  padding: 10px 40px;
+  padding: 5px 40px;
   border-radius: 50px;
   border: 1px solid rgba(255, 255, 255, 0.1);
+  @media only screen and (max-width: 675.98px) {
+    padding: 5px 20px;
+  }
 }
 .header__main-menu.dark > ul{
   border: none !important;
