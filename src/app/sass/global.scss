@@ -19,7 +19,7 @@ text-transform: uppercase;
   font-size: 1.5rem;
 }
 .round-area{
-  transform:rotateZ(357deg);
+  // transform:rotateZ(357deg);
   background: linear-gradient(90deg, #EA3931 0%, #EF6326 25.97%, #F17721 38.95%, #F2821E 46.64%, #F38C1B 58.18%, #F8BE0E 74.05%, #F9C60B 80.65%, #F9C80B 87.5%, #FAD208 100%);
   box-shadow: 0px 3.9px 3.9px 0px #55555540;
 &.round2{
@@ -27,7 +27,12 @@ text-transform: uppercase;
 }
 }
 
-
+.strike{
+  width: 50px;
+  @media (max-width: 768px) {
+    width: 30px;
+  }
+}
 
 .bg-ssvm-grey{
   background: #FFFFFF40 !important;
@@ -49,6 +54,9 @@ backdrop-filter: blur(28.892988204956055px) !important;
   background-position: center;
   background-repeat: no-repeat;
   border-radius: 20px;
+  @media (max-width: 768px) {
+    width: 94%;
+  }
 }
 .moving-border::before,
 .moving-border::after {
@@ -60,8 +68,12 @@ backdrop-filter: blur(28.892988204956055px) !important;
   background: linear-gradient(var(--angle), 
     #032146,  #C3F2FF, #b00);
   background: linear-gradient(var(--angle), #FF4949 , #26D99E, #439BFF , #FFA230 , #FF4949, #26D99E);
-
   animation: rotate 10s linear infinite;
+
+  @media (max-width: 768px) {
+    inset: 0rem;
+} 
+
 }
 
 .moving-border::after {
@@ -71,6 +83,8 @@ backdrop-filter: blur(28.892988204956055px) !important;
   0%     { --angle: 0deg; }
   100%   { --angle: 360deg;
   }
+
+   
 }
 
 
@@ -121,10 +135,17 @@ backdrop-filter: blur(28.892988204956055px) !important;
 /* Responsive text sizes */
 @media (max-width: 768px) {
     .scroll-text h1{
-        font-size: 3.3rem !important;
+        font-size: 2.3rem !important;
     }
 }   
 
+
+
+
+@media only screen and (max-width: 575.98px) {
+  .hero-ai__robot {
+     display: block !important; 
+  }}
 
 
 // .backdrop{

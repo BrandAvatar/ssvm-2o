@@ -7,7 +7,7 @@ export default function Nokia() {
             <img src="/assets/images/hero-area/shape-dark-1.svg" alt="Decorative shape 1
             " style={{transform: 'rotate(180deg) translateY(-1px)',}} />
 
-        <section className=" bg-black position-relative py-5">
+        <section className=" bg-black position-relative py-5 overflow-hidden">
                 <RoundSection_copy />
         </section>
 

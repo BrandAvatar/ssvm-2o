@@ -21,6 +21,7 @@ import BoxGridSection from "@/components/ai-consulting/box-grid-section";
 import Aboutssvm from "@/components/ai-consulting/aboutssvm";
 import PreviousEditions from "@/components/ai-consulting/PreviousEditions";
 import Nokia from "@/components/ai-consulting/nokia";
+import HeroPhotostudioSlider from "@/components/photo-studio/HeroPhotostudioSlider";
 
 export const metadata = {
   title: "SSVM Institutions | Transforming India Conclave 2025 – Humanity and AI co creating Our World Today",
@@ -31,7 +32,7 @@ export default function Home() {
     <>
       <Header />
       <main>
-        {/* <HeroSection /> */}
+        <HeroSection />
         <LightWrap />
         <Mam />
         <BoxGridSection />
@@ -39,6 +40,7 @@ export default function Home() {
         <AboutSection />
         <FunFact />
         <RoundSection2 />
+        <HeroPhotostudioSlider />
         <Awards />
         <Services2 />
         <Aboutssvm />

@@ -35,7 +35,7 @@ const Header = () => {
                       <div className="header__main-menuBtns text-start d-flex justify-content-between align-items-center ">
                         <Link className="header__topbar-logo position-relative" href="/">
                           <Image
-                            src="/assets/images/ssvmlogo.png"
+                            src="/assets/images/newlogo.png"
                             className="position-relative header-conclave-logo"
                             alt="logo"
                             fill

@@ -6,7 +6,7 @@ const FunFact = () => {
   return (
     <section className="funfact-2-area section-padding-bottom overflow-hidden">
       <div className="container container--extend">
-        <div className="row row-cols-4 g-4">
+        <div className="row row-cols-1 row-cols-lg-4 g-4">
           {funFactsData?.map((fact) => (  
             <div className="" key={fact?.id}>
               <div className="funfact-2__item bg-ssvm-grey item-popup d-flex justify-content-center align-items-center flex-col">

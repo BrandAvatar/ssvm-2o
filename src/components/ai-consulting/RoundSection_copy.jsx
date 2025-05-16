@@ -8,7 +8,7 @@ const marquee = {
 const RoundSection_copy = () => {
   return (
     <>
-    <section style={{transform: 'rotate(3deg)', top: '40%' ,'transform-origin': 'center'}} 
+    <section style={{transform: 'rotate(3deg)', top: '40%' }} 
     className="position-absolute "
     >
       
@@ -16,7 +16,7 @@ const RoundSection_copy = () => {
         
           speed={100}
           autoFill
-          className="round__content overflow-hidden py-3 -z-5"
+          className="round__content  py-3 -z-5"
         >
           {marquee?.marqueeText?.map((item, index) => (
             <div key={index} className="marquee-item d-flex align-items-center ">
@@ -33,7 +33,7 @@ const RoundSection_copy = () => {
             </div>
           ))}
         </Marquee>
-        <div className="z-5">
+        <div className="z-5 ">
         <Marquee
           direction="right"
           speed={100}

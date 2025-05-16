@@ -11,9 +11,9 @@ const HeroPhotostudioSlider = () => {
     <>
     <div className="text-center py-5">
       <h2 className="section__title split-text text-center text-initial gothic-bold text-uppercase pb-5">
-          <img src="/assets/images/ele.png" alt="" width={70} /> Speakers
+          <img src="/assets/images/ele.png" alt="" className="strike" /> Speakers
       </h2>
-      <p className="w-50 mx-auto">The SSVM Transforming India Conclave 2025 is a premier gathering of visionary leaders, industry trailblazers, and social entrepreneurs.</p>
+      <p className="w-100 w-md-50 mx-auto">The SSVM Transforming India Conclave 2025 is a premier gathering of visionary leaders, industry trailblazers, and social entrepreneurs.</p>
     </div>
     <div className="relative">
       <Swiper
@@ -64,7 +64,7 @@ const HeroPhotostudioSlider = () => {
       </Swiper>
     </div>
 
-    <a href="#" className="yellow-btn mx-auto d-block " style={{width: "fit-content"}}>View All Speakers</a>
+    <a href="#" className="yellow-btn mx-auto d-block my-5" style={{width: "fit-content"}}>View All Speakers</a>
     </>
   );
 };

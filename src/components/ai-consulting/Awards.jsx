@@ -8,7 +8,7 @@ import HeroPhotostudioSlider from '@/components/photo-studio/HeroPhotostudioSlid
 const Awards = () => {
   return (
     <>
-    <HeroPhotostudioSlider />
+
   
     <section className="about-3-area section-padding-top-bottom position-relative overflow-hidden">
     <figure className="about-3__shape d-none d-md-block ">
@@ -16,12 +16,12 @@ const Awards = () => {
     </figure>
     <div className="container container--extend moving-border">
       <div className="row justify-content-center overlay">
-        <div className="p-5">
+        <div className="p-lg-5">
           <div className="section__header">
-            <h2 className="section__title split-text text-center  gothic-bold pb-5">
-             <img src="/assets/images/ele.png" alt="" width={70} /> AWARD
+            <h2 className="d-flex text-center justify-content-center align-items-center">
+             <img src="/assets/images/ele.png" alt="" className='strike' /> AWARD
             </h2>
-            <div className="d-flex gap-2">
+            <div className="d-flex flex-column flex-lg-row gap-2 align-items-center">
               <img src="/assets/images/guruaward-c.gif" alt="" className='flex-shrink-0 w-50'/>
               <div>
                 <h3 className=''>INSPIR<span className='stroke'>A</span>T<span className='stroke'>I</span>ONAL GURU </h3>
@@ -29,18 +29,18 @@ const Awards = () => {
                <p className='text-start'>Do you know a teacher who deserves recognition for their dedication and influence? Nominate them for the Inspirational Guru Award today!</p>
               </div>
             </div>
-            <h2 className='text-uppercase py-5 text-center'>Regstr<span className='stroke'>A</span>t<span className='stroke'>i</span>on</h2>
-            <div className="d-flex justify-content-between gap-5 text-uppercase">
+            <h2 className='text-uppercase pb-5 pt-5 pt-lg-0 text-center'>Regstr<span className='stroke'>A</span>t<span className='stroke'>i</span>on</h2>
+            <div className="d-flex flex-column flex-lg-row justify-content-between gap-5 text-uppercase">
               <div className="registerbox text-center">
                   <h3 className='py-3'>SSVM Students</h3>
-                  <div className="d-flex gap-2">
+                  <div className="d-flex flex-column flex-lg-row gap-2">
                     <a href="#" className='yellow-btn'>Self nomination </a>
                     <a href="#" className='yellow-btn'>Self nomination </a>
                   </div>
               </div>
-              <div className="registerbox text-center">
+              <div className="registerbox text-center mb-5 mb-lg-0">
                   <h3 className='py-3'>SSVM Students</h3>
-                  <div className="d-flex gap-2">
+                  <div className="d-flex flex-column flex-lg-row gap-2">
                     <a href="#" className='yellow-btn'>Self nomination </a>
                     <a href="#" className='yellow-btn'>Self nomination </a>
                   </div>

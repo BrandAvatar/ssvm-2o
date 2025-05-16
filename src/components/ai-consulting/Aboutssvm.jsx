@@ -70,7 +70,7 @@ export default function Aboutssvm() {
               {/* <p>At the SSVM Transforming India Conclave 2025, we focus on how AI and human creativity can shape a sustainable and innovative future. Our theme, "AI & Humanity – Co-Creating Our World Today," explores how technology and human potential can work together to solve challenges and create a better tomorrow. Join us as we dive into exciting conversations and ideas on how we can make a real impact with AI!</p> */}
             </div>
             <div className="col-md-4">
-              <img src="/assets/images/profile.webp" alt="ai-consulting-1"
+            <img src="/assets/images/about.jpg" alt="ai-consulting-1"
               className='shadow'
               />
             </div>

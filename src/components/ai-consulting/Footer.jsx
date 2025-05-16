@@ -12,69 +12,44 @@ const Footer = () => {
     bottomContent,
   } = footerData;
   return (
-    <footer className="footer-area bg-vampire-black">
-      <div className="footer__top section-padding-top-bottom">
-        <div className="container-fluid">
-          <h2 className="section__big-title marquee-text ff-six-caps fw-normal">
-            <Marquee pauseOnHover speed={200}>
-              {Array(marquee?.repeatCount)
-                .fill()
-                .map((_, index) => (
-                  <Link href={marquee?.link} key={index}>
-                    {marquee?.text}&nbsp;-&nbsp;
-                  </Link>
-                ))}
-            </Marquee>
-          </h2>
-        </div>
-      </div>
-
-      <div className="footer__center">
-        <div className="container container--extend">
-          <div className="row justify-content-end">
-            <div className="col-12">
-              <div
-                className="footer__center-wrapper section-padding-top-bottom"
-                style={{
-                  backgroundImage: `url(${centerContent?.footerWrapperBg})`,
-                }}
-              >
-                <h4 className="sub-heading">{centerContent?.subHeading}</h4>
-                <h2 className="heading">
-                  <Link href={`mailto:${centerContent?.email}`}>
-                    {centerContent?.email}
-                  </Link>
-                </h2>
-                <div className="footer__top-social footer-social">
-                  <ul>
-                    {socialLinks?.map((item) => (
-                      <li key={item.id}>
-                        <Link href={item.url}>
-                          <i 
-                            className={`fab fa-${item.icon}`}
-                            style={{
-                              background: 'linear-gradient(to left, #F2821E, #EA3B31)',
-                              WebkitBackgroundClip: 'text',
-                              WebkitTextFillColor: 'transparent'
-                            }}
-                          ></i>
-                        </Link>
-                      </li>
-                    ))}
+    <footer className="text-black px-5">
+          <div className="row justify-content-end p-1 p-md-5 " style={{borderRadius: "10px" , backgroundColor: "#F6F5F5E5"}}>
+            
+            <div className="col-12 col-lg-6" >
+              <a href="/"  >
+                <img src="/assets/images/ssvmlogo.png" className="pb-5"/>
+                
+              </a>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae autem unde doloribus molestias eveniet dolor cum soluta distinctio corrupti. Quibusdam quos delectus consequuntur inventore minima iste et amet velit ea quo quod error vero impedit adipisci, pariatur, </p>
+             
+              <div className="d-flex gap-5 my-5 align-items-center">
+                  <h4 className="text-uppercase">sociaL MediA</h4>
+                  <ul className="d-flex gap-3">
+                  {socialLinks.map((link) => (
+                    <li key={link.id}>
+                      <a href={link.url} target="_blank" rel="noopener noreferrer">
+                        {link.id === 'facebook' && <i className="fab fa-facebook-f"></i>}
+                        {link.id === 'twitter' && <i className="fab fa-x-twitter"></i>}
+                        {link.id === 'instagram' && <i className="fab fa-instagram"></i>}
+                        {link.id === 'youtube' && <i className="fab fa-youtube"></i>}
+                      </a>
+                    </li>
+                  ))}
                   </ul>
-                </div>
-                <Link
-                  href={contactButton?.link}
-                  className="common-btn__circle-move btn-hover btn-item bg-lime text-black flex-column flex-sm-row text-center section-mini-margin-top"
-                >
-                  {contactButton?.text}
-                  <i className="fa-solid fa-arrow-right"></i>
-                </Link>
               </div>
+
             </div>
-          </div>
+            <div className="col-12 col-lg-6">
+            <div className="d-flex my-5  gap-4 align-items-center"><img src="/assets/images/ele.png" alt="" width="50" /><h3 className="text-black">CONTACT US</h3></div>
+              <ul>
+                <li className="mb-3"><i className="fas fa-map-marker-alt me-2" style={{color: '#F2821E'}}></i><a href="https://maps.google.com/?q=Sf No 72/2, Pattanam, To, Vellalore Rd, Vaigai Nagar, Singanallur, Coimbatore, Tamil Nadu 641016" target="_blank" rel="noopener noreferrer">Sf No 72/2, Pattanam, To, Vellalore Rd, Vaigai Nagar, Singanallur, Coimbatore, Tamil Nadu 641016</a></li>
+                <li className="mb-3"><i className="fas fa-envelope me-2" style={{color: '#F2821E'}}></i><a href="mailto:tic@ssvminstitutions.ac.in">tic@ssvminstitutions.ac.in</a></li>
+                <li className="mb-3"><i className="fas fa-phone me-2" style={{color: '#F2821E'}}></i><a href="tel:+91 93444 51888">+91 93444 51888</a></li>
+                {/* <li><i className="fas fa-clock me-2" style={{color: '#F2821E'}}></i>Mon - Fri: 9:00 AM - 5:00 PM</li> */}
+              </ul>
+            </div>
         </div>
-      </div>
+
 
       <div className="footer__bottom bg-black">
         <div className="container container--extend">

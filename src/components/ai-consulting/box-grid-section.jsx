@@ -66,8 +66,8 @@ export default function BoxGridSection() {
               <h4 className='pt-5 pb-2'>THEME FOR 2025</h4>
               <p>At the SSVM Transforming India Conclave 2025, we focus on how AI and human creativity can shape a sustainable and innovative future. Our theme, "AI & Humanity – Co-Creating Our World Today," explores how technology and human potential can work together to solve challenges and create a better tomorrow. Join us as we dive into exciting conversations and ideas on how we can make a real impact with AI!</p>
             </div>
-            <div className="col-md-5">
-              <img src="/assets/images/profile.webp" alt="ai-consulting-1"
+            <div className="col-md-5 mt-5 mt-md-0">
+              <img src="/assets/images/about.jpg" alt="ai-consulting-1"
               className='shadow'
               />
             </div>

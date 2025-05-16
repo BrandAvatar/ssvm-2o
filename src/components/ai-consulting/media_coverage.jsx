@@ -25,9 +25,12 @@ const MediaCoverage = () => {
               src={image} 
               alt={`Media coverage ${index + 1}`} 
               style={{
-                height: "200px",
+                height: "300px",
+                width: "300px",
                 objectFit: "contain",
-                borderRadius: "8px"
+                borderRadius: "8px",
+                backgroundColor: "white",
+                padding: "10px",
               }}
             />
           </div>

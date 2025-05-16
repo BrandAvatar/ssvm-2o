@@ -19,7 +19,7 @@ const HeroSection = () => {
         <div className="row ">
           <div className="clip-top h-100 w-100 "></div>
           <div className="col-12 ">
-            <div className="hero-ai__robot">
+            <div className="hero-ai__robot mt-5 mt-lg-0">
               <Spline scene={SplineLink} />
             </div>
             <div className="hero-ai__content">
