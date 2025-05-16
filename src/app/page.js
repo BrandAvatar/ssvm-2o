@@ -18,7 +18,7 @@ import Services2 from "@/components/ai-consulting/Services2";
 import Countdown from "@/components/ai-consulting/countdown";
 import LightWrap from "@/components/ai-consulting/light_wrap";
 import BoxGridSection from "@/components/ai-consulting/box-grid-section"; 
-import Aboutssvm from "@/components/ai-consulting/aboutssvm";
+import Aboutssvm from "@/components/ai-consulting/Aboutssvm";
 import PreviousEditions from "@/components/ai-consulting/PreviousEditions";
 import Nokia from "@/components/ai-consulting/nokia";
 import HeroPhotostudioSlider from "@/components/photo-studio/HeroPhotostudioSlider";
