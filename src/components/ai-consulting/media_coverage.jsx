@@ -2,12 +2,12 @@ import React from "react";
 import Marquee from "react-fast-marquee";
 
 const marqueeImages = [
-  "/assets/images/mediathumb.png",
-  "/assets/images/mediathumb.png",
-  "/assets/images/mediathumb.png",
-  "/assets/images/mediathumb.png",
-  "/assets/images/mediathumb.png",
-  "/assets/images/mediathumb.png",
+  "/assets/newimages/media/media1.png",
+  "/assets/newimages/media/media2.png",
+  "/assets/newimages/media/media3.png",
+  "/assets/newimages/media/media3.png",
+  "/assets/newimages/media/media3.png",
+  "/assets/newimages/media/media4.png",
 ];
 
 const MediaCoverage = () => {

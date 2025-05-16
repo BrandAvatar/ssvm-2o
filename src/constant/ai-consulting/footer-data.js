@@ -12,23 +12,23 @@ const footerData = {
     socialLinks: [
       {
         name: "Facebook",
-        url: "#",
+        url: "https://www.facebook.com/ssvmschool",
         id: "facebook",
       },
       {
-        name: "Twitter",
-        url: "#",
+        name: "Twitter", 
+        url: "https://twitter.com/ssvmschool",
         id: "twitter",
       },
       {
         name: "Instagram",
-        url: "#",
-        id: "instagram",
+        url: "https://www.instagram.com/ssvmschool",
+        id: "instagram", 
       },
       {
-        name: "Dribbble",
-        url: "#",
-        id: "dribbble",
+        name: "YouTube",
+        url: "https://www.youtube.com/@ssvmschool",
+        id: "youtube",
       },
     ],
     contactButton: {
@@ -41,23 +41,23 @@ const footerData = {
     copyright: {
       symbol: "©",
       year: new Date().getFullYear(),
-      text: ". All rights reserved Nicholls",
+      text: ". All rights reserved SSVM",
     },
     backToTop: {
-      text: "Back To Top",
+      text: "BACK TO TOP",
       target: "#header",
     },
     footerNav: [
-      {
-        text: "Terms & Condition",
-        url: "#",
-        id: "terms",
-      },
-      {
-        text: "Privacy Policy",
-        url: "#",
-        id: "privacy",
-      },
+      // {
+      //   text: "Terms & Condition",
+      //   url: "#",
+      //   id: "terms",
+      // },
+      // {
+      //   text: "Privacy Policy",
+      //   url: "#",
+      //   id: "privacy",
+      // },
     ],
   },
 };

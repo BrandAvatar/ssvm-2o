@@ -160,6 +160,10 @@ backdrop-filter: blur(28.892988204956055px) !important;
 .stroke{
   -webkit-text-stroke: 1px #fff;
   color: transparent;
+}
+.stroke-black{
+  -webkit-text-stroke: 1px #000;
+  color: transparent;
 
 }
 .py-10{
@@ -237,4 +241,8 @@ backdrop-filter: blur(28.892988204956055px) !important;
     font-weight: 700;
     font-size: 16px;
     text-transform: uppercase;
+}
+.text-stroke{
+  -webkit-text-stroke: 1px #fff;
+  color: transparent;
 }

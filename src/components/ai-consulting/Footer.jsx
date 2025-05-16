@@ -47,11 +47,17 @@ const Footer = () => {
                 </h2>
                 <div className="footer__top-social footer-social">
                   <ul>
-                    {socialLinks?.map((item, index) => (
-                      <li key={item?.id}>
-                        <Link href={item?.url}>
-                          {item?.name}
-                          <FiArrowUpRight />
+                    {socialLinks?.map((item) => (
+                      <li key={item.id}>
+                        <Link href={item.url}>
+                          <i 
+                            className={`fab fa-${item.icon}`}
+                            style={{
+                              background: 'linear-gradient(to left, #F2821E, #EA3B31)',
+                              WebkitBackgroundClip: 'text',
+                              WebkitTextFillColor: 'transparent'
+                            }}
+                          ></i>
                         </Link>
                       </li>
                     ))}
@@ -86,7 +92,7 @@ const Footer = () => {
                   href={bottomContent?.backToTop?.target}
                   className="section-link"
                 >
-                  <i className="fas fa-angle-up"></i>
+                   <img src={"/assets/newimages/uparrow.png"}  />
                   {bottomContent?.backToTop?.text}
                 </Link>
               </div>

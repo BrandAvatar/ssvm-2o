@@ -14,7 +14,8 @@ const AboutSection = () => {
       <div className="row justify-content-center">
         <div className="col-xl-10">
           <div className="section__header text-center">
-            <h2 className="section__title split-text left text-initial gothic-bold">
+            <h2 className="section__title split-text left text-initial gothic-bold d-flex gap-3 justify-content-center align-items-center">
+              <img src="./assets/images/ele.png" alt="" width={70} />
               {aboutData?.title}
             </h2>
             <p className=' gothic-bold text-normal text-1_5'>{aboutData?.description}</p>

@@ -18,6 +18,8 @@ import Services2 from "@/components/ai-consulting/Services2";
 import Countdown from "@/components/ai-consulting/countdown";
 import LightWrap from "@/components/ai-consulting/light_wrap";
 import BoxGridSection from "@/components/ai-consulting/box-grid-section"; 
+import Aboutssvm from "@/components/ai-consulting/aboutssvm";
+import PreviousEditions from "@/components/ai-consulting/PreviousEditions";
 import Nokia from "@/components/ai-consulting/nokia";
 
 export const metadata = {
@@ -29,16 +31,19 @@ export default function Home() {
     <>
       <Header />
       <main>
-        <HeroSection />
+        {/* <HeroSection /> */}
         <LightWrap />
         <Mam />
         <BoxGridSection />
+
         <AboutSection />
         <FunFact />
         <RoundSection2 />
         <Awards />
         <Services2 />
+        <Aboutssvm />
         <Nokia />
+        <PreviousEditions />
 
       </main>
       <Footer />

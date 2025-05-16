@@ -21,7 +21,15 @@ const RoundSection_copy = () => {
           {marquee?.marqueeText?.map((item, index) => (
             <div key={index} className="marquee-item d-flex align-items-center ">
               <img src="./assets/images/round-area/shape.png" alt="shape" />
-              <h4 className="tag gothic-bold text-white" style={{fontSize: "4.3rem"}}>{item}</h4>
+              <h4 
+                className="tag gothic-bold text-stroke" 
+                style={{
+                  fontSize: "4.3rem",
+                  background: "linear-gradient(90deg, #EE5C28 0%, #FAD208 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent"
+                }}
+              >{item}</h4>
             </div>
           ))}
         </Marquee>
@@ -35,7 +43,15 @@ const RoundSection_copy = () => {
           {marquee?.marqueeText?.map((item, index) => (
             <div key={index} className="marquee-item d-flex align-items-center ">
               <img src="./assets/images/round-area/shape.png" alt="shape" />
-              <h4 className="tag gothic-bold text-white" style={{fontSize: "4.3rem"}}>{item}</h4>
+               <h4 
+                className="tag gothic-bold text-stroke" 
+                style={{
+                  fontSize: "4.3rem",
+                  background: "linear-gradient(90deg, #EE5C28 0%, #FAD208 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent"
+                }}
+              >{item}</h4>
             </div>
           ))}
         </Marquee>
