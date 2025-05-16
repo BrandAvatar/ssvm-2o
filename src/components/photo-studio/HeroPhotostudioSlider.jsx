@@ -63,8 +63,8 @@ const HeroPhotostudioSlider = () => {
         ))}
       </Swiper>
     </div>
-
-    <a href="#" className="yellow-btn mx-auto d-block my-5" style={{width: "fit-content"}}>View All Speakers</a>
+    <div className="my-5"></div>
+    {/* <a href="#" className="yellow-btn mx-auto d-block " style={{width: "fit-content"}}>View All Speakers</a> */}
     </>
   );
 };

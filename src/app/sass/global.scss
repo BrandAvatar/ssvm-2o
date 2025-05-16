@@ -49,7 +49,7 @@ backdrop-filter: blur(28.892988204956055px) !important;
 .moving-border {
   width: 80%;
   position: relative;
-  background: url("../../../public/assets/images/award.png");
+  // background: url("../../../public/assets/images/award.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -119,7 +119,6 @@ backdrop-filter: blur(28.892988204956055px) !important;
 
 .scroll-text span {
   display: inline-block;
-  padding-right: 2rem;
   /* padding: 0.5rem 1rem; */
   border-radius: 5px;
 }
