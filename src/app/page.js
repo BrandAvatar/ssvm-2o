@@ -32,7 +32,7 @@ export default function Home() {
     <>
       <Header />
       <main>
-        <HeroSection />
+        {/* <HeroSection /> */}
         <LightWrap />
         <Mam />
         <BoxGridSection />

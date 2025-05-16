@@ -22,11 +22,11 @@ const Footer = () => {
               </a>
               
              
-              <div className="d-flex flex-column flex-lg-row gap-3 ma-md-5 my-5 align-items-start 
+              <div className="d-flex flex-column flex-lg-row gap-3 gap-md-5 my-5 align-items-center 
               justify-content-center justify-content-lg-start
               ">
                   <h4 className="text-uppercase">sociaL MediA</h4>
-                  <ul className="d-flex gap-3">
+                  <ul className="d-flex gap-3 align-items-center">
                   {socialLinks.map((link) => (
                     <li key={link.id}>
                       <a href={link.url} target="_blank" rel="noopener noreferrer">
