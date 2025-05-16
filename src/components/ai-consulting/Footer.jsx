@@ -12,17 +12,19 @@ const Footer = () => {
     bottomContent,
   } = footerData;
   return (
-    <footer className="text-black px-5">
-          <div className="row justify-content-end p-1 p-md-5 " style={{borderRadius: "10px" , backgroundColor: "#F6F5F5E5"}}>
+    <footer className="text-black px-5" id="footer">
+          <div className="row justify-content-end px-2 py-5 p-md-5 " style={{borderRadius: "10px" , backgroundColor: "#F6F5F5E5"}}>
             
             <div className="col-12 col-lg-6" >
               <a href="/"  >
                 <img src="/assets/images/ssvmlogo.png" className="pb-5"/>
                 
               </a>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae autem unde doloribus molestias eveniet dolor cum soluta distinctio corrupti. Quibusdam quos delectus consequuntur inventore minima iste et amet velit ea quo quod error vero impedit adipisci, pariatur, </p>
+              
              
-              <div className="d-flex gap-5 my-5 align-items-center">
+              <div className="d-flex flex-column flex-lg-row gap-3 ma-md-5 my-5 align-items-start 
+              justify-content-center justify-content-lg-start
+              ">
                   <h4 className="text-uppercase">sociaL MediA</h4>
                   <ul className="d-flex gap-3">
                   {socialLinks.map((link) => (
@@ -40,7 +42,7 @@ const Footer = () => {
 
             </div>
             <div className="col-12 col-lg-6">
-            <div className="d-flex my-5  gap-4 align-items-center"><img src="/assets/images/ele.png" alt="" width="50" /><h3 className="text-black">CONTACT US</h3></div>
+            <div className="d-flex mt-5 mb-3 gap-4 align-items-center"><img src="/assets/images/ele.png" alt="" className="strike" /><h3 className="text-black">CONTACT US</h3></div>
               <ul>
                 <li className="mb-3"><i className="fas fa-map-marker-alt me-2" style={{color: '#F2821E'}}></i><a href="https://maps.google.com/?q=Sf No 72/2, Pattanam, To, Vellalore Rd, Vaigai Nagar, Singanallur, Coimbatore, Tamil Nadu 641016" target="_blank" rel="noopener noreferrer">Sf No 72/2, Pattanam, To, Vellalore Rd, Vaigai Nagar, Singanallur, Coimbatore, Tamil Nadu 641016</a></li>
                 <li className="mb-3"><i className="fas fa-envelope me-2" style={{color: '#F2821E'}}></i><a href="mailto:tic@ssvminstitutions.ac.in">tic@ssvminstitutions.ac.in</a></li>

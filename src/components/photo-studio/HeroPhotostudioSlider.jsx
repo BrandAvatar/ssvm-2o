@@ -9,7 +9,7 @@ import SLIDEDATA from "@/constant/photo-studio/slide-data";
 const HeroPhotostudioSlider = () => {
   return (
     <>
-    <div className="text-center py-5">
+    <div className="text-center py-5" id="speakers">
       <h2 className="section__title split-text text-center text-initial gothic-bold text-uppercase pb-5">
           <img src="/assets/images/ele.png" alt="" className="strike" /> Speakers
       </h2>

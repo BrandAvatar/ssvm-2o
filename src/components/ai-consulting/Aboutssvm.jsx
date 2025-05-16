@@ -56,7 +56,7 @@ export default function Aboutssvm() {
           />
         ))}
       </div>
-      <section className='!bg-white'>
+      <section className='!bg-white' id='about'>
         <div className='container mx-auto py-10 !bg-white'>
         
          <h2 className='text-uppercase pb-5 text-center text-black'><span className='stroke-black'>A</span>bout SSVM <span className='stroke-black'>I</span>nstitutions</h2>

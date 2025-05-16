@@ -7,32 +7,32 @@ const menus = [
   {
     id: 1,
     name: "About Conclave",
-    link: "#0"
+    link: "#about"
   },
   {
     id: 2,
     name: "Speakers",
-    link: "#0"
+    link: "#speakers"
   },
   {
     id: 3,
     name: "Entertainment",
-    link: "#0"
+    link: "#entertainment"
   },
   {
     id: 4,
     name: "Workshops",
-    link: "#0"
+    link: "#entertainment"
   },
   {
     id: 5,
     name: "Awards",
-    link: "#0"
+    link: "#awards"
   },
   {
     id: 6,
     name: "Contact",
-    link: "#0"
+    link: "#footer"
   }
   // {
   //   id: 0,

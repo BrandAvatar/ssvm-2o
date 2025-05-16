@@ -7,7 +7,7 @@ import ServicesItem from "@/components/photo-studio/ServicesItem";
 
 const Services2 = () => {
   return (
-    <section className="section-padding-top-bottom overflow-hidden bg-white">
+    <section className="section-padding-top-bottom overflow-hidden bg-white" id="entertainment">
       <div className="container">
         <div className="row">
           <h2 className="text-uppercase text-center text-black pb-5">entertainment & workshop</h2>

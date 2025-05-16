@@ -391,7 +391,7 @@
               color: $color-white;
               padding: 3.5px 21px;
               border-radius: 16px;
-
+              font-weight: 500;
               @include breakpoint(max-xxl) {
                 padding: 3px 13px;
               }
