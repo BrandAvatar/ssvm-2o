@@ -199,13 +199,15 @@ backdrop-filter: blur(28.892988204956055px) !important;
   padding: 30px 50px;
   margin-top: 4rem;
   width: fit-content;
-  background-color: #222020;
+  background-color: #c9c9c95b;
+  backdrop-filter: blur(10px);
   li{
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      font-weight: 400;
+      text-transform: uppercase;
+      font-weight: 500;
       span{
         border: 2px solid #EA3B31;
         background: #fff;
@@ -215,6 +217,7 @@ backdrop-filter: blur(28.892988204956055px) !important;
         width: 100px;
         text-align: center;
         font-size: 38px;
+        
         font-weight: 700;
       }
   }
@@ -237,7 +240,7 @@ backdrop-filter: blur(28.892988204956055px) !important;
   background-color: #000000c9;
   padding: 20px;
   border-radius: 20px;
-  backdrop-filter: blur(3px);
+  backdrop-filter: blur(2px);
 }
 .registerbox{
   background: #FFFFFF;

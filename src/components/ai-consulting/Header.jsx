@@ -20,18 +20,18 @@ const Header = () => {
   return (
     <>
       <header
-        className={`header-area position-absolute w-100 top-0 z-3 bg-transparent ${
+        className={`header-area position-fixed w-100 top-0 z-3 bg-transparent ${
           isSticky ? "sticky" : ""
         }`}
         id="header"
       >
-        <div className="header__navbar header__ai fluid border-0">
+        <div className="fluid border-0 pt-2">
           <div className="container container--extend">
             <div className="row">
               <div className="col-12">
                 <div className="header__main ">
                   <div className="row justify-content-between align-items-center bg-transparent">
-                    <div className="col-6 col-lg-3 col-xl-3 col-xxl-3">
+                    <div className="col-6 col-lg-3 col-xl-3 col-xxl-2">
                       <div className="header__main-menuBtns text-start d-flex justify-content-between align-items-center ">
                         <Link className="header__topbar-logo position-relative" href="/">
                           <Image

@@ -48,7 +48,7 @@ export default function Leftright() {
   }, []);
 
   return (
-    <section className="left-right-section blur ">
+    <section className="left-right-section ">
         <div className="scrolling-text-container d-flex justify-content-center align-items-center min-vh-80">
           <div>
             <div className="scroll-text left-to-right">

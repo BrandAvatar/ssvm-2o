@@ -12,22 +12,22 @@ const footerData = {
     socialLinks: [
       {
         name: "Facebook",
-        url: "https://www.facebook.com/ssvmschool",
+        url: "https://www.facebook.com/SSVMTransformIndia",
         id: "facebook",
       },
-      {
-        name: "Twitter", 
-        url: "https://twitter.com/ssvmschool",
-        id: "twitter",
-      },
+      // {
+      //   name: "Twitter", 
+      //   url: "https://twitter.com/ssvmschool",
+      //   id: "twitter",
+      // },
       {
         name: "Instagram",
-        url: "https://www.instagram.com/ssvmschool",
+        url: "https://www.instagram.com/ssvmtransformingindia/",
         id: "instagram", 
       },
       {
         name: "YouTube",
-        url: "https://www.youtube.com/@ssvmschool",
+        url: "https://www.youtube.com/@ssvmtransformingindia",
         id: "youtube",
       },
     ],
