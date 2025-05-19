@@ -17,6 +17,16 @@ export const metadata = {
 
 export default function page() {
   return (
-    <Guru_award />
+    <>
+    <a href="#" className="header__main text-center text-decoration-none w-100  d-block" style={{ margin: "10px auto"}}>
+            <img src="/assets/images/newlogo.png" alt="SSVM Logo" className="img-fluid" />
+            </a>
+            <Guru_award />
+            <div className="copy-right text-center p-1  rounded-3 d-block" style={{backgroundColor: "#a3a3a3 !important"}}>
+                <p className="text-black">Copyright © 2025 SSVM Group of Institutions. All rights reserved.</p>
+            </div>
+
+    </>
+   
   )
 }

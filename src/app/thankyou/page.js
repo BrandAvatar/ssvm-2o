@@ -30,6 +30,9 @@ export default function ThankYou() {
                     <h4 className="mt-4">for Submitting Your Details</h4>
                 </div>
             </div>
+            <div className="copy-right text-center p-1  rounded-3 d-block" style={{backgroundColor: "#a3a3a3 !important"}}>
+                <p className="text-black">Copyright © 2025 SSVM Group of Institutions. All rights reserved.</p>
+            </div>
          </div>
     </div>
   );

@@ -58,7 +58,7 @@ export default function BoxGridSection() {
       </div>
       <section className={styles.content}>
         <div className='container mx-auto py-10'>
-          <h2 className='text-uppercase pb-5'><span className='stroke'>AI</span>  & Hum<span className='stroke'>a</span>n<span className='stroke'>i</span>ty – Co Cre<span className='stroke'>A</span>t<span className='stroke'>I</span>ng Our World Today</h2>
+          <h2 className='text-uppercase pb-5'><span className='stroke'>AI </span>& Humanity – Co CreAtIng Our World Today</h2>
           <div className="row">
             <div className="col-md-7">
               <h4 className='pb-2 text-uppercase'>SSVM INSTITUTIONS PRESENTS THE FOURTH EDITION OF

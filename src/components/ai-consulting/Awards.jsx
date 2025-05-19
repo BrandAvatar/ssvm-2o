@@ -31,8 +31,8 @@ const Awards = () => {
                <p className='text-start'>Do you know a teacher who deserves recognition for their dedication and influence? Nominate them for the Inspirational Guru Award today!</p>
               </div>
             </div>
-            <h2 className='text-uppercase pb-5 pt-5 pt-lg-0 text-center'>Registr <span className='stroke'>A</span>t<span className='stroke'>i</span>on</h2>
-            <div className="d-flex flex-column flex-lg-row justify-content-between gap-5 text-uppercase">
+            <h2 className='text-uppercase pb-5 pt-5 pt-lg-0 text-center'>Registr<span className='stroke'>A</span>t<span className='stroke'>i</span>on</h2>
+            <div className="d-flex flex-column flex-lg-row justify-content-center gap-5 text-uppercase">
               <div className="registerbox text-center">
                   <h3 className='py-3'>SSVM Students</h3>
                   <div className="d-flex flex-column flex-lg-row gap-2">
@@ -61,15 +61,15 @@ const Awards = () => {
                <p className='text-start'>Have a business idea that can change the game? Apply for the Studentpreneur Award and showcase your entrepreneurial spirit! We can't wait to see what you create.</p>
               </div>
             </div>
-            <h2 className='text-uppercase pb-5 pt-5 pt-lg-0 text-center'>Registr <span className='stroke'>A</span>t<span className='stroke'>i</span>on</h2>
-            <div className="row d-flex flex-column flex-lg-row justify-content-between gap-5 text-uppercase">
-              <div className="col-12 col-lg-5 registerbox text-center">
+            <h2 className='text-uppercase pb-5 pt-5 pt-lg-0 text-center'>Registr<span className='stroke'>A</span>t<span className='stroke'>i</span>on</h2>
+            <div className="row d-flex flex-column flex-lg-row justify-content-center gap-5 text-uppercase">
+              <div className="col-12 col-lg-4 registerbox text-center">
                   <h3 className='py-3'>SSVM Students</h3>
                   <div className="d-flex flex-column flex-lg-row justify-content-center gap-2">
                     <a href="https://zfrmz.com/ZwsdgSxYG3XYphLPNcMQ" className='yellow-btn'>Register Now </a>
                   </div>
               </div>
-              <div className="col-12 col-lg-5 registerbox text-center mb-5 mb-lg-0">
+              <div className="col-12 col-lg-4 registerbox text-center mb-5 mb-lg-0">
                   <h3 className='py-3'>other institutions</h3>
                   <div className="d-flex flex-column flex-lg-row justify-content-center gap-2">
                     <a href="https://zfrmz.com/Q5WNMV2864HmQZoSmXFc" className='yellow-btn'>Register Now</a>

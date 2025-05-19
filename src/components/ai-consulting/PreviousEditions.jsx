@@ -44,8 +44,8 @@ export default function PreviousEditions() {
           <div className="gallery  d-flex flex-column  justify-content-center " >
             <div className="d-flex my-4  gap-4 align-items-center justify-content-center">
               <img src="/assets/images/ele.png" alt="" width="70" />
-              <h2 className="ssvm-h1 text-start line-1 anim-typewriter heading-1">
-                P<span className="text-stroke">a</span>st Ed<span className="text-stroke">i</span>tion Highlights
+              <h2 className="ssvm-h1 text-start line-1 anim-typewriter heading-1 text-uppercase">
+                P<span className="text-stroke ">a</span>st Ed<span className="text-stroke">i</span>tion Highlights
               </h2> 
             </div>
             <div className="cards my-5 gap-20 flex md:flex-row items-center relative z-[1]">
