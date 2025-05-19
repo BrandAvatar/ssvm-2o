@@ -34,14 +34,14 @@ const Awards = () => {
             <h2 className='text-uppercase pb-5 pt-5 pt-lg-0 text-center'>Registr<span className='stroke'>A</span>t<span className='stroke'>i</span>on</h2>
             <div className="d-flex flex-column flex-lg-row justify-content-center gap-5 text-uppercase">
               <div className="registerbox text-center">
-                  <h3 className='py-3'>SSVM Students</h3>
+                  <h3 className='py-3'>For SSVM INSTITUTIONS</h3>
                   <div className="d-flex flex-column flex-lg-row gap-2">
                     <a href="https://zfrmz.com/aTCRosoAmrk6TL01K5Al" className='yellow-btn'>Self nomination </a>
                     <a href="https://zfrmz.com/J3Fmv638fBs8MdeMymrj" className='yellow-btn'>nominate others</a>
                   </div>
               </div>
               <div className="registerbox text-center mb-5 mb-lg-0">
-                  <h3 className='py-3'>other institutions</h3>
+                  <h3 className='py-3'>For other institutions</h3>
                   <div className="d-flex flex-column flex-lg-row gap-2">
                     <a href="https://zfrmz.com/MIuzzQtneR2ctgRtUGiT" className='yellow-btn'>Self nomination </a>
                     <a href="https://zfrmz.com/BkwJulNeRdqjBz36lRzb" className='yellow-btn'>nominate others</a>
@@ -64,13 +64,13 @@ const Awards = () => {
             <h2 className='text-uppercase pb-5 pt-5 pt-lg-0 text-center'>Registr<span className='stroke'>A</span>t<span className='stroke'>i</span>on</h2>
             <div className="row d-flex flex-column flex-lg-row justify-content-center gap-5 text-uppercase">
               <div className="col-12 col-lg-4 registerbox text-center">
-                  <h3 className='py-3'>SSVM Students</h3>
+                  <h3 className='py-3'>For SSVM INSTITUTIONS</h3>
                   <div className="d-flex flex-column flex-lg-row justify-content-center gap-2">
                     <a href="https://zfrmz.com/ZwsdgSxYG3XYphLPNcMQ" className='yellow-btn'>Register Now </a>
                   </div>
               </div>
               <div className="col-12 col-lg-4 registerbox text-center mb-5 mb-lg-0">
-                  <h3 className='py-3'>other institutions</h3>
+                  <h3 className='py-3'>For other institutions</h3>
                   <div className="d-flex flex-column flex-lg-row justify-content-center gap-2">
                     <a href="https://zfrmz.com/Q5WNMV2864HmQZoSmXFc" className='yellow-btn'>Register Now</a>
                   </div>

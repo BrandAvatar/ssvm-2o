@@ -63,7 +63,7 @@ export default function BoxGridSection() {
             <div className="col-md-7">
               <h4 className='pb-2 text-uppercase'>SSVM INSTITUTIONS PRESENTS THE FOURTH EDITION OF
               Transforming India Conclave 2025</h4>
-              <p>Celebrating 26 years of innovative leadership, the SSVM Group of Institutions proudly presents the Transforming India Conclave 2025 — a gathering of visionary thought leaders and innovators exploring how AI and human creativity can drive sustainable progress. With the theme "AI & Humanity – Co-Creating Our World Today," the Conclave features insightful discussions along with the Studentpreneur and Inspirational Guru Awards, honoring those shaping a better, ethical, and sustainable future.</p>
+              <p>The SSVM Group of Institutions proudly presents the Transforming India Conclave 2025 — a gathering of visionary thought leaders and innovators exploring how AI and human creativity can drive sustainable progress. With the theme "AI & Humanity – Co-Creating Our World Today," the Conclave features insightful discussions along with the Studentpreneur and Inspirational Guru Awards, honoring those shaping a better, ethical, and sustainable future.</p>
               <h4 className='pt-5 pb-2'>THEME FOR 2025</h4>
               <p>At the SSVM Transforming India Conclave 2025, we explore how AI and human creativity can together shape a sustainable and innovative future. Our theme, "AI & Humanity – Co-Creating Our World Today," highlights the power of technology and human potential working hand in hand to solve challenges and build a better tomorrow. Join us for engaging conversations and fresh ideas on harnessing AI to make a real, lasting impact!</p>
             </div>
