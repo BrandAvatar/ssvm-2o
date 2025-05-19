@@ -19,17 +19,19 @@ const Awards = () => {
         <div className="p-lg-5">
           <div className="section__header">
             <h2 className="d-flex text-center justify-content-center align-items-center">
-             <img src="/assets/images/ele.png" alt="" className='strike' /> AWARD
+             <img src="/assets/images/ele.png" alt="" className='strike' /> AWARDS
             </h2>
             <div className="d-flex flex-column flex-lg-row gap-2 align-items-center">
               <img src="/assets/images/guruaward-c.gif" alt="" className='flex-shrink-0 w-50'/>
               <div>
-                <h3 className=''>INSPIR<span className='stroke'>A</span>T<span className='stroke'>I</span>ONAL GURU </h3>
+          
+
+                <h3 className=''>INSPIR<span className='stroke'>A</span>T<span className='stroke'>I</span>ONAL GURU  AWARDS</h3>
                <p className='text-start mb-1'>The Inspirational Guru Award honors educators who go the extra mile to make a lasting impact. These teachers foster a nurturing classroom environment, inspire students to pursue their dreams, and help shape them into well-rounded individuals.</p>
                <p className='text-start'>Do you know a teacher who deserves recognition for their dedication and influence? Nominate them for the Inspirational Guru Award today!</p>
               </div>
             </div>
-            <h2 className='text-uppercase pb-5 pt-5 pt-lg-0 text-center'>Regstr<span className='stroke'>A</span>t<span className='stroke'>i</span>on</h2>
+            <h2 className='text-uppercase pb-5 pt-5 pt-lg-0 text-center'>Registr <span className='stroke'>A</span>t<span className='stroke'>i</span>on</h2>
             <div className="d-flex flex-column flex-lg-row justify-content-between gap-5 text-uppercase">
               <div className="registerbox text-center">
                   <h3 className='py-3'>SSVM Students</h3>
@@ -53,12 +55,13 @@ const Awards = () => {
             <div className="d-flex flex-column flex-lg-row gap-2 align-items-center">
               <img src="/assets/images/guruaward-c.gif" alt="" className='flex-shrink-0 w-50'/>
               <div>
-              <h3>STUDENTPRENEUR AWARD</h3>
+               
+              <h3>STUDENTPRENEUR AWARDS</h3>
                <p className='text-start mb-1'>This is your chance to transform your entrepreneurial vision into reality. Picture yourself presenting your ideas to industry experts, potential investors, and fellow innovators who are eager to see your innovative solutions!</p>
                <p className='text-start'>Have a business idea that can change the game? Apply for the Studentpreneur Award and showcase your entrepreneurial spirit! We can't wait to see what you create.</p>
               </div>
             </div>
-            <h2 className='text-uppercase pb-5 pt-5 pt-lg-0 text-center'>Regstr<span className='stroke'>A</span>t<span className='stroke'>i</span>on</h2>
+            <h2 className='text-uppercase pb-5 pt-5 pt-lg-0 text-center'>Registr <span className='stroke'>A</span>t<span className='stroke'>i</span>on</h2>
             <div className="row d-flex flex-column flex-lg-row justify-content-between gap-5 text-uppercase">
               <div className="col-12 col-lg-5 registerbox text-center">
                   <h3 className='py-3'>SSVM Students</h3>

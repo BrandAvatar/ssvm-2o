@@ -24,6 +24,16 @@ import Nokia from "@/components/ai-consulting/nokia";
 import HeroPhotostudioSlider from "@/components/photo-studio/HeroPhotostudioSlider";
 
 export const metadata = {
+  icons: [
+    {
+      rel: 'icon',
+      url: '/assets/images/favicon.png',
+    },
+    {
+      rel: 'apple-touch-icon',
+      url: '/assets/images/favicon.png',
+    },
+  ],
   title: "SSVM Institutions | Transforming India Conclave 2025 – Humanity and AI co creating Our World Today",
 };
 

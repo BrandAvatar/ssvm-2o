@@ -2,19 +2,35 @@ import Header from "@/components/ai-consulting/Header";
 import Footer from "@/components/ai-consulting/Footer";
 import GlitchText from "@/components/GlitchText";
 
+export const metadata = {
+    icons: [
+      {
+        rel: 'icon',
+        url: '/assets/images/favicon.png',
+      },
+      {
+        rel: 'apple-touch-icon',
+        url: '/assets/images/favicon.png',
+      },
+    ],
+    title: "SSVM Institutions | Transforming India Conclave 2025 – Humanity and AI co creating Our World Today",
+  };
+
 export default function ThankYou() {
   return (
     <div>
-         <Header />
+     
          <div className="container">
-            <div className="row d-flex justify-content-center align-items-center" style={{height: "100vh"}}>
+            <a href="#" className="text-center text-decoration-none bg-white p-3 rounded-3 d-block " style={{ margin: "10px auto"}}>
+            <img src="/assets/images/newlogo.png" alt="SSVM Logo" className="img-fluid" />
+            </a>
+            <div className="d-flex justify-content-center align-items-center" style={{height: "70vh"}}>
                 <div className="col-12 text-center">
                     <GlitchText text="Thank You" />
                     <h4 className="mt-4">for Submitting Your Details</h4>
                 </div>
             </div>
          </div>
-         <Footer />
     </div>
   );
 }

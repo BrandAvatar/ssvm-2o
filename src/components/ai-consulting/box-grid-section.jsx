@@ -61,10 +61,11 @@ export default function BoxGridSection() {
           <h2 className='text-uppercase pb-5'><span className='stroke'>AI</span>  & Hum<span className='stroke'>a</span>n<span className='stroke'>i</span>ty – Co Cre<span className='stroke'>A</span>t<span className='stroke'>I</span>ng Our World Today</h2>
           <div className="row">
             <div className="col-md-7">
-              <h4 className='pb-2'>SSVM INSTITUTIONS PRESENTS THE FOURTH EDITION OF</h4>
-              <p>Celebrating 26 years of innovative leadership, SSVM Group of Institutions presents the Transforming India Conclave 2025, uniting thought leaders and innovators to explore how AI and human ingenuity can drive sustainable progress. With the theme "AI & Humanity – Co-Creating Our World Today", the Conclave features impactful discussions and the Studentpreneur and Inspirational Guru Awards, honoring those shaping a better, ethical, and sustainable future.</p>
+              <h4 className='pb-2 text-uppercase'>SSVM INSTITUTIONS PRESENTS THE FOURTH EDITION OF
+              Transforming India Conclave 2025</h4>
+              <p>Celebrating 26 years of innovative leadership, the SSVM Group of Institutions proudly presents the Transforming India Conclave 2025 — a gathering of visionary thought leaders and innovators exploring how AI and human creativity can drive sustainable progress. With the theme "AI & Humanity – Co-Creating Our World Today," the Conclave features insightful discussions along with the Studentpreneur and Inspirational Guru Awards, honoring those shaping a better, ethical, and sustainable future.</p>
               <h4 className='pt-5 pb-2'>THEME FOR 2025</h4>
-              <p>At the SSVM Transforming India Conclave 2025, we focus on how AI and human creativity can shape a sustainable and innovative future. Our theme, "AI & Humanity – Co-Creating Our World Today," explores how technology and human potential can work together to solve challenges and create a better tomorrow. Join us as we dive into exciting conversations and ideas on how we can make a real impact with AI!</p>
+              <p>At the SSVM Transforming India Conclave 2025, we explore how AI and human creativity can together shape a sustainable and innovative future. Our theme, "AI & Humanity – Co-Creating Our World Today," highlights the power of technology and human potential working hand in hand to solve challenges and build a better tomorrow. Join us for engaging conversations and fresh ideas on harnessing AI to make a real, lasting impact!</p>
             </div>
             <div className="col-md-5 mt-5 mt-md-0">
               <img src="/assets/images/about.jpg" alt="ai-consulting-1"

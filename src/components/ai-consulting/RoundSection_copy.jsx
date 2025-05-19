@@ -3,7 +3,7 @@ import Marquee from "react-fast-marquee";
 
 const marquee = {
   repeatCount: 5,
-  marqueeText: [ "September 1, 2 & 3  Location: SSVM World School, Coimbatore"],
+  marqueeText: [ "September 1, 2 & 3  Location: SSVM World School, Coimbatore‎ | ‎ "],
 };
 const RoundSection_copy = () => {
   return (
@@ -20,7 +20,7 @@ const RoundSection_copy = () => {
         >
           {marquee?.marqueeText?.map((item, index) => (
             <div key={index} className="marquee-item d-flex align-items-center ">
-              <img src="./assets/images/round-area/shape.png" alt="shape" />
+              {/* <img src="./assets/images/round-area/shape.png" alt="shape" /> */}
               <h4 
                 className="tag gothic-bold text-stroke" 
                 style={{
@@ -42,7 +42,7 @@ const RoundSection_copy = () => {
         >
           {marquee?.marqueeText?.map((item, index) => (
             <div key={index} className="marquee-item d-flex align-items-center ">
-              <img src="./assets/images/round-area/shape.png" alt="shape" />
+              {/* <img src="./assets/images/round-area/shape.png" alt="shape" /> */}
                <h4 
                 className="tag gothic-bold text-stroke" 
                 style={{
