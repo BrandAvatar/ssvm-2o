@@ -31,21 +31,30 @@ const Header = () => {
               <div className="col-12">
                 <div className="header__main ">
                   <div className="row justify-content-between align-items-center bg-transparent">
-                    <div className="col-6 col-lg-3 col-xl-3 col-xxl-2">
-                      <div className="header__main-menuBtns text-start d-flex justify-content-between align-items-center ">
-                        <Link className="header__topbar-logo position-relative" href="/">
+                    <div className="col-7 col-lg-2 ">
+                      <div className=" ">
+                        <Link className="header__topbar-logo position-relative d-none d-lg-block" href="/">
                           <Image
-                            src="/assets/images/newlogo.png"
-                            className="position-relative header-conclave-logo"
+                            src="/assets/images/ssvmlogo.png"
+                            className="position-relative header-conclave-logo img-fluid"
                             alt="logo"
                             fill
                           />
                         </Link>
+                        <Link className="header__topbar-logo position-relative d-block d-lg-none" href="/">
+                          <Image
+                            src="/assets/images/newlogo.png"
+                            className="position-relative header-conclave-logo img-fluid"
+                            alt="logo"
+                            fill
+                          />
+                        </Link>
+
                         
                       
                       </div>
                     </div>
-                    <div className="d-none d-lg-block col-lg-9 col-xl-9 col-xxl-9">
+                    <div className="d-none d-lg-block col-lg-8 ">
                       <nav className="header__main-menu dark bg-transparent border-0">
                         <ul>
                           {menus.map((menu) => (
@@ -86,16 +95,25 @@ const Header = () => {
                             </li>
                           ))}
                         </ul>
+                        
                       </nav>
+                      
                     </div>
-                    <div className="col-6 col-lg-1 col-xl-1 col-xxl-1">
+                    <div className="col-5 col-lg-2">
                       <div className="header__main-menuBar justify-content-end">
                         
-                          {/* Contact Us */}
-                          {/* <div className="button-icon-wrap">
-                            <PiArrowUpRightBold className="button-icon icon button-icon-one" />
-                            <PiArrowUpRightBold className="button-icon icon button-icon-two" />
-                          </div> */}
+                      <div className=" d-none d-lg-block">
+                        <Link className="header__topbar-logo position-relative" href="/">
+                          <Image
+                            src="/assets/images/ssvm-main-logo.svg"
+                            className="position-relative header-conclave-logo img-fluid"
+                            alt="logo"
+                            fill
+                          />
+                        </Link>
+                        
+                      
+                      </div>
                         
                         <div
                           className="menuBar-toggle d-lg-none"

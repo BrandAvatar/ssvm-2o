@@ -3,7 +3,7 @@ import Marquee from "react-fast-marquee";
 
 const marquee = {
   repeatCount: 5,
-  marqueeText: [ "Ready to Join? Registration is Open!"],
+  marqueeText: [ "Register Now for Awards"],
 };
 const RoundSection2 = () => {
   return (

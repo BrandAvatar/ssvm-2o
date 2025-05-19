@@ -609,10 +609,10 @@
   height: 73px;
 }
 .header-conclave-logo{
-  width: 300px !important;
+  width: 170px !important;
   height: 100% !important;
   @media only screen and (max-width: 675.98px) {
-    width: 200px !important;
+    width: 220px !important;
     object-fit: contain !important;
     height: 100% !important;
   }
@@ -628,6 +628,7 @@
   }
 }
 .header__main-menu.dark > ul{
+  gap: 16px !important;
   border: none !important;
   backdrop-filter: none !important;
   background: none !important;
