@@ -53,7 +53,7 @@ const Awards = () => {
           <div className="section__header pt-5">
             
             <div className="d-flex flex-column flex-lg-row gap-2 align-items-center">
-              <img src="/assets/images/guruaward-c.gif" alt="" className='flex-shrink-0 w-50'/>
+              <img src="/assets/images/studentaward-c.gif" alt="" className='flex-shrink-0 w-50'/>
               <div>
                
               <h3>STUDENTPRENEUR AWARDS</h3>
@@ -63,13 +63,13 @@ const Awards = () => {
             </div>
             <h2 className='text-uppercase pb-5 pt-5 pt-lg-0 text-center'>Registr<span className='stroke'>A</span>t<span className='stroke'>i</span>on</h2>
             <div className="row d-flex flex-column flex-lg-row justify-content-center gap-5 text-uppercase">
-              <div className="col-12 col-lg-4 registerbox text-center">
+              <div className="col-12 col-lg-5 registerbox text-center">
                   <h3 className='py-3'>For SSVM INSTITUTIONS</h3>
                   <div className="d-flex flex-column flex-lg-row justify-content-center gap-2">
                     <a href="https://zfrmz.com/ZwsdgSxYG3XYphLPNcMQ" className='yellow-btn'>Register Now </a>
                   </div>
               </div>
-              <div className="col-12 col-lg-4 registerbox text-center mb-5 mb-lg-0">
+              <div className="col-12 col-lg-5 registerbox text-center mb-5 mb-lg-0">
                   <h3 className='py-3'>For other institutions</h3>
                   <div className="d-flex flex-column flex-lg-row justify-content-center gap-2">
                     <a href="https://zfrmz.com/Q5WNMV2864HmQZoSmXFc" className='yellow-btn'>Register Now</a>

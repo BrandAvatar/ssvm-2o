@@ -1,4 +1,6 @@
-import React from 'react'
+"use client"
+
+import React, { useState } from 'react'
 import Link from 'next/link'
 import { FaArrowDown } from "react-icons/fa6";
 import aboutData from '@/constant/ai-consulting/about-data'
@@ -7,6 +9,20 @@ import HeroPhotostudioSlider from '@/components/photo-studio/HeroPhotostudioSlid
 
 
 const guru_award = () => {
+  const [activeTab, setActiveTab] = useState('tab1');
+  
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+  };
+
+  const activeStyle = {
+    backgroundColor: '#f8d92b',
+    color: '#000',
+    fontWeight: 'bold',
+    boxShadow: '0 0 10px rgba(0,0,0,0.2)',
+    transform: 'translateY(-3px) scale(1.02)'
+  };
+  
   return (
     <>
 
@@ -39,15 +55,37 @@ const guru_award = () => {
             <p className='mt-lg-2'><b>Verification:  </b> All teaching credentials will be verified.</p>
             <p className='mt-lg-2'><b>Finale:  </b>  The top 25 selected teachers must attend the event on September 1, 2 & 3 at SSVM World School, Coimbatore.
             For any queries, please contact: tic@ssvminstitutions.ac.in</p>
-            <p className='mt-lg-2'><b>All participants who’ve participated and won last year will not be eligible to participate this year. This is to provide a fair opportunity for all.  </b></p>
+            <p className='mt-lg-2'><b>All participants who've participated and won last year will not be eligible to participate this year. This is to provide a fair opportunity for all.  </b></p>
 
 
             <h2 className='text-uppercase pb-5 pt-5 pt-lg-5 mt-5 text-center'>Regstr<span className='stroke'>A</span>t<span className='stroke'>i</span>on</h2>
             <div className="d-flex flex-column flex-lg-row justify-content-between gap-5 text-uppercase">
-              
-
-
-            <iframe id='form' aria-label='STUDENTPRENEUR AWARD EXTERNAL DM' style={{height: "1700px", width: "99%", border: "none", borderRadius: "20px"}} src='https://forms.zohopublic.com/xtracut/form/STUDENTPRENEURAWARDEXTERNALDM/formperma/2dUJVv6gzetzqkDGHFuFy3b1XQ34MCf6s3kGVBcOJZE'></iframe>
+              <div className="tabs-container w-100">
+                <div className="tabs-header d-flex mb-3 gap-4">
+                  <button 
+                    className={`tab-button flex-grow-1 py-3 px-4 ${activeTab === 'tab1' ? 'active' : ''}`} 
+                    onClick={() => handleTabChange('tab1')}
+                    style={activeTab === 'tab1' ? activeStyle : {}}
+                  >
+                    Self Nomination
+                  </button>
+                  <button 
+                    className={`tab-button flex-grow-1 py-3 px-4 ${activeTab === 'tab2' ? 'active' : ''}`} 
+                    onClick={() => handleTabChange('tab2')}
+                    style={activeTab === 'tab2' ? activeStyle : {}}
+                  >
+                    Nominate Others
+                  </button>
+                </div>
+                <div className="tabs-content p-0">
+                  <div id="tab1" style={{display: activeTab === 'tab1' ? 'block' : 'none'}}>
+                    <iframe aria-label='INSPIRATIONAL GURU AWARD(Self Nomination) - External '  allow="camera;" style={{height: "2170px", width: "100%", border: "none", borderRadius: "20px"}} src='https://forms.zohopublic.com/xtracut/form/INSPIRATIONALGURUAWARDSelfNominationExternalDM/formperma/EbR-4AGjlPYkZkM_JF6CfIjxq-oI-EfLo2a9xmmSac0?zf_enablecamera=true'></iframe>
+                  </div>
+                  <div id="tab2" style={{display: activeTab === 'tab2' ? 'block' : 'none'}}>
+                    <iframe aria-label='INSPIRATIONAL GURU AWARD(Nominate Others)- External'  allow="camera;" style={{height: "2510px", width: "100%", border: "none", borderRadius: "20px"}} src='https://forms.zohopublic.com/xtracut/form/INSPIRATIONALGURUAWARDNominateOthersExternalDM/formperma/wX3MVIzm1ADF4Bc_aBDrLYt-7yHYOH37GLlHbUOKtks?zf_enablecamera=true'></iframe>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -57,6 +95,21 @@ const guru_award = () => {
       </div>
     </div>
   </section>
+
+  <style>
+    {`
+      .tab-button {
+        background-color:rgb(255, 255, 255);
+        color: #000;
+        font-weight: bold;
+        border-radius: 10px;
+        border: none;
+      }
+      .tab-button:hover {
+        background-color: #f8d92b;
+      }
+    `}
+  </style>
   </>
   )
 }

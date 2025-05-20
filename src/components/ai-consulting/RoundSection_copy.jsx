@@ -58,7 +58,8 @@ const RoundSection_copy = () => {
         </div>
     </section>
         <div className="shape  bg-white ">
-          <img src="./assets/images/aitouch.gif" alt="" />
+          <video src="/assets/images/aitouch.mp4" autoPlay muted loop playsInline className="w-100 h-100 object-fit-cover rounded-76"></video>
+        
         </div>
           <style>
             {`
@@ -67,7 +68,7 @@ const RoundSection_copy = () => {
                 width: 400px;
                 margin: 0 auto;
                 border-radius: 80px;
-                img{
+                video{
                   object-fit: cover;
                   width: 100%;
                   height: 100%;
