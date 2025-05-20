@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import { FiArrowUpRight } from "react-icons/fi";
@@ -12,7 +14,8 @@ const Footer = () => {
     bottomContent,
   } = footerData;
   return (
-    <footer className="text-black px-5" id="footer">
+    <>
+       <footer className="text-black px-5" id="footer">
           <div className="row justify-content-end px-2 py-5 p-md-5 " style={{borderRadius: "10px" , backgroundColor: "#F6F5F5E5"}}>
             
             <div className="col-12 col-lg-6" >
@@ -89,6 +92,30 @@ const Footer = () => {
         </div>
       </div>
     </footer>
+
+    <div className="whatsapp-icon">
+                    <a href="https://wa.me/+918072434027?text=Start%20Chat" target="_blank" rel="noopener noreferrer">
+                    <img src="/assets/images/whatsapp.png" alt="WhatsApp" />
+                    </a>
+                    <style jsx>{`
+                    .whatsapp-icon{
+                    position: fixed;
+                    bottom: 100px;
+                    right: 35px;
+                    z-index: 1000;
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                
+                    
+                  }
+                    `}
+                  </style>
+    </div>
+                  
+
+    </>
+   
   );
 };
 

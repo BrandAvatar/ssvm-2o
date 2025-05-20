@@ -1,6 +1,6 @@
 import LightMode from "@/components/LightMode";
-import Footer from "@/components/common/Footer";
-import Header from "@/components/common/Header";
+import Footer from "@/components/ai-consulting/Footer";
+import Header from "@/components/ai-consulting/Header";
 import Image from "next/image";
 
 export const metadata = {
