@@ -38,7 +38,7 @@ const Awards = () => {
             <p className='mt-lg-2'><b>Grade & Team Limit: </b> Open to 8th-12th grade students, with a maximum of 3 members per team.</p>
 
 
-            <h2 className='text-uppercase pb-5 pt-5 pt-lg-5 mt-5 text-center'>Regstr<span className='stroke'>A</span>t<span className='stroke'>i</span>on</h2>
+            <h2 className='text-uppercase pb-5 pt-5 pt-lg-5 mt-5 text-center'>registr<span className='stroke'>A</span>t<span className='stroke'>i</span>on</h2>
             <div className="d-flex flex-column flex-lg-row justify-content-between gap-5 text-uppercase">
               
 

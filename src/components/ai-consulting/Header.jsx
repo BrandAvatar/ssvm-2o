@@ -26,17 +26,17 @@ const Header = () => {
         id="header"
       >
         <div className="fluid border-0 pt-2">
-          <div className="container container--extend">
+          <div className="mx-lg-5 mx-1 container--extend">
             <div className="row">
               <div className="col-12">
-                <div className="header__main ">
+                <div className="header__main">
                   <div className="row justify-content-between align-items-center bg-transparent">
                     <div className="col-7 col-lg-2">
                       <div className=" ">
                         <Link className="header__topbar-logo position-relative d-none d-lg-block" href="/">
                           <Image
                             src="/assets/images/ssvmlogo.png"
-                            className="position-relative header-conclave-logo img-fluid"
+                            className="position-relative ssvm-logo img-fluid"
                             alt="logo"
                             fill
                           />
@@ -44,7 +44,7 @@ const Header = () => {
                         <Link className="header__topbar-logo position-relative d-block d-lg-none" href="/">
                           <Image
                             src="/assets/images/newlogo.png"
-                            className="position-relative header-conclave-logo img-fluid"
+                            className="position-relative header-conclave-logo  img-fluid"
                             alt="logo"
                             fill
                           />
