@@ -58,7 +58,7 @@ export default function Leftright() {
               </span>
             </div>
             <div className="scroll-text right-to-left w-100">
-              <span className="display-1 text-center text-md-start">
+              <span className="display-1 text-center">
                 <h1 className="gothic-bold">India Conclave <br/> 2025</h1>
               </span>
             </div>

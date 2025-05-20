@@ -633,3 +633,8 @@
   backdrop-filter: none !important;
   background: none !important;
 }
+.header__main-menu.dark > ul > li > a {
+  color: #000 !important;
+  text-transform: uppercase !important;
+  font-weight: 500 !important;
+}
