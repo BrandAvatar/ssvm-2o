@@ -16,11 +16,19 @@ const Footer = () => {
   return (
     <>
        <footer className="text-black px-5" id="footer">
-          <div className="row justify-content-end px-2 py-5 p-md-5 " style={{borderRadius: "10px" , backgroundColor: "#F6F5F5E5"}}>
+          <div className="row justify-content-end px-2 py-5 p-md-5 bg-white" style={{borderRadius: "10px" }}>
             
-            <div className="col-12 col-lg-6" >
+            <div className="col-12 col-lg-6 d-flex flex-column" >
               <a href="/"  >
-                <img src="/assets/images/ssvmlogo.png" className="pb-5"/>
+                <video 
+                          placeholder="blur"
+                          autoPlay
+                          muted
+                          loop
+                          playsInline
+                          poster="/assets/images/ssvmlogo.png"
+                          // className="vid-logo"
+                          src="/assets/images/logo-vid.mp4"></video>
                 
               </a>
               
