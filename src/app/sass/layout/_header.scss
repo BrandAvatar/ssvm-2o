@@ -641,8 +641,8 @@
   height: 96px;
   object-fit: contain !important;
   @media only screen and (max-width: 675.98px) {
-    width: 220px !important;
     object-fit: contain !important;
     height: 100% !important;
+    width: 96px;
   }
 }

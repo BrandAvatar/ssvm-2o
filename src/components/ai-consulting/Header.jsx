@@ -44,9 +44,20 @@ const Header = () => {
                           className="vid-logo"
                           src="/assets/images/logo-vid.mp4"></video>
                         </Link>
-                        <Link className="header__topbar-logo position-relative d-block d-lg-none" href="/">
+                        <Link className="header__topbar-logo position-relative d-block d-lg-none
+                        d-flex align-items-center
+                        " href="/">
+                          <video 
+                          placeholder="blur"
+                          autoPlay
+                          muted
+                          loop
+                          playsInline
+                          poster="/assets/images/ssvmlogo.png"
+                          className="vid-logo"
+                          src="/assets/images/logo-vid.mp4"></video>
                           <Image
-                            src="/assets/images/newlogo.png"
+                            src="/assets/images/ssvma.png"
                             className="position-relative header-conclave-logo  img-fluid"
                             alt="logo"
                             fill
@@ -122,9 +133,9 @@ const Header = () => {
                           aria-controls="offcanvasLeft"
                           onClick={handleShow}
                         >
-                          <span className="bg-white"></span>
-                          <span className="bg-white"></span>
-                          <span className="bg-white"></span>
+                          <span className="bg-black"></span>
+                          <span className="bg-black"></span>
+                          <span className="bg-black"></span>
                         </div>
                       </div>
                     </div>
