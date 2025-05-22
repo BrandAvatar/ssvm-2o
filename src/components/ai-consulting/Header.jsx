@@ -116,7 +116,7 @@ const Header = () => {
                       <div className=" d-none d-lg-block">
                         <Link className="header__topbar-logo position-relative" href="/">
                           <Image
-                            src="/assets/images/Frame 36.png"
+                            src="/assets/images/ssvma.png"
                             className="position-relative header-conclave-logo img-fluid"
                             alt="logo"
                             fill
