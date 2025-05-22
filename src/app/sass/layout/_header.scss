@@ -618,8 +618,7 @@
   }
 }
 .header__main{
-  background: rgba(255, 255, 255, 0.493);
-  backdrop-filter: blur(35px);
+  background: rgba(255, 255, 255);
   padding: 5px 40px;
   border-radius: 50px;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -637,4 +636,13 @@
   color: #000 !important;
   text-transform: uppercase !important;
   font-weight: 500 !important;
+}
+.vid-logo{
+  height: 96px;
+  object-fit: contain !important;
+  @media only screen and (max-width: 675.98px) {
+    width: 220px !important;
+    object-fit: contain !important;
+    height: 100% !important;
+  }
 }

@@ -31,15 +31,18 @@ const Header = () => {
               <div className="col-12">
                 <div className="header__main">
                   <div className="row justify-content-between align-items-center bg-transparent">
-                    <div className="col-7 col-lg-2">
+                    <div className="col-7 col-lg-1">
                       <div className=" ">
                         <Link className="header__topbar-logo position-relative d-none d-lg-block" href="/">
-                          <Image
-                            src="/assets/images/ssvmlogo.png"
-                            className="position-relative ssvm-logo img-fluid"
-                            alt="logo"
-                            fill
-                          />
+                          <video 
+                          placeholder="blur"
+                          autoPlay
+                          muted
+                          loop
+                          playsInline
+                          poster="/assets/images/ssvmlogo.png"
+                          className="vid-logo"
+                          src="/assets/images/logo-vid.mp4"></video>
                         </Link>
                         <Link className="header__topbar-logo position-relative d-block d-lg-none" href="/">
                           <Image
@@ -51,8 +54,8 @@ const Header = () => {
                         </Link>
                       </div>
                     </div>
-                    <div className="d-none d-lg-block col-lg-8 ">
-                      <nav className="header__main-menu dark bg-transparent border-0">
+                    <div className="d-none d-lg-block col-lg-9 ">
+                      <nav className="header__main-menu dark bg-transparent border-0 justify-content-around">
                         <ul>
                           {menus.map((menu) => (
                             <li
@@ -96,7 +99,7 @@ const Header = () => {
                       </nav>
                       
                     </div>
-                    <div className="col-5 col-lg-2">
+                    <div className="col-5 col-lg-1 p-0">
                       <div className="header__main-menuBar justify-content-end">
                         
                       <div className=" d-none d-lg-block">
