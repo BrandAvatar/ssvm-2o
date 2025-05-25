@@ -48,7 +48,7 @@ const guru_award = () => {
               </div>
              
             </div>
-            
+            <p className='mt-lg-2'><b>Last date to apply: </b>30th June</p>
             <p className='mt-lg-2'><b>Eligibility:: </b>Only teachers from institutions other than SSVM are eligible to apply. SSVM teachers should fill out the other form.</p>
             <p className='mt-lg-2'><b>Experience: </b>Applicants must have at least 10 years of service as a school teacher.</p>
             <p className='mt-lg-2'><b>Nomination: </b> Teachers may apply through self-nomination or be nominated by others. </p>

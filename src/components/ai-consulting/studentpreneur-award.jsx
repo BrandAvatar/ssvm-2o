@@ -33,7 +33,7 @@ const Awards = () => {
              
             </div>
             
-            <p className='mt-lg-2'><b>Last date to apply: </b>10th June</p>
+            <p className='mt-lg-2'><b>Last date to apply: </b>30th June</p>
             <p className='mt-lg-2'><b>Eligibility: </b>Only students from institutions other than SSVM are eligible to apply.</p>
             <p className='mt-lg-2'><b>Grade & Team Limit: </b> Open to 8th-12th grade students, with a maximum of 3 members per team.</p>
 
