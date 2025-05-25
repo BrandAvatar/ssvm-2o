@@ -16,7 +16,7 @@ const Awards = () => {
     </figure>
     <div className="container container--extend moving-border">
       <div className="row justify-content-center overlay">
-        <div className="p-lg-5">
+        <div className="p-0">
           <div className="section__header">
             <h2 className="d-flex text-center justify-content-center align-items-center">
              <img src="/assets/images/ele.png" alt="" className='strike' /> AWARDS
