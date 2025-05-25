@@ -49,12 +49,11 @@ const guru_award = () => {
              
             </div>
             <p className='mt-lg-2'><b>Last date to apply: </b>30th June</p>
-            <p className='mt-lg-2'><b>Eligibility:: </b>Only teachers from institutions other than SSVM are eligible to apply. SSVM teachers should fill out the other form.</p>
+            <p className='mt-lg-2'><b>Eligibility:: </b>Only teachers from institutions other than SSVM are eligible to apply.</p>
             <p className='mt-lg-2'><b>Experience: </b>Applicants must have at least 10 years of service as a school teacher.</p>
             <p className='mt-lg-2'><b>Nomination: </b> Teachers may apply through self-nomination or be nominated by others. </p>
             <p className='mt-lg-2'><b>Verification:  </b> All teaching credentials will be verified.</p>
-            <p className='mt-lg-2'><b>Finale:  </b>  The top 25 selected teachers must attend the event on September 1, 2 & 3 at SSVM World School, Coimbatore.
-            For any queries, please contact: tic@ssvminstitutions.ac.in</p>
+            <p className='mt-lg-2'><b>Finale:  </b>  The top 25 selected teachers must attend the event on September 1, 2 & 3 at SSVM World School, Coimbatore.</p>
             <p className='mt-lg-2'><b>All participants who've participated and won last year will not be eligible to participate this year. This is to provide a fair opportunity for all.  </b></p>
 
 
@@ -77,7 +76,7 @@ const guru_award = () => {
                     Nominate Others
                   </button>
                 </div>
-                <div className="tabs-content p-0">
+                <div className="tabs-content p-0" id='form'>
                   <div id="tab1" style={{display: activeTab === 'tab1' ? 'block' : 'none'}}>
                     <iframe aria-label='INSPIRATIONAL GURU AWARD(Self Nomination) - External '  allow="camera;" style={{height: "2170px", width: "100%", border: "none", borderRadius: "20px"}} src='https://forms.zohopublic.com/xtracut/form/INSPIRATIONALGURUAWARDSelfNominationExternalDM/formperma/EbR-4AGjlPYkZkM_JF6CfIjxq-oI-EfLo2a9xmmSac0?zf_enablecamera=true'></iframe>
                   </div>
