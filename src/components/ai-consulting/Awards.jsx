@@ -16,7 +16,7 @@ const Awards = () => {
     </figure>
     <div className="container container--extend moving-border">
       <div className="row justify-content-center overlay">
-        <div className="p-lg-5">
+        <div className="p-0">
           <div className="section__header">
             <h2 className="d-flex text-center justify-content-center align-items-center">
              <img src="/assets/images/ele.png" alt="" className='strike' /> AWARDS
@@ -39,6 +39,7 @@ const Awards = () => {
                     <a href="https://zfrmz.com/aTCRosoAmrk6TL01K5Al" className='yellow-btn'>Self nomination </a>
                     <a href="https://zfrmz.com/J3Fmv638fBs8MdeMymrj" className='yellow-btn'>nominate others</a>
                   </div>
+                  <p className='m-0 py-3  text-black'>Last date to apply: 10th June </p>
               </div>
               <div className="registerbox text-center mb-5 mb-lg-0">
                   <h3 className='py-3'>For other institutions</h3>
@@ -46,6 +47,8 @@ const Awards = () => {
                     <a href="https://zfrmz.com/MIuzzQtneR2ctgRtUGiT" className='yellow-btn'>Self nomination </a>
                     <a href="https://zfrmz.com/BkwJulNeRdqjBz36lRzb" className='yellow-btn'>nominate others</a>
                   </div>
+                  <p className='m-0 py-3  text-black'>Last date to apply: 30th June </p>
+
               </div>
             </div>
           </div>
@@ -68,12 +71,15 @@ const Awards = () => {
                   <div className="d-flex flex-column flex-lg-row justify-content-center gap-2">
                     <a href="https://zfrmz.com/ZwsdgSxYG3XYphLPNcMQ" className='yellow-btn'>Register Now </a>
                   </div>
+                  <p className='m-0 py-3  text-black'>Last date to apply: 10th June </p>
               </div>
               <div className="col-12 col-lg-5 registerbox text-center mb-5 mb-lg-0">
                   <h3 className='py-3'>For other institutions</h3>
                   <div className="d-flex flex-column flex-lg-row justify-content-center gap-2">
                     <a href="https://zfrmz.com/Q5WNMV2864HmQZoSmXFc" className='yellow-btn'>Register Now</a>
                   </div>
+                  <p className='m-0 py-3 text-black'>Last date to apply: 30th June </p>
+
               </div>
             </div>
           </div>
