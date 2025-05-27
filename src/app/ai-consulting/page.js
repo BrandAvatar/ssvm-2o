@@ -25,7 +25,7 @@ export const metadata = {
 export default function Home() {
   return (
     <>
-      <Header />
+      <Header className="position-static" /> 
       <main>
         <HeroSection />
         <LightWrap />

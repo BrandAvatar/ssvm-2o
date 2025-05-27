@@ -36,16 +36,16 @@ const Awards = () => {
               <div className="registerbox text-center">
                   <h3 className='py-3'>For SSVM INSTITUTIONS</h3>
                   <div className="d-flex flex-column flex-lg-row gap-2">
-                    <a href="https://zfrmz.com/aTCRosoAmrk6TL01K5Al" className='yellow-btn'>Self nomination </a>
-                    <a href="https://zfrmz.com/J3Fmv638fBs8MdeMymrj" className='yellow-btn'>nominate others</a>
+                    <a href="/guru-awards-ssvm-self-nomination" className='yellow-btn'>Self nomination </a>
+                    <a href="/guru-awards-ssvm-nominate-others" className='yellow-btn'>nominate others</a>
                   </div>
                   <p className='m-0 py-3  text-black'>Last date to apply: 10th June </p>
               </div>
               <div className="registerbox text-center mb-5 mb-lg-0">
                   <h3 className='py-3'>For other institutions</h3>
                   <div className="d-flex flex-column flex-lg-row gap-2">
-                    <a href="https://zfrmz.com/MIuzzQtneR2ctgRtUGiT" className='yellow-btn'>Self nomination </a>
-                    <a href="https://zfrmz.com/BkwJulNeRdqjBz36lRzb" className='yellow-btn'>nominate others</a>
+                    <a href="/guru-awards-other-institutions-self-nomination" className='yellow-btn'>Self nomination </a>
+                    <a href="/guru-awards-other-institutions-nominate-others" className='yellow-btn'>nominate others</a>
                   </div>
                   <p className='m-0 py-3  text-black'>Last date to apply: 30th June </p>
 
@@ -69,14 +69,14 @@ const Awards = () => {
               <div className="col-12 col-lg-5 registerbox text-center">
                   <h3 className='py-3'>For SSVM INSTITUTIONS</h3>
                   <div className="d-flex flex-column flex-lg-row justify-content-center gap-2">
-                    <a href="https://zfrmz.com/ZwsdgSxYG3XYphLPNcMQ" className='yellow-btn'>Register Now </a>
+                    <a href="/studentpreneur-award-ssvm" className='yellow-btn'>Register Now </a>
                   </div>
                   <p className='m-0 py-3  text-black'>Last date to apply: 10th June </p>
               </div>
               <div className="col-12 col-lg-5 registerbox text-center mb-5 mb-lg-0">
                   <h3 className='py-3'>For other institutions</h3>
                   <div className="d-flex flex-column flex-lg-row justify-content-center gap-2">
-                    <a href="https://zfrmz.com/Q5WNMV2864HmQZoSmXFc" className='yellow-btn'>Register Now</a>
+                    <a href="/studentpreneur-award-other-insitutions" className='yellow-btn'>Register Now</a>
                   </div>
                   <p className='m-0 py-3 text-black'>Last date to apply: 30th June </p>
 

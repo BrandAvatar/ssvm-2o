@@ -9,7 +9,7 @@ import { PiArrowUpRightBold } from "react-icons/pi";
 
 import Image from "next/image";
 
-const Header = () => {
+const Header = ({ className = '' }) => {
   const [show, setShow] = useState(false);
   const pathname = usePathname();
   const isSticky = useSticky();
@@ -20,9 +20,7 @@ const Header = () => {
   return (
     <>
       <header
-        className={`header-area position-fixed w-100 top-0 z-3 bg-transparent ${
-          isSticky ? "sticky" : ""
-        }`}
+        className={`header-area pos-fix w-100 top-0 z-3 bg-transparent ${className}`}
         id="header"
       >
         <div className="fluid border-0 pt-2">

@@ -18,14 +18,17 @@ import BackTopTop from "@/components/BackToTop";
 import Script from "next/script";
 
 export const metadata = {
-  title: "Photo Studio - Personal Portfolio/CV NextJS Template",
-  description: "Personal Portfolio/CV NextJS Template",
-  keywords:
-    "Personal Portfolio, CV, Resume, HTML5 Template, NextJS Template, Freelancer, Web Developer, Designer, Digital Portfolio, Nicholls, Sakebul islam",
-  creator: "Sakebul islam",
-  other: {
-    developer: "Sakebul islam",
-  },
+  icons: [
+    {
+      rel: 'icon',
+      url: '/assets/images/favicon.png',
+    },
+    {
+      rel: 'apple-touch-icon',
+      url: '/assets/images/favicon.png',
+    },
+  ],
+  title: "SSVM Institutions | Transforming India Conclave 2025 – Humanity and AI co creating Our World Today",
 };
 
 export default function RootLayout({ children }) {
