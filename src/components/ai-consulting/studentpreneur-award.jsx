@@ -56,6 +56,10 @@ const Awards = () => {
       </div>
     </div>
   </section>
+  <script language="javascript">
+    var iframe = document.getElementById('form');
+        iframe.src = iframe.src + window.location.search;
+</script>
   </>
   )
 }

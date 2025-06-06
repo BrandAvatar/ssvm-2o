@@ -78,10 +78,10 @@ const guru_award = () => {
                 </div>
                 <div className="tabs-content p-0" id='form'>
                   <div id="tab1" style={{display: activeTab === 'tab1' ? 'block' : 'none'}}>
-                    <iframe aria-label='INSPIRATIONAL GURU AWARD(Self Nomination) - External '  allow="camera;" style={{height: "2170px", width: "100%", border: "none", borderRadius: "20px"}} src='https://forms.zohopublic.com/xtracut/form/INSPIRATIONALGURUAWARDSelfNominationExternalDM/formperma/EbR-4AGjlPYkZkM_JF6CfIjxq-oI-EfLo2a9xmmSac0?zf_enablecamera=true'></iframe>
+                    <iframe id='tabform1' aria-label='INSPIRATIONAL GURU AWARD(Self Nomination) - External '  allow="camera;" style={{height: "2170px", width: "100%", border: "none", borderRadius: "20px"}} src='https://forms.zohopublic.com/xtracut/form/INSPIRATIONALGURUAWARDSelfNominationExternalDM/formperma/EbR-4AGjlPYkZkM_JF6CfIjxq-oI-EfLo2a9xmmSac0?zf_enablecamera=true'></iframe>
                   </div>
                   <div id="tab2" style={{display: activeTab === 'tab2' ? 'block' : 'none'}}>
-                    <iframe aria-label='INSPIRATIONAL GURU AWARD(Nominate Others)- External'  allow="camera;" style={{height: "2510px", width: "100%", border: "none", borderRadius: "20px"}} src='https://forms.zohopublic.com/xtracut/form/INSPIRATIONALGURUAWARDNominateOthersExternalDM/formperma/wX3MVIzm1ADF4Bc_aBDrLYt-7yHYOH37GLlHbUOKtks?zf_enablecamera=true'></iframe>
+                    <iframe id='tabform2' aria-label='INSPIRATIONAL GURU AWARD(Nominate Others)- External'  allow="camera;" style={{height: "2510px", width: "100%", border: "none", borderRadius: "20px"}} src='https://forms.zohopublic.com/xtracut/form/INSPIRATIONALGURUAWARDNominateOthersExternalDM/formperma/wX3MVIzm1ADF4Bc_aBDrLYt-7yHYOH37GLlHbUOKtks?zf_enablecamera=true'></iframe>
                   </div>
                 </div>
               </div>
@@ -94,7 +94,14 @@ const guru_award = () => {
       </div>
     </div>
   </section>
-
+    <script language="javascript">
+    var iframe = document.getElementById('tabform2');
+        iframe.src = iframe.src + window.location.search;
+</script>
+    <script language="javascript">
+    var iframe = document.getElementById('tabform1');
+        iframe.src = iframe.src + window.location.search;
+</script>
   <style>
     {`
       .tab-button {
