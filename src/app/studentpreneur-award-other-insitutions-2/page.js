@@ -52,7 +52,7 @@ export default function StudentpreneurAwardSSVM() {
 
           
 
-            <iframe id="myiframe" aria-label='Studentpreneur Award External -wp'  style={{height: "800px", width: "99%", border: "none", borderRadius: "20px"}} src='https://forms.zohopublic.com/xtracut/form/StudentpreneurAwardExternalwp/formperma/6YlQvXxRngm5rRIHdxsHQaR6YbdSfDrFW0v5H_mjMQI'></iframe>
+            <iframe id="myiframe" aria-label='Studentpreneur Award External -wp'  style={{height: "1350px", width: "99%", border: "none", borderRadius: "20px"}} src='https://forms.zohopublic.com/xtracut/form/StudentpreneurAwardExternalwp/formperma/6YlQvXxRngm5rRIHdxsHQaR6YbdSfDrFW0v5H_mjMQI'></iframe>
 
             </div>  
           </div>
