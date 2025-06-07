@@ -46,7 +46,7 @@ export default function StudentpreneurAwardSSVM() {
             <p className='mt-lg-2'><b>Confirmation:</b>Upon registration, a confirmation email will be sent, and further communication will follow.            </p>
 
             <h2 className='text-uppercase pb-5 pt-5 pt-lg-5 mt-5 text-center'>registr<span className='stroke'>A</span>t<span className='stroke'>i</span>on</h2>
-            <div className="d-flex flex-column flex-lg-row justify-content-between gap-5 text-uppercase">
+            <div className="d-flex flex-column flex-lg-row justify-content-between gap-5 text-uppercase" id='form' itemID='form'>
               
 
 
