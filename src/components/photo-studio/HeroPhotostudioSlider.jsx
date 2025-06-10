@@ -22,10 +22,10 @@ const HeroPhotostudioSlider = () => {
         spaceBetween={20}
         loop={true}
         speed={2000}
-        // autoplay={{
-        //   delay: 1,
-        //   disableOnInteraction: false,
-        // }}
+        autoplay={{
+          delay: 1,
+          disableOnInteraction: false,
+        }}
         pagination={{
           clickable: true,
         }}
