@@ -1,12 +1,12 @@
 const slideData = [
     {
       id: 1,
-      imgSrc: "/assets/images/soon.png",
+      imgSrc: "/assets/images/ankur-warikoo.webp",
       alt: "Photography portfolio hero image 1",
     },
     {
       id: 2,
-      imgSrc: "/assets/images/soon.png",
+      imgSrc: "/assets/images/Jalaj-dani-new.webp",
       alt: "Photography portfolio hero image 2",
     },
     {

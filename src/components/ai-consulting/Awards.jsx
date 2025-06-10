@@ -39,7 +39,7 @@ const Awards = () => {
                     <a href="/guru-awards-ssvm-self-nomination" className='yellow-btn'>Self nomination </a>
                     <a href="/guru-awards-ssvm-nominate-others" className='yellow-btn'>nominate others</a>
                   </div>
-                  <p className='m-0 py-3  text-black'>Last date to apply: 10th June </p>
+                  <p className='m-0 py-3  text-black'>Last date to apply: 12th June </p>
               </div>
               <div className="registerbox text-center mb-5 mb-lg-0">
                   <h3 className='py-3'>For other institutions</h3>
@@ -71,7 +71,7 @@ const Awards = () => {
                   <div className="d-flex flex-column flex-lg-row justify-content-center gap-2">
                     <a href="/studentpreneur-award-ssvm" className='yellow-btn'>Register Now </a>
                   </div>
-                  <p className='m-0 py-3  text-black'>Last date to apply: 10th June </p>
+                  <p className='m-0 py-3  text-black'>Last date to apply: 12th June </p>
               </div>
               <div className="col-12 col-lg-5 registerbox text-center mb-5 mb-lg-0">
                   <h3 className='py-3'>For other institutions</h3>

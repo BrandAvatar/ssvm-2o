@@ -22,10 +22,10 @@ const HeroPhotostudioSlider = () => {
         spaceBetween={20}
         loop={true}
         speed={2000}
-        autoplay={{
-          delay: 1,
-          disableOnInteraction: false,
-        }}
+        // autoplay={{
+        //   delay: 1,
+        //   disableOnInteraction: false,
+        // }}
         pagination={{
           clickable: true,
         }}
@@ -58,7 +58,7 @@ const HeroPhotostudioSlider = () => {
         {/* Slider Images */}
         {SLIDEDATA.map((slide) => (
           <SwiperSlide key={slide.id}>
-            <img src={slide.imgSrc} alt={slide.alt} className="w-100" />
+            <img src={slide.imgSrc} alt={slide.alt} className="w-100" style={{height: "590px"}} />
           </SwiperSlide>
         ))}
       </Swiper>
