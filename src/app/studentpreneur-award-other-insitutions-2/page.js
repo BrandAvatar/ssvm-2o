@@ -26,6 +26,18 @@ export default function StudentpreneurAwardSSVM() {
             <h3 className="d-flex text-lg-center text-start gap-3 justify-content-center align-items-center">
              <img src="/assets/images/ele.png" alt="" className='strike' /> STUDENTPRENEUR AWARD
             </h3>
+            <div className='d-flex flex-column'>
+                   <h2 className='text-uppercase pb-5 pt-5 pt-lg-5 mt-5 text-center'>registr<span className='stroke'>A</span>t<span className='stroke'>i</span>on</h2>
+            <div className="d-flex flex-column flex-lg-row justify-content-between gap-5 text-uppercase" id='form' itemID='form'>
+              
+
+
+          
+
+            <iframe id="myiframe" aria-label='Studentpreneur Award External -wp'  style={{height: "1350px", width: "99%", border: "none", borderRadius: "20px"}} src='https://forms.zohopublic.com/xtracut/form/StudentpreneurAwardExternalwp/formperma/6YlQvXxRngm5rRIHdxsHQaR6YbdSfDrFW0v5H_mjMQI'></iframe>
+
+              </div>
+            
             <div className="d-flex flex-column flex-lg-row gap-2 align-items-center">
               <img src="/assets/images/studentaward-c.gif" alt="" className='flex-shrink-0 w-50'/>
               <div>
@@ -45,15 +57,7 @@ export default function StudentpreneurAwardSSVM() {
             <p className='mt-lg-2'><b>Finale: </b>Shortlisted teams must attend the final event in person on September 1, 2 & 3 at SSVM World School, Coimbatore.</p>
             <p className='mt-lg-2'><b>Confirmation:</b>Upon registration, a confirmation email will be sent, and further communication will follow.            </p>
 
-            <h2 className='text-uppercase pb-5 pt-5 pt-lg-5 mt-5 text-center'>registr<span className='stroke'>A</span>t<span className='stroke'>i</span>on</h2>
-            <div className="d-flex flex-column flex-lg-row justify-content-between gap-5 text-uppercase" id='form' itemID='form'>
-              
-
-
-          
-
-            <iframe id="myiframe" aria-label='Studentpreneur Award External -wp'  style={{height: "1350px", width: "99%", border: "none", borderRadius: "20px"}} src='https://forms.zohopublic.com/xtracut/form/StudentpreneurAwardExternalwp/formperma/6YlQvXxRngm5rRIHdxsHQaR6YbdSfDrFW0v5H_mjMQI'></iframe>
-
+       
             </div>  
           </div>
 
