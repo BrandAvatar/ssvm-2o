@@ -2,24 +2,24 @@ import React from "react";
 import Marquee from "react-fast-marquee";
 
 const marqueeImages = [
-  "/assets/images/news/Andhra-Jyothi.jpg",
-  "/assets/images/news/comail.png",
-  "/assets/images/news/Deepika-Emblem.png",
-  "/assets/images/news/dinakaran.png",
-  "/assets/images/news/dinamalar.png",
-  "/assets/images/news/dinamani-logo.webp",
-  "/assets/images/news/makkal.jpeg",
-  "/assets/images/news/Malai_Murasu.webp",
-  "/assets/images/news/malai-malar.webp",
-  "/assets/images/news/Malayalamanorama.png",
-  "/assets/images/news/Mathrubhumi_English.webp",
-  "/assets/images/news/Thanthi.png",
-  "/assets/images/news/The-Hindu-Logo.jpg",
-  "/assets/images/news/The-Hindu-Tamil.jpg",
-  "/assets/images/news/thinathanti.png",
-  "/assets/images/news/tm_logo.webp",
-  "/assets/images/news/TNIE.webp",
-  "/assets/images/news/ttof.png"
+  "https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/Andhra-Jyothi.jpg",
+  "https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/comail.png",
+  "https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/Deepika-Emblem.png",
+  "https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/dinakaran.png",
+  "https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/dinamalar.png",
+  "https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/dinamani-logo.webp",
+  "https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/makkal.jpeg",
+  "https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/Malai_Murasu.webp",
+  "https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/malai-malar.webp",
+  "https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/Malayalamanorama.png",
+  "https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/Mathrubhumi_English.webp",
+  "https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/Thanthi.png",
+  "https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/The-Hindu-Logo.jpg",
+  "https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/The-Hindu-Tamil.jpg",
+  "https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/thinathanti.png",
+  "https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/tm_logo.webp",
+  "https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/TNIE.webp",
+  "https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/ttof.png"
 
 ];
 

@@ -22,7 +22,7 @@ const Awards = () => {
              <img src="/assets/images/ele.png" alt="" className='strike' /> AWARDS
             </h2>
             <div className="d-flex flex-column flex-lg-row gap-2 align-items-center">
-              <img src="/assets/images/guruaward-c.gif" alt="" className='flex-shrink-0 w-50'/>
+              <img src="https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/guruaward-c.gif" alt="" className='flex-shrink-0 w-50'/>
               <div>
           
 
@@ -56,7 +56,7 @@ const Awards = () => {
           <div className="section__header pt-5">
             
             <div className="d-flex flex-column flex-lg-row gap-2 align-items-center">
-              <img src="/assets/images/studentaward-c.gif" alt="" className='flex-shrink-0 w-50'/>
+              <img src="https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/studentaward.gif" alt="" className='flex-shrink-0 w-50'/>
               <div>
                
               <h3>STUDENTPRENEUR AWARDS</h3>

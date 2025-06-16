@@ -25,7 +25,7 @@ export default function GuruAwardsPage() {
             </h3>
             <h4 className="text-center">Other Institutions </h4>
             <div className="d-flex flex-column flex-lg-row gap-2 align-items-center">
-              <img src="/assets/images/guruaward-c.gif" alt="" className='flex-shrink-0 w-50'/>
+              <img src="https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/guruaward-c.gif" alt="" className='flex-shrink-0 w-50'/>
               <div>
                 
                <p className='text-start mb-1 mt-0'>The Inspirational Guru Award honors educators who go the extra mile to make a lasting impact. These teachers foster a nurturing classroom environment, inspire students to pursue their dreams, and help shape them into well-rounded individuals.</p>

@@ -58,7 +58,7 @@ const RoundSection_copy = () => {
         </div>
     </section>
         <div className="shape  bg-white ">
-          <video src="/assets/images/aitouch.mp4" autoPlay muted loop playsInline className="w-100 h-100 object-fit-cover rounded-76"></video>
+          <video src="https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/aitouch.mp4" autoPlay muted loop playsInline className="w-100 h-100 object-fit-cover rounded-76"></video>
         
         </div>
           <style>

@@ -28,7 +28,7 @@ const Footer = () => {
                           playsInline
                           poster="/assets/images/ssvmlogo.png"
                           // className="vid-logo"
-                          src="/assets/images/logo-vid.mp4"></video>
+                          src="https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/logo-vid.mp4"></video>
                 
               </a>
               

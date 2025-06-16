@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import styles from './box-grid-section.module.css';
-
+import Image from 'next/image';
 const ROWS = 15;
 const COLS = 22;
 const TOTAL = ROWS * COLS;
@@ -68,7 +68,9 @@ export default function BoxGridSection() {
               <p>At the SSVM Transforming India Conclave 2025, we explore how AI and human creativity can together shape a sustainable and innovative future. Our theme, "AI & Humanity – Co-Creating Our World Today," highlights the power of technology and human potential working hand in hand to solve challenges and build a better tomorrow. Join us for engaging conversations and fresh ideas on harnessing AI to make a real, lasting impact!</p>
             </div>
             <div className="col-md-5 mt-5 mt-md-0">
-              <img src="/assets/images/about.jpg" alt="ai-consulting-1"
+            <Image src="https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/about.jpg" alt="ai-consulting-1"
+            width={500}
+            height={500}
               className='shadow'
               />
             </div>

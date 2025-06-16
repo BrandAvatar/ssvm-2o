@@ -40,7 +40,7 @@ const Header = ({ className = '' }) => {
                           playsInline
                           poster="/assets/images/ssvmlogo.png"
                           className="vid-logo"
-                          src="/assets/images/logo-vid.mp4"></video>
+                          src="https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/logo-vid.mp4"></video>
                         </Link>
                         <Link className="header__topbar-logo position-relative d-block d-lg-none
                         d-flex align-items-center
@@ -53,9 +53,9 @@ const Header = ({ className = '' }) => {
                           playsInline
                           poster="/assets/images/ssvmlogo.png"
                           className="vid-logo"
-                          src="/assets/images/logo-vid.mp4"></video>
+                          src="https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/logo-vid.mp4"></video>
                           <Image
-                            src="/assets/images/ssvma.png"
+                            src="https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/ssvma.png"
                             className="position-relative header-conclave-logo  img-fluid"
                             alt="logo"
                             fill
@@ -114,7 +114,7 @@ const Header = ({ className = '' }) => {
                       <div className=" d-none d-lg-block">
                         <Link className="header__topbar-logo position-relative" href="/">
                           <Image
-                            src="/assets/images/ssvma.png"
+                            src="https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/ssvma.png"
                             className="position-relative header-conclave-logo img-fluid"
                             alt="logo"
                             fill

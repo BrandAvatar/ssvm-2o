@@ -23,7 +23,7 @@ const Awards = () => {
              <img src="/assets/images/ele.png" alt="" className='strike' /> STUDENTPRENEUR AWARD
             </h3>
             <div className="d-flex flex-column flex-lg-row gap-2 align-items-center">
-              <img src="/assets/images/studentaward-c.gif" alt="" className='flex-shrink-0 w-50'/>
+              <img src="https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/studentaward.gif" alt="" className='flex-shrink-0 w-50'/>
               <div>
                 
                <p className='text-start mb-1 mt-0'>This is your chance to transform your entrepreneurial vision into reality. Picture yourself presenting your ideas to industry experts, potential investors, and fellow innovators who are eager to see your innovative solutions!</p>
