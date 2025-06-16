@@ -11,7 +11,7 @@ export default function GuruAwardsPage() {
 
 
 
-
+{/* 
         <section className="pt-40 about-3-area section-padding-top-bottom position-relative overflow-hidden" id='awards'>
         <figure className="about-3__shape d-none d-md-block ">
       <img src={aboutData?.image} alt="shape" />
@@ -57,7 +57,7 @@ export default function GuruAwardsPage() {
         </div>
       </div>
     </div>
-  </section>
+  </section> */}
 
 
 

@@ -6,7 +6,7 @@ export default function StudentpreneurAwardSSVM() {
     return (
         <>
          <Header className="position-static" /> 
-        <section className="about-3-area section-padding-top-bottom position-relative overflow-hidden" id='awards'>
+        {/* <section className="about-3-area section-padding-top-bottom position-relative overflow-hidden" id='awards'>
     <figure className="about-3__shape d-none d-md-block ">
       <img src={gif} alt="shape" />
     </figure>
@@ -50,7 +50,7 @@ export default function StudentpreneurAwardSSVM() {
         </div>
       </div>
     </div>
-  </section>
+        </section> */}
   <Footer />
     </>
     )
