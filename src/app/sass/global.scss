@@ -139,12 +139,25 @@ backdrop-filter: blur(28.892988204956055px) !important;
 }   
 
 
-
+@media only screen and (min-width: 992px) {
+  .robo-hide{
+    display: none !important;
+  }
+}
 
 @media only screen and (max-width: 575.98px) {
   .hero-ai__robot {
      display: none !important; 
-  }}
+  }
+  .robo-hide{
+    position: absolute;
+    bottom:  -114px;
+    display: block !important;
+  }
+}
+
+
+
 
 
 // .backdrop{

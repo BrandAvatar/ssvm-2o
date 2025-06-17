@@ -19,6 +19,9 @@ const HeroSection = () => {
             <div className="hero-ai__robot mt-5 mt-lg-0">
               <Spline scene={SplineLink} />
             </div>
+            <div className="robo-hide">
+              <Image src="https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/robot-2.png" alt="logo" className="w-100" width={1000} height={200} priority />
+            </div>  
             <div className="hero-ai__content">
               {/* <p>{heroInfo}</p> */}
               <h1 className="hero-ai-title">
