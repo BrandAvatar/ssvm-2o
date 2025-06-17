@@ -11,7 +11,7 @@ const HeroPhotostudioSlider = () => {
     <>
     <div className="text-center py-5" id="speakers">
       <h2 className="section__title split-text text-center text-initial gothic-bold text-uppercase pb-5">
-          <img src="/assets/images/ele.png" alt="" className="strike" /> Speakers
+          <img src="https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/ele.webp" alt="" className="strike" /> Speakers
       </h2>
       <p className="w-100 w-md-50 mx-auto">The SSVM Transforming India Conclave 2025 is a premier gathering of visionary leaders, industry trailblazers, and social entrepreneurs.</p>
     </div>

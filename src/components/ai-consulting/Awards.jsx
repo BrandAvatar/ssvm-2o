@@ -11,15 +11,13 @@ const Awards = () => {
 
   
     <section className="about-3-area section-padding-top-bottom position-relative overflow-hidden" id='awards'>
-    <figure className="about-3__shape d-none d-md-block ">
-      <img src={aboutData?.image} alt="shape" />
-    </figure>
+ 
     <div className="container container--extend moving-border">
       <div className="row justify-content-center overlay">
         <div className="p-0">
           <div className="section__header">
             <h2 className="d-flex text-center justify-content-center align-items-center">
-             <img src="/assets/images/ele.png" alt="" className='strike' /> AWARDS
+             <img src="https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/ele.webp" alt="" className='strike' /> AWARDS
             </h2>
             <div className="d-flex flex-column flex-lg-row gap-2 align-items-center">
               <img src="https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/guruaward-c.gif" alt="" className='flex-shrink-0 w-50'/>

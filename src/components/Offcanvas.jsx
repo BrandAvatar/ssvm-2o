@@ -18,7 +18,7 @@ const Offcanvas = ({ menus, handleClose, show, className = "", theme }) => {
         <ReactOffcanvas.Header>
           <ReactOffcanvas.Title as="h4">
             <Image
-              src="/assets/images/ssvmlogo.png"
+              src="https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/ssvmlogo.png"
               alt="logo"
               width={117}
               height={78}

@@ -4,7 +4,7 @@ import Media_coverage from "./media_coverage";
 export default function Nokia() {
   return (
     <section className=" bg-white">
-            <img src="/assets/images/hero-area/shape-dark-1.svg" alt="Decorative shape 1
+            <img src="https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/shape-dark-1.svg" alt="Decorative shape 1
             " style={{transform: 'rotate(180deg) translateY(-1px)',}} />
 
         <section className=" bg-black position-relative py-5 overflow-hidden">

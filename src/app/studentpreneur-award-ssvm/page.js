@@ -1,4 +1,3 @@
-const gif='./assets/images/about-area/about-3-shap.png'
 import Header from "@/components/ai-consulting/Header";
 import Footer from "@/components/ai-consulting/Footer";
 
@@ -7,15 +6,13 @@ export default function StudentpreneurAwardSSVM() {
         <>
          <Header className="position-static" /> 
         <section className="about-3-area section-padding-top-bottom position-relative overflow-hidden" id='awards'>
-    <figure className="about-3__shape d-none d-md-block ">
-      <img src={gif} alt="shape" />
-    </figure>
+    
     <div className="container container--extend moving-border">
       <div className="row justify-content-center overlay">
         <div className=" p-0 p-lg-5">
           <div className="section__header">
             <h3 className="d-flex text-lg-center text-start gap-3 justify-content-center align-items-center">
-             <img src="/assets/images/ele.png" alt="" className='strike' /> STUDENTPRENEUR AWARD
+             <img src="https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/ele.webp" alt="" className='strike' /> STUDENTPRENEUR AWARD
             </h3>
             <div className="d-flex flex-column flex-lg-row gap-2 align-items-center">
               <img src="https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/studentaward.gif" alt="" className='flex-shrink-0 w-50'/>

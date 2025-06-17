@@ -7,15 +7,13 @@ import aboutData from '@/constant/ai-consulting/about-data'
 const AboutSection = () => {
   return (
     <section className="about-3-area section-padding-top-bottom position-relative overflow-hidden">
-    <figure className="about-3__shape d-none d-md-block">
-      <img src={aboutData?.image} alt="shape" />
-    </figure>
+    
     <div className="container container--extend">
       <div className="row justify-content-center">
         <div className="col-xl-10">
           <div className="section__header text-center">
             <h2 className="section__title split-text left text-initial gothic-bold d-flex gap-3 justify-content-center align-items-center">
-              <img src="./assets/images/ele.png" alt="" className='strike' />
+              <img src="https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/ele.webp" alt="" className='strike' />
               {aboutData?.title}
             </h2>
             <p className=' gothic-bold text-normal text-1_5'>{aboutData?.description}</p>

@@ -1,16 +1,23 @@
 "use client"
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import Image from 'next/image';
 
 export default function Leftright() {
+  const [isMobile, setIsMobile] = useState(false);
+  const [isClient, setIsClient] = useState(false);
+
   useEffect(() => {
+    setIsClient(true);
+    setIsMobile(window.innerWidth <= 768);
+  }, []);
+
+  useEffect(() => {
+    if (!isClient) return;
+
     // Register ScrollTrigger plugin
     gsap.registerPlugin(ScrollTrigger);
-
-    // Check if the device is mobile
-    const isMobile = window.innerWidth <= 768;
 
     // Create a timeline for the animations with different settings for mobile and desktop
     const textTimeline = gsap.timeline({
@@ -45,7 +52,7 @@ export default function Leftright() {
         toggleActions: 'play none none reverse'
       }
     });
-  }, []);
+  }, [isMobile, isClient]);
 
   return (
     <section className="left-right-section ">

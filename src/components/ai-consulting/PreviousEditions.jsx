@@ -1,10 +1,18 @@
 "use client"
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Script from 'next/script';
 
 export default function PreviousEditions() {
+  const [isClient, setIsClient] = useState(false);
+
   useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isClient) return;
+
     // Initialize animation after all scripts are loaded
     const initAnimation = () => {
       if (window.jQuery && window.gsap && window.ScrollTrigger && window.initGalleryAnimation) {
@@ -25,7 +33,13 @@ export default function PreviousEditions() {
         window.ScrollTrigger.getAll().forEach(st => st.kill());
       }
     };
-  }, []);
+  }, [isClient]);
+
+  const handleScriptLoad = () => {
+    if (isClient && window.jQuery && window.gsap && window.ScrollTrigger && window.initGalleryAnimation) {
+      window.initGalleryAnimation();
+    }
+  };
 
   return (
     <>
@@ -33,17 +47,13 @@ export default function PreviousEditions() {
       <Script src="https://code.jquery.com/jquery-3.6.0.min.js" strategy="beforeInteractive" />
       <Script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js" strategy="beforeInteractive" />
       <Script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js" strategy="beforeInteractive" />
-      <Script src="/assets/js/gallery-animation.js" strategy="afterInteractive" onLoad={() => {
-        if (window.jQuery && window.gsap && window.ScrollTrigger && window.initGalleryAnimation) {
-          window.initGalleryAnimation();
-        }
-      }} />
+      <Script src="/assets/js/gallery-animation.js" strategy="afterInteractive" onLoad={handleScriptLoad} />
       
       <section id="previous-editions" className="bg2">
         <div className="container mx-auto mt-5 px-4">
           <div className="gallery  d-flex flex-column  justify-content-center " >
             <div className="d-flex my-4  gap-4 align-items-center justify-content-center">
-              <img src="/assets/images/ele.png" alt="" width="70" />
+              <img src="https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/ele.webp" alt="" width="70" />
               <h2 className="ssvm-h1 text-start line-1 anim-typewriter heading-1 text-uppercase">
                 P<span className="text-stroke ">a</span>st Ed<span className="text-stroke">i</span>tion Highlights
               </h2> 

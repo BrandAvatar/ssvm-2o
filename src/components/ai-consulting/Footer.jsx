@@ -26,7 +26,7 @@ const Footer = () => {
                           muted
                           loop
                           playsInline
-                          poster="/assets/images/ssvmlogo.png"
+                          poster="https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/ssvmlogo.png"
                           // className="vid-logo"
                           src="https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/logo-vid.mp4"></video>
                 
@@ -53,7 +53,7 @@ const Footer = () => {
 
             </div>
             <div className="col-12 col-lg-6">
-            <div className="d-flex mt-5 mb-3 gap-1 align-items-center"><img src="/assets/images/ele.png" alt="" className="strike" /><h3 className="text-black">CONTACT US</h3></div>
+            <div className="d-flex mt-5 mb-3 gap-1 align-items-center"><img src="https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/ele.webp" alt="" className="strike" /><h3 className="text-black">CONTACT US</h3></div>
               <ul>
                 <li className="mb-3"><i className="fas fa-map-marker-alt me-2" style={{color: '#F2821E'}}></i><a href="https://maps.google.com/?q=Sf No 72/2, Pattanam, To, Vellalore Rd, Vaigai Nagar, Singanallur, Coimbatore, Tamil Nadu 641016" target="_blank" rel="noopener noreferrer">Sf No 72/2, Pattanam, To, Vellalore Rd, Vaigai Nagar, Singanallur, Coimbatore, Tamil Nadu 641016</a></li>
                 <li className="mb-3"><i className="fas fa-envelope me-2" style={{color: '#F2821E'}}></i><a href="mailto:tic@ssvminstitutions.ac.in">tic@ssvminstitutions.ac.in</a></li>
@@ -103,7 +103,7 @@ const Footer = () => {
 
     <div className="whatsapp-icon">
                     <a href="https://wa.me/+918072434027?text=Start%20Chat" target="_blank" rel="noopener noreferrer">
-                    <img src="/assets/images/whatsapp.png" alt="WhatsApp" />
+                    <img src="https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/whatsapp.png" alt="WhatsApp" />
                     </a>
                     <style jsx>{`
                     .whatsapp-icon{

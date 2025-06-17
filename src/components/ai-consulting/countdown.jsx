@@ -7,8 +7,15 @@ export default function Countdown() {
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
   const [isEventStarted, setIsEventStarted] = useState(false);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isClient) return;
+
     const second = 1000;
     const minute = second * 60;
     const hour = minute * 60;
@@ -46,7 +53,21 @@ export default function Countdown() {
     }, 1000);
     
     return () => clearInterval(interval);
-  }, []);
+  }, [isClient]);
+
+  // Don't render anything until client-side hydration is complete
+  if (!isClient) {
+    return (
+      <div className="countdown">
+        <ul className="d-flex flex-row gap-md-5 gap-1 justify-between">
+          <li><span>0</span>days</li>
+          <li><span>0</span>Hours</li>
+          <li><span>0</span>Minutes</li>
+          <li><span>0</span>Seconds</li>
+        </ul>
+      </div>
+    );
+  }
 
   return (
     <>

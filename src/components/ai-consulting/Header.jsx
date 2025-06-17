@@ -38,7 +38,7 @@ const Header = ({ className = '' }) => {
                           muted
                           loop
                           playsInline
-                          poster="/assets/images/ssvmlogo.png"
+                          poster="https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/ssvmlogo.png"
                           className="vid-logo"
                           src="https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/logo-vid.mp4"></video>
                         </Link>
@@ -51,7 +51,7 @@ const Header = ({ className = '' }) => {
                           muted
                           loop
                           playsInline
-                          poster="/assets/images/ssvmlogo.png"
+                          poster="https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/ssvmlogo.png"
                           className="vid-logo"
                           src="https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/logo-vid.mp4"></video>
                           <Image

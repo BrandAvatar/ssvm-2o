@@ -20,7 +20,6 @@ const RoundSection_copy = () => {
         >
           {marquee?.marqueeText?.map((item, index) => (
             <div key={index} className="marquee-item d-flex align-items-center ">
-              {/* <img src="./assets/images/round-area/shape.png" alt="shape" /> */}
               <h4 
                 className="tag gothic-bold text-stroke" 
                 style={{
@@ -42,7 +41,6 @@ const RoundSection_copy = () => {
         >
           {marquee?.marqueeText?.map((item, index) => (
             <div key={index} className="marquee-item d-flex align-items-center ">
-              {/* <img src="./assets/images/round-area/shape.png" alt="shape" /> */}
                <h4 
                 className="tag gothic-bold text-stroke" 
                 style={{

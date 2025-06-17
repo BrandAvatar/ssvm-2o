@@ -1,8 +1,5 @@
 import Header from "@/components/ai-consulting/Header";
 import Footer from "@/components/ai-consulting/Footer";
-import aboutData from '@/constant/ai-consulting/about-data'
-
-const gif="./assets/images/about-area/about-3-shap.png"
 
 export default function GuruAwardsPage() {
     return (
@@ -13,15 +10,13 @@ export default function GuruAwardsPage() {
 
 {/* 
         <section className="pt-40 about-3-area section-padding-top-bottom position-relative overflow-hidden" id='awards'>
-        <figure className="about-3__shape d-none d-md-block ">
-      <img src={aboutData?.image} alt="shape" />
-    </figure>
+       
     <div className="container container--extend moving-border">
       <div className="row justify-content-center overlay">
         <div className=" p-0 p-lg-5">
           <div className="section__header">
             <h3 className="d-flex text-lg-center text-start gap-3 justify-content-center align-items-center">
-             <img src="/assets/images/ele.png" alt="" className='strike' /> INSPIRATIONAL GURU AWARD
+             <img src="https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/ele.webp" alt="" className='strike' /> INSPIRATIONAL GURU AWARD
             </h3>
             <h4 className="text-center">SSVM </h4>
             <div className="d-flex flex-column flex-lg-row gap-2 align-items-center">
