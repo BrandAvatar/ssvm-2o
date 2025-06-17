@@ -60,7 +60,7 @@ export default function Leftright() {
           <div>
             <div className="scroll-text left-to-right">
               <span className="d-flex flex-row gap-3 display-1 text-center text-md-start d-flex align-items-center justify-content-center">
-                <Image src="/assets/images/ssvm/ele.webp" alt="" className="strike" width={200} height={200} />
+                <Image src="https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/ele.webp" alt="" className="strike" width={200} height={200} />
                 <h1 className="gothic-bold">Transforming</h1>
               </span>
             </div>
