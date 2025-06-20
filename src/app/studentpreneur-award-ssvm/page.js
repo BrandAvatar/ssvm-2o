@@ -20,13 +20,13 @@ export default function StudentpreneurAwardSSVM() {
                 
                <p className='text-start mb-1 mt-0'>This is your chance to transform your entrepreneurial vision into reality. Picture yourself presenting your ideas to industry experts, potential investors, and fellow innovators who are eager to see your innovative solutions!</p>
                <p className='text-start mt-3'>Have a business idea that can change the game? Apply for the Studentpreneur Award and showcase your entrepreneurial spirit! We can't wait to see what you create.</p>
-               <a href='#form'  className='yellow-btn mt-3 d-block' style={{width: "fit-content"}}>Apply Now</a>
+               {/* <a href='#form'  className='yellow-btn mt-3 d-block' style={{width: "fit-content"}}>Apply Now</a> */}
               </div>
              
             </div>
             
-            <p className='mt-lg-2'><b>Last date to apply: </b>30th June</p>
-            <p className='mt-lg-2'><b>Eligibility: </b>Only students from institutions other than SSVM are eligible to apply.</p>
+            {/* <p className='mt-lg-2'><b>Last date to apply: </b>20th June</p>
+            <p className='mt-lg-2'><b>Eligibility: </b>Only students from SSVM institutions are eligible to apply.</p>
             <p className='mt-lg-2'><b>Grade & Team Limit: </b> Open to 8th-12th grade students, with a maximum of 3 members per team.</p>
             <p className='mt-lg-2'><b>Submission: </b> A document explaining the business idea must be submitted.</p>
             <p className='mt-lg-2'><b>Presentation: </b>Business ideas to be presented to the jury via a Zoom call.</p>
@@ -39,7 +39,7 @@ export default function StudentpreneurAwardSSVM() {
 
 
             <iframe aria-label='STUDENTPRENEUR AWARD INTERNAL' style={{height: "800px", width: "99%", border: "none", borderRadius: "20px"}}  src='https://forms.zohopublic.com/xtracut/form/Studentpreneurawardsinternal/formperma/q-uYTw43ixLESeH81CPnE4BFLDbnLCZzn8ykjp6o32g'></iframe>
-            </div>
+            </div> */}
           </div>
 
 
