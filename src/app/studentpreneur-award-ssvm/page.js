@@ -32,9 +32,9 @@ export default function StudentpreneurAwardSSVM() {
             <p className='mt-lg-2'><b>Presentation: </b>Business ideas to be presented to the jury via a Zoom call.</p>
             <p className='mt-lg-2'><b>Finale: </b>Shortlisted teams must attend the final event in person on September 1, 2 & 3 at SSVM World School, Coimbatore.</p>
             <p className='mt-lg-2'><b>Confirmation:</b>Upon registration, a confirmation email will be sent, and further communication will follow.            </p>
-
-            <h2 className='text-uppercase pb-5 pt-5 pt-lg-5 mt-5 text-center'>registr<span className='stroke'>A</span>t<span className='stroke'>i</span>on</h2>
-            <div className="d-flex flex-column flex-lg-row justify-content-between gap-5 text-uppercase">
+ */}
+            <h2 className='text-uppercase pb-5 pt-5 pt-lg-5 mt-5 text-center'>Registration Closed</h2>
+            {/* <div className="d-flex flex-column flex-lg-row justify-content-between gap-5 text-uppercase">
               
 
 
