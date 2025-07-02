@@ -57,7 +57,7 @@ const Footer = () => {
               <ul>
                 <li className="mb-3"><i className="fas fa-map-marker-alt me-2" style={{color: '#F2821E'}}></i><a href="https://maps.google.com/?q=Sf No 72/2, Pattanam, To, Vellalore Rd, Vaigai Nagar, Singanallur, Coimbatore, Tamil Nadu 641016" target="_blank" rel="noopener noreferrer">Sf No 72/2, Pattanam, To, Vellalore Rd, Vaigai Nagar, Singanallur, Coimbatore, Tamil Nadu 641016</a></li>
                 <li className="mb-3"><i className="fas fa-envelope me-2" style={{color: '#F2821E'}}></i><a href="mailto:tic@ssvminstitutions.ac.in">tic@ssvminstitutions.ac.in</a></li>
-                <li className="mb-3"><i className="fas fa-phone me-2" style={{color: '#F2821E'}}></i><a href="tel:+91 93444 51888">+91 93444 51888</a></li>
+                <li className="mb-3"><i className="fas fa-phone me-2" style={{color: '#F2821E'}}></i><a href="tel:+91 93445 05000">+91 93445 05000</a></li>
                
               </ul>
             </div>
