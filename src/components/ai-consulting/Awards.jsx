@@ -41,11 +41,11 @@ const Awards = () => {
               </div>
               <div className="registerbox text-center mb-5 mb-lg-0">
                   <h3 className='py-3'>For other institutions</h3>
-                  <div className="d-flex flex-column flex-lg-row gap-2">
-                    <a href="/guru-awards-other-institutions-self-nomination" className='yellow-btn'>Self nomination </a>
-                    <a href="/guru-awards-other-institutions-nominate-others" className='yellow-btn'>nominate others</a>
+                  <div className="d-flex flex-column justify-content-center align-items-center flex-lg-row gap-2">
+                    {/* <a href="/guru-awards-other-institutions-self-nomination" className='yellow-btn'>Self nomination </a> */}
+                    <a href="/guru-awards-other-institutions-nominate-others" className='yellow-btn'>Closed</a>
                   </div>
-                  <p className='m-0 py-3  text-black'>Last date to apply: 30th June </p>
+                  {/* <p className='m-0 py-3  text-black'>Last date to apply: 30th June </p> */}
 
               </div>
             </div>
@@ -74,9 +74,9 @@ const Awards = () => {
               <div className="col-12 col-lg-5 registerbox text-center mb-5 mb-lg-0">
                   <h3 className='py-3'>For other institutions</h3>
                   <div className="d-flex flex-column flex-lg-row justify-content-center gap-2">
-                    <a href="/studentpreneur-award-other-insitutions" className='yellow-btn'>Register Now</a>
+                    <a href="/studentpreneur-award-other-insitutions" className='yellow-btn'>Closed</a>
                   </div>
-                  <p className='m-0 py-3 text-black'>Last date to apply: 30th June </p>
+                  {/* <p className='m-0 py-3 text-black'>Last date to apply: 30th June </p> */}
 
               </div>
             </div>

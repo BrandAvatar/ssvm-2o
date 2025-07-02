@@ -27,11 +27,11 @@ export default function GuruAwardsPage() {
                 
                <p className='text-start mb-1 mt-0'>The Inspirational Guru Award honors educators who go the extra mile to make a lasting impact. These teachers foster a nurturing classroom environment, inspire students to pursue their dreams, and help shape them into well-rounded individuals.</p>
                <p className='text-start mt-3'>Do you know a teacher who deserves recognition for their dedication and influence? Nominate them for the Inspirational Guru Award today!</p>
-               <a href='#form'  className='yellow-btn mt-3 d-block' style={{width: "fit-content"}}>Apply Now</a>
+               {/* <a href='#form'  className='yellow-btn mt-3 d-block' style={{width: "fit-content"}}>Apply Now</a> */}
               </div>
              
             </div>
-            <p className='mt-lg-2'><b>Last date to apply: </b>30th June</p>
+            {/* <p className='mt-lg-2'><b>Last date to apply: </b>30th June</p>
             <p className='mt-lg-2'><b>Eligibility: </b>Only teachers from institutions other than SSVM are eligible to apply.</p>
             <p className='mt-lg-2'><b>Experience: </b>Applicants must have at least 10 years of service as a school teacher.</p>
             <p className='mt-lg-2'><b>Nomination: </b> Teachers may apply through self-nomination or be nominated by others. </p>
@@ -41,13 +41,14 @@ export default function GuruAwardsPage() {
 
 
             <h2 className='text-uppercase pb-5 pt-5 pt-lg-5 mt-5 text-center'>registr<span className='stroke'>A</span>t<span className='stroke'>i</span>on</h2>
-            
-            <div className="d-flex flex-column flex-lg-row justify-content-between gap-5 text-uppercase">
+             */}
+             <h2 className='text-uppercase pb-5 pt-5 pt-lg-5 mt-5 text-center'>Registration Closed</h2>
+            {/* <div className="d-flex flex-column flex-lg-row justify-content-between gap-5 text-uppercase">
               
 
 
             <iframe id='form' aria-label='STUDENTPRENEUR AWARD EXTERNAL DM' style={{height: "800px", width: "99%", border: "none", borderRadius: "20px"}} src='https://forms.zohopublic.com/xtracut/form/INSPIRATIONALGURUAWARDSelfNominationExternal1/formperma/217RUQ7SZyzQCr1TKb2Mq_BWvLhMczGn2RHvHfHjAk4?zf_enablecamera=true'></iframe>
-            </div>
+            </div> */}
           </div>
 
 
