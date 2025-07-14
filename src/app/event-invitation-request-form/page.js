@@ -40,7 +40,8 @@ export default function EventInvitationRequestForm() {
 
             <iframe aria-label='STUDENTPRENEUR AWARD INTERNAL' style={{height: "800px", width: "99%", border: "none", borderRadius: "20px"}}  src='https://forms.zohopublic.com/xtracut/form/Studentpreneurawardsinternal/formperma/q-uYTw43ixLESeH81CPnE4BFLDbnLCZzn8ykjp6o32g'></iframe>
             </div> */}
-            <iframe aria-label='SSVM - Event Invitation Request Form' frameborder="0" allow="camera;" style={{height: "1600px", width: "99%", border: "none",borderRadius: "20px"}} src='https://forms.zohopublic.com/xtracut/form/SSVMEventInvitationRequestForm/formperma/X4FgkKv-t1dh0TQj8G5SNNv9QAKbHxPcJ53BebHqqMw?zf_enablecamera=true'></iframe>
+            <iframe aria-label='SSVM - Event Invitation Request Form' frameborder="0" allow="camera;" style={{height: "1600px", width: "99%", border: "none",borderRadius: "20px"}} src='https://forms.zohopublic.com/xtracut/form/SSVMEventInvitationRequestForm1/formperma/w19pO5i6pNNDuhicnqXHdJ9j3vq-ljysZ0rhV0fbC8M?zf_enablecamera=true'></iframe>
+            {/* <iframe aria-label='SSVM - Event Invitation Request Form' frameborder="0" allow="camera;" style={{height: "1600px", width: "99%", border: "none",borderRadius: "20px"}} src='https://forms.zohopublic.com/xtracut/form/SSVMEventInvitationRequestForm/formperma/X4FgkKv-t1dh0TQj8G5SNNv9QAKbHxPcJ53BebHqqMw?zf_enablecamera=true'></iframe> */}
           </div>
 
 

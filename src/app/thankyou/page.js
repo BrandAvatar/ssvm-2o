@@ -22,7 +22,7 @@ export default function ThankYou() {
      
          <div className="container">
             <a href="#" className="text-center text-decoration-none bg-white p-3 rounded-3 d-block " style={{ margin: "10px auto"}}>
-            <img src="/assets/images/newlogo.png" alt="SSVM Logo" className="img-fluid" />
+            <img src="/assets/images/ssvmlogo.png" alt="SSVM Logo" className="img-fluid" />
             </a>
             <div className="d-flex justify-content-center align-items-center" style={{height: "70vh"}}>
                 <div className="col-12 text-center">
