@@ -25,14 +25,14 @@ export default function StudentpreneurAwardSSVM() {
              <img src="https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/ele.webp" alt="" className='strike' /> STUDENTPRENEUR AWARD
             </h3>
             <div className='d-flex flex-column'>
-                   <h2 className='text-uppercase pb-5 pt-5 pt-lg-5 mt-5 text-center'>registr<span className='stroke'>A</span>t<span className='stroke'>i</span>on</h2>
+                   {/* <h2 className='text-uppercase pb-5 pt-5 pt-lg-5 mt-5 text-center'>registr<span className='stroke'>A</span>t<span className='stroke'>i</span>on</h2> */}
             <div className="d-flex flex-column flex-lg-row justify-content-between gap-5 text-uppercase" id='form' itemID='form'>
               
 
 
           
 
-            <iframe id="myiframe" aria-label='Studentpreneur Award External -wp'  style={{height: "1350px", width: "99%", border: "none", borderRadius: "20px"}} src='https://forms.zohopublic.com/xtracut/form/StudentpreneurAwardExternalwp/formperma/6YlQvXxRngm5rRIHdxsHQaR6YbdSfDrFW0v5H_mjMQI'></iframe>
+            {/* <iframe id="myiframe" aria-label='Studentpreneur Award External -wp'  style={{height: "1350px", width: "99%", border: "none", borderRadius: "20px"}} src='https://forms.zohopublic.com/xtracut/form/StudentpreneurAwardExternalwp/formperma/6YlQvXxRngm5rRIHdxsHQaR6YbdSfDrFW0v5H_mjMQI'></iframe> */}
 
               </div>
             
