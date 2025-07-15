@@ -27,7 +27,7 @@ export default function Countdown() {
     const mm = String(today.getMonth() + 1).padStart(2, "0");
     const yyyy = today.getFullYear();
     const nextYear = yyyy + 1;
-    const dayMonth = "08/01/";
+    const dayMonth = "09/01/";
     let birthday = dayMonth + yyyy;
     
     today = mm + "/" + dd + "/" + yyyy;
