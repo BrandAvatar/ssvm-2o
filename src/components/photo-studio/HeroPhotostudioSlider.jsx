@@ -47,6 +47,7 @@ const HeroPhotostudioSlider = () => {
           },
         }}
         className="hero-photostudio__slider"
+     
       >
         {/* Slider Shapes */}
         <div className="slider-shape">
@@ -58,7 +59,7 @@ const HeroPhotostudioSlider = () => {
         {/* Slider Images */}
         {SLIDEDATA.map((slide) => (
           <SwiperSlide key={slide.id}>
-            <img src={slide.imgSrc} alt={slide.alt} className="w-100" style={{height: "590px"}} />
+            <img src={slide.imgSrc} alt={slide.alt} className="w-100" />
           </SwiperSlide>
         ))}
       </Swiper>
