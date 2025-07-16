@@ -24,15 +24,20 @@ const menus = [
     name: "Workshops",
     link: "#entertainment"
   },
-  {
-    id: 5,
-    name: "Awards",
-    link: "#awards"
-  },
+  // {
+  //   id: 5,
+  //   name: "Awards",
+  //   link: "#awards"
+  // },
   {
     id: 6,
     name: "Contact",
     link: "#footer"
+  },
+  {
+    id: 7,
+    name: "Request an Invite",
+    link: "/event-invitation-request-form"
   }
   // {
   //   id: 0,

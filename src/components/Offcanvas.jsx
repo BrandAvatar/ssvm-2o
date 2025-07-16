@@ -56,7 +56,7 @@ const Offcanvas = ({ menus, handleClose, show, className = "", theme }) => {
                     {menu?.subMenu && menu?.subMenu.length > 0 ? (
                       <>
                         <Accordion.Header as="li">
-                          <MobileMenu name={menu?.name} />
+                          <MobileMenu name={menu?.name} handleClose={handleClose} />
                           <IoIosArrowDown size={20} />
                         </Accordion.Header>
                         <Accordion.Body as="ul">
@@ -72,6 +72,7 @@ const Offcanvas = ({ menus, handleClose, show, className = "", theme }) => {
                                     }
                                     link={subMenuItem?.link}
                                     name={subMenuItem?.name}
+                                    handleClose={handleClose}
                                   />
                                 </li>
                               ))}
@@ -81,7 +82,7 @@ const Offcanvas = ({ menus, handleClose, show, className = "", theme }) => {
                       </>
                     ) : (
                       <li>
-                        <MobileMenu link={menu?.link} name={menu?.name} />
+                        <MobileMenu link={menu?.link} name={menu?.name} handleClose={handleClose} />
                       </li>
                     )}
                   </Accordion.Item>
