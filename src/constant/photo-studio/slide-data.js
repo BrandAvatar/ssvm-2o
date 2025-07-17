@@ -51,7 +51,7 @@ const slideData = [
     },
     {
       id: 11,
-      imgSrc: "https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/speaker-11.webp",
+      imgSrc: "https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/new-speaker-11.webp",
       alt: "Photography portfolio hero image 5",
     },
     {
