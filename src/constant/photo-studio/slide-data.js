@@ -21,7 +21,7 @@ const slideData = [
     },
     {
       id: 5,
-      imgSrc: "../2025/speaker-5.webp",
+      imgSrc: "https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/speaker-5.webp",
       alt: "Photography portfolio hero image 5",
     },
     {
