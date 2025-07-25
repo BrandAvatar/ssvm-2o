@@ -40,6 +40,20 @@ const SERVISES = [
       link: "/#",
       image: "https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/workshop-6.webp",
       alt: "service-thumb"
+    },
+    {
+      id: 7,
+      title: "Digital Marketer",
+      link: "/#",
+      image: "https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/workshop-7.webp",
+      alt: "service-thumb"
+    },
+    {
+      id: 8,
+      title: "ALT+AI Create with Code",
+      link: "/#",
+      image: "https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/workshop-8.webp",
+      alt: "service-thumb"
     }
   ];
   
