@@ -50,10 +50,24 @@ const SERVISES = [
     },
     {
       id: 8,
-      title: "ALT+AI Create with Code",
+      title: "ART+AI Create with Code",
       link: "/#",
       image: "https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/workshop-8.webp",
       alt: "service-thumb"
+    },
+    {
+      id: 9,
+      title: "Socially Smart Powered by AI",
+      link: "/#",
+      image: "https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/Socially%2BSmart%2BPowered%2Bby%2BAI.webp",
+      alt: "Socially Smart Powered by AI"
+    },
+    {
+      id: 10,
+      title: "Bot builders: Chatbots, AI Agents",
+      link: "/#",
+      image: "https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/Socially%2BSmart%2BPowered%2Bby%2BAI.webp",
+      alt: "Bot builders: Chatbots, Ai Agents"
     }
   ];
   
