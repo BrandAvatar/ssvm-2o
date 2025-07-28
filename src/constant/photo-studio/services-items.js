@@ -41,13 +41,13 @@ const SERVISES = [
       image: "https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/workshop-6.webp",
       alt: "service-thumb"
     },
-    {
-      id: 7,
-      title: "Digital Marketer",
-      link: "/#",
-      image: "https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/workshop-7.webp",
-      alt: "service-thumb"
-    },
+    // {
+    //   id: 7,
+    //   title: "Digital Marketer",
+    //   link: "/#",
+    //   image: "https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/workshop-7.webp",
+    //   alt: "service-thumb"
+    // },
     {
       id: 8,
       title: "ART+AI Create with Code",
@@ -57,7 +57,7 @@ const SERVISES = [
     },
     {
       id: 9,
-      title: "Socially Smart Powered by AI",
+      title: "Socially Smart: Powered by AI",
       link: "/#",
       image: "https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/Socially%2BSmart%2BPowered%2Bby%2BAI.webp",
       alt: "Socially Smart Powered by AI"
