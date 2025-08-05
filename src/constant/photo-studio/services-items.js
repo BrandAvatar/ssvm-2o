@@ -71,7 +71,7 @@ const SERVISES = [
     },
     {
       id: 11,
-      title: "mindfulness with Ai: Love Hope Company",
+      title: "Mindfulness with Ai: Love Hope Company",
       link: "/#",
       image: "https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/Tech-workshop-3.jpeg",
       alt: "Artificial Intelligence"
