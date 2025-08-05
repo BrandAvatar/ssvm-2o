@@ -52,7 +52,7 @@ const SERVISES = [
       id: 8,
       title: "ART+AI Create with Code",
       link: "/#",
-      image: "https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/workshop-8.webp",
+      image: "https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/Tech-workshop-1.jpeg",
       alt: "service-thumb"
     },
     {
@@ -68,6 +68,13 @@ const SERVISES = [
       link: "/#",
       image: "https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/Socially%2BSmart%2BPowered%2Bby%2BAI.webp",
       alt: "Bot builders: Chatbots, Ai Agents"
+    },
+    {
+      id: 11,
+      title: "mindfulness with Ai: Love Hope Company",
+      link: "/#",
+      image: "https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/Tech-workshop-3.jpeg",
+      alt: "Artificial Intelligence"
     }
   ];
   
