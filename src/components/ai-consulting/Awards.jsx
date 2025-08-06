@@ -41,7 +41,7 @@ const Awards = () => {
                   <h3 className='py-3'>External Inspirational Guru Awards 2025</h3>
                   <div className="d-flex flex-column justify-content-center align-items-center flex-lg-row gap-2">
                     {/* <a href="/guru-awards-other-institutions-self-nomination" className='yellow-btn'>Self nomination </a> */}
-                    <a href="./2025/awards-list.pdf" className='yellow-btn'>Selected Candidates</a>
+                    <a href="./2025/awards-list-2025.pdf" className='yellow-btn'>Selected Candidates</a>
                   </div>
                   {/* <p className='m-0 py-3  text-black'>Last date to apply: 30th June </p> */}
 
