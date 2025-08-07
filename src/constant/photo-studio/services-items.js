@@ -75,6 +75,13 @@ const SERVISES = [
       link: "/#",
       image: "https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/Tech-workshop-3.jpeg",
       alt: "Artificial Intelligence"
+    },
+    {
+      id: 12,
+      title: "Ai for Good : Tapan Aslot",
+      link: "/#",
+      image: "https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/Tech-workshop-4.jpeg",
+      alt: "Ai for Good : Tapan Aslot"
     }
   ];
   
