@@ -78,10 +78,10 @@ const SERVISES = [
     },
     {
       id: 12,
-      title: "Ai for Good : Tapan Aslot",
+      title: "Ai for Social Good : Tapan Aslot",
       link: "/#",
       image: "https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/Tech-workshop-4.jpeg",
-      alt: "Ai for Good : Tapan Aslot"
+      alt: "Ai for Social Good : Tapan Aslot"
     }
   ];
   
