@@ -8,7 +8,7 @@ const footerData = {
   centerContent: {
     footerWrapperBg: "./assets/images/footer-area/footer-3-bg.png",
     subHeading: "Looking for a new talent?",
-    email: "nicholls@gmail.com",
+    email: "amul@xtracut.com",
     socialLinks: [
       {
         name: "Facebook",

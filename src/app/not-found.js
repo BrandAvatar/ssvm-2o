@@ -4,7 +4,7 @@ import Header from "@/components/ai-consulting/Header";
 import Image from "next/image";
 
 export const metadata = {
-  title: "Page Not Found || Nicholls - Personal Portfolio/CV NextJS Template",
+  title: "Page Not Found || SSVM Transforming India Conclave 2025",
 };
 
 const NotFound = () => {
