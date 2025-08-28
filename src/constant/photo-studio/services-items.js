@@ -34,13 +34,13 @@ const SERVISES = [
       image: "https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/workshop-05.webp",
       alt: "service-thumb"
     },
-    {
-      id: 6,
-      title: "Amrita Binito Chetry",
-      link: "/#",
-      image: "https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/workshop-6.webp",
-      alt: "service-thumb"
-    },
+    // {
+    //   id: 6,
+    //   title: "Amrita Binito Chetry",
+    //   link: "/#",
+    //   image: "https://ssvmtransformationindia.s3.ap-south-1.amazonaws.com/images/workshop-6.webp",
+    //   alt: "service-thumb"
+    // },
     // {
     //   id: 7,
     //   title: "Digital Marketer",

@@ -34,11 +34,11 @@ const menus = [
     name: "Contact",
     link: "#footer"
   },
-  {
-    id: 7,
-    name: "Request an Invite",
-    link: "/event-invitation-request-form"
-  }
+  // {
+  //   id: 7,
+  //   name: "Request an Invite",
+  //   link: "/event-invitation-request-form"
+  // }
   // {
   //   id: 0,
   //   name: "Home",
