@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import Script from 'next/script';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 export default function PreviousEditions() {
   const [isClient, setIsClient] = useState(false);
@@ -13,9 +15,12 @@ export default function PreviousEditions() {
   useEffect(() => {
     if (!isClient) return;
 
+    // Register GSAP plugins
+    gsap.registerPlugin(ScrollTrigger);
+
     // Initialize animation after all scripts are loaded
     const initAnimation = () => {
-      if (window.jQuery && window.gsap && window.ScrollTrigger && window.initGalleryAnimation) {
+      if (window.jQuery && window.initGalleryAnimation) {
         setTimeout(() => {
           window.initGalleryAnimation();
         }, 500); // Small delay to ensure DOM is fully rendered
@@ -23,20 +28,18 @@ export default function PreviousEditions() {
     };
 
     // Check if scripts are already loaded
-    if (window.jQuery && window.gsap && window.ScrollTrigger) {
+    if (window.jQuery) {
       initAnimation();
     }
     
     // Cleanup function
     return () => {
-      if (window.ScrollTrigger) {
-        window.ScrollTrigger.getAll().forEach(st => st.kill());
-      }
+      ScrollTrigger.getAll().forEach(st => st.kill());
     };
   }, [isClient]);
 
   const handleScriptLoad = () => {
-    if (isClient && window.jQuery && window.gsap && window.ScrollTrigger && window.initGalleryAnimation) {
+    if (isClient && window.jQuery && window.initGalleryAnimation) {
       window.initGalleryAnimation();
     }
   };
@@ -45,8 +48,6 @@ export default function PreviousEditions() {
     <>
       {/* Load required scripts */}
       <Script src="https://code.jquery.com/jquery-3.6.0.min.js" strategy="beforeInteractive" />
-      <Script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js" strategy="beforeInteractive" />
-      <Script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js" strategy="beforeInteractive" />
       <Script src="/assets/js/gallery-animation.js" strategy="afterInteractive" onLoad={handleScriptLoad} />
       
       <section id="previous-editions" className="bg2">

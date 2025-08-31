@@ -21,21 +21,9 @@ export default function Countdown() {
     const hour = minute * 60;
     const day = hour * 24;
 
-    // Calculate the target date
-    let today = new Date();
-    const dd = String(today.getDate()).padStart(2, "0");
-    const mm = String(today.getMonth() + 1).padStart(2, "0");
-    const yyyy = today.getFullYear();
-    const nextYear = yyyy + 1;
-    const dayMonth = "09/01/";
-    let birthday = dayMonth + yyyy;
-    
-    today = mm + "/" + dd + "/" + yyyy;
-    if (today > birthday) {
-      birthday = dayMonth + nextYear;
-    }
-    
-    const countDown = new Date(birthday).getTime();
+    // Calculate the target date - September 1st, 2025 at 09:00
+    const targetDate = new Date('2025-09-01T09:00:00');
+    const countDown = targetDate.getTime();
     
     const interval = setInterval(() => {
       const now = new Date().getTime();

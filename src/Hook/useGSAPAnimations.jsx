@@ -2,10 +2,11 @@
 
 import { useGSAP } from "@gsap/react";
 import { usePathname } from "next/navigation";
-import gsap, { Power2 } from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
-import ScrollToPlugin from "gsap/ScrollToPlugin";
-import SplitText from "gsap/SplitText";
+import gsap from "gsap";
+import { Power2 } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import { SplitText } from "gsap/SplitText";
 
 const useGSAPAnimations = () => {
   const pathname = usePathname();

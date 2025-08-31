@@ -1,7 +1,7 @@
 // GSAP Gallery Animation
 globalThis.initGalleryAnimation = function() {
-  // Register GSAP plugins
-  gsap.registerPlugin(ScrollTrigger);
+  // GSAP and ScrollTrigger should be available from the imported packages
+  // No need to register plugins here as they're already registered in the component
   const $container = $(".gallery");
   const $items = $(".cards");
 
