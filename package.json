@@ -18,7 +18,7 @@
     "@splinetool/runtime": "^1.9.59",
     "bootstrap": "^5.3.3",
     "gsap": "file:gsap-bonus.tgz",
-    "next": "15.1.2",
+    "next": "15.1.11",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.7",
     "react-countup": "^6.5.3",
