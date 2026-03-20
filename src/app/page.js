@@ -34,19 +34,19 @@ export const metadata = {
       url: '/assets/images/favicon.png',
     },
   ],
-  title: "SSVM Institutions | Transforming India Conclave 2025 – Humanity and AI co creating Our World Today",
+  title: "SSVM Institutions | Coming Soon - 2026",
 };
 
 export default function Home() {
   return (
     <>
       {/* <Header /> */}
-      <main style={{ 
-        margin: 0, 
-        padding: 0, 
-        overflow: 'hidden', 
-        height: '100vh', 
-        width: '100vw', 
+      <main style={{
+        margin: 0,
+        padding: 0,
+        overflow: 'hidden',
+        height: '100vh',
+        width: '100vw',
         boxSizing: 'border-box',
         background: '#dbdbdb', // Solid grey matching the image
         display: 'flex',

@@ -28,7 +28,7 @@ export const metadata = {
       url: '/assets/images/favicon.png',
     },
   ],
-  title: "SSVM Institutions | Transforming India Conclave 2025 – Humanity and AI co creating Our World Today",
+  title: "SSVM Institutions | Coming Soon - 2026",
 };
 
 export default function RootLayout({ children }) {
@@ -47,7 +47,7 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         {/* Google Tag Manager (noscript) */}
-          <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M79FS9NN" height="0" width="0" style={{display:'none', visibility:'hidden'}}></iframe></noscript>
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M79FS9NN" height="0" width="0" style={{ display: 'none', visibility: 'hidden' }}></iframe></noscript>
 
 
         <AnimationProvider>{children}</AnimationProvider>
