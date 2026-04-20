@@ -66,10 +66,11 @@ const DashboardPage = () => {
         setLoading(true);
         const token = localStorage.getItem('token');
         
-        let url = `https://new.ssvmtransformingindia.com/public/api/registrations?page=${page}`;
+        let url = `https://brainiacchessacademy.com/ssvm-school/public/api/registrations?page=${page}`;
         
-        if (search) {
-            url += `&search=${encodeURIComponent(search)}`;
+        const cleanSearch = (search || '').trim();
+        if (cleanSearch) {
+            url += `&search=${encodeURIComponent(cleanSearch)}`;
         }
 
         if (categoryId && categoryId !== 'overview') {
@@ -137,15 +138,15 @@ const DashboardPage = () => {
         let headers = [];
         if (isStudent) {
             headers = [
-                'S No', 'Reg No', 'Name', 'Grade', 'Applicant Email', 'Applicant Mobile No', 
+                'S No', 'Reg No', 'Student Name', 'Grade', 'Applicant Email', 'Applicant Mobile No', 
                 'School Name', 'School City', 'School Phone no', 'School Email', 
-                'Business Idea', 'Total Members', 'Pitch Deck URL', 'Date'
+                'Business Idea', 'Total Members', 'Key Achievements', 'Why Join', 'Pitch Deck URL', 'Date'
             ];
         } else if (isGuru) {
             headers = [
                 'S No', 'Reg No', 'Teacher Name', 'Email', 'Phone', 'School Name', 
-                'Subjects', 'Experience', 'Vision', 'Impact', 'Profile', 
-                'Nominator Name', 'Nominator Email', 'References', 'Photo URL', 'Date'
+                'Subjects', 'Experience', 'PE Teacher', 'PE Details', 'Vision', 'Impact', 'Profile', 
+                'Nominator Name', 'Nominator Phone', 'Nominator Email', 'Nominator Address', 'References', 'Photo URL', 'Date'
             ];
         } else {
             headers = ['S No', 'Reg No', 'Name', 'Email', 'Phone', 'Category', 'Nomination', 'Date'];
@@ -168,7 +169,9 @@ const DashboardPage = () => {
                         `"${reg.school_email || ''}"`,
                         `"${(reg.business_idea || '').replace(/"/g, '""').replace(/\n/g, ' ')}"`,
                         `"${reg.total_members || ''}"`,
-                        `"${reg.pitch_deck_path ? 'https://new.ssvmtransformingindia.com/public/registrations/' + reg.pitch_deck_path : ''}"`,
+                        `"${(reg.achievements || '').replace(/"/g, '""').replace(/\n/g, ' ')}"`,
+                        `"${(reg.why_join || '').replace(/"/g, '""').replace(/\n/g, ' ')}"`,
+                        `"${reg.pitch_deck_path ? 'https://brainiacchessacademy.com/ssvm-school/public/registrations/' + reg.pitch_deck_path : ''}"`,
                         `"${new Date(reg.created_at).toLocaleDateString()}"`
                     ].join(',');
                 } else if (isGuru) {
@@ -181,13 +184,17 @@ const DashboardPage = () => {
                         `"${reg.school_name || ''}"`,
                         `"${reg.subjects || ''}"`,
                         `"${reg.experience || ''}"`,
+                        `"${reg.is_pe_teacher || ''}"`,
+                        `"${(reg.pet_details || '').replace(/"/g, '""').replace(/\n/g, ' ')}"`,
                         `"${(reg.vision || '').replace(/"/g, '""').replace(/\n/g, ' ')}"`,
                         `"${(reg.impact || '').replace(/"/g, '""').replace(/\n/g, ' ')}"`,
                         `"${(reg.teacher_profile || '').replace(/"/g, '""').replace(/\n/g, ' ')}"`,
                         `"${reg.nominator_name || ''}"`,
+                        `"${reg.nominator_phone || ''}"`,
                         `"${reg.nominator_email || ''}"`,
+                        `"${(reg.nominator_address || '').replace(/"/g, '""').replace(/\n/g, ' ')}"`,
                         `"${(reg.references || '').replace(/"/g, '""').replace(/\n/g, ' ')}"`,
-                        `"${reg.photo_path ? 'https://new.ssvmtransformingindia.com/public/registrations/' + reg.photo_path : ''}"`,
+                        `"${reg.photo_path ? 'https://brainiacchessacademy.com/ssvm-school/public/registrations/' + reg.photo_path : ''}"`,
                         `"${new Date(reg.created_at).toLocaleDateString()}"`
                     ].join(',');
                 } else {
@@ -319,10 +326,10 @@ const DashboardPage = () => {
                                             <table className="custom-table">
                                                 <thead>
                                                     <tr>
-                                                        <th>Nominee Name</th>
-                                                        <th>Contact</th>
-                                                        <th>Category</th>
-                                                        <th>Nomination</th>
+                                                        <th>Nominee Details</th>
+                                                        <th>School / Institution</th>
+                                                        <th>Category / Type</th>
+                                                        <th>Details</th>
                                                         <th>File / Pitch Deck</th>
                                                         <th>Date</th>
                                                     </tr>
@@ -332,20 +339,41 @@ const DashboardPage = () => {
                                                         <tr key={i}>
                                                             <td>
                                                                 <div className="td-name">
-                                                                    <div className="small-avatar">{(reg.studentName || reg.student_name || 'U').charAt(0)}</div>
-                                                                    {reg.studentName || reg.student_name} {reg.lastName || reg.last_name}
+                                                                    <div className="small-avatar">{(reg.student_name || 'U').charAt(0)}</div>
+                                                                    <div>
+                                                                        <span style={{ fontWeight: '600' }}>{reg.student_name} {reg.last_name}</span><br/>
+                                                                        <small style={{ color: 'var(--text-muted)' }}>{reg.email}</small>
+                                                                    </div>
                                                                 </div>
                                                             </td>
-                                                            <td>{reg.email}<br/><small>{reg.phone}</small></td>
-                                                            <td>{reg.awardGroup || reg.award_group}</td>
-                                                            <td><span className="status-pill reviewing">{reg.nominationType || reg.nomination_type}</span></td>
                                                             <td>
-                                                                {(reg.pitch_deck_path || reg.pitchDeck) ? (
-                                                                    <a href={`https://new.ssvmtransformingindia.com/public/registrations/${reg.pitch_deck_path || reg.pitchDeck}`} target="_blank" rel="noopener noreferrer" className="file-link">
-                                                                        <i className="bi bi-file-earmark-pdf"></i> View Deck
+                                                                <span style={{ fontSize: '0.9rem' }}>{reg.school_name}</span><br/>
+                                                                <small style={{ color: 'var(--text-muted)' }}>{reg.school_city || reg.phone}</small>
+                                                            </td>
+                                                            <td>
+                                                                <span className="category-tag">{reg.award_group}</span><br/>
+                                                                <span className="status-pill reviewing">{reg.nomination_type}</span>
+                                                            </td>
+                                                            <td>
+                                                                {reg.award_group === 'guru' ? (
+                                                                    <div style={{ fontSize: '0.85rem' }}>
+                                                                        <strong>Exp:</strong> {reg.experience} Years<br/>
+                                                                        <strong>Sub:</strong> {reg.subjects}
+                                                                    </div>
+                                                                ) : (
+                                                                    <div style={{ fontSize: '0.85rem' }}>
+                                                                        <strong>Grade:</strong> {reg.grade}<br/>
+                                                                        <strong>Members:</strong> {reg.total_members}
+                                                                    </div>
+                                                                )}
+                                                            </td>
+                                                            <td>
+                                                                {(reg.pitch_deck_path ) ? (
+                                                                    <a href={`https://brainiacchessacademy.com/ssvm-school/public/registrations/${reg.pitch_deck_path}`} target="_blank" rel="noopener noreferrer" className="file-link">
+                                                                        <i className="bi bi-file-earmark-pdf"></i> Pitch Deck
                                                                     </a>
-                                                                ) : (reg.photo_path || reg.photo) ? (
-                                                                    <a href={`https://new.ssvmtransformingindia.com/public/registrations/${reg.photo_path || reg.photo}`} target="_blank" rel="noopener noreferrer" className="file-link">
+                                                                ) : (reg.photo_path) ? (
+                                                                    <a href={`https://brainiacchessacademy.com/ssvm-school/public/registrations/${reg.photo_path}`} target="_blank" rel="noopener noreferrer" className="file-link">
                                                                         <i className="bi bi-person-bounding-box"></i> View Photo
                                                                     </a>
                                                                 ) : (
