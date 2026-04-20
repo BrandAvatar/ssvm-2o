@@ -384,7 +384,7 @@ const Homepage = () => {
             <section>
                 <div className="pb-4 media_coverage">
                     <div data-aos="fade-up" data-aos-delay="200">
-                        <TitleReveal text="Media Coverage" className="heading_about text-c1 text-center small_sm_abt_heading" />
+                        <TitleReveal text="Media presence" className="heading_about text-c1 text-center small_sm_abt_heading" />
                     </div>
                     <div className="pt-4" data-aos="fade-up" data-aos-delay="300">
                         <Swiper
