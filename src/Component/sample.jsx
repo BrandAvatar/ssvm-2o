@@ -107,7 +107,7 @@ const ArcherScrollAnimation = () => {
 
             <div className="archery_anim_content">
                 <div ref={textRef} className="archer-text">
-                    <img src="https://ssvmtransformingindia.com/assets/images/ssvm-award-1.gif" alt="" />
+                    <img src="https://www.ssvmtransformingindia.com/assets/images/ssvm-award-1.gif" alt="" />
                     <ScrollRevealText text="Focus. Aim. Achieve." className="reveal_heading" />
                     <p>The journey begins with a single shot.</p>
                 </div>

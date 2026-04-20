@@ -3,7 +3,7 @@ import TitleReveal from "./TitleReveal";
 import "../assets/css/guruaward.css";
 import { useNavigate } from 'react-router-dom';
 
-const BASE_IMAGE_URL = "https://ssvmtransformingindia.com/assets/images/"
+const BASE_IMAGE_URL = "https://www.ssvmtransformingindia.com/assets/images/"
 
 const GuruAward = () => {
     const navigate = useNavigate();

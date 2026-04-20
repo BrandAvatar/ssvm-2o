@@ -12,7 +12,7 @@ import "swiper/css/effect-coverflow";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const BASE_IMAGE_URL = "https://ssvmtransformingindia.com/assets/images/";
+const BASE_IMAGE_URL = "https://www.ssvmtransformingindia.com/assets/images/";
 
 export default function SpeakerSwiper() {
     const sectionRef = useRef();

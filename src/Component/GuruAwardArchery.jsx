@@ -10,7 +10,7 @@ import "../assets/css/GuruAwardArchery.css";
 import archerDesktop from "../assets/json/69ad2fc267eed7319abe0df2_archer_desktop.json";
 import archerMobile from "../assets/json/69ad2fd7d569da6b4b7f5c46_archer_mobile.json";
 
-const BASE_IMAGE_URL = "https://ssvmtransformingindia.com/assets/images/"
+const BASE_IMAGE_URL = "https://www.ssvmtransformingindia.com/assets/images/"
 
 gsap.registerPlugin(ScrollTrigger);
 

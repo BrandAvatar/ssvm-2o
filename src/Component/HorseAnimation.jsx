@@ -7,7 +7,7 @@ import TitleReveal from "./TitleReveal";
 import horseAnimation from "../assets/json/69b860a75dc06d6daafcd1ba_horse.json";
 import "../assets/css/horse.css";
 
-const BASE_IMAGE_URL = "https://ssvmtransformingindia.com/assets/images/";
+const BASE_IMAGE_URL = "https://www.ssvmtransformingindia.com/assets/images/";
 
 gsap.registerPlugin(ScrollTrigger);
 

@@ -3,7 +3,7 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import TitleReveal from "./TitleReveal";
 import "../assets/css/matters.css"
-const BASE_IMAGE_URL = "https://ssvmtransformingindia.com/assets/images/"
+const BASE_IMAGE_URL = "https://www.ssvmtransformingindia.com/assets/images/"
 
 gsap.registerPlugin(ScrollTrigger);
 

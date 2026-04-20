@@ -8,7 +8,7 @@ import "../assets/css/volleyball.css";
 import runnerAnimation from "../assets/json/699cbf57a3baf554905772e8_volleyball_desktop.json";
 
 // import mamAnimation from "../assets/images/mam-animation.gif";
-const BASE_IMAGE_URL = "https://ssvmtransformingindia.com/assets/images/"
+const BASE_IMAGE_URL = "https://www.ssvmtransformingindia.com/assets/images/"
 
 gsap.registerPlugin(ScrollTrigger);
 
