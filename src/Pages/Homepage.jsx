@@ -310,8 +310,10 @@ const Homepage = () => {
                     </div>
                 )}
             </section>
-            <MobileBallAnimation />
-            <VolleyBallAnimation />
+            <div id="about">
+                <MobileBallAnimation />
+                <VolleyBallAnimation />
+            </div>
             <section>
                 <div className="marquee-strip">
                     <div className="marquee-inner">
