@@ -7,7 +7,7 @@ import TitleReveal from "./TitleReveal";
 import "../assets/css/volleyball.css";
 import runnerAnimation from "../assets/json/699cbf57a3baf554905772e8_volleyball_desktop.json";
 
-import mamAnimation from "../assets/images/mam-animation.gif";
+// import mamAnimation from "../assets/images/mam-animation.gif";
 const BASE_IMAGE_URL = "https://ssvmtransformingindia.com/assets/images/"
 
 gsap.registerPlugin(ScrollTrigger);
@@ -219,7 +219,7 @@ const VolleyBallAnimation = () => {
                     <div className="row justify-content-center">
 
                         <div className="col-lg-6">
-                            <img src={mamAnimation} data-aos="zoom-in" data-aos-delay="100" className="w-100" alt="Dr. Manimekalai Mohan" />
+                            <img src={`${BASE_IMAGE_URL}ssvm-founder-anim.gif`} data-aos="zoom-in" data-aos-delay="100" className="w-100" alt="Dr. Manimekalai Mohan" />
                         </div>
                         <div className="left_fonder_content col-lg-12 d-flex flex-column align-items-center justify-content-center">
                             <div data-aos="fade-up">
