@@ -16,12 +16,12 @@ import SpeakerSwiper from "../Component/SpeakerSwiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-cards";
-const BASE_IMAGE_URL = "https://ssvmtransformingindia.com/assets/images/"
+const BASE_IMAGE_URL = "https://www.ssvmtransformingindia.com/assets/images/"
 const images = [
-    "https://ssvmtransformingindia.com/assets/images/banner/image-2.jpg",
-    "https://ssvmtransformingindia.com/assets/images/banner/image-3.jpg",
-    "https://ssvmtransformingindia.com/assets/images/banner/image-4.jpg",
-    "https://ssvmtransformingindia.com/assets/images/banner/image-5.jpg",
+    "https://www.ssvmtransformingindia.com/assets/images/banner/image-2.jpg",
+    "https://www.ssvmtransformingindia.com/assets/images/banner/image-3.jpg",
+    "https://www.ssvmtransformingindia.com/assets/images/banner/image-4.jpg",
+    "https://www.ssvmtransformingindia.com/assets/images/banner/image-5.jpg",
 ];
 
 const slides = [
@@ -334,9 +334,9 @@ const Homepage = () => {
                 </div>
             </section>
             <HorseAnimation />
-            <div className="position-relative " id="speakers">
+            {/* <div className="position-relative " id="speakers">
                 <SpeakerSwiper />
-            </div>
+            </div> */}
             <ArcherScrollAnimation />
             <GuruAwardArchery />
             <section className="about_section py-3" id="about">

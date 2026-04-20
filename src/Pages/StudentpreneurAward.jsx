@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 import "../assets/css/StudentpreneurAward.css";
 
-const BASE_IMAGE_URL = "https://ssvmtransformingindia.com/assets/images/"
+const BASE_IMAGE_URL = "https://www.ssvmtransformingindia.com/assets/images/"
 
 gsap.registerPlugin(ScrollTrigger);
 

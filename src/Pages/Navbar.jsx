@@ -6,7 +6,7 @@ import "../assets/css/navbar.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const BASE_IMAGE_URL = "https://ssvmtransformingindia.com/assets/images/";
+const BASE_IMAGE_URL = "https://www.ssvmtransformingindia.com/assets/images/";
 
 const Navbar = () => {
     const navRef = useRef(null);
