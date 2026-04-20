@@ -152,7 +152,7 @@ const GuruAwardArchery = () => {
                 <TitleReveal text="Honoring Authentic Excellence" className="reveal_heading text-c1 mt-2" />
             </div>
             <div className="w-100">
-                <div className="archer-section">
+                <div className="archer-section top-0">
                     <div ref={lottieContainer} className="lottie-container"></div>
                 </div>
 
