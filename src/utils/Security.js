@@ -17,9 +17,18 @@ export const SecurityUtils = {
         try {
             console.log("Security Layer: Initiating deep cache clear...");
 
-            // 1. Clear Storage
+            // 1. Clear Storage (PRESERVING AUTH)
+            const token = localStorage.getItem('token');
+            const user = localStorage.getItem('user');
+            const category = localStorage.getItem('activeCategory');
+
             localStorage.clear();
             sessionStorage.clear();
+
+            // Restore session data
+            if (token) localStorage.setItem('token', token);
+            if (user) localStorage.setItem('user', user);
+            if (category) localStorage.setItem('activeCategory', category);
 
             // 2. Clear All Caches
             if ('caches' in window) {
