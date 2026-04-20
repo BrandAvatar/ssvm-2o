@@ -6,7 +6,7 @@ import '../assets/registration/RegistrationForm.css';
 const RegistrationForm = () => {
     const location = useLocation();
     const [step, setStep] = useState(1);
-    
+
     // Synchronous Initialization from URL params
     const [mainCategory, setMainCategory] = useState(() => {
         return new URLSearchParams(window.location.search).get('category') || '';
@@ -45,7 +45,8 @@ const RegistrationForm = () => {
         schoolPhone: '',
         isPETeacher: '',
         petDetails: '',
-        termsAccepted: false
+        termsAccepted: false,
+        photo: null // Store photo file here
     });
 
     const [submitted, setSubmitted] = useState(false);
@@ -59,10 +60,10 @@ const RegistrationForm = () => {
         if (mainCategory && filterType && awardTypes[mainCategory]) {
             const possibleTypes = awardTypes[mainCategory].filter(t => !filterType || t.id.startsWith(filterType));
             if (possibleTypes.length === 1 && !formData.nominationType) {
-                setFormData(prev => ({ 
-                    ...prev, 
+                setFormData(prev => ({
+                    ...prev,
                     nominationType: possibleTypes[0].id,
-                    awardGroup: mainCategory 
+                    awardGroup: mainCategory
                 }));
                 // Auto skip to details if it's a direct choice (Studentpreneur)
                 if (mainCategory === 'studentpreneur') {
@@ -99,15 +100,16 @@ const RegistrationForm = () => {
         if (e.target.files && e.target.files[0]) {
             const file = e.target.files[0];
             const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png'];
-            
+
             if (!allowedTypes.includes(file.type)) {
                 alert('Only JPG, JPEG, and PNG files are accepted');
                 e.target.value = '';
                 return;
             }
 
+            setFormData(prev => ({ ...prev, photo: file }));
             setFileName(file.name);
-            
+
             const reader = new FileReader();
             reader.onloadend = () => {
                 setUploadPreview(reader.result);
@@ -121,6 +123,7 @@ const RegistrationForm = () => {
         setFileName('');
         setUploadPreview(null);
         setCapturedImage(null);
+        setFormData(prev => ({ ...prev, photo: null }));
         if (fileInputRef.current) {
             fileInputRef.current.value = "";
         }
@@ -203,14 +206,14 @@ const RegistrationForm = () => {
         const newErrors = {};
         if (currentStep === 2) {
             const isGuru = mainCategory === 'guru';
-            const requiredFields = isGuru ? 
+            const requiredFields = isGuru ?
                 ['studentName', 'lastName', 'schoolName', 'phone', 'email', 'subjects', 'impact', 'vision', 'teacherProfile', 'experience', 'isPETeacher'] :
                 ['studentName', 'grade', 'email', 'phone', 'schoolName', 'schoolCity', 'schoolPhone', 'schoolEmail', 'businessIdea', 'totalMembers'];
-            
+
             if (isGuru && formData.isPETeacher === 'yes') {
                 requiredFields.push('petDetails');
             }
-            
+
             for (let field of requiredFields) {
                 if (!formData[field]) {
                     newErrors[field] = 'This field is required';
@@ -220,7 +223,7 @@ const RegistrationForm = () => {
             // Spam/Disposable Email Validation
             if (formData.email) {
                 const disposableDomains = [
-                    'mailinator.com', 'yopmail.com', 'tempmail.com', 'guerrillamail.com', 
+                    'mailinator.com', 'yopmail.com', 'tempmail.com', 'guerrillamail.com',
                     '10minutemail.com', 'sharklasers.com', 'trashmail.com', 'dispostable.com',
                     'getairmail.com', 'maildrop.cc', 'temp-mail.org', 'fake-mail.com'
                 ];
@@ -237,13 +240,9 @@ const RegistrationForm = () => {
                 if (uploadMode === 'camera' && !capturedImage) {
                     newErrors.photo = 'Please capture a photo';
                 }
-            } else {
-                if (!formData.pitchDeck) {
-                    newErrors.pitchDeck = 'Please upload a presentation/pitch deck';
-                }
             }
         }
-        
+
         setErrors(newErrors);
         if (Object.keys(newErrors).length > 0) {
             scrollToFormTop();
@@ -273,11 +272,11 @@ const RegistrationForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
+
         // Final validation for Step 3
         const newErrors = {};
         const isGuru = mainCategory === 'guru';
-        const requiredStep3 = isGuru ? 
+        const requiredStep3 = isGuru ?
             ['nominatorName', 'nominatorPhone', 'nominatorEmail', 'nominatorAddress', 'references'] :
             ['achievements', 'whyJoin'];
 
@@ -300,20 +299,20 @@ const RegistrationForm = () => {
         setSubmitting(true);
 
         const data = new FormData();
-        
-        // Append all text fields
+
+        // Append all text fields (excluding fields handled separately or internal state)
         Object.keys(formData).forEach(key => {
-            if (key !== 'termsAccepted') {
+            if (!['termsAccepted', 'pitchDeck', 'awardGroup', 'photo'].includes(key)) {
                 data.append(key, formData[key]);
             }
         });
-        
-        // Add awardGroup specifically if not already set (mainCategory)
+
+        // Append awardGroup specifically (use the state variable to ensure latest value)
         data.append('awardGroup', mainCategory);
 
         // Append image/photo if present (For Guru)
-        if (uploadMode === 'upload' && fileInputRef.current?.files[0]) {
-            data.append('photo', fileInputRef.current.files[0]);
+        if (uploadMode === 'upload' && formData.photo) {
+            data.append('photo', formData.photo);
         } else if (uploadMode === 'camera' && capturedImage) {
             data.append('capturedImage', capturedImage);
         }
@@ -398,7 +397,7 @@ const RegistrationForm = () => {
                     <div ref={formRef}>
                         {!mainCategory ? (
                             <div className="nomination-cards">
-                                <div 
+                                <div
                                     className="nomination-card"
                                     onClick={() => setMainCategory('guru')}
                                 >
@@ -406,7 +405,7 @@ const RegistrationForm = () => {
                                     <h4>Inspirational Guru Awards</h4>
                                     <p>Honouring educators who shape mindsets and lives.</p>
                                 </div>
-                                <div 
+                                <div
                                     className="nomination-card"
                                     onClick={() => setMainCategory('studentpreneur')}
                                 >
@@ -426,7 +425,7 @@ const RegistrationForm = () => {
                                             return !filterType || type.id.startsWith(filterType);
                                         })
                                         .map(type => (
-                                            <div 
+                                            <div
                                                 key={type.id}
                                                 className={`nomination-card ${formData.nominationType === type.id ? 'selected' : ''}`}
                                                 onClick={() => setFormData(prev => ({ ...prev, nominationType: type.id, awardGroup: mainCategory }))}
@@ -442,8 +441,8 @@ const RegistrationForm = () => {
                                 </div>
                                 <div className="form-footer" style={{ marginTop: '30px' }}>
                                     <button className="nav-btn btn-back" onClick={() => setMainCategory('')}>Back to Main</button>
-                                    <button 
-                                        className="nav-btn btn-next" 
+                                    <button
+                                        className="nav-btn btn-next"
                                         disabled={!formData.nominationType}
                                         onClick={() => handleStepChange(2)}
                                     >
@@ -457,7 +456,7 @@ const RegistrationForm = () => {
             case 2:
                 const isNominateOther = formData.nominationType.includes('other');
                 const isGuru = mainCategory === 'guru';
-                
+
                 return (
                     <div ref={formRef}>
                         <div className="registration-form">
@@ -501,21 +500,21 @@ const RegistrationForm = () => {
                                         <label>Are you a physical educational teacher? <span className="required-asterisk">*</span></label>
                                         <div className="radio-group" style={{ display: 'flex', gap: '20px', marginTop: '10px' }}>
                                             <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
-                                                <input 
-                                                    type="radio" 
-                                                    name="isPETeacher" 
-                                                    value="yes" 
-                                                    checked={formData.isPETeacher === 'yes'} 
-                                                    onChange={handleChange} 
+                                                <input
+                                                    type="radio"
+                                                    name="isPETeacher"
+                                                    value="yes"
+                                                    checked={formData.isPETeacher === 'yes'}
+                                                    onChange={handleChange}
                                                 /> Yes
                                             </label>
                                             <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
-                                                <input 
-                                                    type="radio" 
-                                                    name="isPETeacher" 
-                                                    value="no" 
-                                                    checked={formData.isPETeacher === 'no'} 
-                                                    onChange={handleChange} 
+                                                <input
+                                                    type="radio"
+                                                    name="isPETeacher"
+                                                    value="no"
+                                                    checked={formData.isPETeacher === 'no'}
+                                                    onChange={handleChange}
                                                 /> No
                                             </label>
                                         </div>
@@ -525,11 +524,11 @@ const RegistrationForm = () => {
                                     {formData.isPETeacher === 'yes' && (
                                         <div className={`input-group full-width ${errors.petDetails ? 'has-error' : ''}`}>
                                             <label>Please specify your sports specialization or achievements <span className="required-asterisk">*</span></label>
-                                            <textarea 
-                                                name="petDetails" 
-                                                value={formData.petDetails} 
-                                                onChange={handleChange} 
-                                                rows="3" 
+                                            <textarea
+                                                name="petDetails"
+                                                value={formData.petDetails}
+                                                onChange={handleChange}
+                                                rows="3"
                                                 placeholder="e.g. Athletics Coach, National Level Player, etc."
                                                 required
                                             ></textarea>
@@ -554,15 +553,15 @@ const RegistrationForm = () => {
                                     <div className={`input-group full-width ${errors.photo ? 'has-error' : ''}`}>
                                         <label>Candidate Photo <span className="required-asterisk">*</span></label>
                                         <div className="upload-choices">
-                                            <div 
+                                            <div
                                                 className={`choice-btn ${uploadMode === 'upload' ? 'active' : ''}`}
-                                                onClick={() => { setUploadMode('upload'); stopCamera(); setErrors(p => ({...p, photo: null})); }}
+                                                onClick={() => { setUploadMode('upload'); stopCamera(); setErrors(p => ({ ...p, photo: null })); }}
                                             >
                                                 <i className="bi bi-upload"></i> Upload Photo
                                             </div>
-                                            <div 
+                                            <div
                                                 className={`choice-btn ${uploadMode === 'camera' ? 'active' : ''}`}
-                                                onClick={() => { setUploadMode('camera'); startCamera(); setErrors(p => ({...p, photo: null})); }}
+                                                onClick={() => { setUploadMode('camera'); startCamera(); setErrors(p => ({ ...p, photo: null })); }}
                                             >
                                                 <i className="bi bi-camera"></i> Live Capture
                                             </div>
@@ -576,12 +575,12 @@ const RegistrationForm = () => {
                                                         <div className="file-upload-area">
                                                             <i className="bi bi-image"></i>
                                                             <span>Select photo from device</span>
-                                                            <input 
-                                                                type="file" 
+                                                            <input
+                                                                type="file"
                                                                 ref={fileInputRef}
-                                                                name="photo" 
-                                                                onChange={(e) => { handleFileChange(e); setErrors(p => ({...p, photo: null})); }} 
-                                                                accept="image/*" 
+                                                                name="photo"
+                                                                onChange={(e) => { handleFileChange(e); setErrors(p => ({ ...p, photo: null })); }}
+                                                                accept="image/*"
                                                             />
                                                         </div>
                                                     ) : (
@@ -602,12 +601,12 @@ const RegistrationForm = () => {
                                                         <div className="camera-container">
                                                             <video ref={videoRef} autoPlay playsInline className="camera-video"></video>
                                                             <div className="camera-controls">
-                                                                <button type="button" className="capture-btn" onClick={() => { capturePhoto(); setErrors(p => ({...p, photo: null})); }} title="Capture"></button>
+                                                                <button type="button" className="capture-btn" onClick={() => { capturePhoto(); setErrors(p => ({ ...p, photo: null })); }} title="Capture"></button>
                                                             </div>
                                                             <button type="button" className="camera-close-btn" onClick={stopCamera}>×</button>
                                                         </div>
                                                     )}
-                                                    
+
                                                     {capturedImage && (
                                                         <div className="photo-preview-wrap">
                                                             <img src={capturedImage} alt="Captured" />
@@ -621,7 +620,7 @@ const RegistrationForm = () => {
                                                             </div>
                                                         </div>
                                                     )}
-                                                    
+
                                                     {!showCamera && !capturedImage && (
                                                         <div className="file-upload-area" onClick={startCamera}>
                                                             <i className="bi bi-camera-fill"></i>
@@ -653,7 +652,7 @@ const RegistrationForm = () => {
                                         <input type="text" name="grade" value={formData.grade} onChange={handleChange} placeholder="e.g., 10th Grade" required />
                                         {errors.grade && <span className="error-text">{errors.grade}</span>}
                                     </div>
-                                    
+
                                     <div className={`input-group ${errors.email ? 'has-error' : ''}`}>
                                         <label>Applicant Email <span className="required-asterisk">*</span></label>
                                         <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="your.email@example.com" required />
@@ -701,8 +700,8 @@ const RegistrationForm = () => {
                                     </div>
 
                                     <div className={`input-group ${errors.pitchDeck ? 'has-error' : ''}`}>
-                                        <label>Presentation / Pitch Deck (PDF/Image) <span className="required-asterisk">*</span></label>
-                                        <input type="file" name="pitchDeck" onChange={(e) => { setFormData(prev => ({ ...prev, pitchDeck: e.target.files[0] })); setErrors(p => ({...p, pitchDeck: null})); }} accept=".pdf,image/*" required />
+                                        <label>Presentation / Pitch Deck (PDF/Image)</label>
+                                        <input type="file" name="pitchDeck" onChange={(e) => { setFormData(prev => ({ ...prev, pitchDeck: e.target.files[0] })); setErrors(p => ({ ...p, pitchDeck: null })); }} accept=".pdf,image/*" />
                                         {errors.pitchDeck && <span className="error-text">{errors.pitchDeck}</span>}
                                     </div>
                                 </>
@@ -761,28 +760,28 @@ const RegistrationForm = () => {
                                     </div>
                                 </>
                             )}
-                            
+
                             <div className="input-group full-width" style={{ marginTop: '20px' }}>
                                 <label style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', cursor: 'pointer', textTransform: 'none', color: 'var(--text-dark)' }}>
-                                    <input 
-                                        type="checkbox" 
-                                        name="termsAccepted" 
-                                        checked={formData.termsAccepted} 
-                                        onChange={(e) => { setFormData(prev => ({ ...prev, termsAccepted: e.target.checked })); setErrors(p => ({...p, termsAccepted: null})); }} 
+                                    <input
+                                        type="checkbox"
+                                        name="termsAccepted"
+                                        checked={formData.termsAccepted}
+                                        onChange={(e) => { setFormData(prev => ({ ...prev, termsAccepted: e.target.checked })); setErrors(p => ({ ...p, termsAccepted: null })); }}
                                         style={{ marginTop: '4px' }}
                                         required
                                     />
                                     <span>Terms and conditions <span className="required-asterisk">*</span><br />
-                                    <small style={{ color: 'var(--text-muted)' }}>Eligibility: School teachers, only Nominations. Self nomination or nomination by others Verification: Teaching credentials will be verified Final: Shortlisted teachers must attend the event</small></span>
+                                        <small style={{ color: 'var(--text-muted)' }}>Eligibility: School teachers, only Nominations. Self nomination or nomination by others Verification: Teaching credentials will be verified Final: Shortlisted teachers must attend the event</small></span>
                                 </label>
                                 {errors.termsAccepted && <div className="error-text" style={{ marginTop: '10px' }}>{errors.termsAccepted}</div>}
                             </div>
                         </div>
                         <div className="form-footer">
                             <button className="nav-btn btn-back" onClick={() => handleStepChange(2)}>Back</button>
-                            <button 
-                                className="nav-btn btn-next" 
-                                onClick={handleSubmit} 
+                            <button
+                                className="nav-btn btn-next"
+                                onClick={handleSubmit}
                                 disabled={!formData.termsAccepted || submitting}
                             >
                                 {submitting ? 'Submitting...' : 'Submit Application'}
@@ -800,22 +799,22 @@ const RegistrationForm = () => {
             <div className="registration-container">
                 {renderFormBanner()}
                 {!submitted && renderStepper()}
-                
+
                 <div className="form-content-area" style={{ background: '#f8f9fa' }}>
                     {submitted ? (
                         <div className="success-card">
                             <div className="success-icon">✓</div>
                             <h2 style={{ fontFamily: 'Sneaker', fontSize: '48px', color: 'var(--primary)' }}>Application Received!</h2>
                             <p style={{ color: 'var(--text-muted)', fontSize: '18px', margin: '15px 0' }}>
-                                Confirmation emails have been successfully sent to both you and the institution. 
-                                Please check your inbox for your registration summary and reference number.
+                                A confirmation email has been sent to your registered email address.
+                                Please check your inbox for your registration details.
                             </p>
-                            
-                            <div className="reg-number-display" style={{ 
-                                margin: '25px auto', 
-                                padding: '15px 30px', 
-                                background: 'rgba(59, 130, 246, 0.1)', 
-                                border: '1px dashed var(--primary)', 
+
+                            <div className="reg-number-display" style={{
+                                margin: '25px auto',
+                                padding: '15px 30px',
+                                background: 'rgba(59, 130, 246, 0.1)',
+                                border: '1px dashed var(--primary)',
                                 borderRadius: '12px',
                                 display: 'inline-block'
                             }}>
@@ -838,3 +837,6 @@ const RegistrationForm = () => {
 };
 
 export default RegistrationForm;
+
+
+
