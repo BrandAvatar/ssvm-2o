@@ -66,7 +66,7 @@ const DashboardPage = () => {
         setLoading(true);
         const token = localStorage.getItem('token');
         
-        let url = `https://brainiacchessacademy.com/ssvm-school/public/api/registrations?page=${page}`;
+        let url = `https://new.ssvmtransformingindia.com/public/api/registrations?page=${page}`;
         
         const cleanSearch = (search || '').trim();
         if (cleanSearch) {
@@ -171,7 +171,7 @@ const DashboardPage = () => {
                         `"${reg.total_members || ''}"`,
                         `"${(reg.achievements || '').replace(/"/g, '""').replace(/\n/g, ' ')}"`,
                         `"${(reg.why_join || '').replace(/"/g, '""').replace(/\n/g, ' ')}"`,
-                        `"${reg.pitch_deck_path ? 'https://brainiacchessacademy.com/ssvm-school/public/registrations/' + reg.pitch_deck_path : ''}"`,
+                        `"${reg.pitch_deck_path ? 'https://new.ssvmtransformingindia.com/public/registrations/' + reg.pitch_deck_path : ''}"`,
                         `"${new Date(reg.created_at).toLocaleDateString()}"`
                     ].join(',');
                 } else if (isGuru) {
@@ -194,7 +194,7 @@ const DashboardPage = () => {
                         `"${reg.nominator_email || ''}"`,
                         `"${(reg.nominator_address || '').replace(/"/g, '""').replace(/\n/g, ' ')}"`,
                         `"${(reg.references || '').replace(/"/g, '""').replace(/\n/g, ' ')}"`,
-                        `"${reg.photo_path ? 'https://brainiacchessacademy.com/ssvm-school/public/registrations/' + reg.photo_path : ''}"`,
+                        `"${reg.photo_path ? 'https://new.ssvmtransformingindia.com/public/registrations/' + reg.photo_path : ''}"`,
                         `"${new Date(reg.created_at).toLocaleDateString()}"`
                     ].join(',');
                 } else {
@@ -369,11 +369,11 @@ const DashboardPage = () => {
                                                             </td>
                                                             <td>
                                                                 {(reg.pitch_deck_path ) ? (
-                                                                    <a href={`https://brainiacchessacademy.com/ssvm-school/public/registrations/${reg.pitch_deck_path}`} target="_blank" rel="noopener noreferrer" className="file-link">
+                                                                    <a href={`https://new.ssvmtransformingindia.com/public/registrations/${reg.pitch_deck_path}`} target="_blank" rel="noopener noreferrer" className="file-link">
                                                                         <i className="bi bi-file-earmark-pdf"></i> Pitch Deck
                                                                     </a>
                                                                 ) : (reg.photo_path) ? (
-                                                                    <a href={`https://brainiacchessacademy.com/ssvm-school/public/registrations/${reg.photo_path}`} target="_blank" rel="noopener noreferrer" className="file-link">
+                                                                    <a href={`https://new.ssvmtransformingindia.com/public/registrations/${reg.photo_path}`} target="_blank" rel="noopener noreferrer" className="file-link">
                                                                         <i className="bi bi-person-bounding-box"></i> View Photo
                                                                     </a>
                                                                 ) : (
