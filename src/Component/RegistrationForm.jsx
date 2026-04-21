@@ -40,7 +40,8 @@ const RegistrationForm = () => {
         schoolCity: '',
         schoolEmail: '',
         businessIdea: '',
-        totalMembers: '',
+        totalMembers: '1',
+        teamMembers: [], // Array of { name: '', phone: '' }
         grade: '',
         schoolPhone: '',
         isPETeacher: '',
@@ -75,7 +76,37 @@ const RegistrationForm = () => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData(prev => ({ ...prev, [name]: value }));
+
+        let finalValue = value;
+
+        // Fields that should only allow numbers and be non-negative
+        const numericFields = ['phone', 'schoolPhone', 'nominatorPhone', 'experience', 'totalMembers'];
+
+        if (numericFields.includes(name)) {
+            // Remove non-digit characters
+            finalValue = value.replace(/[^0-9]/g, '');
+        }
+
+        if (name === 'totalMembers') {
+            const count = parseInt(finalValue) || 1;
+            setFormData(prev => {
+                const currentMembers = prev.teamMembers || [];
+                let newMembers = [...currentMembers];
+                const extraCount = count - 1;
+
+                if (newMembers.length < extraCount) {
+                    for (let i = newMembers.length; i < extraCount; i++) {
+                        newMembers.push({ name: '', phone: '' });
+                    }
+                } else {
+                    newMembers = newMembers.slice(0, extraCount);
+                }
+                return { ...prev, totalMembers: finalValue, teamMembers: newMembers };
+            });
+        } else {
+            setFormData(prev => ({ ...prev, [name]: finalValue }));
+        }
+
         // Clear error when user types
         if (errors[name]) {
             setErrors(prev => {
@@ -84,6 +115,18 @@ const RegistrationForm = () => {
                 return newErrors;
             });
         }
+    };
+
+    const handleTeamMemberChange = (index, field, value) => {
+        let finalValue = value;
+        if (field === 'phone') {
+            finalValue = value.replace(/[^0-9]/g, '');
+        }
+        setFormData(prev => {
+            const newMembers = [...(prev.teamMembers || [])];
+            newMembers[index] = { ...newMembers[index], [field]: finalValue };
+            return { ...prev, teamMembers: newMembers };
+        });
     };
 
     const [fileName, setFileName] = useState('');
@@ -302,10 +345,15 @@ const RegistrationForm = () => {
 
         // Append all text fields (excluding fields handled separately or internal state)
         Object.keys(formData).forEach(key => {
-            if (!['termsAccepted', 'pitchDeck', 'awardGroup', 'photo'].includes(key)) {
+            if (!['termsAccepted', 'pitchDeck', 'awardGroup', 'photo', 'teamMembers'].includes(key)) {
                 data.append(key, formData[key]);
             }
         });
+
+        // Append Team Members as JSON string
+        if (formData.teamMembers && formData.teamMembers.length > 0) {
+            data.append('teamMembers', JSON.stringify(formData.teamMembers));
+        }
 
         // Append awardGroup specifically (use the state variable to ensure latest value)
         data.append('awardGroup', mainCategory);
@@ -636,7 +684,7 @@ const RegistrationForm = () => {
 
                                     <div className={`input-group full-width ${errors.experience ? 'has-error' : ''}`}>
                                         <label>How many years of experience do they have? <span className="required-asterisk">*</span></label>
-                                        <input type="number" name="experience" value={formData.experience} onChange={handleChange} placeholder="Number of years" required />
+                                        <input type="number" name="experience" value={formData.experience} onChange={handleChange} placeholder="Number of years" min="0" required />
                                         {errors.experience && <span className="error-text">{errors.experience}</span>}
                                     </div>
                                 </>
@@ -693,11 +741,51 @@ const RegistrationForm = () => {
                                         {errors.businessIdea && <span className="error-text">{errors.businessIdea}</span>}
                                     </div>
 
-                                    <div className={`input-group ${errors.totalMembers ? 'has-error' : ''}`}>
+                                    <div className={`input-group full-width ${errors.totalMembers ? 'has-error' : ''}`}>
                                         <label>Total members in Team <span className="required-asterisk">*</span></label>
-                                        <input type="number" name="totalMembers" value={formData.totalMembers} onChange={handleChange} placeholder="No. of members" required />
+                                        <select
+                                            name="totalMembers"
+                                            value={formData.totalMembers}
+                                            onChange={handleChange}
+                                            style={{ width: '100%', padding: '12px', borderRadius: '8px', border: '1px solid #ddd' }}
+                                            required
+                                        >
+                                            <option value="1">1 (Solo)</option>
+                                            <option value="2">2 Members</option>
+                                            <option value="3">3 Members</option>
+                                            <option value="4">4 Members</option>
+                                            <option value="5">5 Members</option>
+                                        </select>
                                         {errors.totalMembers && <span className="error-text">{errors.totalMembers}</span>}
                                     </div>
+
+                                    {formData.teamMembers && formData.teamMembers.map((member, index) => (
+                                        <div key={index} className="team-member-provision" style={{ gridColumn: '1 / -1', padding: '20px', background: '#f8f9fa', borderRadius: '12px', marginTop: '10px' }}>
+                                            <h5 style={{ marginBottom: '15px', color: 'var(--primary-color)', fontSize: '1.1rem' }}>Team Member {index + 2} Details</h5>
+                                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+                                                <div className="input-group">
+                                                    <label>Member Name <span className="required-asterisk">*</span></label>
+                                                    <input
+                                                        type="text"
+                                                        value={member.name}
+                                                        onChange={(e) => handleTeamMemberChange(index, 'name', e.target.value)}
+                                                        placeholder="Full Name"
+                                                        required
+                                                    />
+                                                </div>
+                                                <div className="input-group">
+                                                    <label>Member Phone <span className="required-asterisk">*</span></label>
+                                                    <input
+                                                        type="tel"
+                                                        value={member.phone}
+                                                        onChange={(e) => handleTeamMemberChange(index, 'phone', e.target.value)}
+                                                        placeholder="Phone Number"
+                                                        required
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))}
 
                                     <div className={`input-group ${errors.pitchDeck ? 'has-error' : ''}`}>
                                         <label>Presentation / Pitch Deck (PDF/Image)</label>
