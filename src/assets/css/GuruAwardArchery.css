@@ -5,8 +5,9 @@
 .guru_award_archery .archer-text {
     left: auto;
     right: 80px;
-    top: 50%;
-    transform: translateY(-50%);
+    top: auto;
+    bottom: 28%;
+    transform: translateY(0%) !important;
     text-align: right;
     max-width: 560px;
 }
@@ -21,6 +22,12 @@
 .guru_award_archery .archer-text p,
 .guru_award_archery .archer-text .reveal_heading {
     text-align: right;
+}
+
+@media screen and (min-width: 1500px) {
+    .guru_award_archery .archer-text {
+        max-width: 40% !important;
+    }
 }
 
 @media screen and (max-width: 1025px) {

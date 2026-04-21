@@ -35,7 +35,7 @@
     position: absolute;
     top: 0%;
     left: 80px;
-    max-width: 450px;
+    max-width: 500px;
     opacity: 0;
     transform: translateY(40px);
 }
@@ -226,11 +226,11 @@
     }
 
     .archer-text h2 {
-        font-size: 57px !important;
+        font-size: 48px !important;
         margin-top: 20px;
     }
 
     .archer-text p {
-        font-size: 20px !important;
+        font-size: 17px !important;
     }
 }
