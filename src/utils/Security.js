@@ -103,52 +103,34 @@ export class SecurityErrorBoundary extends React.Component {
 
     componentDidCatch(error, errorInfo) {
         // 1. Log error for diagnostics
-        console.error("Security Layer caught an error:", error, errorInfo);
-        
-        // 2. Clear cache to prevent corrupted state
-        SecurityUtils.clearAppCache();
+        console.error("Security Layer: Auto-healing from exception:", error, errorInfo);
 
-        // 3. INSTANT RECOVERY for DOM errors: If it's the notorious "removeChild" React error,
-        // we reload IMMEDIATELY to resolve the DOM mismatch and show the page details.
-        const errorMsg = error?.message || "";
-        const isDomError = errorMsg.includes("removeChild") || errorMsg.includes("appendChild");
+        // 2. Execute deep cache clear
+        SecurityUtils.clearAppCache().then(() => {
+            // 3. Recovery Logic
+            const errorMsg = error?.message || "";
+            const isDomError = errorMsg.includes("removeChild") || errorMsg.includes("appendChild");
 
-        const lastCrash = sessionStorage.getItem('last_security_crash');
-        const now = Date.now();
-        
-        if (!lastCrash || (now - parseInt(lastCrash)) > 5000) {
-            sessionStorage.setItem('last_security_crash', now.toString());
-            
-            if (isDomError) {
-                // Silent instant reload for DOM mismatch (GSAP conflict)
-                window.location.reload();
-            } else {
-                // Short delay for other security exceptions
-                setTimeout(() => {
+            const lastCrash = sessionStorage.getItem('last_security_crash');
+            const now = Date.now();
+
+            // Prevent infinite reload loops (threshold: 3 seconds)
+            if (!lastCrash || (now - parseInt(lastCrash)) > 3000) {
+                sessionStorage.setItem('last_security_crash', now.toString());
+
+                if (isDomError) {
+                    // Silent instant reload for DOM mismatch conflicts
                     window.location.reload();
-                }, 500);
+                } else {
+                    // Delay for other security exceptions
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 500);
+                }
             }
-        }
+        });
     }
 
-    componentDidCatch(error, errorInfo) {
-        // 1. Log error for diagnostics
-        console.error("Security Layer: Auto-healing from exception:", error);
-        
-        // 2. Clear cache to ensure clean state on reload
-        SecurityUtils.clearAppCache();
-
-        // 3. SILENT RECOVERY: Instead of showing a shield, we reload immediately.
-        // This makes the fix look like a standard (slightly slower) page load.
-        const lastCrash = sessionStorage.getItem('last_security_crash');
-        const now = Date.now();
-        
-        // Prevent infinite loops (only reload if last crash was > 3s ago)
-        if (!lastCrash || (now - parseInt(lastCrash)) > 3000) {
-            sessionStorage.setItem('last_security_crash', now.toString());
-            window.location.reload();
-        }
-    }
 
     render() {
         if (this.state.hasError) {
