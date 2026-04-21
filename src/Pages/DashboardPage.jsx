@@ -11,7 +11,7 @@ const DashboardPage = () => {
     const [registrations, setRegistrations] = useState([]);
     const [loading, setLoading] = useState(false);
     const [toasts, setToasts] = useState([]);
-    
+
     // Pagination & Search States
     const [searchTerm, setSearchTerm] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
@@ -47,10 +47,10 @@ const DashboardPage = () => {
     // Fetch data when activeCategory, page, or searchTerm changes
     useEffect(() => {
         localStorage.setItem('activeCategory', activeCategory);
-        
+
         // Debounce search
         if (searchTimeoutRef.current) clearTimeout(searchTimeoutRef.current);
-        
+
         searchTimeoutRef.current = setTimeout(() => {
             if (activeCategory === 'overview') {
                 fetchRegistrations(null, currentPage, searchTerm);
@@ -65,9 +65,9 @@ const DashboardPage = () => {
     const fetchRegistrations = async (categoryId = null, page = 1, search = '') => {
         setLoading(true);
         const token = localStorage.getItem('token');
-        
+
         let url = `https://new.ssvmtransformingindia.com/public/api/registrations?page=${page}`;
-        
+
         const cleanSearch = (search || '').trim();
         if (cleanSearch) {
             url += `&search=${encodeURIComponent(cleanSearch)}`;
@@ -138,14 +138,19 @@ const DashboardPage = () => {
         let headers = [];
         if (isStudent) {
             headers = [
-                'S No', 'Reg No', 'Student Name', 'Grade', 'Applicant Email', 'Applicant Mobile No', 
-                'School Name', 'School City', 'School Phone no', 'School Email', 
-                'Business Idea', 'Total Members', 'Key Achievements', 'Why Join', 'Pitch Deck URL', 'Date'
+                'S No', 'Reg No', 'Student Name', 'Grade', 'Applicant Email', 'Applicant Mobile No',
+                'School Name', 'School City', 'School Phone no', 'School Email',
+                'Business Idea', 'Total Members',
+                'Member 2 Name', 'Member 2 Phone',
+                'Member 3 Name', 'Member 3 Phone',
+                'Member 4 Name', 'Member 4 Phone',
+                'Member 5 Name', 'Member 5 Phone',
+                'Key Achievements', 'Why Join', 'Pitch Deck URL', 'Date'
             ];
         } else if (isGuru) {
             headers = [
-                'S No', 'Reg No', 'Teacher Name', 'Email', 'Phone', 'School Name', 
-                'Subjects', 'Experience', 'PE Teacher', 'PE Details', 'Vision', 'Impact', 'Profile', 
+                'S No', 'Reg No', 'Teacher Name', 'Email', 'Phone', 'School Name',
+                'Subjects', 'Experience', 'PE Teacher', 'PE Details', 'Vision', 'Impact', 'Profile',
                 'Nominator Name', 'Nominator Phone', 'Nominator Email', 'Nominator Address', 'References', 'Photo URL', 'Date'
             ];
         } else {
@@ -156,6 +161,7 @@ const DashboardPage = () => {
             headers.join(','), // Header row
             ...registrations.map((reg, index) => {
                 if (isStudent) {
+                    const extraMembers = reg.team_members || [];
                     return [
                         index + 1,
                         `"${reg.register_number || reg.id || ''}"`,
@@ -169,6 +175,10 @@ const DashboardPage = () => {
                         `"${reg.school_email || ''}"`,
                         `"${(reg.business_idea || '').replace(/"/g, '""').replace(/\n/g, ' ')}"`,
                         `"${reg.total_members || ''}"`,
+                        `"${extraMembers[0]?.name || ''}"`, `"${extraMembers[0]?.phone || ''}"`,
+                        `"${extraMembers[1]?.name || ''}"`, `"${extraMembers[1]?.phone || ''}"`,
+                        `"${extraMembers[2]?.name || ''}"`, `"${extraMembers[2]?.phone || ''}"`,
+                        `"${extraMembers[3]?.name || ''}"`, `"${extraMembers[3]?.phone || ''}"`,
                         `"${(reg.achievements || '').replace(/"/g, '""').replace(/\n/g, ' ')}"`,
                         `"${(reg.why_join || '').replace(/"/g, '""').replace(/\n/g, ' ')}"`,
                         `"${reg.pitch_deck_path ? 'https://new.ssvmtransformingindia.com/public/registrations/' + reg.pitch_deck_path : ''}"`,
@@ -236,9 +246,9 @@ const DashboardPage = () => {
         <div className={`dashboard-layout ${isSidebarOpen ? '' : 'sidebar-collapsed'}`}>
             {isSidebarOpen && <div className="sidebar-overlay" onClick={toggleSidebar}></div>}
 
-            <Sidebar 
-                isOpen={isSidebarOpen} 
-                toggleSidebar={toggleSidebar} 
+            <Sidebar
+                isOpen={isSidebarOpen}
+                toggleSidebar={toggleSidebar}
                 activeCategory={activeCategory}
                 setActiveCategory={setActiveCategory}
                 handleLogout={handleLogout}
@@ -249,13 +259,13 @@ const DashboardPage = () => {
                     <button className="menu-toggle" onClick={toggleSidebar}>
                         <i className={`bi ${isSidebarOpen ? 'bi-text-indent-left' : 'bi-list'}`}></i>
                     </button>
-                    
+
                     <div className="top-bar-right">
                         <div className="search-box">
                             <i className="bi bi-search"></i>
-                            <input 
-                                type="text" 
-                                placeholder="Auto search records..." 
+                            <input
+                                type="text"
+                                placeholder="Auto search records..."
                                 value={searchTerm}
                                 onChange={handleSearch}
                             />
@@ -341,34 +351,44 @@ const DashboardPage = () => {
                                                                 <div className="td-name">
                                                                     <div className="small-avatar">{(reg.student_name || 'U').charAt(0)}</div>
                                                                     <div>
-                                                                        <span style={{ fontWeight: '600' }}>{reg.student_name} {reg.last_name}</span><br/>
+                                                                        <span style={{ fontWeight: '600' }}>{reg.student_name} {reg.last_name}</span><br />
                                                                         <small style={{ color: 'var(--text-muted)' }}>{reg.email}</small>
                                                                     </div>
                                                                 </div>
                                                             </td>
                                                             <td>
-                                                                <span style={{ fontSize: '0.9rem' }}>{reg.school_name}</span><br/>
+                                                                <span style={{ fontSize: '0.9rem' }}>{reg.school_name}</span><br />
                                                                 <small style={{ color: 'var(--text-muted)' }}>{reg.school_city || reg.phone}</small>
                                                             </td>
                                                             <td>
-                                                                <span className="category-tag">{reg.award_group}</span><br/>
+                                                                <span className="category-tag">{reg.award_group}</span><br />
                                                                 <span className="status-pill reviewing">{reg.nomination_type}</span>
                                                             </td>
                                                             <td>
                                                                 {reg.award_group === 'guru' ? (
                                                                     <div style={{ fontSize: '0.85rem' }}>
-                                                                        <strong>Exp:</strong> {reg.experience} Years<br/>
+                                                                        <strong>Exp:</strong> {reg.experience} Years<br />
                                                                         <strong>Sub:</strong> {reg.subjects}
                                                                     </div>
                                                                 ) : (
                                                                     <div style={{ fontSize: '0.85rem' }}>
-                                                                        <strong>Grade:</strong> {reg.grade}<br/>
+                                                                        <strong>Grade:</strong> {reg.grade}<br />
                                                                         <strong>Members:</strong> {reg.total_members}
+                                                                        {reg.team_members && reg.team_members.length > 0 && (
+                                                                            <div className="team-names-list" style={{ marginTop: '5px', padding: '4px', background: '#f5f5f5', borderRadius: '4px', fontSize: '0.75rem' }}>
+                                                                                <small style={{ fontWeight: '700', color: '#666' }}>Team Details:</small>
+                                                                                {reg.team_members.map((m, idx) => (
+                                                                                    <div key={idx} style={{ borderTop: '1px solid #eee', marginTop: '2px', paddingTop: '2px' }}>
+                                                                                        • {m.name} ({m.phone})
+                                                                                    </div>
+                                                                                ))}
+                                                                            </div>
+                                                                        )}
                                                                     </div>
                                                                 )}
                                                             </td>
                                                             <td>
-                                                                {(reg.pitch_deck_path ) ? (
+                                                                {(reg.pitch_deck_path) ? (
                                                                     <a href={`https://new.ssvmtransformingindia.com/public/registrations/${reg.pitch_deck_path}`} target="_blank" rel="noopener noreferrer" className="file-link">
                                                                         <i className="bi bi-file-earmark-pdf"></i> Pitch Deck
                                                                     </a>
@@ -402,26 +422,26 @@ const DashboardPage = () => {
                                     {lastPage > 1 && (
                                         <div className="pagination-wrapper">
                                             <div className="pag-left">
-                                                <button 
-                                                    disabled={currentPage === 1} 
+                                                <button
+                                                    disabled={currentPage === 1}
                                                     onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
                                                     className="pag-btn prev-next"
                                                 >
                                                     <i className="bi bi-chevron-left"></i>
                                                 </button>
                                             </div>
-                                            
+
                                             <div className="pag-numbers">
                                                 {[...Array(lastPage)].map((_, i) => {
                                                     const pageNum = i + 1;
                                                     // Show first, last, current, and pages around current
                                                     if (
-                                                        pageNum === 1 || 
-                                                        pageNum === lastPage || 
+                                                        pageNum === 1 ||
+                                                        pageNum === lastPage ||
                                                         (pageNum >= currentPage - 1 && pageNum <= currentPage + 1)
                                                     ) {
                                                         return (
-                                                            <button 
+                                                            <button
                                                                 key={pageNum}
                                                                 className={`pag-num-btn ${currentPage === pageNum ? 'active' : ''}`}
                                                                 onClick={() => setCurrentPage(pageNum)}
@@ -430,7 +450,7 @@ const DashboardPage = () => {
                                                             </button>
                                                         );
                                                     } else if (
-                                                        pageNum === currentPage - 2 || 
+                                                        pageNum === currentPage - 2 ||
                                                         pageNum === currentPage + 2
                                                     ) {
                                                         return <span key={pageNum} className="pag-dots">...</span>;
@@ -440,8 +460,8 @@ const DashboardPage = () => {
                                             </div>
 
                                             <div className="pag-right">
-                                                <button 
-                                                    disabled={currentPage === lastPage} 
+                                                <button
+                                                    disabled={currentPage === lastPage}
                                                     onClick={() => setCurrentPage(prev => Math.min(lastPage, prev + 1))}
                                                     className="pag-btn prev-next"
                                                 >
