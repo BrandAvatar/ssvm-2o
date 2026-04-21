@@ -171,13 +171,13 @@ const GuruAwardArchery = () => {
                                         <button onClick={() => handleAwardSelect('guru', 'internal')} className="btn-primary">
                                             <span>Register – Internal</span>
                                         </button>
-                                        <small className="mt-3 px-2 text-white text-center small">Internal Category – Open to students from SSVM Institutions</small>
+                                        <small className="mt-3 px-2 text-white text-center small">Internal Category – Open to teachers from SSVM Institutions</small>
                                     </div>
                                     <div onClick={() => handleAwardSelect('guru', 'external')} className="mt-lg-0 mt-4 d-flex flex-column align-items-center justify-content-center">
                                         <button className="btn-ghost">
                                             <span>Register – External</span>
                                         </button>
-                                        <small className="mt-3 px-2 text-white text-center small">External Category – Open to students from other schools and institutions</small>
+                                        <small className="mt-3 px-2 text-white text-center small">External Category – Open to teachers from other schools and institutions</small>
                                     </div>
                                 </div>
                             </div>
