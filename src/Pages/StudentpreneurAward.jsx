@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import TitleReveal from "../Component/TitleReveal";
+import PreloaderTextReveal from "../Component/PreloaderTextReveal";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useNavigate } from 'react-router-dom';
 
@@ -177,7 +178,7 @@ const StudentpreneurAward = () => {
                                         </div>
 
                                         <div data-aos="fade-up">
-                                            <TitleReveal
+                                            <PreloaderTextReveal
                                                 text="Studentpreneur"
                                                 className="heading_about text-c1 "
                                                 style={{
@@ -185,7 +186,7 @@ const StudentpreneurAward = () => {
                                                     display: "block",
                                                 }}
                                             />
-                                            <TitleReveal
+                                            <PreloaderTextReveal
                                                 text="Awards 2026"
                                                 className="heading_about text-c1 "
                                                 style={{
