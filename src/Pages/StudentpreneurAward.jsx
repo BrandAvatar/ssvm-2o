@@ -160,7 +160,7 @@ const StudentpreneurAward = () => {
     return (
         <>
             <div className="student_award_sec">
-                <div className="guru_award_parent">
+                {/* <div className="guru_award_parent">
                     <div className="hero-bg"></div>
 
                     <section className="hero-wrapper" style={{ maxWidth: "90%" }}>
@@ -173,8 +173,6 @@ const StudentpreneurAward = () => {
                                                 <img src={`${BASE_IMAGE_URL}favicon.png`} alt="" />
                                                 Celebrating Excellence
                                             </span>
-                                            {/* <span className="eyebrow-dot"></span>
-                                    <span>Inspirational Guru Awards</span> */}
                                         </div>
 
                                         <div data-aos="fade-up">
@@ -225,13 +223,13 @@ const StudentpreneurAward = () => {
                             </div>
                         </div>
                     </section>
-                </div>
+                </div> */}
                 <div className="sp-container" ref={containerRef}>
                     <div className="section-container">
                         <div className="row justify-content-center">
                             <div className="col-lg-8 d-flex align-items-center">
                                 <div className="intro-content text-white text-center">
-                                    <TitleReveal
+                                    <PreloaderTextReveal
                                         text="Areas of Inspiration"
                                         className="heading_about text-center text-c1 "
                                         style={{
