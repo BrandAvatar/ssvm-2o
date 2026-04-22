@@ -18,7 +18,7 @@ const RegistrationForm = () => {
     const [formData, setFormData] = useState({
         awardGroup: '',
         nominationType: '',
-        studentName: '', // used for nominee/teacher name
+        studentName: '',
         lastName: '',
         schoolName: '',
         phone: '',
@@ -46,7 +46,6 @@ const RegistrationForm = () => {
         schoolPhone: '',
         isPETeacher: '',
         petDetails: '',
-        termsAccepted: false,
         photo: null // Store photo file here
     });
 
@@ -329,9 +328,9 @@ const RegistrationForm = () => {
             }
         }
 
-        if (!formData.termsAccepted) {
-            newErrors.termsAccepted = 'You must accept the terms and conditions';
-        }
+        // if (!formData.termsAccepted) {
+        //     newErrors.termsAccepted = 'You must accept the terms and conditions';
+        // }
 
         setErrors(newErrors);
         if (Object.keys(newErrors).length > 0) {
@@ -345,7 +344,7 @@ const RegistrationForm = () => {
 
         // Append all text fields (excluding fields handled separately or internal state)
         Object.keys(formData).forEach(key => {
-            if (!['termsAccepted', 'pitchDeck', 'awardGroup', 'photo', 'teamMembers'].includes(key)) {
+            if (!['pitchDeck', 'awardGroup', 'photo', 'teamMembers'].includes(key)) {
                 data.append(key, formData[key]);
             }
         });
@@ -849,7 +848,7 @@ const RegistrationForm = () => {
                                 </>
                             )}
 
-                            <div className="input-group full-width" style={{ marginTop: '20px' }}>
+                            {/* <div className="input-group full-width" style={{ marginTop: '20px' }}>
                                 <label style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', cursor: 'pointer', textTransform: 'none', color: 'var(--text-dark)' }}>
                                     <input
                                         type="checkbox"
@@ -863,14 +862,14 @@ const RegistrationForm = () => {
                                         <small style={{ color: 'var(--text-muted)' }}>Eligibility: School teachers, only Nominations. Self nomination or nomination by others Verification: Teaching credentials will be verified Final: Shortlisted teachers must attend the event</small></span>
                                 </label>
                                 {errors.termsAccepted && <div className="error-text" style={{ marginTop: '10px' }}>{errors.termsAccepted}</div>}
-                            </div>
+                            </div> */}
                         </div>
                         <div className="form-footer">
                             <button className="nav-btn btn-back" onClick={() => handleStepChange(2)}>Back</button>
                             <button
                                 className="nav-btn btn-next"
                                 onClick={handleSubmit}
-                                disabled={!formData.termsAccepted || submitting}
+                                disabled={submitting}
                             >
                                 {submitting ? 'Submitting...' : 'Submit Application'}
                             </button>
@@ -911,7 +910,7 @@ const RegistrationForm = () => {
                             </div>
 
                             <p style={{ fontSize: '18px', color: 'var(--text-muted)', maxWidth: '500px', margin: '20px auto' }}>
-                                Thank you for applying to the SSVM Sports Excellence Academy. Our verification team will review your application and get back to you soon.
+                                Thank you for applying to {mainCategory === 'guru' ? 'SSVM Inspirational Guru Awards' : 'SSVM Studentpreneur Awards'}. Our verification team will review your application and get back to you soon.
                             </p>
                             <button className="nav-btn btn-next" onClick={() => window.location.href = '/'}>Return Home</button>
                         </div>
