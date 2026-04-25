@@ -85,11 +85,17 @@ const Navbar = () => {
 
                     {/* RIGHT SIDE */}
                     <div className="right_area">
-                        <img
-                            src={`${BASE_IMAGE_URL}initiative-logo.png`}
-                            className="initiative_logo"
-                            alt="initiative"
-                        />
+                        <Link
+                            to="https://ssvminstitutions.ac.in/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <img
+                                src={`${BASE_IMAGE_URL}initiative-logo.png`}
+                                className="initiative_logo"
+                                alt="initiative"
+                            />
+                        </Link>
                     </div>
                     <button
                         className="hamburger"
