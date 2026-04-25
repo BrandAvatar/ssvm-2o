@@ -30,11 +30,19 @@ const DashboardPage = () => {
         const token = localStorage.getItem('token');
 
         if (!storedUser || !token) {
+            console.warn("Session missing or expired. Redirecting to login.");
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
             navigate('/login');
             return;
         }
 
-        setUser(JSON.parse(storedUser));
+        try {
+            setUser(JSON.parse(storedUser));
+        } catch (e) {
+            localStorage.removeItem('user');
+            navigate('/login');
+        }
 
         if (window.innerWidth < 992) {
             setSidebarOpen(false);
@@ -50,23 +58,36 @@ const DashboardPage = () => {
     useEffect(() => {
         localStorage.setItem('activeCategory', activeCategory);
 
-        // Debounce search
-        if (searchTimeoutRef.current) clearTimeout(searchTimeoutRef.current);
-
-        searchTimeoutRef.current = setTimeout(() => {
+        const performFetch = () => {
             if (activeCategory === 'overview') {
                 fetchRegistrations(null, currentPage, searchTerm);
             } else if (activeCategory !== 'settings') {
                 fetchRegistrations(activeCategory, currentPage, searchTerm);
             }
-        }, 300); // 300ms debounce
+        };
 
-        return () => clearTimeout(searchTimeoutRef.current);
+        // Don't debounce the initial load or simple category changes without search
+        if (!searchTerm) {
+            performFetch();
+        } else {
+            // Debounce search
+            if (searchTimeoutRef.current) clearTimeout(searchTimeoutRef.current);
+            searchTimeoutRef.current = setTimeout(performFetch, 300);
+        }
+
+        return () => {
+            if (searchTimeoutRef.current) clearTimeout(searchTimeoutRef.current);
+        };
     }, [activeCategory, currentPage, searchTerm]);
 
     const fetchRegistrations = async (categoryId = null, page = 1, search = '') => {
-        setLoading(true);
         const token = localStorage.getItem('token');
+        if (!token) {
+            navigate('/login');
+            return;
+        }
+
+        setLoading(true);
 
         let url = `https://new.ssvmtransformingindia.com/public/api/registrations?page=${page}`;
 
@@ -100,12 +121,20 @@ const DashboardPage = () => {
                     'Accept': 'application/json'
                 }
             });
+            if (response.status === 401) {
+                handleLogout();
+                return;
+            }
+
             const result = await response.json();
             if (result.success) {
-                setRegistrations(result.data);
-                setCurrentPage(result.current_page);
-                setLastPage(result.last_page);
-                setTotalRecords(result.total);
+                setRegistrations(result.data || []);
+                setCurrentPage(result.current_page || 1);
+                setLastPage(result.last_page || 1);
+                setTotalRecords(result.total || 0);
+            } else {
+                setRegistrations([]);
+                console.warn("Fetch failed:", result.message);
             }
         } catch (error) {
             console.error('Fetch error:', error);
@@ -131,6 +160,10 @@ const DashboardPage = () => {
                     'Accept': 'application/json'
                 }
             });
+            if (response.status === 401) {
+                handleLogout();
+                return;
+            }
             const result = await response.json();
             if (result.success) {
                 setSelectedRegistration(result.data);
@@ -155,6 +188,10 @@ const DashboardPage = () => {
                     'Accept': 'application/json'
                 }
             });
+            if (response.status === 401) {
+                handleLogout();
+                return;
+            }
             const result = await response.json();
             if (result.success) {
                 showToast('Registration deleted successfully', 'success');
@@ -453,10 +490,10 @@ const DashboardPage = () => {
                                                             </td>
                                                             <td>{new Date(reg.created_at).toLocaleDateString()}</td>
                                                             <td>
-                                                                <button className="action-btn view" onClick={() => handleView(reg.id)} title="View Details" style={{border: 'none', background: 'transparent', cursor: 'pointer', color: '#007bff'}}>
+                                                                <button className="action-btn view" onClick={() => handleView(reg.id)} title="View Details" style={{ border: 'none', background: 'transparent', cursor: 'pointer', color: '#007bff' }}>
                                                                     <i className="bi bi-eye"></i>
                                                                 </button>
-                                                                <button className="action-btn delete" onClick={() => handleDelete(reg.id)} title="Delete" style={{border: 'none', background: 'transparent', cursor: 'pointer', marginLeft: '10px', color: '#dc3545'}}>
+                                                                <button className="action-btn delete" onClick={() => handleDelete(reg.id)} title="Delete" style={{ border: 'none', background: 'transparent', cursor: 'pointer', marginLeft: '10px', color: '#dc3545' }}>
                                                                     <i className="bi bi-trash"></i>
                                                                 </button>
                                                             </td>
@@ -548,87 +585,87 @@ const DashboardPage = () => {
 
             {/* View Modal */}
             {isViewModalOpen && selectedRegistration && (
-                <div className="modal-overlay" onClick={() => setIsViewModalOpen(false)} style={{position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 9999}}>
-                    <div className="modal-content" onClick={e => e.stopPropagation()} style={{maxWidth: '800px', width: '90%', maxHeight: '90vh', overflowY: 'auto', padding: '30px', borderRadius: '12px', background: '#fff', position: 'relative', boxShadow: '0 10px 30px rgba(0,0,0,0.2)'}}>
-                        <button className="close-btn" onClick={() => setIsViewModalOpen(false)} style={{position: 'absolute', top: '15px', right: '15px', border: 'none', background: '#f0f0f0', width: '30px', height: '30px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.2rem', cursor: 'pointer', color: '#333'}}>&times;</button>
-                        <h2 style={{marginTop: 0, borderBottom: '1px solid #eee', paddingBottom: '15px', color: '#333'}}>Registration Details</h2>
-                        <div className="view-grid" style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginTop: '20px', fontSize: '0.95rem'}}>
-                            <div><strong>Register No:</strong> <br/><span style={{color: '#555'}}>{selectedRegistration.register_number}</span></div>
-                            <div><strong>Date:</strong> <br/><span style={{color: '#555'}}>{new Date(selectedRegistration.created_at).toLocaleDateString()}</span></div>
-                            <div><strong>Name:</strong> <br/><span style={{color: '#555'}}>{selectedRegistration.student_name} {selectedRegistration.last_name}</span></div>
-                            <div><strong>Email:</strong> <br/><span style={{color: '#555'}}>{selectedRegistration.email}</span></div>
-                            <div><strong>Phone:</strong> <br/><span style={{color: '#555'}}>{selectedRegistration.phone}</span></div>
-                            <div><strong>School:</strong> <br/><span style={{color: '#555'}}>{selectedRegistration.school_name}</span></div>
-                            <div><strong>Award Group:</strong> <br/><span style={{color: '#555', textTransform: 'capitalize'}}>{selectedRegistration.award_group}</span></div>
-                            <div><strong>Nomination Type:</strong> <br/><span style={{color: '#555', textTransform: 'capitalize'}}>{selectedRegistration.nomination_type}</span></div>
-                            
+                <div className="modal-overlay" onClick={() => setIsViewModalOpen(false)} style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 9999 }}>
+                    <div className="modal-content" onClick={e => e.stopPropagation()} style={{ maxWidth: '800px', width: '90%', maxHeight: '90vh', overflowY: 'auto', padding: '30px', borderRadius: '12px', background: '#fff', position: 'relative', boxShadow: '0 10px 30px rgba(0,0,0,0.2)' }}>
+                        <button className="close-btn" onClick={() => setIsViewModalOpen(false)} style={{ position: 'absolute', top: '15px', right: '15px', border: 'none', background: '#f0f0f0', width: '30px', height: '30px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.2rem', cursor: 'pointer', color: '#333' }}>&times;</button>
+                        <h2 style={{ marginTop: 0, borderBottom: '1px solid #eee', paddingBottom: '15px', color: '#333' }}>Registration Details</h2>
+                        <div className="view-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginTop: '20px', fontSize: '0.95rem' }}>
+                            <div><strong>Register No:</strong> <br /><span style={{ color: '#555' }}>{selectedRegistration.register_number}</span></div>
+                            <div><strong>Date:</strong> <br /><span style={{ color: '#555' }}>{new Date(selectedRegistration.created_at).toLocaleDateString()}</span></div>
+                            <div><strong>Name:</strong> <br /><span style={{ color: '#555' }}>{selectedRegistration.student_name} {selectedRegistration.last_name}</span></div>
+                            <div><strong>Email:</strong> <br /><span style={{ color: '#555' }}>{selectedRegistration.email}</span></div>
+                            <div><strong>Phone:</strong> <br /><span style={{ color: '#555' }}>{selectedRegistration.phone}</span></div>
+                            <div><strong>School:</strong> <br /><span style={{ color: '#555' }}>{selectedRegistration.school_name}</span></div>
+                            <div><strong>Award Group:</strong> <br /><span style={{ color: '#555', textTransform: 'capitalize' }}>{selectedRegistration.award_group}</span></div>
+                            <div><strong>Nomination Type:</strong> <br /><span style={{ color: '#555', textTransform: 'capitalize' }}>{selectedRegistration.nomination_type}</span></div>
+
                             {selectedRegistration.award_group === 'studentpreneur' && (
                                 <>
-                                    <div><strong>Grade:</strong> <br/><span style={{color: '#555'}}>{selectedRegistration.grade}</span></div>
-                                    <div><strong>Total Members:</strong> <br/><span style={{color: '#555'}}>{selectedRegistration.total_members}</span></div>
-                                    <div><strong>School City:</strong> <br/><span style={{color: '#555'}}>{selectedRegistration.school_city || 'N/A'}</span></div>
-                                    <div><strong>School Phone:</strong> <br/><span style={{color: '#555'}}>{selectedRegistration.school_phone || 'N/A'}</span></div>
-                                    <div><strong>School Email:</strong> <br/><span style={{color: '#555'}}>{selectedRegistration.school_email || 'N/A'}</span></div>
-                                    
+                                    <div><strong>Grade:</strong> <br /><span style={{ color: '#555' }}>{selectedRegistration.grade}</span></div>
+                                    <div><strong>Total Members:</strong> <br /><span style={{ color: '#555' }}>{selectedRegistration.total_members}</span></div>
+                                    <div><strong>School City:</strong> <br /><span style={{ color: '#555' }}>{selectedRegistration.school_city || 'N/A'}</span></div>
+                                    <div><strong>School Phone:</strong> <br /><span style={{ color: '#555' }}>{selectedRegistration.school_phone || 'N/A'}</span></div>
+                                    <div><strong>School Email:</strong> <br /><span style={{ color: '#555' }}>{selectedRegistration.school_email || 'N/A'}</span></div>
+
                                     {selectedRegistration.team_members && Array.isArray(selectedRegistration.team_members) && selectedRegistration.team_members.length > 0 && (
-                                        <div style={{gridColumn: '1 / -1'}}>
+                                        <div style={{ gridColumn: '1 / -1' }}>
                                             <strong>Team Members:</strong>
-                                            <ul style={{margin: '8px 0 0', paddingLeft: '20px', color: '#555', background: '#f8f9fa', padding: '15px 15px 15px 35px', borderRadius: '6px', border: '1px solid #eee'}}>
+                                            <ul style={{ margin: '8px 0 0', paddingLeft: '20px', color: '#555', background: '#f8f9fa', padding: '15px 15px 15px 35px', borderRadius: '6px', border: '1px solid #eee' }}>
                                                 {selectedRegistration.team_members.map((tm, idx) => (
-                                                    <li key={idx} style={{marginBottom: '5px'}}><strong>{tm.name}</strong> - {tm.phone}</li>
+                                                    <li key={idx} style={{ marginBottom: '5px' }}><strong>{tm.name}</strong> - {tm.phone}</li>
                                                 ))}
                                             </ul>
                                         </div>
                                     )}
 
                                     {selectedRegistration.pitch_deck_path && (
-                                        <div style={{gridColumn: '1 / -1'}}>
-                                            <strong>Pitch Deck:</strong> <br/>
-                                            <a href={`https://new.ssvmtransformingindia.com/public/registrations/${selectedRegistration.pitch_deck_path}`} target="_blank" rel="noopener noreferrer" style={{display: 'inline-flex', alignItems: 'center', gap: '5px', marginTop: '8px', color: '#007bff', textDecoration: 'none', background: '#e9ecef', padding: '8px 12px', borderRadius: '4px', fontWeight: '500'}}>
+                                        <div style={{ gridColumn: '1 / -1' }}>
+                                            <strong>Pitch Deck:</strong> <br />
+                                            <a href={`https://new.ssvmtransformingindia.com/public/registrations/${selectedRegistration.pitch_deck_path}`} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', marginTop: '8px', color: '#007bff', textDecoration: 'none', background: '#e9ecef', padding: '8px 12px', borderRadius: '4px', fontWeight: '500' }}>
                                                 <i className="bi bi-file-earmark-pdf"></i> View Pitch Deck
                                             </a>
                                         </div>
                                     )}
 
-                                    <div style={{gridColumn: '1 / -1'}}><strong>Business Idea:</strong> <p style={{margin: '8px 0 0', padding: '15px', background: '#f8f9fa', borderRadius: '6px', border: '1px solid #eee', color: '#444', lineHeight: '1.5'}}>{selectedRegistration.business_idea}</p></div>
-                                    <div style={{gridColumn: '1 / -1'}}><strong>Achievements:</strong> <p style={{margin: '8px 0 0', padding: '15px', background: '#f8f9fa', borderRadius: '6px', border: '1px solid #eee', color: '#444', lineHeight: '1.5'}}>{selectedRegistration.achievements}</p></div>
-                                    <div style={{gridColumn: '1 / -1'}}><strong>Why Join:</strong> <p style={{margin: '8px 0 0', padding: '15px', background: '#f8f9fa', borderRadius: '6px', border: '1px solid #eee', color: '#444', lineHeight: '1.5'}}>{selectedRegistration.why_join}</p></div>
+                                    <div style={{ gridColumn: '1 / -1' }}><strong>Business Idea:</strong> <p style={{ margin: '8px 0 0', padding: '15px', background: '#f8f9fa', borderRadius: '6px', border: '1px solid #eee', color: '#444', lineHeight: '1.5' }}>{selectedRegistration.business_idea}</p></div>
+                                    <div style={{ gridColumn: '1 / -1' }}><strong>Achievements:</strong> <p style={{ margin: '8px 0 0', padding: '15px', background: '#f8f9fa', borderRadius: '6px', border: '1px solid #eee', color: '#444', lineHeight: '1.5' }}>{selectedRegistration.achievements}</p></div>
+                                    <div style={{ gridColumn: '1 / -1' }}><strong>Why Join:</strong> <p style={{ margin: '8px 0 0', padding: '15px', background: '#f8f9fa', borderRadius: '6px', border: '1px solid #eee', color: '#444', lineHeight: '1.5' }}>{selectedRegistration.why_join}</p></div>
                                 </>
                             )}
                             {selectedRegistration.award_group === 'guru' && (
                                 <>
-                                    <div><strong>Experience:</strong> <br/><span style={{color: '#555'}}>{selectedRegistration.experience} Years</span></div>
-                                    <div><strong>Subjects:</strong> <br/><span style={{color: '#555'}}>{selectedRegistration.subjects}</span></div>
-                                    <div><strong>SSVM Teacher:</strong> <br/><span style={{color: '#555'}}>{selectedRegistration.is_ssvm_teacher || 'N/A'}</span></div>
-                                    <div><strong>PE Teacher:</strong> <br/><span style={{color: '#555'}}>{selectedRegistration.is_pe_teacher}</span></div>
-                                    
+                                    <div><strong>Experience:</strong> <br /><span style={{ color: '#555' }}>{selectedRegistration.experience} Years</span></div>
+                                    <div><strong>Subjects:</strong> <br /><span style={{ color: '#555' }}>{selectedRegistration.subjects}</span></div>
+                                    <div><strong>SSVM Teacher:</strong> <br /><span style={{ color: '#555' }}>{selectedRegistration.is_ssvm_teacher || 'N/A'}</span></div>
+                                    <div><strong>PE Teacher:</strong> <br /><span style={{ color: '#555' }}>{selectedRegistration.is_pe_teacher}</span></div>
+
                                     {selectedRegistration.is_pe_teacher === 'Yes' && selectedRegistration.pet_details && (
-                                        <div style={{gridColumn: '1 / -1'}}><strong>PE Details:</strong> <p style={{margin: '8px 0 0', padding: '15px', background: '#f8f9fa', borderRadius: '6px', border: '1px solid #eee', color: '#444', lineHeight: '1.5'}}>{selectedRegistration.pet_details}</p></div>
+                                        <div style={{ gridColumn: '1 / -1' }}><strong>PE Details:</strong> <p style={{ margin: '8px 0 0', padding: '15px', background: '#f8f9fa', borderRadius: '6px', border: '1px solid #eee', color: '#444', lineHeight: '1.5' }}>{selectedRegistration.pet_details}</p></div>
                                     )}
 
-                                    <div><strong>Nominator Name:</strong> <br/><span style={{color: '#555'}}>{selectedRegistration.nominator_name || 'N/A'}</span></div>
-                                    <div><strong>Nominator Phone:</strong> <br/><span style={{color: '#555'}}>{selectedRegistration.nominator_phone || 'N/A'}</span></div>
-                                    <div><strong>Nominator Email:</strong> <br/><span style={{color: '#555'}}>{selectedRegistration.nominator_email || 'N/A'}</span></div>
-                                    <div><strong>Nominator Address:</strong> <br/><span style={{color: '#555'}}>{selectedRegistration.nominator_address || 'N/A'}</span></div>
+                                    <div><strong>Nominator Name:</strong> <br /><span style={{ color: '#555' }}>{selectedRegistration.nominator_name || 'N/A'}</span></div>
+                                    <div><strong>Nominator Phone:</strong> <br /><span style={{ color: '#555' }}>{selectedRegistration.nominator_phone || 'N/A'}</span></div>
+                                    <div><strong>Nominator Email:</strong> <br /><span style={{ color: '#555' }}>{selectedRegistration.nominator_email || 'N/A'}</span></div>
+                                    <div><strong>Nominator Address:</strong> <br /><span style={{ color: '#555' }}>{selectedRegistration.nominator_address || 'N/A'}</span></div>
 
                                     {selectedRegistration.photo_path && (
-                                        <div style={{gridColumn: '1 / -1'}}>
-                                            <strong>Photo:</strong> <br/>
-                                            <a href={`https://new.ssvmtransformingindia.com/public/registrations/${selectedRegistration.photo_path}`} target="_blank" rel="noopener noreferrer" style={{display: 'inline-flex', alignItems: 'center', gap: '5px', marginTop: '8px', color: '#007bff', textDecoration: 'none', background: '#e9ecef', padding: '8px 12px', borderRadius: '4px', fontWeight: '500'}}>
+                                        <div style={{ gridColumn: '1 / -1' }}>
+                                            <strong>Photo:</strong> <br />
+                                            <a href={`https://new.ssvmtransformingindia.com/public/registrations/${selectedRegistration.photo_path}`} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', marginTop: '8px', color: '#007bff', textDecoration: 'none', background: '#e9ecef', padding: '8px 12px', borderRadius: '4px', fontWeight: '500' }}>
                                                 <i className="bi bi-image"></i> View Photo
                                             </a>
                                         </div>
                                     )}
 
-                                    <div style={{gridColumn: '1 / -1'}}><strong>Teacher Profile:</strong> <p style={{margin: '8px 0 0', padding: '15px', background: '#f8f9fa', borderRadius: '6px', border: '1px solid #eee', color: '#444', lineHeight: '1.5'}}>{selectedRegistration.teacher_profile}</p></div>
-                                    <div style={{gridColumn: '1 / -1'}}><strong>Vision:</strong> <p style={{margin: '8px 0 0', padding: '15px', background: '#f8f9fa', borderRadius: '6px', border: '1px solid #eee', color: '#444', lineHeight: '1.5'}}>{selectedRegistration.vision}</p></div>
-                                    <div style={{gridColumn: '1 / -1'}}><strong>Impact:</strong> <p style={{margin: '8px 0 0', padding: '15px', background: '#f8f9fa', borderRadius: '6px', border: '1px solid #eee', color: '#444', lineHeight: '1.5'}}>{selectedRegistration.impact}</p></div>
-                                    
+                                    <div style={{ gridColumn: '1 / -1' }}><strong>Teacher Profile:</strong> <p style={{ margin: '8px 0 0', padding: '15px', background: '#f8f9fa', borderRadius: '6px', border: '1px solid #eee', color: '#444', lineHeight: '1.5' }}>{selectedRegistration.teacher_profile}</p></div>
+                                    <div style={{ gridColumn: '1 / -1' }}><strong>Vision:</strong> <p style={{ margin: '8px 0 0', padding: '15px', background: '#f8f9fa', borderRadius: '6px', border: '1px solid #eee', color: '#444', lineHeight: '1.5' }}>{selectedRegistration.vision}</p></div>
+                                    <div style={{ gridColumn: '1 / -1' }}><strong>Impact:</strong> <p style={{ margin: '8px 0 0', padding: '15px', background: '#f8f9fa', borderRadius: '6px', border: '1px solid #eee', color: '#444', lineHeight: '1.5' }}>{selectedRegistration.impact}</p></div>
+
                                     {selectedRegistration.awards_won && (
-                                        <div style={{gridColumn: '1 / -1'}}><strong>Awards Won:</strong> <p style={{margin: '8px 0 0', padding: '15px', background: '#f8f9fa', borderRadius: '6px', border: '1px solid #eee', color: '#444', lineHeight: '1.5'}}>{selectedRegistration.awards_won}</p></div>
+                                        <div style={{ gridColumn: '1 / -1' }}><strong>Awards Won:</strong> <p style={{ margin: '8px 0 0', padding: '15px', background: '#f8f9fa', borderRadius: '6px', border: '1px solid #eee', color: '#444', lineHeight: '1.5' }}>{selectedRegistration.awards_won}</p></div>
                                     )}
 
-                                    <div style={{gridColumn: '1 / -1'}}><strong>References:</strong> <p style={{margin: '8px 0 0', padding: '15px', background: '#f8f9fa', borderRadius: '6px', border: '1px solid #eee', color: '#444', lineHeight: '1.5'}}>{selectedRegistration.references}</p></div>
+                                    <div style={{ gridColumn: '1 / -1' }}><strong>References:</strong> <p style={{ margin: '8px 0 0', padding: '15px', background: '#f8f9fa', borderRadius: '6px', border: '1px solid #eee', color: '#444', lineHeight: '1.5' }}>{selectedRegistration.references}</p></div>
                                 </>
                             )}
                         </div>
