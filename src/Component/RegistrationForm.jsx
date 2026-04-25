@@ -3,6 +3,19 @@ import { useLocation } from 'react-router-dom';
 import gsap from 'gsap';
 import '../assets/registration/RegistrationForm.css';
 
+const awardTypes = {
+    guru: [
+        { id: 'internal-self', label: 'Internal - Self Nomination', desc: 'Nominate yourself as an SSVM educator ' },
+        { id: 'internal-other', label: 'Internal - Nominate Others', desc: 'Nominate an educator from SSVM institutions' },
+        { id: 'external-self', label: 'External - Self Nomination', desc: 'Nominate yourself' },
+        { id: 'external-other', label: 'External - Nominate Others', desc: 'Nominate an educator you know' },
+    ],
+    studentpreneur: [
+        { id: 'internal', label: 'Internal Studentpreneur', desc: 'For students currently studying at SSVM' },
+        { id: 'external', label: 'External Studentpreneur', desc: 'For student entrepreneurs from other schools' },
+    ]
+};
+
 const RegistrationForm = () => {
     const location = useLocation();
     const [step, setStep] = useState(1);
@@ -54,6 +67,8 @@ const RegistrationForm = () => {
     const [errors, setErrors] = useState({});
     const [regNumber, setRegNumber] = useState('');
     const formRef = useRef(null);
+
+    const isNominateOther = formData.nominationType?.includes('other');
 
     // Auto-select if unique filter
     useEffect(() => {
@@ -228,26 +243,31 @@ const RegistrationForm = () => {
     }, [step, submitted]);
 
     const handleStepChange = (nextStep) => {
-        gsap.to(formRef.current, {
-            opacity: 0,
-            y: 20,
-            duration: 0.3,
-            onComplete: () => {
-                setStep(nextStep);
-                gsap.to(formRef.current, {
-                    opacity: 1,
-                    y: 0,
-                    duration: 0.4,
-                    ease: "power2.out"
-                });
-            }
-        });
+        if (formRef.current) {
+            gsap.to(formRef.current, {
+                opacity: 0,
+                y: 20,
+                duration: 0.3,
+                onComplete: () => {
+                    setStep(nextStep);
+                    gsap.to(formRef.current, {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.4,
+                        ease: "power2.out"
+                    });
+                }
+            });
+        } else {
+            setStep(nextStep);
+        }
     };
 
     const validateStep = (currentStep) => {
         const newErrors = {};
         if (currentStep === 2) {
             const isGuru = mainCategory === 'guru';
+            const isNominateOther = formData.nominationType?.includes('other');
             const requiredFields = isGuru ?
                 ['studentName', 'lastName', 'schoolName', 'phone', 'email', 'subjects', 'impact', 'vision', 'teacherProfile', 'experience', 'isPETeacher'] :
                 ['studentName', 'grade', 'email', 'phone', 'schoolName', 'schoolCity', 'schoolPhone', 'schoolEmail', 'businessIdea', 'totalMembers'];
@@ -262,17 +282,37 @@ const RegistrationForm = () => {
                 }
             }
 
+            // Email Format Validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (formData.email && !emailRegex.test(formData.email)) {
+                newErrors.email = 'Please enter a valid email address';
+            }
+
             // Spam/Disposable Email Validation
-            if (formData.email) {
+            if (formData.email && !newErrors.email) {
                 const disposableDomains = [
                     'mailinator.com', 'yopmail.com', 'tempmail.com', 'guerrillamail.com',
                     '10minutemail.com', 'sharklasers.com', 'trashmail.com', 'dispostable.com',
                     'getairmail.com', 'maildrop.cc', 'temp-mail.org', 'fake-mail.com'
                 ];
-                const emailDomain = formData.email.split('@')[1]?.toLowerCase();
+                const emailParts = formData.email.split('@');
+                const emailDomain = emailParts.length > 1 ? emailParts[1].toLowerCase() : '';
                 if (disposableDomains.includes(emailDomain)) {
-                    newErrors.email = 'Disposable or spam emails are not allowed. Please use a valid email.';
+                    newErrors.email = 'Disposable or spam emails are not allowed.';
                 }
+            }
+
+            // Phone Number Validation (10 digits)
+            if (formData.phone && formData.phone.length !== 10) {
+                newErrors.phone = 'Mobile number must be exactly 10 digits';
+            }
+
+            if (!isGuru && formData.schoolPhone && formData.schoolPhone.length !== 10) {
+                newErrors.schoolPhone = 'School phone must be exactly 10 digits';
+            }
+
+            if (!isGuru && formData.schoolEmail && !emailRegex.test(formData.schoolEmail)) {
+                newErrors.schoolEmail = 'Please enter a valid school email';
             }
 
             if (isGuru) {
@@ -299,27 +339,15 @@ const RegistrationForm = () => {
         }
     };
 
-    const awardTypes = {
-        guru: [
-            { id: 'internal-self', label: 'Internal - Self Nomination', desc: 'Nominate yourself as an SSVM educator ' },
-            { id: 'internal-other', label: 'Internal - Nominate Other', desc: 'Nominate an educator from SSVM institutions' },
-            { id: 'external-self', label: 'External - Self Nomination', desc: 'Nominate yourself' },
-            { id: 'external-other', label: 'External - Nominate Others', desc: 'Nominate an educator you know' },
-        ],
-        studentpreneur: [
-            { id: 'internal', label: 'Internal Studentpreneur', desc: 'For students currently studying at SSVM' },
-            { id: 'external', label: 'External Studentpreneur', desc: 'For student entrepreneurs from other schools' },
-        ]
-    };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
+    const handleSubmit = async () => {
         // Final validation for Step 3
         const newErrors = {};
         const isGuru = mainCategory === 'guru';
+        const isNominateOther = formData.nominationType?.includes('other');
         const requiredStep3 = isGuru ?
-            ['nominatorName', 'nominatorPhone', 'nominatorEmail', 'nominatorAddress', 'references'] :
+            (isNominateOther ?
+                ['nominatorName', 'nominatorPhone', 'nominatorEmail', 'nominatorAddress', 'references'] :
+                ['nominatorAddress', 'references']) :
             ['achievements', 'whyJoin'];
 
         for (let field of requiredStep3) {
@@ -328,9 +356,15 @@ const RegistrationForm = () => {
             }
         }
 
-        // if (!formData.termsAccepted) {
-        //     newErrors.termsAccepted = 'You must accept the terms and conditions';
-        // }
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (isGuru && isNominateOther) {
+            if (formData.nominatorEmail && !emailRegex.test(formData.nominatorEmail)) {
+                newErrors.nominatorEmail = 'Please enter a valid email';
+            }
+            if (formData.nominatorPhone && formData.nominatorPhone.length !== 10) {
+                newErrors.nominatorPhone = 'Mobile number must be 10 digits';
+            }
+        }
 
         setErrors(newErrors);
         if (Object.keys(newErrors).length > 0) {
@@ -342,10 +376,19 @@ const RegistrationForm = () => {
 
         const data = new FormData();
 
-        // Append all text fields (excluding fields handled separately or internal state)
+        // Append all text fields
         Object.keys(formData).forEach(key => {
             if (!['pitchDeck', 'awardGroup', 'photo', 'teamMembers'].includes(key)) {
-                data.append(key, formData[key]);
+                let value = formData[key];
+
+                // If Self Nomination, copy teacher details to nominator fields
+                if (!isNominateOther && isGuru) {
+                    if (key === 'nominatorName') value = `${formData.studentName} ${formData.lastName}`;
+                    if (key === 'nominatorPhone') value = formData.phone;
+                    if (key === 'nominatorEmail') value = formData.email;
+                }
+
+                data.append(key, value);
             }
         });
 
@@ -354,7 +397,7 @@ const RegistrationForm = () => {
             data.append('teamMembers', JSON.stringify(formData.teamMembers));
         }
 
-        // Append awardGroup specifically (use the state variable to ensure latest value)
+        // Append awardGroup specifically
         data.append('awardGroup', mainCategory);
 
         // Append image/photo if present (For Guru)
@@ -370,8 +413,9 @@ const RegistrationForm = () => {
         }
 
         try {
-            console.log('Submitting to:', 'https://new.ssvmtransformingindia.com/public/api/register');
-            const response = await fetch('https://new.ssvmtransformingindia.com/public/api/register', {
+            const apiEndpoint = 'https://new.ssvmtransformingindia.com/public/api/register';
+            console.log('Submitting to:', apiEndpoint);
+            const response = await fetch(apiEndpoint, {
                 method: 'POST',
                 body: data,
                 headers: {
@@ -438,10 +482,13 @@ const RegistrationForm = () => {
     );
 
     const renderStepContent = () => {
+        const isNominateOther = formData.nominationType?.includes('other');
+        const isGuru = mainCategory === 'guru';
+
         switch (step) {
             case 1:
                 return (
-                    <div ref={formRef}>
+                    <div ref={formRef} key="step1">
                         {!mainCategory ? (
                             <div className="nomination-cards">
                                 <div
@@ -466,9 +513,7 @@ const RegistrationForm = () => {
                                 <div className="nomination-cards">
                                     {awardTypes[mainCategory]
                                         .filter(type => {
-                                            // Always show both for studentpreneur as per previous request
                                             if (mainCategory === 'studentpreneur') return true;
-                                            // For Guru, only show if it matches the filter (e.g., internal-*)
                                             return !filterType || type.id.startsWith(filterType);
                                         })
                                         .map(type => (
@@ -487,8 +532,9 @@ const RegistrationForm = () => {
                                         ))}
                                 </div>
                                 <div className="form-footer" style={{ marginTop: '30px' }}>
-                                    <button className="nav-btn btn-back" onClick={() => setMainCategory('')}>Back to Main</button>
+                                    <button type="button" className="nav-btn btn-back" onClick={() => setMainCategory('')}>Back to Main</button>
                                     <button
+                                        type="button"
                                         className="nav-btn btn-next"
                                         disabled={!formData.nominationType}
                                         onClick={() => handleStepChange(2)}
@@ -501,22 +547,18 @@ const RegistrationForm = () => {
                     </div>
                 );
             case 2:
-                const isNominateOther = formData.nominationType.includes('other');
-                const isGuru = mainCategory === 'guru';
-
                 return (
-                    <div ref={formRef}>
+                    <div ref={formRef} key="step2">
                         <div className="registration-form">
                             {isGuru ? (
                                 <>
-                                    {/* Names Grid */}
                                     <div className={`input-group ${errors.studentName ? 'has-error' : ''}`}>
-                                        <label>Teacher's First Name <span className="required-asterisk">*</span></label>
+                                        <label>{isNominateOther ? "Teacher's First Name" : "Your First Name"} <span className="required-asterisk">*</span></label>
                                         <input type="text" name="studentName" value={formData.studentName} onChange={handleChange} placeholder="First Name" required />
                                         {errors.studentName && <span className="error-text">{errors.studentName}</span>}
                                     </div>
                                     <div className={`input-group ${errors.lastName ? 'has-error' : ''}`}>
-                                        <label>Teacher's Last Name <span className="required-asterisk">*</span></label>
+                                        <label>{isNominateOther ? "Teacher's Last Name" : "Your Last Name"} <span className="required-asterisk">*</span></label>
                                         <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} placeholder="Last Name" required />
                                         {errors.lastName && <span className="error-text">{errors.lastName}</span>}
                                     </div>
@@ -529,7 +571,7 @@ const RegistrationForm = () => {
 
                                     <div className={`input-group ${errors.phone ? 'has-error' : ''}`}>
                                         <label>Phone <span className="required-asterisk">*</span></label>
-                                        <input type="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder="Phone Number" required />
+                                        <input type="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder="Phone Number" maxLength="10" required />
                                         {errors.phone && <span className="error-text">{errors.phone}</span>}
                                     </div>
                                     <div className={`input-group ${errors.email ? 'has-error' : ''}`}>
@@ -538,13 +580,13 @@ const RegistrationForm = () => {
                                         {errors.email && <span className="error-text">{errors.email}</span>}
                                     </div>
                                     <div className={`input-group full-width ${errors.subjects ? 'has-error' : ''}`}>
-                                        <label>Which subjects do they teach? <span className="required-asterisk">*</span></label>
+                                        <label>{isNominateOther ? "Which subjects do they teach?" : "Which subjects do you teach?"} <span className="required-asterisk">*</span></label>
                                         <input type="text" name="subjects" value={formData.subjects} onChange={handleChange} placeholder="e.g. Mathematics, Science" required />
                                         {errors.subjects && <span className="error-text">{errors.subjects}</span>}
                                     </div>
 
                                     <div className={`input-group full-width ${errors.isPETeacher ? 'has-error' : ''}`}>
-                                        <label>Are you a physical educational teacher? <span className="required-asterisk">*</span></label>
+                                        <label>{isNominateOther ? "Are they a physical educational teacher?" : "Are you a physical educational teacher?"} <span className="required-asterisk">*</span></label>
                                         <div className="radio-group" style={{ display: 'flex', gap: '20px', marginTop: '10px' }}>
                                             <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
                                                 <input
@@ -570,7 +612,7 @@ const RegistrationForm = () => {
 
                                     {formData.isPETeacher === 'yes' && (
                                         <div className={`input-group full-width ${errors.petDetails ? 'has-error' : ''}`}>
-                                            <label>Please specify your sports specialization or achievements <span className="required-asterisk">*</span></label>
+                                            <label>Please specify sports specialization or achievements <span className="required-asterisk">*</span></label>
                                             <textarea
                                                 name="petDetails"
                                                 value={formData.petDetails}
@@ -583,17 +625,17 @@ const RegistrationForm = () => {
                                         </div>
                                     )}
                                     <div className={`input-group full-width ${errors.impact ? 'has-error' : ''}`}>
-                                        <label>How have they impacted their students lives? <span className="required-asterisk">*</span></label>
+                                        <label>{isNominateOther ? "How have they impacted their student’s lives?" : "How have you impacted your student’s lives?"} <span className="required-asterisk">*</span></label>
                                         <textarea name="impact" value={formData.impact} onChange={handleChange} rows="3" required></textarea>
                                         {errors.impact && <span className="error-text">{errors.impact}</span>}
                                     </div>
                                     <div className={`input-group full-width ${errors.vision ? 'has-error' : ''}`}>
-                                        <label>Vision for the younger generation <span className="required-asterisk">*</span></label>
+                                        <label>{isNominateOther ? "Vision for the younger generation" : "Your vision for the younger generation"} <span className="required-asterisk">*</span></label>
                                         <textarea name="vision" value={formData.vision} onChange={handleChange} rows="3" required></textarea>
                                         {errors.vision && <span className="error-text">{errors.vision}</span>}
                                     </div>
                                     <div className={`input-group full-width ${errors.teacherProfile ? 'has-error' : ''}`}>
-                                        <label>Brief profile about your teacher <span className="required-asterisk">*</span></label>
+                                        <label>{isNominateOther ? "Brief profile about the teacher" : "Brief profile about yourself"} <span className="required-asterisk">*</span></label>
                                         <textarea name="teacherProfile" value={formData.teacherProfile} onChange={handleChange} rows="3" required></textarea>
                                         {errors.teacherProfile && <span className="error-text">{errors.teacherProfile}</span>}
                                     </div>
@@ -615,7 +657,6 @@ const RegistrationForm = () => {
                                         </div>
 
                                         <div className="file-upload-wrapper" style={{ marginTop: '15px' }}>
-                                            {/* ... */}
                                             {uploadMode === 'upload' ? (
                                                 <>
                                                     {!uploadPreview ? (
@@ -682,7 +723,7 @@ const RegistrationForm = () => {
                                     </div>
 
                                     <div className={`input-group full-width ${errors.experience ? 'has-error' : ''}`}>
-                                        <label>How many years of experience do they have? <span className="required-asterisk">*</span></label>
+                                        <label>{isNominateOther ? "How many years of experience do they have?" : "How many years of experience do you have?"} <span className="required-asterisk">*</span></label>
                                         <input type="number" name="experience" value={formData.experience} onChange={handleChange} placeholder="Number of years" min="0" required />
                                         {errors.experience && <span className="error-text">{errors.experience}</span>}
                                     </div>
@@ -707,7 +748,7 @@ const RegistrationForm = () => {
                                     </div>
                                     <div className={`input-group ${errors.phone ? 'has-error' : ''}`}>
                                         <label>Applicant Mobile No <span className="required-asterisk">*</span></label>
-                                        <input type="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder="Mobile Number" required />
+                                        <input type="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder="Mobile Number" maxLength="10" required />
                                         {errors.phone && <span className="error-text">{errors.phone}</span>}
                                     </div>
 
@@ -724,7 +765,7 @@ const RegistrationForm = () => {
                                     </div>
                                     <div className={`input-group ${errors.schoolPhone ? 'has-error' : ''}`}>
                                         <label>School Phone no <span className="required-asterisk">*</span></label>
-                                        <input type="tel" name="schoolPhone" value={formData.schoolPhone} onChange={handleChange} placeholder="School Contact" required />
+                                        <input type="tel" name="schoolPhone" value={formData.schoolPhone} onChange={handleChange} placeholder="School Contact" maxLength="10" required />
                                         {errors.schoolPhone && <span className="error-text">{errors.schoolPhone}</span>}
                                     </div>
 
@@ -795,40 +836,47 @@ const RegistrationForm = () => {
                             )}
                         </div>
                         <div className="form-footer">
-                            <button className="nav-btn btn-back" onClick={() => handleStepChange(1)}>Back</button>
-                            <button className="nav-btn btn-next" onClick={handleNext}>Next Step</button>
+                            <button type="button" className="nav-btn btn-back" onClick={() => handleStepChange(1)}>Back</button>
+                            <button type="button" className="nav-btn btn-next" onClick={handleNext}>Next Step</button>
                         </div>
                     </div>
                 );
             case 3:
-                const isGuruAward = mainCategory === 'guru';
                 return (
-                    <div ref={formRef}>
+                    <div ref={formRef} key="step3">
                         <div className="registration-form">
-                            {isGuruAward ? (
+                            {isGuru ? (
                                 <>
-                                    <div className={`input-group ${errors.nominatorName ? 'has-error' : ''}`}>
-                                        <label>Nominator Name <span className="required-asterisk">*</span></label>
-                                        <input type="text" name="nominatorName" value={formData.nominatorName} onChange={handleChange} placeholder="Your Name" required />
-                                        {errors.nominatorName && <span className="error-text">{errors.nominatorName}</span>}
-                                    </div>
-                                    <div className={`input-group ${errors.nominatorPhone ? 'has-error' : ''}`}>
-                                        <label>Nominator Mobile Number <span className="required-asterisk">*</span></label>
-                                        <input type="tel" name="nominatorPhone" value={formData.nominatorPhone} onChange={handleChange} placeholder="Your Phone" required />
-                                        {errors.nominatorPhone && <span className="error-text">{errors.nominatorPhone}</span>}
-                                    </div>
-                                    <div className={`input-group full-width ${errors.nominatorEmail ? 'has-error' : ''}`}>
-                                        <label>Nominator Email <span className="required-asterisk">*</span></label>
-                                        <input type="email" name="nominatorEmail" value={formData.nominatorEmail} onChange={handleChange} placeholder="your.email@example.com" required />
-                                        {errors.nominatorEmail && <span className="error-text">{errors.nominatorEmail}</span>}
-                                    </div>
+                                    {isNominateOther ? (
+                                        <>
+                                            <div className="section-header full-width" style={{ gridColumn: '1 / -1', marginBottom: '10px' }}>
+                                                <h3 style={{ color: 'var(--primary)', borderBottom: '2px solid var(--primary)', display: 'inline-block', paddingBottom: '5px' }}>NOMINATOR DETAILS</h3>
+                                            </div>
+                                            <div className={`input-group ${errors.nominatorName ? 'has-error' : ''}`}>
+                                                <label>Nominator Name <span className="required-asterisk">*</span></label>
+                                                <input type="text" name="nominatorName" value={formData.nominatorName} onChange={handleChange} placeholder="Your Name" required />
+                                                {errors.nominatorName && <span className="error-text">{errors.nominatorName}</span>}
+                                            </div>
+                                            <div className={`input-group ${errors.nominatorPhone ? 'has-error' : ''}`}>
+                                                <label>Nominator Mobile Number <span className="required-asterisk">*</span></label>
+                                                <input type="tel" name="nominatorPhone" value={formData.nominatorPhone} onChange={handleChange} placeholder="Your Phone" maxLength="10" required />
+                                                {errors.nominatorPhone && <span className="error-text">{errors.nominatorPhone}</span>}
+                                            </div>
+                                            <div className={`input-group full-width ${errors.nominatorEmail ? 'has-error' : ''}`}>
+                                                <label>Nominator Email <span className="required-asterisk">*</span></label>
+                                                <input type="email" name="nominatorEmail" value={formData.nominatorEmail} onChange={handleChange} placeholder="your.email@example.com" required />
+                                                {errors.nominatorEmail && <span className="error-text">{errors.nominatorEmail}</span>}
+                                            </div>
+                                        </>
+                                    ) : null}
+
                                     <div className={`input-group full-width ${errors.nominatorAddress ? 'has-error' : ''}`}>
-                                        <label>Nominator Address <span className="required-asterisk">*</span></label>
-                                        <textarea name="nominatorAddress" value={formData.nominatorAddress} onChange={handleChange} rows="2" placeholder="Your Address" required></textarea>
+                                        <label>{isNominateOther ? "Nominator Address" : "Your Address"} <span className="required-asterisk">*</span></label>
+                                        <textarea name="nominatorAddress" value={formData.nominatorAddress} onChange={handleChange} rows="2" placeholder="Your Residential Address" required></textarea>
                                         {errors.nominatorAddress && <span className="error-text">{errors.nominatorAddress}</span>}
                                     </div>
                                     <div className={`input-group full-width ${errors.references ? 'has-error' : ''}`}>
-                                        <label>Are there any more reference for the nominated teacher? <span className="required-asterisk">*</span></label>
+                                        <label>{isNominateOther ? "Are there any more references for the nominated teacher?" : "Are there any more references for you?"} <span className="required-asterisk">*</span></label>
                                         <textarea name="references" value={formData.references} onChange={handleChange} rows="2" placeholder="List other references..." required></textarea>
                                         {errors.references && <span className="error-text">{errors.references}</span>}
                                     </div>
@@ -847,26 +895,11 @@ const RegistrationForm = () => {
                                     </div>
                                 </>
                             )}
-
-                            {/* <div className="input-group full-width" style={{ marginTop: '20px' }}>
-                                <label style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', cursor: 'pointer', textTransform: 'none', color: 'var(--text-dark)' }}>
-                                    <input
-                                        type="checkbox"
-                                        name="termsAccepted"
-                                        checked={formData.termsAccepted}
-                                        onChange={(e) => { setFormData(prev => ({ ...prev, termsAccepted: e.target.checked })); setErrors(p => ({ ...p, termsAccepted: null })); }}
-                                        style={{ marginTop: '4px' }}
-                                        required
-                                    />
-                                    <span>Terms and conditions <span className="required-asterisk">*</span><br />
-                                        <small style={{ color: 'var(--text-muted)' }}>Eligibility: School teachers, only Nominations. Self nomination or nomination by others Verification: Teaching credentials will be verified Final: Shortlisted teachers must attend the event</small></span>
-                                </label>
-                                {errors.termsAccepted && <div className="error-text" style={{ marginTop: '10px' }}>{errors.termsAccepted}</div>}
-                            </div> */}
                         </div>
                         <div className="form-footer">
-                            <button className="nav-btn btn-back" onClick={() => handleStepChange(2)}>Back</button>
+                            <button type="button" className="nav-btn btn-back" onClick={() => handleStepChange(2)}>Back</button>
                             <button
+                                type="button"
                                 className="nav-btn btn-next"
                                 onClick={handleSubmit}
                                 disabled={submitting}
@@ -912,7 +945,7 @@ const RegistrationForm = () => {
                             <p style={{ fontSize: '18px', color: 'var(--text-muted)', maxWidth: '500px', margin: '20px auto' }}>
                                 Thank you for applying to {mainCategory === 'guru' ? 'SSVM Inspirational Guru Awards' : 'SSVM Studentpreneur Awards'}. Our verification team will review your application and get back to you soon.
                             </p>
-                            <button className="nav-btn btn-next" onClick={() => window.location.href = '/'}>Return Home</button>
+                            <button type="button" className="nav-btn btn-next" onClick={() => window.location.href = '/'}>Return Home</button>
                         </div>
                     ) : (
                         renderStepContent()
@@ -924,6 +957,3 @@ const RegistrationForm = () => {
 };
 
 export default RegistrationForm;
-
-
-
