@@ -11,7 +11,7 @@ const LoginPage = () => {
     });
     const [showPassword, setShowPassword] = useState(false);
     const [loading, setLoading] = useState(false);
-    
+
     const cardRef = useRef(null);
     const navigate = useNavigate();
 
@@ -24,7 +24,7 @@ const LoginPage = () => {
         }
 
         // Entrance animation
-        gsap.fromTo(cardRef.current, 
+        gsap.fromTo(cardRef.current,
             { opacity: 0, y: 30, scale: 0.95 },
             { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: "power4.out" }
         );
@@ -41,7 +41,7 @@ const LoginPage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
-        
+
         try {
             const response = await fetch('https://new.ssvmtransformingindia.com/public/api/login', {
                 method: 'POST',
@@ -61,7 +61,8 @@ const LoginPage = () => {
                 // Store token and user info
                 localStorage.setItem('token', result.access_token);
                 localStorage.setItem('user', JSON.stringify(result.user));
-                
+                localStorage.setItem('activeCategory', 'overview'); // Reset to default view
+
                 // Redirect to dashboard
                 navigate('/dashboard');
             } else {
@@ -82,35 +83,35 @@ const LoginPage = () => {
                     <h2>Welcome Back</h2>
                     <p>Enter your credentials to access your account</p>
                 </div>
-                
+
                 <form onSubmit={handleSubmit}>
                     <div className="input-container">
                         <label htmlFor="email">Email Address</label>
-                        <input 
-                            type="email" 
-                            id="email" 
-                            name="email" 
-                            placeholder="name@company.com" 
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="name@company.com"
                             value={credentials.email}
                             onChange={handleChange}
-                            required 
+                            required
                         />
                     </div>
-                    
+
                     <div className="input-container">
                         <label htmlFor="password">Password</label>
                         <div className="password-input-wrapper">
-                            <input 
-                                type={showPassword ? 'text' : 'password'} 
-                                id="password" 
-                                name="password" 
-                                placeholder="••••••••" 
+                            <input
+                                type={showPassword ? 'text' : 'password'}
+                                id="password"
+                                name="password"
+                                placeholder="••••••••"
                                 value={credentials.password}
                                 onChange={handleChange}
-                                required 
+                                required
                             />
-                            <button 
-                                type="button" 
+                            <button
+                                type="button"
                                 className="password-toggle"
                                 onClick={() => setShowPassword(!showPassword)}
                                 tabIndex="-1"
@@ -119,12 +120,12 @@ const LoginPage = () => {
                             </button>
                         </div>
                     </div>
-                    
+
                     <div className="login-options">
                         <label className="remember-me">
-                            <input 
-                                type="checkbox" 
-                                name="remember" 
+                            <input
+                                type="checkbox"
+                                name="remember"
                                 checked={credentials.remember}
                                 onChange={handleChange}
                             />
@@ -134,12 +135,12 @@ const LoginPage = () => {
                             Forgot Password?
                         </Link>
                     </div>
-                    
+
                     <button type="submit" className="login-btn" disabled={loading}>
                         {loading ? 'Authenticating...' : 'Sign In'}
                     </button>
                 </form>
-                
+
                 <div className="login-footer">
                     Don't have an account? <Link to="/register">Create Account</Link>
                 </div>
