@@ -65,7 +65,7 @@ const NavigationHandler = ({ setLoading }) => {
                     const el = document.getElementById(id);
                     if (el) el.scrollIntoView({ behavior: "auto" });
                 }
-            }, 800); 
+            }, 800);
             return () => clearTimeout(timer);
         }
 
@@ -90,7 +90,7 @@ const NavigationHandler = ({ setLoading }) => {
             const refreshTimer = setTimeout(() => {
                 forceTop();
                 if (window.ScrollTrigger) window.ScrollTrigger.refresh();
-            }, 150); 
+            }, 150);
             return () => clearTimeout(refreshTimer);
         } else {
             const scrollTimer = setTimeout(() => {
@@ -105,7 +105,7 @@ const NavigationHandler = ({ setLoading }) => {
                         if (el) {
                             const st = window.ScrollTrigger.create({ trigger: el, start: "top 120px" });
                             let targetScroll = st.start;
-                            st.kill(); 
+                            st.kill();
 
                             // Fallback if GSAP returns 0 for a non-top element
                             if (targetScroll < 200 && id !== "home") {
@@ -127,7 +127,7 @@ const NavigationHandler = ({ setLoading }) => {
                 };
                 performScroll();
                 setTimeout(performScroll, 1200);
-            }, 400); 
+            }, 400);
             return () => clearTimeout(scrollTimer);
         }
     }, [pathname, hash, setLoading, key]);
@@ -142,7 +142,7 @@ const AppContent = ({ loading, setLoading }) => {
     return (
         <>
             <NavigationHandler setLoading={setLoading} />
-            
+
             {/* ✅ Forced remount on route change using key={location.pathname} 
                 This ensures the page content actually updates when you click a link */}
             <Routes key={location.pathname}>
@@ -182,17 +182,16 @@ const Router = () => {
         }
     }, []);
 
-    // 🔥 Page Enter Clear Logic (Runs ONCE on app load)
+    // 🔥 Safety Safeguard: Force hide preloader after 2 seconds
     useEffect(() => {
-        const initSecurity = async () => {
-            try {
-                await SecurityUtils.clearAppCache();
-            } catch (e) {
-                console.error("Router: Security initialization failed", e);
-            }
-        };
-        initSecurity();
-    }, []);
+        if (loading) {
+            const timer = setTimeout(() => setLoading(false), 2000);
+            return () => clearTimeout(timer);
+        }
+    }, [loading]);
+
+    // 🔥 Page Enter Clear Logic (REMOVED: already handled in index.js version check)
+    // useEffect(() => { ... }, []);
 
     // 🔥 Global GSAP stability settings
     useEffect(() => {
