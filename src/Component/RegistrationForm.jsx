@@ -481,6 +481,26 @@ const RegistrationForm = () => {
         </div>
     );
 
+    const renderHighlightNote = () => {
+        if (!mainCategory) return null;
+
+        let note = "";
+        if (mainCategory === 'guru') {
+            note = "Previously nominated educators are not eligible to apply again.";
+        } else if (mainCategory === 'studentpreneur') {
+            note = "Previous winners of the Studentpreneur Award are not eligible to reapply.";
+        }
+
+        if (!note) return null;
+
+        return (
+            <div className="highlight-note">
+                <i className="bi bi-info-circle-fill"></i>
+                <p>{note}</p>
+            </div>
+        );
+    };
+
     const renderStepContent = () => {
         const isNominateOther = formData.nominationType?.includes('other');
         const isGuru = mainCategory === 'guru';
@@ -948,7 +968,10 @@ const RegistrationForm = () => {
                             <button type="button" className="nav-btn btn-next" onClick={() => window.location.href = '/'}>Return Home</button>
                         </div>
                     ) : (
-                        renderStepContent()
+                        <>
+                            {renderHighlightNote()}
+                            {renderStepContent()}
+                        </>
                     )}
                 </div>
             </div>
