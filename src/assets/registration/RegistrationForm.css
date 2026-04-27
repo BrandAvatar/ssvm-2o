@@ -1,9 +1,15 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 :root {
-    --primary: #000000; 
+    --primary: #000000;
     --primary-light: #2d3436;
-    --accent: #F2FF33; 
-    --orange: #FF6B00; 
-    --purple: #7B2CBF; 
+    --accent: #F2FF33;
+    --orange: #FF6B00;
+    --purple: #7B2CBF;
     --bg-light: #f8f9fa;
     --text-dark: #000000;
     --text-muted: #616161;
@@ -13,7 +19,7 @@
 
 .registration-section {
     min-height: 100vh;
-    padding: 120px 20px;
+    padding: 100px 15px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -52,7 +58,7 @@
 .stepper-wrapper {
     padding: 40px 60px 20px;
     background: #fff;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 /* Banner Breadcrumb Design */
@@ -93,7 +99,7 @@
     content: "";
     width: 30px;
     height: 1px;
-    background: rgba(255,255,255,0.3);
+    background: rgba(255, 255, 255, 0.3);
 }
 
 .stepper-progress {
@@ -153,8 +159,77 @@
     letter-spacing: 1px;
 }
 
-.step-node.active + .step-label {
+.step-node.active+.step-label {
     color: #000000;
+}
+
+/* Highlight Note - Professional & Unique */
+.highlight-note {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    padding: 20px 28px;
+    margin-bottom: 40px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.highlight-note:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
+}
+
+.highlight-note::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    background: #000;
+}
+
+.highlight-note::after {
+    content: "ELIGIBILITY NOTICE";
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #000;
+    color: var(--accent);
+    font-size: 8px;
+    font-weight: 900;
+    padding: 4px 12px;
+    border-bottom-left-radius: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.highlight-note i {
+    background: #000;
+    color: var(--accent);
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font-size: 20px;
+    flex-shrink: 0;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.highlight-note p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #2d3436;
+    font-weight: 600;
+    max-width: 90%;
 }
 
 /* Form Content Area */
@@ -236,8 +311,15 @@
 }
 
 @keyframes slideInDown {
-    from { opacity: 0; transform: translateY(-5px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .input-group input,
@@ -332,8 +414,15 @@
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-5px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Custom File Upload Styling */
@@ -490,7 +579,7 @@
     position: absolute;
     top: 10px;
     right: 10px;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.5);
     color: #fff;
     border: none;
     border-radius: 50%;
@@ -554,7 +643,7 @@
     font-size: 13px;
     font-weight: 600;
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     display: flex;
     align-items: center;
     gap: 5px;
@@ -669,11 +758,11 @@
     }
 
     .stepper-wrapper {
-        padding: 30px 20px 20px;
+        padding: 20px 15px 15px;
     }
 
     .form-banner {
-        padding: 50px 20px;
+        padding: 40px 15px;
     }
 
     /* Removed redundant font overrides, now handled by clamp() */
@@ -693,7 +782,7 @@
     }
 
     .form-content-area {
-        padding: 30px 20px 40px;
+        padding: 30px 15px 40px;
     }
 
     /* Removed redundant font overrides, now handled by clamp() */
@@ -701,6 +790,15 @@
     .registration-form {
         grid-template-columns: 1fr;
         gap: 20px;
+        width: 100%;
+    }
+
+    .input-group input,
+    .input-group select,
+    .input-group textarea {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 14px 15px;
     }
 
     .input-group.full-width {
@@ -741,9 +839,10 @@
 
 @media (max-width: 480px) {
     .step-label {
-        display: none; /* Hide labels on very small screens, rely on numbers */
+        display: none;
+        /* Hide labels on very small screens, rely on numbers */
     }
-    
+
     .stepper-progress {
         margin-bottom: 0;
     }
