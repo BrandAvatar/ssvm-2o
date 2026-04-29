@@ -315,7 +315,7 @@ const RegistrationForm = () => {
                 newErrors.schoolEmail = 'Please enter a valid school email';
             }
 
-            if (isGuru) {
+            if (isGuru && !isNominateOther) {
                 if (uploadMode === 'upload' && !uploadPreview) {
                     newErrors.photo = 'Please upload a candidate photo';
                 }
@@ -660,7 +660,7 @@ const RegistrationForm = () => {
                                         {errors.teacherProfile && <span className="error-text">{errors.teacherProfile}</span>}
                                     </div>
                                     <div className={`input-group full-width ${errors.photo ? 'has-error' : ''}`}>
-                                        <label>Candidate Photo <span className="required-asterisk">*</span></label>
+                                        <label>Candidate Photo {!isNominateOther && <span className="required-asterisk">*</span>}</label>
                                         <div className="upload-choices">
                                             <div
                                                 className={`choice-btn ${uploadMode === 'upload' ? 'active' : ''}`}
