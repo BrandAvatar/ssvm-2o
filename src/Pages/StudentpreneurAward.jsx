@@ -89,8 +89,34 @@ const StudentpreneurAward = () => {
     const navigate = useNavigate();
 
     const handleAwardSelect = (category, type = '') => {
-        const typeParam = type ? `&type=${type}` : '';
-        navigate(`/register?category=${category}${typeParam}`);
+        const currentParams = new URLSearchParams(window.location.search);
+
+        const newParams = new URLSearchParams();
+
+        // required params
+        newParams.set('category', category);
+
+        if (type) {
+            newParams.set('type', type);
+        }
+
+        // preserve UTMs
+        const utmKeys = [
+            'utm_source',
+            'utm_medium',
+            'utm_campaign',
+            'utm_term',
+            'utm_content'
+        ];
+
+        utmKeys.forEach((key) => {
+            const value = currentParams.get(key);
+            if (value) {
+                newParams.set(key, value);
+            }
+        });
+
+        navigate(`/register?${newParams.toString()}`);
     };
 
     const containerRef = useRef();
