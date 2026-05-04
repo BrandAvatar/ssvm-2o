@@ -8,6 +8,7 @@ import { SecurityUtils } from "./utils/Security";
 import Homepage from "./Pages/Homepage";
 import StudentpreneurAward from "./Pages/StudentpreneurAward";
 import RegistrationPage from "./Pages/RegistrationPage";
+import SuccessPage from "./Pages/SuccessPage";
 import LoginPage from "./Pages/LoginPage";
 import DashboardPage from "./Pages/DashboardPage";
 import Preloader from "./Component/Preloader";
@@ -153,6 +154,7 @@ const AppContent = ({ loading, setLoading }) => {
                     {/* ✅ Other Routes */}
                     <Route path="/studentpreneur-award" element={<StudentpreneurAward />} />
                     <Route path="/register" element={<RegistrationPage />} />
+                    <Route path="/success" element={<SuccessPage />} />
                 </Route>
 
                 {/* ✅ Routes without Header/Footer */}
