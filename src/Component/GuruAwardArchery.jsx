@@ -24,10 +24,26 @@ const GuruAwardArchery = () => {
     const navigate = useNavigate();
 
     const handleAwardSelect = (category, type = '') => {
-        const typeParam = type ? `&type=${type}` : '';
-        navigate(`/register?category=${category}${typeParam}`);
-    };
+        const newParams = new URLSearchParams();
 
+        newParams.set('category', category);
+
+        if (type) {
+            newParams.set('type', type);
+        }
+
+        const currentParams = new URLSearchParams(window.location.search);
+
+        ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content']
+            .forEach((key) => {
+                const value = currentParams.get(key);
+                if (value) {
+                    newParams.set(key, value);
+                }
+            });
+
+        navigate(`/register?${newParams.toString()}`);
+    };
 
     useEffect(() => {
         gsap.set(mainHeadingRef.current, {

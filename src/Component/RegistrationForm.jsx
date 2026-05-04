@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
 import '../assets/registration/RegistrationForm.css';
 
@@ -18,14 +18,56 @@ const awardTypes = {
 
 const RegistrationForm = () => {
     const location = useLocation();
+    const navigate = useNavigate();
     const [step, setStep] = useState(1);
+    const [utmData, setUtmData] = useState({});
 
-    // Synchronous Initialization from URL params
+    useEffect(() => {
+        const params = new URLSearchParams(location.search);
+
+        const urlUtm = {
+            category: params.get('category') || '',
+            type: params.get('type') || '',
+            utm_source: params.get('utm_source') || '',
+            utm_medium: params.get('utm_medium') || '',
+            utm_campaign: params.get('utm_campaign') || '',
+            utm_term: params.get('utm_term') || '',
+            utm_content: params.get('utm_content') || '',
+        };
+
+        const saved = localStorage.getItem('utmData');
+        const savedUtm = saved ? JSON.parse(saved) : {};
+
+        const mergedUtm = {
+            ...savedUtm,
+            ...urlUtm, // URL overrides storage
+        };
+
+        setUtmData(mergedUtm);
+        localStorage.setItem('utmData', JSON.stringify(mergedUtm));
+    }, [location.search]);
+
+    useEffect(() => {
+        const saved = localStorage.getItem('utmData');
+        if (saved) {
+            setUtmData(JSON.parse(saved));
+        }
+    }, []);
+    useEffect(() => {
+        const saved = localStorage.getItem('utmData');
+        if (saved) {
+            setUtmData(JSON.parse(saved));
+        }
+    }, []);
+
+    const searchParams = new URLSearchParams(location.search);
+
     const [mainCategory, setMainCategory] = useState(() => {
-        return new URLSearchParams(window.location.search).get('category') || '';
+        return searchParams.get('category') || '';
     });
+
     const [filterType, setFilterType] = useState(() => {
-        return new URLSearchParams(window.location.search).get('type') || '';
+        return searchParams.get('type') || '';
     });
 
     const [formData, setFormData] = useState({
@@ -375,10 +417,10 @@ const RegistrationForm = () => {
         setSubmitting(true);
 
         const data = new FormData();
-
+        data.append('utm_data', JSON.stringify(utmData));
         // Append all text fields
         Object.keys(formData).forEach(key => {
-            if (!['pitchDeck', 'awardGroup', 'photo', 'teamMembers'].includes(key)) {
+            if (!['pitchDeck', 'awardGroup', 'teamMembers'].includes(key)) {
                 let value = formData[key];
 
                 // If Self Nomination, copy teacher details to nominator fields
@@ -426,9 +468,12 @@ const RegistrationForm = () => {
             const result = await response.json();
 
             if (response.ok && result.success) {
-                setRegNumber(result.data.register_number);
-                setSubmitted(true);
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                const reg = result.data.register_number;
+
+                setRegNumber(reg);
+
+                // ✅ redirect to success page
+                navigate(`/success?reg=${reg}&category=${mainCategory}`);
             } else {
                 alert(result.message || 'Submission failed. Please try again.');
             }
@@ -938,41 +983,13 @@ const RegistrationForm = () => {
         <section className="registration-section">
             <div className="registration-container">
                 {renderFormBanner()}
-                {!submitted && renderStepper()}
+                {/* {!submitted && renderStepper()} */}
 
                 <div className="form-content-area" style={{ background: '#f8f9fa' }}>
-                    {submitted ? (
-                        <div className="success-card">
-                            <div className="success-icon">✓</div>
-                            <h2 style={{ fontFamily: 'Sneaker', fontSize: '48px', color: 'var(--primary)' }}>Application Received!</h2>
-                            <p style={{ color: 'var(--text-muted)', fontSize: '18px', margin: '15px 0' }}>
-                                A confirmation email has been sent to your registered email address.
-                                Please check your inbox for your registration details.
-                            </p>
-
-                            <div className="reg-number-display" style={{
-                                margin: '25px auto',
-                                padding: '15px 30px',
-                                background: 'rgba(59, 130, 246, 0.1)',
-                                border: '1px dashed var(--primary)',
-                                borderRadius: '12px',
-                                display: 'inline-block'
-                            }}>
-                                <span style={{ color: 'var(--text-muted)', fontSize: '14px', textTransform: 'uppercase', letterSpacing: '1px' }}>Your Registration Number</span>
-                                <div style={{ fontSize: '28px', fontWeight: '800', color: 'var(--primary)', marginTop: '5px' }}>{regNumber}</div>
-                            </div>
-
-                            <p style={{ fontSize: '18px', color: 'var(--text-muted)', maxWidth: '500px', margin: '20px auto' }}>
-                                Thank you for applying to {mainCategory === 'guru' ? 'SSVM Inspirational Guru Awards' : 'SSVM Studentpreneur Awards'}. Our verification team will review your application and get back to you soon.
-                            </p>
-                            <button type="button" className="nav-btn btn-next" onClick={() => window.location.href = '/'}>Return Home</button>
-                        </div>
-                    ) : (
-                        <>
-                            {renderHighlightNote()}
-                            {renderStepContent()}
-                        </>
-                    )}
+                    <>
+                        {renderHighlightNote()}
+                        {renderStepContent()}
+                    </>
                 </div>
             </div>
         </section>
