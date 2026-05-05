@@ -26,39 +26,31 @@ const RegistrationForm = () => {
         const params = new URLSearchParams(location.search);
 
         const urlUtm = {
-            category: params.get('category') || '',
-            type: params.get('type') || '',
-            utm_source: params.get('utm_source') || '',
-            utm_medium: params.get('utm_medium') || '',
-            utm_campaign: params.get('utm_campaign') || '',
-            utm_term: params.get('utm_term') || '',
-            utm_content: params.get('utm_content') || '',
+            category: params.get('category'),
+            type: params.get('type'),
+            utm_source: params.get('utm_source'),
+            utm_medium: params.get('utm_medium'),
+            utm_campaign: params.get('utm_campaign'),
+            utm_term: params.get('utm_term'),
+            utm_content: params.get('utm_content'),
         };
 
-        const saved = localStorage.getItem('utmData');
-        const savedUtm = saved ? JSON.parse(saved) : {};
+        const stored = localStorage.getItem('utmData');
+        const storedUtm = stored ? JSON.parse(stored) : {};
 
-        const mergedUtm = {
-            ...savedUtm,
-            ...urlUtm, // URL overrides storage
-        };
+        // ✅ Only override if value exists in URL
+        const finalUtm = { ...storedUtm };
 
-        setUtmData(mergedUtm);
-        localStorage.setItem('utmData', JSON.stringify(mergedUtm));
+        Object.keys(urlUtm).forEach(key => {
+            if (urlUtm[key]) {
+                finalUtm[key] = urlUtm[key];
+            }
+        });
+
+        setUtmData(finalUtm);
+        localStorage.setItem('utmData', JSON.stringify(finalUtm));
+
     }, [location.search]);
-
-    useEffect(() => {
-        const saved = localStorage.getItem('utmData');
-        if (saved) {
-            setUtmData(JSON.parse(saved));
-        }
-    }, []);
-    useEffect(() => {
-        const saved = localStorage.getItem('utmData');
-        if (saved) {
-            setUtmData(JSON.parse(saved));
-        }
-    }, []);
 
     const searchParams = new URLSearchParams(location.search);
 
