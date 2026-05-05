@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const SuccessPage = () => {
@@ -8,6 +8,24 @@ const SuccessPage = () => {
     const params = new URLSearchParams(location.search);
     const regNumber = params.get("reg") || "";
     const category = params.get("category") || "";
+
+    useEffect(() => {
+        // ✅ Meta Pixel Conversion Event
+        if (window.fbq) {
+            window.fbq('track', 'Lead');
+            // You can also use:
+            // window.fbq('track', 'CompleteRegistration');
+        }
+
+        // ✅ Google Tag Manager Event
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            event: "form_success",
+            regNumber: regNumber,
+            category: category
+        });
+
+    }, [regNumber, category]);
 
     return (
         <section className="registration-section">
