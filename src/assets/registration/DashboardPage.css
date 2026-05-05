@@ -206,6 +206,7 @@
     transition: var(--transition-smooth);
     display: flex;
     flex-direction: column;
+    min-width: 0;
 }
 
 .sidebar-collapsed .main-wrapper {
@@ -312,6 +313,7 @@
     flex: 1;
     display: flex;
     flex-direction: column;
+    min-width: 0;
 }
 
 .welcome-section {
@@ -385,6 +387,7 @@
     flex: 1;
     display: flex;
     flex-direction: column;
+    min-width: 0;
 }
 
 .table-section {
@@ -395,6 +398,7 @@
     box-shadow: 14px 17px 40px 4px rgba(112, 144, 176, 0.08);
     display: flex;
     flex-direction: column;
+    min-width: 0;
 }
 
 .table-responsive {
@@ -495,25 +499,40 @@
     background: #333;
 }
 
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
 .custom-table {
     width: 100%;
     border-collapse: collapse;
+    min-width: 1000px;
 }
 
 .custom-table th {
     text-align: left;
-    color: var(--text-muted);
+    color: #000;
     font-size: 11px;
-    font-weight: 500;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #eee;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background-color: #f8f9fa;
+    padding: 15px 20px;
+    border-bottom: 2px solid #eee;
+    white-space: nowrap;
 }
 
 .custom-table td {
-    padding: 12px 0;
+    padding: 15px 20px;
     border-bottom: 1px solid #eee;
     font-size: 11px;
     font-weight: 600;
+    vertical-align: middle;
+    min-width: 150px;
+    white-space: normal;
+    word-wrap: break-word;
 }
 
 .file-link {
@@ -528,6 +547,7 @@
     font-size: 10px;
     font-weight: 500;
     transition: var(--transition-smooth);
+    white-space: nowrap;
 }
 
 .file-link:hover {
@@ -538,6 +558,7 @@
     color: #ccc;
     font-size: 10px;
     font-style: italic;
+    white-space: nowrap;
 }
 
 .td-name {
@@ -557,6 +578,7 @@
     justify-content: center;
     font-weight: 800;
     font-size: 12px;
+    flex-shrink: 0;
 }
 
 .status-pill {
@@ -564,6 +586,8 @@
     border-radius: 8px;
     font-size: 10px;
     font-weight: 500;
+    display: inline-block;
+    white-space: nowrap;
 }
 
 .status-pill.pending { background: #f0f0f0; color: #333; }
