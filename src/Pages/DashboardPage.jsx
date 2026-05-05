@@ -230,16 +230,16 @@ const DashboardPage = () => {
                 'Member 3 Name', 'Member 3 Phone',
                 'Member 4 Name', 'Member 4 Phone',
                 'Member 5 Name', 'Member 5 Phone',
-                'Key Achievements', 'Why Join', 'Pitch Deck URL', 'Date'
+                'Key Achievements', 'Why Join', 'Pitch Deck URL', 'UTM Source', 'UTM Medium', 'UTM Campaign', 'UTM Term', 'UTM Content', 'UTM Category', 'UTM Type', 'Date'
             ];
         } else if (isGuru) {
             headers = [
                 'S No', 'Reg No', 'Teacher Name', 'Email', 'Phone', 'School Name',
                 'Subjects', 'Experience', 'PE Teacher', 'PE Details', 'Vision', 'Impact', 'Profile',
-                'Nominator Name', 'Nominator Phone', 'Nominator Email', 'Nominator Address', 'References', 'Photo URL', 'Date'
+                'Nominator Name', 'Nominator Phone', 'Nominator Email', 'Nominator Address', 'References', 'Photo URL', 'UTM Source', 'UTM Medium', 'UTM Campaign', 'UTM Term', 'UTM Content', 'UTM Category', 'UTM Type', 'Date'
             ];
         } else {
-            headers = ['S No', 'Reg No', 'Name', 'Email', 'Phone', 'Category', 'Nomination', 'Date'];
+            headers = ['S No', 'Reg No', 'Name', 'Email', 'Phone', 'Category', 'Nomination', 'UTM Source', 'UTM Medium', 'UTM Campaign', 'Date'];
         }
 
         const csvRows = [
@@ -267,6 +267,13 @@ const DashboardPage = () => {
                         `"${(reg.achievements || '').replace(/"/g, '""').replace(/\n/g, ' ')}"`,
                         `"${(reg.why_join || '').replace(/"/g, '""').replace(/\n/g, ' ')}"`,
                         `"${reg.pitch_deck_path ? 'https://new.ssvmtransformingindia.com/public/registrations/' + reg.pitch_deck_path : ''}"`,
+                        `"${reg.utm_source || ''}"`,
+                        `"${reg.utm_medium || ''}"`,
+                        `"${reg.utm_campaign || ''}"`,
+                        `"${reg.utm_term || ''}"`,
+                        `"${reg.utm_content || ''}"`,
+                        `"${reg.utm_category || ''}"`,
+                        `"${reg.utm_type || ''}"`,
                         `"${new Date(reg.created_at).toLocaleDateString()}"`
                     ].join(',');
                 } else if (isGuru) {
@@ -290,6 +297,13 @@ const DashboardPage = () => {
                         `"${(reg.nominator_address || '').replace(/"/g, '""').replace(/\n/g, ' ')}"`,
                         `"${(reg.references || '').replace(/"/g, '""').replace(/\n/g, ' ')}"`,
                         `"${reg.photo_path ? 'https://new.ssvmtransformingindia.com/public/registrations/' + reg.photo_path : ''}"`,
+                        `"${reg.utm_source || ''}"`,
+                        `"${reg.utm_medium || ''}"`,
+                        `"${reg.utm_campaign || ''}"`,
+                        `"${reg.utm_term || ''}"`,
+                        `"${reg.utm_content || ''}"`,
+                        `"${reg.utm_category || ''}"`,
+                        `"${reg.utm_type || ''}"`,
                         `"${new Date(reg.created_at).toLocaleDateString()}"`
                     ].join(',');
                 } else {
@@ -301,6 +315,9 @@ const DashboardPage = () => {
                         `"${reg.phone || ''}"`,
                         `"${reg.award_group || ''}"`,
                         `"${reg.nomination_type || ''}"`,
+                        `"${reg.utm_source || ''}"`,
+                        `"${reg.utm_medium || ''}"`,
+                        `"${reg.utm_campaign || ''}"`,
                         `"${new Date(reg.created_at).toLocaleDateString()}"`
                     ].join(',');
                 }
@@ -451,6 +468,11 @@ const DashboardPage = () => {
                                                             <td>
                                                                 <span className="category-tag">{reg.award_group}</span><br />
                                                                 <span className="status-pill reviewing">{reg.nomination_type}</span>
+                                                                {reg.utm_source && (
+                                                                    <div className="utm-tag" title={`Campaign: ${reg.utm_campaign || 'N/A'}`}>
+                                                                        <i className="bi bi-megaphone" style={{ fontSize: '10px' }}></i> {reg.utm_source}
+                                                                    </div>
+                                                                )}
                                                             </td>
                                                             <td>
                                                                 {reg.award_group === 'guru' ? (
@@ -667,6 +689,22 @@ const DashboardPage = () => {
 
                                     <div style={{ gridColumn: '1 / -1' }}><strong>References:</strong> <p style={{ margin: '8px 0 0', padding: '15px', background: '#f8f9fa', borderRadius: '6px', border: '1px solid #eee', color: '#444', lineHeight: '1.5' }}>{selectedRegistration.references}</p></div>
                                 </>
+                            )}
+
+                            {/* UTM Tracking Details */}
+                            {(selectedRegistration.utm_source || selectedRegistration.utm_medium || selectedRegistration.utm_campaign) && (
+                                <div style={{ gridColumn: '1 / -1', marginTop: '20px', paddingTop: '20px', borderTop: '2px dashed #eee' }}>
+                                    <h3 style={{ fontSize: '1.1rem', marginBottom: '15px', color: '#333', fontWeight: '700' }}>Campaign Tracking (UTM)</h3>
+                                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '15px' }}>
+                                        <div><strong>Source:</strong> <br /><span style={{ color: '#555' }}>{selectedRegistration.utm_source || 'N/A'}</span></div>
+                                        <div><strong>Medium:</strong> <br /><span style={{ color: '#555' }}>{selectedRegistration.utm_medium || 'N/A'}</span></div>
+                                        <div><strong>Campaign:</strong> <br /><span style={{ color: '#555' }}>{selectedRegistration.utm_campaign || 'N/A'}</span></div>
+                                        {/* <div><strong>Term:</strong> <br /><span style={{ color: '#555' }}>{selectedRegistration.utm_term || 'N/A'}</span></div>
+                                        <div><strong>Content:</strong> <br /><span style={{ color: '#555' }}>{selectedRegistration.utm_content || 'N/A'}</span></div>
+                                        <div><strong>Category:</strong> <br /><span style={{ color: '#555' }}>{selectedRegistration.utm_category || 'N/A'}</span></div>
+                                        <div><strong>Type:</strong> <br /><span style={{ color: '#555' }}>{selectedRegistration.utm_type || 'N/A'}</span></div> */}
+                                    </div>
+                                </div>
                             )}
                         </div>
                     </div>
