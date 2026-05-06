@@ -465,7 +465,7 @@ const RegistrationForm = () => {
                 setRegNumber(reg);
 
                 // ✅ redirect to success page
-                navigate(`/success?reg=${reg}&category=${mainCategory}`);
+                navigate(`/success/${mainCategory}/${filterType}?reg=${reg}`);
             } else {
                 alert(result.message || 'Submission failed. Please try again.');
             }
