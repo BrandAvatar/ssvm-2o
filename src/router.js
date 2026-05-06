@@ -8,7 +8,13 @@ import { SecurityUtils } from "./utils/Security";
 import Homepage from "./Pages/Homepage";
 import StudentpreneurAward from "./Pages/StudentpreneurAward";
 import RegistrationPage from "./Pages/RegistrationPage";
-import SuccessPage from "./Pages/SuccessPage";
+// import SuccessPage from "./Pages/SuccessPage";
+import GuruInternalSuccess from "./Pages/GuruInternalSuccess";
+import GuruExternalSuccess from "./Pages/GuruExternalSuccess";
+import StudentInternalSuccess from "./Pages/StudentInternalSuccess";
+import StudentExternalSuccess from "./Pages/StudentExternalSuccess";
+
+
 import LoginPage from "./Pages/LoginPage";
 import DashboardPage from "./Pages/DashboardPage";
 import Preloader from "./Component/Preloader";
@@ -154,7 +160,10 @@ const AppContent = ({ loading, setLoading }) => {
                     {/* ✅ Other Routes */}
                     <Route path="/studentpreneur-award" element={<StudentpreneurAward />} />
                     <Route path="/register" element={<RegistrationPage />} />
-                    <Route path="/success" element={<SuccessPage />} />
+                    <Route path="/success/guru/internal" element={<GuruInternalSuccess />} />
+                    <Route path="/success/guru/external" element={<GuruExternalSuccess />} />
+                    <Route path="/success/studentpreneur/internal" element={<StudentInternalSuccess />} />
+                    <Route path="/success/studentpreneur/external" element={<StudentExternalSuccess />} />
                 </Route>
 
                 {/* ✅ Routes without Header/Footer */}
