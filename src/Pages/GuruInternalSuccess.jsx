@@ -9,7 +9,7 @@ const GuruInternalSuccess = () => {
     return (
         <SuccessLayout
             title="Application Received!"
-            message="Your application has been successfully submitted. Our team will review it and get back to you if required."
+            message="Your application has been submitted successfully. Our team will review it shortly."
             regNumber={reg}
             category="guru"
             type="internal"
