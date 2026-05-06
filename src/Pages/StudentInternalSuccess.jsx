@@ -8,7 +8,7 @@ const StudentInternalSuccess = () => {
     return (
         <SuccessLayout
             title="Application Received!"
-            message="A confirmation email has been sent to your registered email address."
+            message="Your application has been successfully submitted. Our team will review it and get back to you if required."
             regNumber={reg}
             category="studentpreneur"
             type="internal"
