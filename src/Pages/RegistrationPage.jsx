@@ -8,14 +8,12 @@ const RegistrationPage = () => {
 
     useEffect(() => {
         window.scrollTo(0, 0);
-        if (!hasCategory) {
-            window.location.href = '/';
-        }
-    }, [hasCategory]);
+    }, []);
 
-    if (!hasCategory) {
-        return null; // Redirecting...
-    }
+    // No longer redirecting if !hasCategory to allow Step 1 Selection view
+    // if (!hasCategory) {
+    //     return null; 
+    // }
 
     return (
         <div className="registration-page-wrapper">
@@ -30,9 +28,9 @@ const RegistrationPage = () => {
                 zIndex: 0,
                 pointerEvents: 'none'
             }}></div>
- 
-            <div className="registration-content-wrapper" style={{ 
-                position: 'relative', 
+
+            <div className="registration-content-wrapper" style={{
+                position: 'relative',
                 zIndex: 1,
                 flex: 1
             }}>
@@ -40,7 +38,7 @@ const RegistrationPage = () => {
                     <RegistrationForm />
                 </div>
             </div>
-            
+
         </div>
     );
 };
