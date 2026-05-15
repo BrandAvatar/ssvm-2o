@@ -26,8 +26,8 @@ const RegistrationForm = () => {
         const params = new URLSearchParams(location.search);
 
         const urlUtm = {
-            category: params.get('category'),
-            type: params.get('type'),
+            category: params.get('category')?.split(/[?&]/)[0],
+            type: params.get('type')?.split(/[?&]/)[0],
             utm_source: params.get('utm_source'),
             utm_medium: params.get('utm_medium'),
             utm_campaign: params.get('utm_campaign'),
@@ -55,11 +55,13 @@ const RegistrationForm = () => {
     const searchParams = new URLSearchParams(location.search);
 
     const [mainCategory, setMainCategory] = useState(() => {
-        return searchParams.get('category') || '';
+        const cat = searchParams.get('category') || '';
+        return cat.split(/[?&]/)[0];
     });
 
     const [filterType, setFilterType] = useState(() => {
-        return searchParams.get('type') || '';
+        const type = searchParams.get('type') || '';
+        return type.split(/[?&]/)[0];
     });
 
     const [formData, setFormData] = useState({
@@ -121,6 +123,31 @@ const RegistrationForm = () => {
             }
         }
     }, [mainCategory, filterType, formData.nominationType]);
+
+    // ✅ Sync mainCategory and clean URL
+    useEffect(() => {
+        const params = new URLSearchParams(location.search);
+        let changed = false;
+
+        // Clean up mangled parameters if they exist
+        ['category', 'type'].forEach(key => {
+            const val = params.get(key);
+            if (val && (val.includes('?') || val.includes('&'))) {
+                params.set(key, val.split(/[?&]/)[0]);
+                changed = true;
+            }
+        });
+
+        // Sync category state
+        if (mainCategory && params.get('category') !== mainCategory) {
+            params.set('category', mainCategory);
+            changed = true;
+        }
+
+        if (changed) {
+            navigate(`?${params.toString()}`, { replace: true });
+        }
+    }, [mainCategory, navigate, location.search]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -589,7 +616,19 @@ const RegistrationForm = () => {
                                         ))}
                                 </div>
                                 <div className="form-footer" style={{ marginTop: '30px' }}>
-                                    <button type="button" className="nav-btn btn-back" onClick={() => setMainCategory('')}>Back to Main</button>
+                                    <button
+                                        type="button"
+                                        className="nav-btn btn-back"
+                                        onClick={() => {
+                                            setMainCategory('');
+                                            const p = new URLSearchParams(location.search);
+                                            p.delete('category');
+                                            p.delete('type');
+                                            navigate({ search: p.toString() }, { replace: true });
+                                        }}
+                                    >
+                                        Back to Main
+                                    </button>
                                     <button
                                         type="button"
                                         className="nav-btn btn-next"
