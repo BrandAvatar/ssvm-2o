@@ -13,6 +13,14 @@ const DashboardPage = () => {
     const [toasts, setToasts] = useState([]);
     const [selectedRegistration, setSelectedRegistration] = useState(null);
     const [isViewModalOpen, setIsViewModalOpen] = useState(false);
+    const [isExporting, setIsExporting] = useState(false);
+
+    // Advanced Filters States
+    const [dateFilter, setDateFilter] = useState('');
+    const [selectedUtmSource, setSelectedUtmSource] = useState('');
+    const [selectedUtmCampaign, setSelectedUtmCampaign] = useState('');
+    const [utmSources, setUtmSources] = useState([]);
+    const [utmCampaigns, setUtmCampaigns] = useState([]);
 
     // Pagination & Search States
     const [searchTerm, setSearchTerm] = useState('');
@@ -49,12 +57,20 @@ const DashboardPage = () => {
         }
     }, [navigate]);
 
-    // Reset pagination when category changes
+    // Reset filters and search when category (tab) changes
     useEffect(() => {
-        setCurrentPage(1);
+        setDateFilter('');
+        setSelectedUtmSource('');
+        setSelectedUtmCampaign('');
+        setSearchTerm('');
     }, [activeCategory]);
 
-    // Fetch data when activeCategory, page, or searchTerm changes
+    // Reset pagination when category or filters change
+    useEffect(() => {
+        setCurrentPage(1);
+    }, [activeCategory, dateFilter, selectedUtmSource, selectedUtmCampaign]);
+
+    // Fetch data when activeCategory, page, searchTerm, or filters change
     useEffect(() => {
         localStorage.setItem('activeCategory', activeCategory);
 
@@ -66,7 +82,7 @@ const DashboardPage = () => {
             }
         };
 
-        // Don't debounce the initial load or simple category changes without search
+        // Don't debounce the initial load or simple category/filter changes without search
         if (!searchTerm) {
             performFetch();
         } else {
@@ -78,7 +94,7 @@ const DashboardPage = () => {
         return () => {
             if (searchTimeoutRef.current) clearTimeout(searchTimeoutRef.current);
         };
-    }, [activeCategory, currentPage, searchTerm]);
+    }, [activeCategory, currentPage, searchTerm, dateFilter, selectedUtmSource, selectedUtmCampaign]);
 
     const fetchRegistrations = async (categoryId = null, page = 1, search = '') => {
         const token = localStorage.getItem('token');
@@ -94,6 +110,16 @@ const DashboardPage = () => {
         const cleanSearch = (search || '').trim();
         if (cleanSearch) {
             url += `&search=${encodeURIComponent(cleanSearch)}`;
+        }
+
+        if (dateFilter) {
+            url += `&date_filter=${dateFilter}`;
+        }
+        if (selectedUtmSource) {
+            url += `&utm_source=${encodeURIComponent(selectedUtmSource)}`;
+        }
+        if (selectedUtmCampaign) {
+            url += `&utm_campaign=${encodeURIComponent(selectedUtmCampaign)}`;
         }
 
         if (categoryId && categoryId !== 'overview') {
@@ -132,6 +158,12 @@ const DashboardPage = () => {
                 setCurrentPage(result.current_page || 1);
                 setLastPage(result.last_page || 1);
                 setTotalRecords(result.total || 0);
+                if (result.utm_sources) {
+                    setUtmSources(result.utm_sources);
+                }
+                if (result.utm_campaigns) {
+                    setUtmCampaigns(result.utm_campaigns);
+                }
             } else {
                 setRegistrations([]);
                 console.warn("Fetch failed:", result.message);
@@ -211,128 +243,229 @@ const DashboardPage = () => {
         navigate('/login');
     };
 
-    const handleExport = () => {
+    const fetchPageData = async (categoryId = null, page = 1, search = '') => {
+        const token = localStorage.getItem('token');
+        if (!token) return null;
+
+        let url = `https://new.ssvmtransformingindia.com/public/api/registrations?page=${page}`;
+
+        const cleanSearch = (search || '').trim();
+        if (cleanSearch) {
+            url += `&search=${encodeURIComponent(cleanSearch)}`;
+        }
+
+        if (dateFilter) {
+            url += `&date_filter=${dateFilter}`;
+        }
+        if (selectedUtmSource) {
+            url += `&utm_source=${encodeURIComponent(selectedUtmSource)}`;
+        }
+        if (selectedUtmCampaign) {
+            url += `&utm_campaign=${encodeURIComponent(selectedUtmCampaign)}`;
+        }
+
+        if (categoryId && categoryId !== 'overview') {
+            if (categoryId.startsWith('guru-')) {
+                const typeMap = {
+                    'guru-internal-self': 'internal-self',
+                    'guru-internal-others': 'internal-other',
+                    'guru-external-self': 'external-self',
+                    'guru-external-others': 'external-other'
+                };
+                url += `&award_group=guru&nomination_type=${typeMap[categoryId]}`;
+            } else if (categoryId.startsWith('student-')) {
+                const typeMap = {
+                    'student-internal': 'internal',
+                    'student-external': 'external'
+                };
+                url += `&award_group=studentpreneur&nomination_type=${typeMap[categoryId]}`;
+            }
+        }
+
+        try {
+            const response = await fetch(url, {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Accept': 'application/json'
+                }
+            });
+            if (response.status === 401) {
+                handleLogout();
+                return null;
+            }
+            const result = await response.json();
+            return result.success ? result : null;
+        } catch (error) {
+            console.error(`Error fetching page ${page}:`, error);
+            return null;
+        }
+    };
+
+    const handleExport = async () => {
         if (registrations.length === 0) {
             showToast('No records to export', 'error');
             return;
         }
 
-        const isStudent = activeCategory.startsWith('student');
-        const isGuru = activeCategory.startsWith('guru');
+        setIsExporting(true);
+        showToast('Preparing export. Fetching all pages...', 'info');
 
-        let headers = [];
-        if (isStudent) {
-            headers = [
-                'S No', 'Reg No', 'Student Name', 'Grade', 'Applicant Email', 'Applicant Mobile No',
-                'School Name', 'School City', 'School Phone no', 'School Email',
-                'Business Idea', 'Total Members',
-                'Member 2 Name', 'Member 2 Phone',
-                'Member 3 Name', 'Member 3 Phone',
-                'Member 4 Name', 'Member 4 Phone',
-                'Member 5 Name', 'Member 5 Phone',
-                'Key Achievements', 'Why Join', 'Pitch Deck URL', 'UTM Source', 'UTM Medium', 'UTM Campaign', 'UTM Term', 'UTM Content', 'UTM Category', 'UTM Type', 'Date'
-            ];
-        } else if (isGuru) {
-            headers = [
-                'S No', 'Reg No', 'Teacher Name', 'Email', 'Phone', 'School Name',
-                'Subjects', 'Experience', 'PE Teacher', 'PE Details', 'Vision', 'Impact', 'Profile',
-                'Nominator Name', 'Nominator Phone', 'Nominator Email', 'Nominator Address', 'References', 'Photo URL', 'UTM Source', 'UTM Medium', 'UTM Campaign', 'UTM Term', 'UTM Content', 'UTM Category', 'UTM Type', 'Date'
-            ];
-        } else {
-            headers = ['S No', 'Reg No', 'Name', 'Email', 'Phone', 'Category', 'Nomination', 'UTM Source', 'UTM Medium', 'UTM Campaign', 'Date'];
-        }
+        try {
+            const categoryId = activeCategory === 'overview' ? null : activeCategory;
+            // 1. Fetch first page to get the latest accurate metadata and data
+            const firstPageResult = await fetchPageData(categoryId, 1, searchTerm);
+            if (!firstPageResult) {
+                showToast('Failed to fetch records for export', 'error');
+                setIsExporting(false);
+                return;
+            }
 
-        const csvRows = [
-            headers.join(','), // Header row
-            ...registrations.map((reg, index) => {
-                if (isStudent) {
-                    const extraMembers = reg.team_members || [];
-                    return [
-                        index + 1,
-                        `"${reg.register_number || reg.id || ''}"`,
-                        `"${reg.student_name || ''} ${reg.last_name || ''}"`,
-                        `"${reg.grade || ''}"`,
-                        `"${reg.email || ''}"`,
-                        `"${reg.phone || ''}"`,
-                        `"${reg.school_name || ''}"`,
-                        `"${reg.school_city || ''}"`,
-                        `"${reg.school_phone || ''}"`,
-                        `"${reg.school_email || ''}"`,
-                        `"${(reg.business_idea || '').replace(/"/g, '""').replace(/\n/g, ' ')}"`,
-                        `"${reg.total_members || ''}"`,
-                        `"${extraMembers[0]?.name || ''}"`, `"${extraMembers[0]?.phone || ''}"`,
-                        `"${extraMembers[1]?.name || ''}"`, `"${extraMembers[1]?.phone || ''}"`,
-                        `"${extraMembers[2]?.name || ''}"`, `"${extraMembers[2]?.phone || ''}"`,
-                        `"${extraMembers[3]?.name || ''}"`, `"${extraMembers[3]?.phone || ''}"`,
-                        `"${(reg.achievements || '').replace(/"/g, '""').replace(/\n/g, ' ')}"`,
-                        `"${(reg.why_join || '').replace(/"/g, '""').replace(/\n/g, ' ')}"`,
-                        `"${reg.pitch_deck_path ? 'https://new.ssvmtransformingindia.com/public/registrations/' + reg.pitch_deck_path : ''}"`,
-                        `"${reg.utm_source || ''}"`,
-                        `"${reg.utm_medium || ''}"`,
-                        `"${reg.utm_campaign || ''}"`,
-                        `"${reg.utm_term || ''}"`,
-                        `"${reg.utm_content || ''}"`,
-                        `"${reg.utm_category || ''}"`,
-                        `"${reg.utm_type || ''}"`,
-                        `"${new Date(reg.created_at).toLocaleDateString()}"`
-                    ].join(',');
-                } else if (isGuru) {
-                    return [
-                        index + 1,
-                        `"${reg.register_number || reg.id || ''}"`,
-                        `"${reg.student_name || ''} ${reg.last_name || ''}"`,
-                        `"${reg.email || ''}"`,
-                        `"${reg.phone || ''}"`,
-                        `"${reg.school_name || ''}"`,
-                        `"${reg.subjects || ''}"`,
-                        `"${reg.experience || ''}"`,
-                        `"${reg.is_pe_teacher || ''}"`,
-                        `"${(reg.pet_details || '').replace(/"/g, '""').replace(/\n/g, ' ')}"`,
-                        `"${(reg.vision || '').replace(/"/g, '""').replace(/\n/g, ' ')}"`,
-                        `"${(reg.impact || '').replace(/"/g, '""').replace(/\n/g, ' ')}"`,
-                        `"${(reg.teacher_profile || '').replace(/"/g, '""').replace(/\n/g, ' ')}"`,
-                        `"${reg.nominator_name || ''}"`,
-                        `"${reg.nominator_phone || ''}"`,
-                        `"${reg.nominator_email || ''}"`,
-                        `"${(reg.nominator_address || '').replace(/"/g, '""').replace(/\n/g, ' ')}"`,
-                        `"${(reg.references || '').replace(/"/g, '""').replace(/\n/g, ' ')}"`,
-                        `"${reg.photo_path ? 'https://new.ssvmtransformingindia.com/public/registrations/' + reg.photo_path : ''}"`,
-                        `"${reg.utm_source || ''}"`,
-                        `"${reg.utm_medium || ''}"`,
-                        `"${reg.utm_campaign || ''}"`,
-                        `"${reg.utm_term || ''}"`,
-                        `"${reg.utm_content || ''}"`,
-                        `"${reg.utm_category || ''}"`,
-                        `"${reg.utm_type || ''}"`,
-                        `"${new Date(reg.created_at).toLocaleDateString()}"`
-                    ].join(',');
-                } else {
-                    return [
-                        index + 1,
-                        `"${reg.register_number || reg.id || ''}"`,
-                        `"${reg.student_name || ''} ${reg.last_name || ''}"`,
-                        `"${reg.email || ''}"`,
-                        `"${reg.phone || ''}"`,
-                        `"${reg.award_group || ''}"`,
-                        `"${reg.nomination_type || ''}"`,
-                        `"${reg.utm_source || ''}"`,
-                        `"${reg.utm_medium || ''}"`,
-                        `"${reg.utm_campaign || ''}"`,
-                        `"${new Date(reg.created_at).toLocaleDateString()}"`
-                    ].join(',');
+            let allRecords = [...(firstPageResult.data || [])];
+            const totalPages = firstPageResult.last_page || 1;
+
+            // 2. Fetch subsequent pages in parallel
+            if (totalPages > 1) {
+                const promises = [];
+                for (let p = 2; p <= totalPages; p++) {
+                    promises.push(fetchPageData(categoryId, p, searchTerm));
                 }
-            })
-        ];
+                const results = await Promise.all(promises);
+                results.forEach((res) => {
+                    if (res && res.data) {
+                        allRecords = [...allRecords, ...res.data];
+                    }
+                });
+            }
 
-        const csvString = csvRows.join('\n');
-        const blob = new Blob([csvString], { type: 'text/csv;charset=utf-8;' });
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.href = url;
-        link.setAttribute('download', `${activeCategory}_registrations_full_${new Date().toISOString().slice(0, 10)}.csv`);
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+            if (allRecords.length === 0) {
+                showToast('No records found to export', 'error');
+                setIsExporting(false);
+                return;
+            }
+
+            const isStudent = activeCategory.startsWith('student');
+            const isGuru = activeCategory.startsWith('guru');
+
+            let headers = [];
+            if (isStudent) {
+                headers = [
+                    'S No', 'Reg No', 'Student Name', 'Grade', 'Applicant Email', 'Applicant Mobile No',
+                    'School Name', 'School City', 'School Phone no', 'School Email',
+                    'Business Idea', 'Total Members',
+                    'Member 2 Name', 'Member 2 Phone',
+                    'Member 3 Name', 'Member 3 Phone',
+                    'Member 4 Name', 'Member 4 Phone',
+                    'Member 5 Name', 'Member 5 Phone',
+                    'Key Achievements', 'Why Join', 'Pitch Deck URL', 'UTM Source', 'UTM Medium', 'UTM Campaign', 'UTM Term', 'UTM Content', 'UTM Category', 'UTM Type', 'Date'
+                ];
+            } else if (isGuru) {
+                headers = [
+                    'S No', 'Reg No', 'Teacher Name', 'Email', 'Phone', 'School Name',
+                    'Subjects', 'Experience', 'PE Teacher', 'PE Details', 'Vision', 'Impact', 'Profile',
+                    'Nominator Name', 'Nominator Phone', 'Nominator Email', 'Nominator Address', 'References', 'Photo URL', 'UTM Source', 'UTM Medium', 'UTM Campaign', 'UTM Term', 'UTM Content', 'UTM Category', 'UTM Type', 'Date'
+                ];
+            } else {
+                headers = ['S No', 'Reg No', 'Name', 'Email', 'Phone', 'Category', 'Nomination', 'UTM Source', 'UTM Medium', 'UTM Campaign', 'Date'];
+            }
+
+            const csvRows = [
+                headers.join(','), // Header row
+                ...allRecords.map((reg, index) => {
+                    if (isStudent) {
+                        const extraMembers = reg.team_members || [];
+                        return [
+                            index + 1,
+                            `"${reg.register_number || reg.id || ''}"`,
+                            `"${reg.student_name || ''} ${reg.last_name || ''}"`,
+                            `"${reg.grade || ''}"`,
+                            `"${reg.email || ''}"`,
+                            `"${reg.phone || ''}"`,
+                            `"${reg.school_name || ''}"`,
+                            `"${reg.school_city || ''}"`,
+                            `"${reg.school_phone || ''}"`,
+                            `"${reg.school_email || ''}"`,
+                            `"${(reg.business_idea || '').replace(/"/g, '""').replace(/\n/g, ' ')}"`,
+                            `"${reg.total_members || ''}"`,
+                            `"${extraMembers[0]?.name || ''}"`, `"${extraMembers[0]?.phone || ''}"`,
+                            `"${extraMembers[1]?.name || ''}"`, `"${extraMembers[1]?.phone || ''}"`,
+                            `"${extraMembers[2]?.name || ''}"`, `"${extraMembers[2]?.phone || ''}"`,
+                            `"${extraMembers[3]?.name || ''}"`, `"${extraMembers[3]?.phone || ''}"`,
+                            `"${(reg.achievements || '').replace(/"/g, '""').replace(/\n/g, ' ')}"`,
+                            `"${(reg.why_join || '').replace(/"/g, '""').replace(/\n/g, ' ')}"`,
+                            `"${reg.pitch_deck_path ? 'https://new.ssvmtransformingindia.com/public/registrations/' + reg.pitch_deck_path : ''}"`,
+                            `"${reg.utm_source || ''}"`,
+                            `"${reg.utm_medium || ''}"`,
+                            `"${reg.utm_campaign || ''}"`,
+                            `"${reg.utm_term || ''}"`,
+                            `"${reg.utm_content || ''}"`,
+                            `"${reg.utm_category || ''}"`,
+                            `"${reg.utm_type || ''}"`,
+                            `"${new Date(reg.created_at).toLocaleDateString()}"`
+                        ].join(',');
+                    } else if (isGuru) {
+                        return [
+                            index + 1,
+                            `"${reg.register_number || reg.id || ''}"`,
+                            `"${reg.student_name || ''} ${reg.last_name || ''}"`,
+                            `"${reg.email || ''}"`,
+                            `"${reg.phone || ''}"`,
+                            `"${reg.school_name || ''}"`,
+                            `"${reg.subjects || ''}"`,
+                            `"${reg.experience || ''}"`,
+                            `"${reg.is_pe_teacher || ''}"`,
+                            `"${(reg.pet_details || '').replace(/"/g, '""').replace(/\n/g, ' ')}"`,
+                            `"${(reg.vision || '').replace(/"/g, '""').replace(/\n/g, ' ')}"`,
+                            `"${(reg.impact || '').replace(/"/g, '""').replace(/\n/g, ' ')}"`,
+                            `"${(reg.teacher_profile || '').replace(/"/g, '""').replace(/\n/g, ' ')}"`,
+                            `"${reg.nominator_name || ''}"`,
+                            `"${reg.nominator_phone || ''}"`,
+                            `"${reg.nominator_email || ''}"`,
+                            `"${(reg.nominator_address || '').replace(/"/g, '""').replace(/\n/g, ' ')}"`,
+                            `"${(reg.references || '').replace(/"/g, '""').replace(/\n/g, ' ')}"`,
+                            `"${reg.photo_path ? 'https://new.ssvmtransformingindia.com/public/registrations/' + reg.photo_path : ''}"`,
+                            `"${reg.utm_source || ''}"`,
+                            `"${reg.utm_medium || ''}"`,
+                            `"${reg.utm_campaign || ''}"`,
+                            `"${reg.utm_term || ''}"`,
+                            `"${reg.utm_content || ''}"`,
+                            `"${reg.utm_category || ''}"`,
+                            `"${reg.utm_type || ''}"`,
+                            `"${new Date(reg.created_at).toLocaleDateString()}"`
+                        ].join(',');
+                    } else {
+                        return [
+                            index + 1,
+                            `"${reg.register_number || reg.id || ''}"`,
+                            `"${reg.student_name || ''} ${reg.last_name || ''}"`,
+                            `"${reg.email || ''}"`,
+                            `"${reg.phone || ''}"`,
+                            `"${reg.award_group || ''}"`,
+                            `"${reg.nomination_type || ''}"`,
+                            `"${reg.utm_source || ''}"`,
+                            `"${reg.utm_medium || ''}"`,
+                            `"${reg.utm_campaign || ''}"`,
+                            `"${new Date(reg.created_at).toLocaleDateString()}"`
+                        ].join(',');
+                    }
+                })
+            ];
+
+            const csvString = csvRows.join('\n');
+            const blob = new Blob([csvString], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', `${activeCategory}_registrations_full_${new Date().toISOString().slice(0, 10)}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            showToast('All records exported successfully!', 'success');
+        } catch (error) {
+            console.error('Export error:', error);
+            showToast('Error exporting data', 'error');
+        } finally {
+            setIsExporting(false);
+        }
     };
 
     const toggleSidebar = () => {
@@ -417,14 +550,14 @@ const DashboardPage = () => {
 
                             <div className="dashboard-grid full-width">
                                 <section className="table-section">
-                                    <div className="section-header">
+                                    <div className="section-header" style={{ marginBottom: '15px' }}>
                                         <h2>{activeCategory === 'overview' ? 'Recent Registrations' : 'Inbound Details'}</h2>
                                         <div className="table-header-actions">
                                             <span className="records-count">{totalRecords} Records Found</span>
                                             <div className="action-buttons">
                                                 {activeCategory !== 'overview' && (
-                                                    <button className="export-btn" onClick={handleExport}>
-                                                        <i className="bi bi-download"></i> Export CSV
+                                                    <button className="export-btn" onClick={handleExport} disabled={isExporting}>
+                                                        <i className="bi bi-download"></i> {isExporting ? 'Exporting...' : 'Export CSV'}
                                                     </button>
                                                 )}
                                                 <button className="view-all-btn" onClick={() => fetchRegistrations(activeCategory, currentPage, searchTerm)}>
@@ -432,6 +565,73 @@ const DashboardPage = () => {
                                                 </button>
                                             </div>
                                         </div>
+                                    </div>
+
+                                    {/* Advanced Filter Bar */}
+                                    <div className="filters-bar" style={{ display: 'flex', gap: '15px', flexWrap: 'wrap', marginBottom: '20px', padding: '15px', background: '#f8fafc', borderRadius: '12px', border: '1px solid #e2e8f0', alignItems: 'center' }}>
+                                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                            <i className="bi bi-funnel" style={{ color: 'var(--text-muted)', fontSize: '14px' }}></i>
+                                            <span style={{ fontSize: '11px', fontWeight: '700', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Quick Filters:</span>
+                                        </div>
+                                        
+                                        {/* Date Filter */}
+                                        <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                                            <select 
+                                                value={dateFilter} 
+                                                onChange={e => setDateFilter(e.target.value)}
+                                                className="filter-select"
+                                                style={{ padding: '8px 12px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '12px', fontWeight: '500', outline: 'none', background: '#fff', cursor: 'pointer', minWidth: '160px', color: '#333' }}
+                                            >
+                                                <option value="">📅 All Dates</option>
+                                                <option value="today">Leads Created Today</option>
+                                                <option value="week">Leads Created This Week</option>
+                                                <option value="month">Leads Created This Month</option>
+                                            </select>
+                                        </div>
+
+                                        {/* UTM Source Filter */}
+                                        <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                                            <select 
+                                                value={selectedUtmSource} 
+                                                onChange={e => setSelectedUtmSource(e.target.value)}
+                                                className="filter-select"
+                                                style={{ padding: '8px 12px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '12px', fontWeight: '500', outline: 'none', background: '#fff', cursor: 'pointer', minWidth: '170px', color: '#333' }}
+                                            >
+                                                <option value="">📢 All UTM Sources</option>
+                                                {utmSources.map((source, idx) => (
+                                                    <option key={idx} value={source}>{source}</option>
+                                                ))}
+                                            </select>
+                                        </div>
+
+                                        {/* UTM Campaign Filter */}
+                                        <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                                            <select 
+                                                value={selectedUtmCampaign} 
+                                                onChange={e => setSelectedUtmCampaign(e.target.value)}
+                                                className="filter-select"
+                                                style={{ padding: '8px 12px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '12px', fontWeight: '500', outline: 'none', background: '#fff', cursor: 'pointer', minWidth: '180px', color: '#333' }}
+                                            >
+                                                <option value="">🎯 All UTM Campaigns</option>
+                                                {utmCampaigns.map((camp, idx) => (
+                                                    <option key={idx} value={camp}>{camp}</option>
+                                                ))}
+                                            </select>
+                                        </div>
+
+                                        {/* Clear Filters Button */}
+                                        {(dateFilter || selectedUtmSource || selectedUtmCampaign) && (
+                                            <button 
+                                                onClick={() => {
+                                                    setDateFilter('');
+                                                    setSelectedUtmSource('');
+                                                    setSelectedUtmCampaign('');
+                                                }}
+                                                style={{ padding: '8px 14px', borderRadius: '8px', background: '#000', color: '#fff', border: 'none', fontSize: '11px', fontWeight: '600', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '5px', transition: 'all 0.2s' }}
+                                            >
+                                                <i className="bi bi-x-circle"></i> Clear Filters
+                                            </button>
+                                        )}
                                     </div>
                                     <div className="table-responsive">
                                         {loading ? (
