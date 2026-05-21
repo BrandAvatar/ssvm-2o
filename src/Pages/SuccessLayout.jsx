@@ -17,7 +17,7 @@ const SuccessLayout = ({ title, message, regNumber, category, type }) => {
                 currency: "INR",
 
                 // ✅ ADD THIS
-                test_event_code: 'TEST123'
+                test_event_code: 'TEST43567'
             });
 
             window.fbq('trackCustom', 'FormSubmitted', {
@@ -26,7 +26,7 @@ const SuccessLayout = ({ title, message, regNumber, category, type }) => {
                 registration_id: regNumber,
 
                 // ✅ ADD THIS
-                test_event_code: 'TEST123'
+                test_event_code: 'TEST43567'
             });
         }
 
