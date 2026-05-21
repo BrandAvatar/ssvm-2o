@@ -2,115 +2,160 @@
 <html lang="en">
 
 <head>
-  <!-- ✅ Google Tag Manager -->
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/assets/images/favicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="SSVM Institutions - Flex Your Future" />
+
+  <!-- Google Tag Manager -->
   <script>
     (function (w, d, s, l, i) {
-      w[l] = w[l] || []; w[l].push({
-        'gtm.start': new Date().getTime(), event: 'gtm.js'
-      });
+      w[l] = w[l] || [];
+      w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+
       var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+
       j.async = true;
-      j.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-M79FS9NN' + dl;
+      j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
       f.parentNode.insertBefore(j, f);
     })(window, document, 'script', 'dataLayer', 'GTM-M79FS9NN');
   </script>
-  <!-- End Google Tag Manager -->
 
-  <!-- ✅ Meta Pixel -->
+  <!-- Meta Pixel -->
   <script>
     !function (f, b, e, v, n, t, s) {
-      if (f.fbq) return; n = f.fbq = function () {
-        n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      if (f.fbq) return;
+
+      n = f.fbq = function () {
+        n.callMethod ?
+          n.callMethod.apply(n, arguments) :
+          n.queue.push(arguments);
       };
+
       if (!f._fbq) f._fbq = n;
-      n.push = n; n.loaded = !0; n.version = '2.0';
+
+      n.push = n;
+      n.loaded = true;
+      n.version = '2.0';
       n.queue = [];
-      t = b.createElement(e); t.async = !0;
+
+      t = b.createElement(e);
+      t.async = true;
       t.src = v;
+
       s = b.getElementsByTagName(e)[0];
       s.parentNode.insertBefore(t, s);
-    }(window, document, 'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
+
+    }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
 
     fbq('init', '502882455571235');
     fbq('track', 'PageView');
   </script>
 
-  <noscript>
-    <img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=502882455571235&ev=PageView&noscript=1" />
-  </noscript>
-  <!-- End Meta Pixel -->
-
-  <meta charset="utf-8" />
-  <link rel="icon" href="%PUBLIC_URL%/assets/images/favicon.png" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta name="theme-color" content="#000000" />
-  <meta name="description" content="SSVM Institutions - Flex Your Future" />
-
-  <!-- Security Layer -->
-  <!-- Security Layer -->
+  <!-- ✅ FIXED CSP -->
   <meta http-equiv="Content-Security-Policy" content="
-default-src 'self';
-script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://www.googletagmanager.com https://connect.facebook.net;
-style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net;
-img-src 'self' data: https://ssvmtransformingindia.com https://*.ssvmtransformingindia.com https://images.unsplash.com https://ssvm-2o-d4pw.vercel.app https://www.facebook.com;
-font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net;
-frame-src 'self' https://www.youtube.com https://www.googletagmanager.com;
-connect-src 'self' https://ssvmtransformingindia.com https://*.ssvmtransformingindia.com https://www.googletagmanager.com https://connect.facebook.net;
-media-src 'self' https://ssvmtransformingindia.com https://*.ssvmtransformingindia.com;
-">
+    default-src 'self';
+
+    script-src 'self' 'unsafe-inline' 'unsafe-eval'
+      https://cdnjs.cloudflare.com
+      https://cdn.jsdelivr.net
+      https://connect.facebook.net
+      https://www.googletagmanager.com
+      https://www.facebook.com;
+
+    script-src-elem 'self' 'unsafe-inline'
+      https://cdnjs.cloudflare.com
+      https://cdn.jsdelivr.net
+      https://connect.facebook.net
+      https://www.googletagmanager.com;
+
+    style-src 'self' 'unsafe-inline'
+      https://fonts.googleapis.com
+      https://cdn.jsdelivr.net;
+
+    img-src 'self' data:
+      https://ssvmtransformingindia.com
+      https://*.ssvmtransformingindia.com
+      https://images.unsplash.com
+      https://ssvm-2o-d4pw.vercel.app
+      https://www.facebook.com
+      https://*.fbcdn.net;
+
+    font-src 'self'
+      https://fonts.gstatic.com
+      https://cdn.jsdelivr.net;
+
+    connect-src 'self'
+      https://ssvmtransformingindia.com
+      https://*.ssvmtransformingindia.com
+      https://www.googletagmanager.com
+      https://connect.facebook.net
+      https://www.facebook.com
+      https://graph.facebook.com;
+
+    frame-src 'self'
+      https://www.youtube.com
+      https://www.googletagmanager.com;
+  ">
+
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
   <meta name="robots" content="index, follow">
-
 
   <!-- Cache Control -->
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
 
+  <!-- Remove Service Workers -->
   <script>
-    /* ✅ Immediate Service Worker Wiping (Fixes 404 on stale builds) */
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.getRegistrations().then(function (registrations) {
-        for (let registration of registrations) { registration.unregister(); }
+      navigator.serviceWorker.getRegistrations().then(function (regs) {
+        for (let r of regs) r.unregister();
       });
     }
   </script>
 
-
+  <!-- Fonts & Libraries -->
   <link rel="shortcut icon" href="%PUBLIC_URL%/assets/images/favicon.png" type="image/x-icon">
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js"></script>
+
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet">
-  <title>SSVM Institutions | Flex Your Future – Empowering Minds, Embracing AI, and Shaping Our World Today</title>
+
+  <title>SSVM Institutions | Flex Your Future</title>
 </head>
 
 <body>
-  <!-- ✅ Google Tag Manager (noscript) -->
+
+  <!-- GTM noscript -->
   <noscript>
     <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M79FS9NN" height="0" width="0"
       style="display:none;visibility:hidden"></iframe>
   </noscript>
-  <!-- End GTM (noscript) -->
-  <noscript>You need to enable JavaScript to run this app.</noscript>
+
+  <!-- Meta Pixel noscript -->
+  <noscript>
+    <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=502882455571235&ev=PageView&noscript=1" />
+  </noscript>
+
+  <noscript>
+    You need to enable JavaScript to run this app.
+  </noscript>
+
   <div id="root"></div>
-  <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
 </body>
 
 </html>
