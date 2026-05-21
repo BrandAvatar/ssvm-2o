@@ -401,15 +401,21 @@ const RegistrationForm = () => {
     };
 
     const handleSubmit = async () => {
-        // Final validation for Step 3
+
+        // 🔥 1. Track Lead when user clicks submit
+        if (window.fbq) {
+            window.fbq('track', 'Lead');
+        }
+
         const newErrors = {};
         const isGuru = mainCategory === 'guru';
         const isNominateOther = formData.nominationType?.includes('other');
-        const requiredStep3 = isGuru ?
-            (isNominateOther ?
-                ['nominatorName', 'nominatorPhone', 'nominatorEmail', 'nominatorAddress', 'references'] :
-                ['nominatorAddress', 'references']) :
-            ['achievements', 'whyJoin'];
+
+        const requiredStep3 = isGuru
+            ? (isNominateOther
+                ? ['nominatorName', 'nominatorPhone', 'nominatorEmail', 'nominatorAddress', 'references']
+                : ['nominatorAddress', 'references'])
+            : ['achievements', 'whyJoin'];
 
         for (let field of requiredStep3) {
             if (!formData[field]) {
@@ -418,17 +424,28 @@ const RegistrationForm = () => {
         }
 
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
         if (isGuru && isNominateOther) {
             if (formData.nominatorEmail && !emailRegex.test(formData.nominatorEmail)) {
                 newErrors.nominatorEmail = 'Please enter a valid email';
             }
+
             if (formData.nominatorPhone && formData.nominatorPhone.length !== 10) {
                 newErrors.nominatorPhone = 'Mobile number must be 10 digits';
             }
         }
 
         setErrors(newErrors);
+
+        // ❌ 2. Validation error tracking
         if (Object.keys(newErrors).length > 0) {
+            if (window.fbq) {
+                window.fbq('trackCustom', 'FormError', {
+                    step: 3,
+                    category: mainCategory
+                });
+            }
+
             scrollToFormTop();
             return;
         }
@@ -436,13 +453,14 @@ const RegistrationForm = () => {
         setSubmitting(true);
 
         const data = new FormData();
+
         data.append('utm_data', JSON.stringify(utmData));
-        // Append all text fields
+
         Object.keys(formData).forEach(key => {
             if (!['pitchDeck', 'awardGroup', 'teamMembers'].includes(key)) {
+
                 let value = formData[key];
 
-                // If Self Nomination, copy teacher details to nominator fields
                 if (!isNominateOther && isGuru) {
                     if (key === 'nominatorName') value = `${formData.studentName} ${formData.lastName}`;
                     if (key === 'nominatorPhone') value = formData.phone;
@@ -453,52 +471,76 @@ const RegistrationForm = () => {
             }
         });
 
-        // Append Team Members as JSON string
-        if (formData.teamMembers && formData.teamMembers.length > 0) {
+        if (formData.teamMembers?.length > 0) {
             data.append('teamMembers', JSON.stringify(formData.teamMembers));
         }
 
-        // Append awardGroup specifically
         data.append('awardGroup', mainCategory);
 
-        // Append image/photo if present (For Guru)
         if (uploadMode === 'upload' && formData.photo) {
             data.append('photo', formData.photo);
         } else if (uploadMode === 'camera' && capturedImage) {
             data.append('capturedImage', capturedImage);
         }
 
-        // Append Pitch Deck (For Studentpreneur)
         if (formData.pitchDeck) {
             data.append('pitchDeck', formData.pitchDeck);
         }
 
         try {
-            const apiEndpoint = 'https://new.ssvmtransformingindia.com/public/api/register';
-            console.log('Submitting to:', apiEndpoint);
-            const response = await fetch(apiEndpoint, {
-                method: 'POST',
-                body: data,
-                headers: {
-                    'Accept': 'application/json',
+            const response = await fetch(
+                'https://new.ssvmtransformingindia.com/public/api/register',
+                {
+                    method: 'POST',
+                    body: data,
+                    headers: {
+                        Accept: 'application/json',
+                    }
                 }
-            });
+            );
 
             const result = await response.json();
 
+            // ✅ 3. SUCCESS tracking
             if (response.ok && result.success) {
-                const reg = result.data.register_number;
 
+                if (window.fbq) {
+                    window.fbq('track', 'CompleteRegistration', {
+                        value: 100,
+                        currency: 'INR',
+                        content_name: mainCategory,
+                        status: 'success'
+                    });
+                }
+
+                const reg = result.data.register_number;
                 setRegNumber(reg);
 
-                // ✅ redirect to success page
                 navigate(`/success/${mainCategory}/${filterType}?reg=${reg}`);
             } else {
+
+                // ❌ backend error tracking
+                if (window.fbq) {
+                    window.fbq('trackCustom', 'FormError', {
+                        reason: 'backend_error'
+                    });
+                }
+
                 alert(result.message || 'Submission failed. Please try again.');
             }
+
         } catch (error) {
+
             console.error('Error submitting form:', error);
-            alert(`Network Error: ${error.message}. Please check if the backend server is running.`);
+
+            // ❌ network error tracking
+            if (window.fbq) {
+                window.fbq('trackCustom', 'FormError', {
+                    reason: 'network_error'
+                });
+            }
+
+            alert(`Network Error: ${error.message}`);
         } finally {
             setSubmitting(false);
         }
