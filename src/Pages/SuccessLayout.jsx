@@ -7,26 +7,29 @@ const SuccessLayout = ({ title, message, regNumber, category, type }) => {
 
     useEffect(() => {
         if (window.fbq) {
-            const eventName = "Lead"; // keep standard event for Meta optimization
 
-            window.fbq('track', eventName, {
+            window.fbq('track', 'Lead', {
                 content_name: title,
                 content_category: category,
                 form_type: type,
                 registration_id: regNumber,
                 value: 1,
-                currency: "INR"
+                currency: "INR",
+
+                // ✅ ADD THIS
+                test_event_code: 'TEST123'
             });
 
-            // 🔥 OPTIONAL: Custom Event (VERY USEFUL)
             window.fbq('trackCustom', 'FormSubmitted', {
                 category,
                 type,
-                registration_id: regNumber
+                registration_id: regNumber,
+
+                // ✅ ADD THIS
+                test_event_code: 'TEST123'
             });
         }
 
-        // ✅ GTM
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
             event: "form_success",
