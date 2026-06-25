@@ -5,8 +5,8 @@ import '../assets/registration/RegistrationForm.css';
 
 const awardTypes = {
     guru: [
-        { id: 'internal-self', label: 'Internal - Self Nomination', desc: 'Nominate yourself as an SSVM educator ' },
-        { id: 'internal-other', label: 'Internal - Nominate Others', desc: 'Nominate an educator from SSVM institutions' },
+        // { id: 'internal-self', label: 'Internal - Self Nomination', desc: 'Nominate yourself as an SSVM educator ' },
+        // { id: 'internal-other', label: 'Internal - Nominate Others', desc: 'Nominate an educator from SSVM institutions' },
         { id: 'external-self', label: 'External - Self Nomination', desc: 'Nominate yourself' },
         { id: 'external-other', label: 'External - Nominate Others', desc: 'Nominate an educator you know' },
     ],
