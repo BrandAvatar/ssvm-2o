@@ -323,18 +323,21 @@ const DashboardPage = () => {
             let allRecords = [...(firstPageResult.data || [])];
             const totalPages = firstPageResult.last_page || 1;
 
-            // 2. Fetch subsequent pages in parallel
+            // 2. Fetch subsequent pages in batches to avoid rate limiting
             if (totalPages > 1) {
-                const promises = [];
-                for (let p = 2; p <= totalPages; p++) {
-                    promises.push(fetchPageData(categoryId, p, searchTerm));
-                }
-                const results = await Promise.all(promises);
-                results.forEach((res) => {
-                    if (res && res.data) {
-                        allRecords = [...allRecords, ...res.data];
+                const batchSize = 5;
+                for (let i = 2; i <= totalPages; i += batchSize) {
+                    const promises = [];
+                    for (let j = 0; j < batchSize && (i + j) <= totalPages; j++) {
+                        promises.push(fetchPageData(categoryId, i + j, searchTerm));
                     }
-                });
+                    const results = await Promise.all(promises);
+                    results.forEach((res) => {
+                        if (res && res.data) {
+                            allRecords = [...allRecords, ...res.data];
+                        }
+                    });
+                }
             }
 
             if (allRecords.length === 0) {
