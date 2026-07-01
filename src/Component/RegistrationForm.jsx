@@ -7,11 +7,11 @@ const awardTypes = {
     guru: [
         // { id: 'internal-self', label: 'Internal - Self Nomination', desc: 'Nominate yourself as an SSVM educator ' },
         // { id: 'internal-other', label: 'Internal - Nominate Others', desc: 'Nominate an educator from SSVM institutions' },
-        { id: 'external-self', label: 'External - Self Nomination', desc: 'Nominate yourself' },
-        { id: 'external-other', label: 'External - Nominate Others', desc: 'Nominate an educator you know' },
+        // { id: 'external-self', label: 'External - Self Nomination', desc: 'Nominate yourself' },
+        // { id: 'external-other', label: 'External - Nominate Others', desc: 'Nominate an educator you know' },
     ],
     studentpreneur: [
-        { id: 'internal', label: 'Internal Studentpreneur', desc: 'For students currently studying at SSVM' },
+        // { id: 'internal', label: 'Internal Studentpreneur', desc: 'For students currently studying at SSVM' },
         { id: 'external', label: 'External Studentpreneur', desc: 'For student entrepreneurs from other schools' },
     ]
 };
@@ -636,7 +636,7 @@ const RegistrationForm = () => {
                             </div>
                         ) : (
                             <div>
-                                <div className="nomination-cards">
+                                <div className="nomination-cards d-flex justify-content-center">
                                     {awardTypes[mainCategory]
                                         .filter(type => {
                                             if (mainCategory === 'studentpreneur') return true;
