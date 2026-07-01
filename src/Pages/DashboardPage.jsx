@@ -323,20 +323,15 @@ const DashboardPage = () => {
             let allRecords = [...(firstPageResult.data || [])];
             const totalPages = firstPageResult.last_page || 1;
 
-            // 2. Fetch subsequent pages in batches to avoid rate limiting
+            // 2. Fetch subsequent pages sequentially to ensure maximum compatibility across all devices
             if (totalPages > 1) {
-                const batchSize = 5;
-                for (let i = 2; i <= totalPages; i += batchSize) {
-                    const promises = [];
-                    for (let j = 0; j < batchSize && (i + j) <= totalPages; j++) {
-                        promises.push(fetchPageData(categoryId, i + j, searchTerm));
+                for (let p = 2; p <= totalPages; p++) {
+                    const res = await fetchPageData(categoryId, p, searchTerm);
+                    if (res && res.data) {
+                        allRecords = [...allRecords, ...res.data];
+                    } else {
+                        console.warn(`Failed to fetch page ${p} for export.`);
                     }
-                    const results = await Promise.all(promises);
-                    results.forEach((res) => {
-                        if (res && res.data) {
-                            allRecords = [...allRecords, ...res.data];
-                        }
-                    });
                 }
             }
 
@@ -576,11 +571,11 @@ const DashboardPage = () => {
                                             <i className="bi bi-funnel" style={{ color: 'var(--text-muted)', fontSize: '14px' }}></i>
                                             <span style={{ fontSize: '11px', fontWeight: '700', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Quick Filters:</span>
                                         </div>
-                                        
+
                                         {/* Date Filter */}
                                         <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                                            <select 
-                                                value={dateFilter} 
+                                            <select
+                                                value={dateFilter}
                                                 onChange={e => setDateFilter(e.target.value)}
                                                 className="filter-select"
                                                 style={{ padding: '8px 12px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '12px', fontWeight: '500', outline: 'none', background: '#fff', cursor: 'pointer', minWidth: '160px', color: '#333' }}
@@ -594,8 +589,8 @@ const DashboardPage = () => {
 
                                         {/* UTM Source Filter */}
                                         <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                                            <select 
-                                                value={selectedUtmSource} 
+                                            <select
+                                                value={selectedUtmSource}
                                                 onChange={e => setSelectedUtmSource(e.target.value)}
                                                 className="filter-select"
                                                 style={{ padding: '8px 12px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '12px', fontWeight: '500', outline: 'none', background: '#fff', cursor: 'pointer', minWidth: '170px', color: '#333' }}
@@ -609,8 +604,8 @@ const DashboardPage = () => {
 
                                         {/* UTM Campaign Filter */}
                                         <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                                            <select 
-                                                value={selectedUtmCampaign} 
+                                            <select
+                                                value={selectedUtmCampaign}
                                                 onChange={e => setSelectedUtmCampaign(e.target.value)}
                                                 className="filter-select"
                                                 style={{ padding: '8px 12px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '12px', fontWeight: '500', outline: 'none', background: '#fff', cursor: 'pointer', minWidth: '180px', color: '#333' }}
@@ -624,7 +619,7 @@ const DashboardPage = () => {
 
                                         {/* Clear Filters Button */}
                                         {(dateFilter || selectedUtmSource || selectedUtmCampaign) && (
-                                            <button 
+                                            <button
                                                 onClick={() => {
                                                     setDateFilter('');
                                                     setSelectedUtmSource('');
