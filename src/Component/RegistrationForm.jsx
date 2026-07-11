@@ -12,7 +12,7 @@ const awardTypes = {
     ],
     studentpreneur: [
         // { id: 'internal', label: 'Internal Studentpreneur', desc: 'For students currently studying at SSVM' },
-        { id: 'external', label: 'External Studentpreneur', desc: 'For student entrepreneurs from other schools' },
+        // { id: 'external', label: 'External Studentpreneur', desc: 'For student entrepreneurs from other schools' },
     ]
 };
 
