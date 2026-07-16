@@ -303,15 +303,15 @@ const StudentpreneurAward = () => {
                         </div>
                     </div>
                 </div>
-                {/* <div className="cta-wrapper mb-5">
+                <div className="cta-wrapper mb-5">
                     <div className="fixed-cta guru_award_parent">
                         <div className="row justify-content-center">
-                            <div className="col-lg-6 d-flex flex-column justify-content-center align-items-center">
+                            {/* <div className="col-lg-6 d-flex flex-column justify-content-center align-items-center">
                                 <button onClick={() => handleAwardSelect('studentpreneur', 'internal')} className="btn-primary">
                                     <span>Register – Internal</span>
                                 </button>
                                 <p className="mb-0 text-white text-center small mt-2">Internal Category – Open to students from SSVM Institutions</p>
-                            </div>
+                            </div> */}
                             <div className="col-lg-12 mt-lg-0 mt-4 d-flex flex-column justify-content-center align-items-center">
                                 <button onClick={() => handleAwardSelect('studentpreneur', 'external')} className="btn-ghost">
                                     <span>Register – External</span>
@@ -320,7 +320,7 @@ const StudentpreneurAward = () => {
                             </div>
                         </div>
                     </div>
-                </div> */}
+                </div>
             </div>
         </>
     );
