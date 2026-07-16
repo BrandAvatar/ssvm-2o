@@ -158,7 +158,8 @@ const ArcherScrollAnimation = () => {
                                     <div className="d-flex flex-column align-items-center justify-content-center">
                                         <Link to={"/studentpreneur-award"}>
                                             <button className="btn-primary ssvm_reg_butt">
-                                                <span>Exlpore More</span>
+                                                {/* <span>Exlpore More</span> */}
+                                                <span>Register</span>
                                             </button>
                                         </Link>
                                     </div>
