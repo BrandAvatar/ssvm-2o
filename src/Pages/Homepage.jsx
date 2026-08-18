@@ -99,6 +99,13 @@ const slides = [
     },
 ];
 
+const workshop = [
+    { img: `${BASE_IMAGE_URL}workshop/workshop-01.webp` },
+    { img: `${BASE_IMAGE_URL}workshop/workshop-02.webp` },
+    { img: `${BASE_IMAGE_URL}workshop/workshop-03.webp` },
+    { img: `${BASE_IMAGE_URL}workshop/workshop-04.webp` },
+];
+
 const Homepage = () => {
     const [isMobile, setIsMobile] = useState(false);
     const [stackImages, setStackImages] = useState(images);
@@ -336,9 +343,65 @@ const Homepage = () => {
                 </div>
             </section>
             <HorseAnimation />
-            {/* <div className="position-relative " id="speakers">
+            <div className="position-relative " id="speakers">
                 <SpeakerSwiper />
-            </div> */}
+            </div>
+
+            <div className="section_container">
+                <div className="row justify-content-center">
+                    <div className="col-lg-6">
+                        <div className="speaker_description_main text-center text-white">
+                            <span className="section-sub-title text-uppercase small fw-bold">
+                                <img src={`${BASE_IMAGE_URL}favicon.png`} alt="" />
+                                Hands-On Learning
+                            </span>
+
+                            <div data-aos="fade-up">
+                                <TitleReveal
+                                    text="Workshops"
+                                    className="main_heading_about text-c1"
+                                />
+                                <p>
+                                    Engage in immersive workshops led by inspiring experts, designed to spark
+                                    new ideas, build practical skills, and create meaningful learning experiences.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <Swiper
+                        modules={[Autoplay]}
+                        spaceBetween={20}
+                        slidesPerView={1}
+                        autoplay={{
+                            delay: 3000,
+                            disableOnInteraction: false,
+                        }}
+                        breakpoints={{
+                            576: {
+                                slidesPerView: 2,
+                            },
+                            992: {
+                                slidesPerView: 3,
+                            },
+                            1200: {
+                                slidesPerView: 4,
+                            },
+                        }}
+                    >
+                        {workshop.map((item, index) => (
+                            <SwiperSlide key={index}>
+                                <div className="workshop-card">
+                                    <img
+                                        src={item.img}
+                                        alt={`Workshop ${index + 1}`}
+                                        className="img-fluid w-100"
+                                    />
+                                </div>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
+                </div>
+            </div>
             <ArcherScrollAnimation />
             <GuruAwardArchery />
             <section className="about_section py-3" id="about">
