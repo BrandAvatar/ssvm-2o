@@ -18,21 +18,18 @@ export default function SpeakerSwiper() {
     const sectionRef = useRef();
 
     const speaker = [
-        { img: `${BASE_IMAGE_URL}speakers.jpeg` },
-        { img: `${BASE_IMAGE_URL}speakers.jpeg` },
-        { img: `${BASE_IMAGE_URL}speakers.jpeg` },
-        { img: `${BASE_IMAGE_URL}speakers.jpeg` },
-        { img: `${BASE_IMAGE_URL}speakers.jpeg` },
-        { img: `${BASE_IMAGE_URL}speakers.jpeg` },
-        { img: `${BASE_IMAGE_URL}speakers.jpeg` },
-        { img: `${BASE_IMAGE_URL}speakers.jpeg` },
-        { img: `${BASE_IMAGE_URL}speakers.jpeg` },
-        { img: `${BASE_IMAGE_URL}speakers.jpeg` },
-        { img: `${BASE_IMAGE_URL}speakers.jpeg` },
-        { img: `${BASE_IMAGE_URL}speakers.jpeg` },
-        { img: `${BASE_IMAGE_URL}speakers.jpeg` },
-        { img: `${BASE_IMAGE_URL}speakers.jpeg` },
-        { img: `${BASE_IMAGE_URL}speakers.jpeg` }
+        { img: `${BASE_IMAGE_URL}speakers/speaker-announcement-01.webp` },
+        { img: `${BASE_IMAGE_URL}speakers/speaker-announcement-02.webp` },
+        { img: `${BASE_IMAGE_URL}speakers/speaker-announcement-03.webp` },
+        { img: `${BASE_IMAGE_URL}speakers/speaker-announcement-04.webp` },
+        { img: `${BASE_IMAGE_URL}speakers/speaker-announcement-05.webp` },
+        { img: `${BASE_IMAGE_URL}speakers/speaker-announcement-06.webp` },
+        { img: `${BASE_IMAGE_URL}speakers/speaker-announcement-07.webp` },
+        // { img: `${BASE_IMAGE_URL}speakers/speaker-announcement-08.webp` },
+        // { img: `${BASE_IMAGE_URL}speakers/speaker-announcement-09.webp` },
+        // { img: `${BASE_IMAGE_URL}speakers/speaker-announcement-10.webp` },
+        // { img: `${BASE_IMAGE_URL}speakers/speaker-announcement-11.webp` },
+        { img: `${BASE_IMAGE_URL}speakers/speaker-announcement-12.webp` },
     ];
     useEffect(() => {
         const ctx = gsap.context(() => {
